@@ -1,9 +1,17 @@
-<%= form_for @post do |f| %>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for @post do |f| %>
+      <div class="form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: 'form-control' %>
+      </div>
 
-  <%= f.label :body %>
-  <%= f.text_area :body %>
+      <div class="form-group">
+        <%= f.label :body %>
+        <%= f.text_area :body, class: 'form-control' %>
+      </div>
 
-  <%= f.submit "Publish" %>
-<% end %>
+      <%= f.submit "Publish", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
