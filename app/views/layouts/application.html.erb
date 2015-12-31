@@ -7,6 +7,14 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header>
+    <h1>Stories</h1>
+    <nav>
+      <ul>
+        <li><%= link_to "New Post", new_post_path %></li>
+      </ul>
+    </nav>
+  </header>
 
 <%= yield %>
 
