@@ -10,11 +10,11 @@
   <%= render 'layouts/header' %>
 
   <% if notice %>
-    <p><%= notice %></p>
+    <p class="alert alert-success" role="alert"><%= notice %></p>
   <% end %>
 
   <% if alert %>
-    <p><%= alert %></p>
+    <p class="alert alert-danger" role="alert"><%= alert %></p>
   <% end %>
 <%= yield %>
 
