@@ -8,14 +8,15 @@ feature "User creates post" do
     expect(current_path).to eq(new_user_session_path)
   end
 
-  #scenario "successfully" do
-  #  visit root_path
-  #  click_on "New Post"
-  #  fill_in "Title", with: "My awesome Article"
-  #  fill_in "Body", with: "some awesome content..."
-  #  click_on "Publish"
+  scenario "successfully" do
+    sign_in_a_user
+    visit root_path
+    click_on "Write story"
+    fill_in "Title", with: "My awesome Article"
+    fill_in "Body", with: "some awesome content..."
+    click_on "Publish"
 
-  #  visit posts_path
-  #  expect(page).to have_content "My awesome Article"
-  #end
+    visit posts_path
+    expect(page).to have_content "My awesome Article"
+  end
 end
