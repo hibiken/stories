@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root "homes#show"
   resources :posts, only: [:index, :new, :create]
   # The priority is based upon order of creation: first created -> highest priority.

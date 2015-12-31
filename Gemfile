@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.2.4'
 gem 'pg'
+gem 'devise', '~> 3.5.3'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
@@ -38,6 +39,9 @@ group :development do
 end
 
 group :test do
+  gem 'database_cleaner', '~> 1.5.1'
   gem 'capybara', '~> 2.5.0'
+  gem 'factory_girl_rails', '~> 4.5.0'
+  gem 'faker', '~> 1.6.1'
 end
 
