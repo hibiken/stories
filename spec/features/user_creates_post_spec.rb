@@ -16,7 +16,7 @@ feature "User creates post" do
     fill_in "Body", with: "some awesome content..."
     click_on "Publish"
 
-    visit posts_path
+    visit root_path
     expect(page).to have_content "My awesome Article"
   end
 end

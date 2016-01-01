@@ -1,3 +1,4 @@
 <div class="post">
+  <small><%= post.user.username %> posted <%= time_ago_in_words(post.created_at) %> ago</small>
   <%= post.title %>
 </div>

@@ -2,13 +2,6 @@ require "rails_helper"
 
 RSpec.describe PostsController do
 
-  describe "GET #index" do
-    it "allows non-logged in user to access the page" do
-      get :index
-      expect(response).to render_template(:index)
-    end
-  end
-
   describe "GET #new" do
     it "requires a logged-in user" do
       get :new
