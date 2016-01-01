@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   validates :username, uniqueness: { case_sensitive: false },
                        presence: true
+
+  has_many :posts, dependent: :destroy
 end
