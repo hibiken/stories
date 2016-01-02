@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root "homes#show"
   devise_for :users
+  resources :users, only: [:show, :edit, :update]
   resources :posts, only: [:new, :create]
   resource :dashboard, only: [:show]
   # The priority is based upon order of creation: first created -> highest priority.
