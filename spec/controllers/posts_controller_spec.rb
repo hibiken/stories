@@ -2,6 +2,15 @@ require "rails_helper"
 
 RSpec.describe PostsController do
 
+  describe "GET #show" do
+    let(:post) { create(:post) }
+
+    it "non-logged-in user can also access the page" do
+      get :show, id: post.id
+      expect(response).to render_template(:show)
+    end
+  end
+
   describe "GET #new" do
     it "requires a logged-in user" do
       get :new
