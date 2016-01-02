@@ -1,4 +1,4 @@
 <div class="post">
   <small><%= post.username %> posted <%= time_ago_in_words(post.created_at) %> ago</small>
-  <%= post.title %>
+  <%= link_to post.title, post %>
 </div>
