@@ -1,9 +1,12 @@
 require "rails_helper"
 
-feature "User edits profile" do
+feature "Editing profile" do
   let(:user) { create(:user) }
+  before :each do
+    sign_in user
+  end
 
-  scenario "successfully" do
+  scenario "current user successfully edit his/her own" do
     visit edit_user_path(user)
     fill_in "Username", with: "New Username"
     fill_in "Description", with: "Awesome Developer"

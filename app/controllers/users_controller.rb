@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, only: [:edit, :update]
+  before_action :check_for_correct_user, only: [:edit, :update]
   before_action :set_user, only: [:show, :edit, :update]
 
   def show
@@ -23,5 +25,11 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:username, :description)
+    end
+
+    def check_for_correct_user
+      unless current_user.id == params[:id].to_i
+        redirect_to root_url
+      end
     end
 end
