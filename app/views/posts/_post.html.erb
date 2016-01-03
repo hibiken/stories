@@ -3,7 +3,7 @@
     <%= avatar_for post.user, size: 40 %>
     <div class="post-info">
       <%= link_to post.username, post.user %><br/>
-      <small><%= time_ago_in_words(post.created_at) %> ago &#149; 2 min read</small>
+      <small><%= time_ago_in_words(post.created_at) %> ago &#149; <%= post_length_in_minutes(post.body) %></small>
     </div>
   </div>
 
