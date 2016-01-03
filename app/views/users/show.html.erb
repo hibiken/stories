@@ -2,4 +2,6 @@
 <%= @user.description %>
 <%= avatar_for @user, size: 120 %>
 
-<%= link_to "Edit", edit_user_path(@user) %>
+<% if current_user?(@user) %>
+  <%= link_to "Edit", edit_user_path(@user) %>
+<% end %>

@@ -2,6 +2,7 @@ require "rails_helper"
 
 feature "Editing profile" do
   let(:user) { create(:user) }
+  let(:other_user) { create(:user) }
   before :each do
     sign_in user
   end
@@ -14,5 +15,10 @@ feature "Editing profile" do
 
     expect(page).to have_content "New Username"
     expect(page).to have_content "Awesome Developer"
+  end
+
+  scenario "user cannot go to other users' profile edit page" do
+    visit user_path(other_user)
+    expect(page).not_to have_link "Edit"
   end
 end
