@@ -1,5 +1,5 @@
 <%= @user.username %>
 <%= @user.description %>
-<%= image_tag @user.avatar.url if @user.avatar? %>
+<%= avatar_for @user, size: 120 %>
 
 <%= link_to "Edit", edit_user_path(@user) %>

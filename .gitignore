@@ -13,4 +13,8 @@
 /tmp
 
 # Ignore .DS_Store files
+/**/.DS_Store
 /.DS_Store
+
+# Ignore uploaded images
+/public/uploads/**/*

@@ -10,7 +10,6 @@ feature "User signs up" do
     fill_in "Password confirmation", with: "password"
     click_on "Create Account"
 
-    expect(page).to have_content "example-user"
     expect(page).to have_content "Sign out"
     expect(page).not_to have_content "Sign up"
   end
