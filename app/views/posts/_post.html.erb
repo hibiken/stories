@@ -1,9 +1,9 @@
-<div class="post">
+<div class="post-panel">
   <div class="metadata">
-    <%= avatar_for post.user, size: 35 %>
-    <div>
-      <%= link_to post.username, post.user %>
-      <small><%= time_ago_in_words(post.created_at) %> ago</small>
+    <%= avatar_for post.user, size: 40 %>
+    <div class="post-info">
+      <%= link_to post.username, post.user %><br/>
+      <small><%= time_ago_in_words(post.created_at) %> ago &#149; 2 min read</small>
     </div>
   </div>
 

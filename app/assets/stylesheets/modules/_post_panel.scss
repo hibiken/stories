@@ -1,0 +1,25 @@
+.post-panel {
+  border-bottom: 1px solid $border-color;
+  padding: 20px 0 25px;
+
+  .metadata {
+    display: flex;
+    .post-info {
+      padding-left: 10px;
+      a {
+        color: $accent-color;
+        text-decoration: none;
+      }
+      small {
+        color: $light-gray;
+      }
+    }
+  }
+
+  .main-body {
+    .post-title a {
+      color: $black;
+      text-decoration: none;
+    }
+  }
+}
