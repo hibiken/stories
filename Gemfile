@@ -47,3 +47,7 @@ group :test do
   gem 'faker', '~> 1.6.1'
 end
 
+group :production do
+  gem 'rails_12factor', '0.0.2'
+end
+

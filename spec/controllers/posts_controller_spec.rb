@@ -39,8 +39,18 @@ RSpec.describe PostsController do
       expect(response).to render_template(:new)
     end
 
-    it "allows user to create a post" do
-      expect{post :create, post: attributes_for(:post) }.to change(Post, :count).by(1)
+    describe "POST #create" do
+      it "allows user to create a post" do
+        expect{post :create, post: attributes_for(:post) }.to change(Post, :count).by(1)
+      end
+
+      it "fails create gracefully" do
+        new_post = Post.new
+        expect(new_post).to receive(:save).and_return(false)
+        allow(Post).to receive(:new).and_return(new_post)
+        post :create, post: attributes_for(:post)
+        expect(response).to render_template(:new)
+      end
     end
   end
 end
