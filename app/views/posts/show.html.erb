@@ -1,5 +1,9 @@
-<%= @post.username %>
-<%= time_ago_in_words(@post.created_at) %> ago
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= render partial: 'post_metadata', locals: { post: @post } %>
 
-<%= @post.title %>
-<%= @post.body %>
+    <h3 class="title"><%= @post.title %></h3>
+    <p class="body"><%= @post.body %></p>
+  </div>
+</div> 
+  

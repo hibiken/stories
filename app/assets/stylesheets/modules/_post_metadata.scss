@@ -1,0 +1,13 @@
+.post-metadata {
+  display: flex;
+  .post-info {
+    padding-left: 10px;
+    a {
+      color: $accent-color;
+      text-decoration: none;
+    }
+    small {
+      color: $light-gray;
+    }
+  }
+}

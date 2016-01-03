@@ -1,0 +1,13 @@
+body.posts.show {
+  .title {
+    color: $black;
+    font-weight: 600;
+    font-size: 36px;
+  }
+
+  .body {
+    font-size: 21px;
+    line-height: 1.5;
+    font-weight: 300;
+  }
+}
