@@ -1,14 +1,14 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <%= link_to "Stories", root_path, class: "navbar-brand" %>
+      <%= link_to "Stories", root_path, class: "navbar-brand", id: "logo" %>
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Write story", new_post_path %></li>
+        <li class="new-post-button"><%= link_to "Write story", new_post_path, class: "button" %></li>
         <% if user_signed_in? %>
           <li>
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <a href="#" class="avatar-wrapper dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               <%= avatar_for(current_user, size: 40) %></a>
             <ul class="dropdown-menu">
               <li><a href="#">Action</a></li>

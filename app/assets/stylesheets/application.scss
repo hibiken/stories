@@ -20,8 +20,10 @@
 @import "partials/variables";
 
 @import "partials/base";
+@import "partials/buttons";
 
 
 // Modules
+@import 'modules/header';
 @import 'modules/post_panel';
 @import 'modules/avatar';
