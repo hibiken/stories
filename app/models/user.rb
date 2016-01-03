@@ -5,6 +5,18 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   validates :username, uniqueness: { case_sensitive: false },
                        presence: true
+  validate :avatar_image_size
 
   has_many :posts, dependent: :destroy
+
+  mount_uploader :avatar, AvatarUploader
+
+  private
+
+    # Validates the size on an uploaded image.
+    def avatar_image_size
+      if avatar.size > 5.megabytes
+        errors.add(:avatar, "should be less than 5MB")
+      end
+    end
 end

@@ -13,5 +13,12 @@ RSpec.describe User, type: :model do
       user = build(:user, username: nil)
       expect(user).not_to be_valid
     end
+
+    #it "requires avatar image to be less than 5MB in size" do
+    #  uploaded_image = double('avatar image', size: 6.megabytes)
+    #  user = build(:user, avatar: uploaded_image)
+    #  user.valid?
+    #  expect(user.errors[:avatar]).to include('should be less than 5MB')
+    #end
   end
 end

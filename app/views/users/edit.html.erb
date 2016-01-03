@@ -1,12 +1,14 @@
 <h1>Edit profile</h1>
 
-<%= form_for @user do |f| %>
+<%= form_for @user, html: { multipart: true } do |f| %>
 
   <%= f.label :username %>
   <%= f.text_field :username %>
 
   <%= f.label :description %>
   <%= f.text_area :description %>
+
+  <%= f.file_field :avatar %>
 
   <%= f.submit "Save" %>
 <% end %>
