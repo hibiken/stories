@@ -14,6 +14,7 @@ feature "User creates post" do
     click_on "Write story"
     fill_in "Title", with: "My awesome Article"
     fill_in "Body", with: "some awesome content..."
+    fill_in "Tags", with: "travel, fun, life"
     click_on "Publish"
 
     visit root_path
