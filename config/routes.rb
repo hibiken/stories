@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users, only: [:show, :edit, :update]
   resources :posts, only: [:show, :new, :create, :edit, :update, :destroy]
+  resources :tags, only: [:show]
   resource :dashboard, only: [:show]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
