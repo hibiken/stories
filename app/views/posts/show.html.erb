@@ -4,6 +4,11 @@
 
     <h3 class="title"><%= @post.title %></h3>
     <p class="body"><%= @post.body %></p>
+
+    <% if current_user?(@post.user) %>
+      <%= link_to "Edit", edit_post_path(@post) %>
+      <%= link_to "Delete", post_path(@post), method: :delete %>
+    <% end %>
   </div>
 </div> 
   

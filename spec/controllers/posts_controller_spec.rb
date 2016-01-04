@@ -53,4 +53,30 @@ RSpec.describe PostsController do
       end
     end
   end
+
+  context "when a user trying to edit, update, or delete other users post" do
+    let(:user) { create(:user) }
+    let(:other_user) { create(:user) }
+    let!(:other_user_post) { create(:post, user: other_user) }
+
+    before :each do
+      @request.env["devise.mapping"] = Devise.mappings[:user]
+      sign_in user
+    end
+
+    it "does not allow user to edit post" do
+      get :edit, id: other_user_post.id
+      expect(response).to redirect_to(dashboard_path)
+    end
+
+    it "does not allow user to update post" do
+      patch :update, id: other_user_post.id, post: attributes_for(:post)
+      expect(response).to redirect_to(dashboard_path)
+    end
+
+    it "does not allow user to delete post" do
+      expect { delete :destroy, id: other_user_post.id }.not_to change{ Post.count }
+    end
+
+  end
 end
