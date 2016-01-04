@@ -2,4 +2,10 @@
   border: 1px solid $border-color;
   padding: 0.5em 1em !important;
   border-radius: 20px;
+  text-decoration: none;
+  color: rgba(0,0,0,0.6);
+  &:hover {
+    text-decoration: none;
+    color: rgba(0,0,0,0.8);
+  }
 }

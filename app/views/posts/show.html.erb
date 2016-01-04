@@ -5,13 +5,15 @@
     <h3 class="title"><%= @post.title %></h3>
   <p class="body"><%= @post.body %></p>
 
-  <% @post.tags.each do |tag| %>
-    <%= link_to tag.name, tag %>
-  <% end %>
+  <div class="post-tags">
+    <% @post.tags.each do |tag| %>
+      <%= link_to tag.name, tag, class: 'tag' %>
+    <% end %>
+  </div>
 
   <% if current_user?(@post.user) %>
-    <%= link_to "Edit", edit_post_path(@post) %>
-    <%= link_to "Delete", post_path(@post), method: :delete %>
+    <%= link_to "Edit", edit_post_path(@post), class: 'button' %>
+    <%= link_to "Delete", post_path(@post), method: :delete, class: 'button' %>
   <% end %>
   </div>
 </div> 

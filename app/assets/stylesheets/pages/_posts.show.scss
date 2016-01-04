@@ -1,0 +1,32 @@
+body.posts.show {
+  .title {
+    color: $black;
+    font-weight: 600;
+    font-size: 36px;
+  }
+
+  .body {
+    font-size: 21px;
+    line-height: 1.5;
+    font-weight: 300;
+  }
+
+  .post-tags {
+    margin: 2em 0 3em;
+  }
+
+  .tag {
+    padding: 0.5em 1em;
+    background: $super-light-gray;
+    text-decoration: none;
+    text-transform: capitalize;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 13px;
+    border-radius: 3px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

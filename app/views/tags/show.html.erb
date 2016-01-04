@@ -1,6 +1,8 @@
 <div class="col-md-7 col-md-offset-1">
-  <small>Tagged in</small>
-  <h3><%= @tag.name %></h3>
+  <div class="heading-container">
+    <small class="heading-prefix">Tagged in</small>
+    <h3 class="heading-title"><%= @tag.name.capitalize %></h3>
+  </div>
 
   <%= render @posts %>
 </div>
