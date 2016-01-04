@@ -1,16 +1,14 @@
 <%= form_for @post do |f| %>
   <div class="form-group">
-    <%= f.label :title %>
     <%= f.text_field :title, class: 'form-control', placeholder: 'Title' %>
   </div>
 
   <div class="form-group">
-    <%= f.label :body %>
-    <%= f.text_area :body, class: 'form-control', placeholder: 'Write your story here ...' %>
+    <%= f.text_area :body, class: 'form-control',
+      placeholder: 'Write your story here ...', rows: 30 %>
   </div>
 
   <div class="form-group">
-    <%= f.label :all_tags, "Tags" %>
     <%= f.text_field :all_tags, class: 'form-control', placeholder: 'Tags separated by a comma ...' %>
   </div>
 
