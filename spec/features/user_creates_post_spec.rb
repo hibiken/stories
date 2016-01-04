@@ -3,7 +3,7 @@ require "rails_helper"
 feature "User creates post" do
   scenario "requires the user to log in" do
     visit root_path
-    click_on "Write story"
+    click_on "Write a story"
 
     expect(current_path).to eq(new_user_session_path)
   end
@@ -11,7 +11,7 @@ feature "User creates post" do
   scenario "successfully and edits the post" do
     sign_in_a_user
     visit root_path
-    click_on "Write story"
+    click_on "Write a story"
     fill_in "post[title]", with: "My awesome Article"
     fill_in "post[body]", with: "some awesome content..."
     fill_in "post[all_tags]", with: "travel, fun, life"
