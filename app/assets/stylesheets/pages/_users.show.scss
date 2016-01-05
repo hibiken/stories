@@ -1,0 +1,38 @@
+body.users.show {
+  .profile-container {
+    background-color: #fafafa;
+    width: 100%;
+  }
+  .hero-wrapper {
+    width: 50%;
+    max-width: 550px;
+    margin: auto;
+    padding-top: 2em;
+    padding-bottom: 2.5em;
+  }
+  .hero {
+    display: flex;
+    justify-content: space-between;
+  }
+  .hero-title {
+    font-weight: 700;
+    font-size: 32px;
+  }
+  .hero-description {
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.2;
+    margin-top: 4px;
+    color: $light-font-color;
+  }
+  .following-metadata {
+    margin: 1em 0 1.2em;
+    span {
+      color: $light-font-color;
+      font-size: 16px;
+    }
+  }
+  .following-count {
+    margin-right: 12px;
+  }
+}

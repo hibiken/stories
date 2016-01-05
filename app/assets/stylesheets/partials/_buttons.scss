@@ -4,8 +4,21 @@
   border-radius: 20px;
   text-decoration: none;
   color: rgba(0,0,0,0.6);
+  font-size: 14px;
+  outline: none;
   &:hover {
     text-decoration: none;
     color: rgba(0,0,0,0.8);
+  }
+
+  &.green-border-button {
+    color: $accent-color;
+    border-color: $accent-color;
+    background-color: #fff;
+  }
+  &.green-inner-button {
+    color: #fff;
+    background-color: $button-green;
+    border-color: $button-green;
   }
 }
