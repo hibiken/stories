@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   before_action :check_for_relationship, only: [:show]
 
   def show
+    @latest_posts = @user.posts.limit(3)
   end
 
   def edit

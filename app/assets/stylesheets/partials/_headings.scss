@@ -1,0 +1,12 @@
+.small-heading {
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin: 8px 0;
+  font-size: 14px;
+  font-weight: bold;
+  color: $light-gray;
+  &.with-border {
+    border-bottom: 1px solid rgba(0,0,0, 0.5);
+    padding-bottom: 10px;
+  }
+}
