@@ -21,4 +21,21 @@ RSpec.describe User, type: :model do
     #  expect(user.errors[:avatar]).to include('should be less than 5MB')
     #end
   end
+
+  describe "user relationships" do
+    let(:luke) { create(:user, username: "Luke Skywalker") }
+    let(:solo) { create(:user, username: "Han Solo") }
+
+    it "can follow and unfollow a user" do
+      expect(luke).not_to be_following(solo)
+
+      luke.follow(solo)
+      expect(luke).to be_following(solo)
+      expect(solo.followers).to include(luke)
+
+      luke.unfollow(solo)
+      expect(luke).not_to be_following(solo)
+      expect(solo.followers).not_to include(luke)
+    end
+  end
 end
