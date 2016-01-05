@@ -37,5 +37,9 @@ RSpec.describe User, type: :model do
       expect(luke).not_to be_following(solo)
       expect(solo.followers).not_to include(luke)
     end
+
+    it "returns false when asked whether a user is following self" do
+      expect(luke.following?(luke)).to be_falsy
+    end
   end
 end

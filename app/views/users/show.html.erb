@@ -2,8 +2,14 @@
 <%= @user.description %>
 <%= avatar_for @user, size: 120 %>
 
+<%= pluralize(@user.followers.size, "follower") %>
+<%= pluralize(@user.following.size, "following") %>
 <% if current_user?(@user) %>
   <%= link_to "Edit", edit_user_path(@user) %>
 <% end %>
 
-<%= link_to "Follow", "#" %>
+<% if user_signed_in? & current_user.following?(@user) %>
+  <%= button_to "Unfollow", relationship_path(@relationship), method: :delete %>
+<% else %>
+  <%= button_to "Follow", relationships_path(followed_id: @user.id) %>
+<% end %>
