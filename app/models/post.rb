@@ -8,6 +8,8 @@ class Post < ActiveRecord::Base
 
   delegate :username, to: :user
 
+  default_scope { order(created_at: :desc) }
+
   def self.tagged_with(name)
     Tag.find_by!(name: name).posts
   end
