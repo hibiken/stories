@@ -16,7 +16,7 @@ RSpec.feature "Signed in User follow other users" do
     click_on "Follow"
     expect(page).to have_button "Unfollow"
     expect(page).not_to have_button "Follow"
-    expect(page).to have_content "1 follower"
+    expect(page).to have_content "1 Follower"
     click_on "Unfollow"
     expect(page).to have_button "Follow"
     expect(page).not_to have_button "Unfollow"
