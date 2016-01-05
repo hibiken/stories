@@ -1,4 +1,6 @@
 .post-metadata {
+  display: -ms-flex;
+  display: -webkit-flex;
   display: flex;
   .post-info {
     padding-left: 10px;
