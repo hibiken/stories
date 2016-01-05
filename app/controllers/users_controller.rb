@@ -36,7 +36,7 @@ class UsersController < ApplicationController
 
     # Sets @relationship for Unfollow button
     def check_for_relationship
-      if current_user.following?(@user)
+      if user_signed_in? && current_user.following?(@user)
         @relationship = current_user.active_relationships.find_by(followed_id: @user.id)
       end
     end

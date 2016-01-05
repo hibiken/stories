@@ -4,7 +4,7 @@
 
 <%= pluralize(@user.followers.size, "follower") %>
 <%= pluralize(@user.following.size, "following") %>
-<% if current_user?(@user) %>
+<% if user_signed_in? && current_user?(@user) %>
   <%= link_to "Edit", edit_user_path(@user) %>
 <% end %>
 
@@ -17,6 +17,6 @@
     <% end %>
   <% end %>
 <% else %>
-  <%= link_to "Follow", relationships_path(followed_id: @user.id) %>
+  <%= button_to "Follow", relationships_path(followed_id: @user.id) %>
 <% end %>
 
