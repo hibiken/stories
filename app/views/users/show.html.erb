@@ -8,15 +8,5 @@
   <%= link_to "Edit", edit_user_path(@user) %>
 <% end %>
 
-<% if user_signed_in? %>
-  <% unless current_user?(@user) %>
-    <% if current_user.following?(@user) %>
-      <%= button_to "Unfollow", relationship_path(@relationship), method: :delete %>
-    <% else %>
-      <%= button_to "Follow", relationships_path(followed_id: @user.id) %>
-    <% end %>
-  <% end %>
-<% else %>
-  <%= button_to "Follow", relationships_path(followed_id: @user.id) %>
-<% end %>
+<%= follow_button_for(@user) %>
 
