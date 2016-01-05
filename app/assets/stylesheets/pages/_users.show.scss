@@ -35,4 +35,10 @@ body.users.show {
   .following-count {
     margin-right: 12px;
   }
+
+  .posts-wrapper {
+    width: 50%;
+    max-width: 550px;
+    margin: auto;
+  }
 }
