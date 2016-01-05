@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
 
   def follow(other_user)
+    return false if self.id == other_user.id
     active_relationships.create(followed_id: other_user.id)
   end
 
