@@ -9,6 +9,7 @@ class Post < ActiveRecord::Base
   delegate :username, to: :user
 
   default_scope { order(created_at: :desc) }
+  scope :latest, ->(number) { order(created_at: :desc).limit(number) }
 
   def self.tagged_with(name)
     Tag.find_by!(name: name).posts
