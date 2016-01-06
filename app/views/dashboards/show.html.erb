@@ -4,9 +4,7 @@
 
 <div class="col-md-4 col-md-offset-1">
   <h4 class="small-heading with-border">Tags you follow</h4>
-    <div class="following-tags">
-      <% @following_tags.each do |tag| %>
-        <%= link_to tag.name, tag %>
-    </div>
-  <% end %>
+  <div class="following-tags">
+    <%= render @following_tags %>
+  </div>  
 </div>

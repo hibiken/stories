@@ -1,9 +1,10 @@
 <div class="col-md-6 col-md-offset-1">
+  <%= follow_tag_button_for(@tag) %>
   <div class="heading-container">
     <small class="heading-prefix">Tagged in</small>
     <h3 class="heading-title"><%= @tag.name.titleize %></h3>
 
-    <%= follow_tag_button_for(@tag) %>
+    
   </div>
 
   <%= render @posts %>
