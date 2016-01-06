@@ -29,4 +29,14 @@ body.posts.show {
       margin-right: 0;
     }
   }
+
+  .edit-delete-button-wrapper {
+    padding: 1em 0;
+    margin-bottom: 1em;
+  }
+  #new_response {
+    input[type="submit"] {
+      margin-top: 12px;
+    }
+  }
 }
