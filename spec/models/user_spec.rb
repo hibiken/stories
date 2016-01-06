@@ -53,13 +53,13 @@ RSpec.describe User, type: :model do
     let(:music_tag) { Tag.create(name: "Music") }
 
     it "can follow and unfollow a tag" do
-      expect(user.following_tag?(music_tag)).to be_falsy
+      expect(user).not_to be_following_tag(music_tag)
 
       user.follow_tag(music_tag)
-      expect(user.following_tag?(music_tag)).to be_truthy
+      expect(user).to be_following_tag(music_tag)
 
       user.unfollow_tag(music_tag)
-      expect(user.following_tag?(music_tag)).to be_falsy
+      expect(user).not_to be_following_tag(music_tag)
     end
   end
 end
