@@ -1,0 +1,27 @@
+aside.main-sidebar {
+  height: 100vh;
+  background-color: #fafafa;
+
+  .following-tags {
+    padding-top: 22px;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  a.tag {
+    color: $light-font-color;
+    background-color: #fff;
+    padding: 0.5em 0.7em;
+    border: 1px solid $border-color;
+    border-radius: 3px;
+    text-decoration: none;
+    margin-right: 10px;
+    margin-bottom: 12px;
+    font-size: 13px;
+    &:hover {
+      border-color: $border-hover-color;
+      color: #555;
+    }
+  }
+}
