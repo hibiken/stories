@@ -4,9 +4,6 @@
 
 <% content_for :sidebar do %>
   <aside class="col-md-4 col-md-offset-1 main-sidebar">
-    <h4 class="small-heading with-border">Tags you follow</h4>
-    <div class="following-tags">
-      <%= render @following_tags %>
-    </div>
+    <%= render 'shared/sidebar_following_tags' %>
   </aside>
 <% end %>

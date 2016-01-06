@@ -9,3 +9,9 @@
 
   <%= render @posts %>
 </div>
+
+<% content_for :sidebar do %>
+  <aside class="col-md-4 col-md-offset-1 main-sidebar">
+    <%= render 'shared/sidebar_following_tags' %>
+  </aside>
+<% end %>

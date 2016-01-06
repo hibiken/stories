@@ -1,10 +1,8 @@
 class DashboardsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_following_tags
 
   def show
     @posts = Post.all.includes(:user)
-    if user_signed_in?
-      @following_tags = current_user.following_tags
-    end
   end
 end
