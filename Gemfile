@@ -50,6 +50,7 @@ group :test do
   gem 'capybara', '~> 2.5.0'
   gem 'factory_girl_rails', '~> 4.5.0'
   gem 'faker', '~> 1.6.1'
+  gem 'launchy', '~> 2.4.3'
 end
 
 group :production do
