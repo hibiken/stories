@@ -1,0 +1,11 @@
+<div class="response">
+  <div class="post-metadata">
+    <%= avatar_for response.user, size: 40 %>
+    <div class="post-info">
+      <%= link_to response.username, response.user %><br/>
+      <small><%= time_ago_in_words(response.created_at) %> ago</small>
+    </div>
+  </div>
+
+  <%= response.body %>
+</div>

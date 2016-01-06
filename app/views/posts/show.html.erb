@@ -11,9 +11,20 @@
       <% end %>
     </div>
 
-    <% if current_user?(@post.user) %>
+    <% if user_signed_in? && current_user?(@post.user) %>
       <%= link_to "Edit", edit_post_path(@post), class: 'button' %>
       <%= link_to "Delete", post_path(@post), method: :delete, class: 'button' %>
+    <% end %>
+
+    <%= form_for [@post, @response] do |f| %>
+      <div class="form-group">
+        <%= f.text_area :body, class: "form-control", placeholder: "Write a response ..." %>
+        <%= f.submit "Publish" %>
+      </div>
+    <% end %>
+
+    <% if @post.responses.any? %>
+      <%= render @post.responses %>
     <% end %>
   </div>
 </div> 
