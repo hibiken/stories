@@ -3,18 +3,18 @@
     <%= render partial: 'post_metadata', locals: { post: @post } %>
 
     <h3 class="title"><%= @post.title %></h3>
-  <p class="body"><%= @post.body %></p>
+    <p class="body"><%= @post.body %></p>
 
-  <div class="post-tags">
-    <% @post.tags.each do |tag| %>
-      <%= link_to tag.name, tag, class: 'tag' %>
+    <div class="post-tags">
+      <% @post.tags.each do |tag| %>
+        <%= link_to tag.name, tag, class: 'tag' %>
+      <% end %>
+    </div>
+
+    <% if current_user?(@post.user) %>
+      <%= link_to "Edit", edit_post_path(@post), class: 'button' %>
+      <%= link_to "Delete", post_path(@post), method: :delete, class: 'button' %>
     <% end %>
-  </div>
-
-  <% if current_user?(@post.user) %>
-    <%= link_to "Edit", edit_post_path(@post), class: 'button' %>
-    <%= link_to "Delete", post_path(@post), method: :delete, class: 'button' %>
-  <% end %>
   </div>
 </div> 
   
