@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160105011249) do
+ActiveRecord::Schema.define(version: 20160106005718) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "interests", force: :cascade do |t|
+    t.integer  "follower_id"
+    t.integer  "tag_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "interests", ["follower_id", "tag_id"], name: "index_interests_on_follower_id_and_tag_id", unique: true, using: :btree
+  add_index "interests", ["follower_id"], name: "index_interests_on_follower_id", using: :btree
+  add_index "interests", ["tag_id"], name: "index_interests_on_tag_id", using: :btree
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"

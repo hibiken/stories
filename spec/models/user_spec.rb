@@ -47,4 +47,19 @@ RSpec.describe User, type: :model do
       expect(luke.follow(luke)).to be_falsy
     end
   end
+
+  describe "user interests" do
+    let(:user) { create(:user) }
+    let(:music_tag) { Tag.create(name: "Music") }
+
+    it "can follow and unfollow a tag" do
+      expect(user.following_tag?(music_tag)).to be_falsy
+
+      user.follow_tag(music_tag)
+      expect(user.following_tag?(music_tag)).to be_truthy
+
+      user.unfollow_tag(music_tag)
+      expect(user.following_tag?(music_tag)).to be_falsy
+    end
+  end
 end

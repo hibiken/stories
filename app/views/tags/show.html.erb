@@ -2,6 +2,8 @@
   <div class="heading-container">
     <small class="heading-prefix">Tagged in</small>
     <h3 class="heading-title"><%= @tag.name.titleize %></h3>
+
+    <%= button_to "Follow", interests_path %>
   </div>
 
   <%= render @posts %>

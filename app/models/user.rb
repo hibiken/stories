@@ -19,6 +19,10 @@ class User < ActiveRecord::Base
                                    dependent: :destroy
   has_many :followers, through: :passive_relationships, source: :follower
 
+  has_many :interests, foreign_key: "follower_id",
+                       dependent: :destroy
+  has_many :following_tags, through: :interests, source: :tag
+
   mount_uploader :avatar, AvatarUploader
 
   def follow(other_user)
@@ -34,6 +38,17 @@ class User < ActiveRecord::Base
     following_ids.include?(other_user.id)
   end
 
+  def follow_tag(tag)
+    interests.create(tag_id: tag.id)
+  end
+
+  def unfollow_tag(tag)
+    interests.find_by(tag_id: tag.id).destroy
+  end
+
+  def following_tag?(tag)
+    following_tag_ids.include?(tag.id)
+  end
   private
 
     # Validates the size on an uploaded image.
