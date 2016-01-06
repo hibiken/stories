@@ -25,6 +25,15 @@ RSpec.feature "Following tags" do
     visit dashboard_path
     within(".following-tags") do
       expect(page).to have_content "Music"
+      click_on "Music"
+    end
+
+    expect(current_path).to eq(tag_path(music_tag))
+    click_on "Unfollow"
+
+    visit dashboard_path
+    within(".following-tags") do
+      expect(page).not_to have_content "Music"
     end
   end
 end
