@@ -3,16 +3,7 @@
     <small class="heading-prefix">Tagged in</small>
     <h3 class="heading-title"><%= @tag.name.titleize %></h3>
 
-    <% if user_signed_in? %>
-      <% if current_user.following_tag?(@tag) %>
-        <%= button_to "Unfollow", interest_path(current_user.interests.find_by(tag_id: @tag.id)), method: :delete %>
-      <% else %>
-        <%= button_to "Follow", interests_path(tag_id: @tag.id) %>
-      <% end %>
-    <% else %>
-      <%= button_to "Follow", interests_path(tag_id: @tag.id) %>
-    <% end %>
-
+    <%= follow_tag_button_for(@tag) %>
   </div>
 
   <%= render @posts %>
