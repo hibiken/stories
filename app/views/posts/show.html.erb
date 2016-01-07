@@ -5,14 +5,9 @@
     <h3 class="title"><%= @post.title %></h3>
     <p class="body"><%= @post.body %></p>
 
-    <div class="like-button-wrapper">
-      <% if user_signed_in? && current_user.likes_post?(@post) %>
-        <%= render partial: 'unlike_button', locals: { post: @post } %>
-      <% else %>
-        <%= render partial: 'like_button', locals: { post: @post } %>
-      <% end %>
+    <div id="post_<%= @post.id %>_likes">
+      <%= render partial: 'posts/likes', locals: { post: @post } %>
     </div>
-    <span class="like-count"><%= @post.likes.size %></span>
 
     <div class="post-tags">
       <% @post.tags.each do |tag| %>

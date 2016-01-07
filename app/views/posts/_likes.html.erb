@@ -1,0 +1,12 @@
+<div class="like-button-wrapper">
+  <% if user_signed_in? && current_user.likes_post?(post) %>
+    <%= button_to post_like_path(post, current_user.likes.find_by(likeable: post)), method: :delete, remote: true, class: 'unlike-button' do %>
+      <span class="icon-heart2"></span><span class="hide-text">Unlike</span>
+    <% end %>
+  <% else %>
+    <%= button_to post_likes_path(post), remote: true, class: 'like-button' do %>
+      <span class="icon-heart-o"></span><span class="hide-text">Like</span>
+    <% end %>
+  <% end %>
+</div>
+<span class="like-count"><%= post.likes.size %></span>

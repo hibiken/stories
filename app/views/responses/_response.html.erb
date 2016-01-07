@@ -9,12 +9,7 @@
 
   <p><%= response.body %></p>
 
-  <div class="like-button-wrapper">
-    <% if user_signed_in? && current_user.likes_response?(response) %>
-      <%= render partial: 'responses/unlike_button', locals: { response: response } %>
-    <% else %>
-      <%= render partial: 'responses/like_button', locals: { response: response } %>
-    <% end %>
+  <div id="response_<%= response.id %>_likes">
+    <%= render partial: 'responses/likes', locals: { response: response } %>
   </div>
-  <span class="like-count"><%= response.likes.size %></span>
 </div>
