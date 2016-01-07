@@ -10,6 +10,7 @@
     <% else %>
       <%= button_to "Like", post_likes_path(@post) %>
     <% end %>
+    <%= @post.likes.size %>
 
     <div class="post-tags">
       <% @post.tags.each do |tag| %>

@@ -14,4 +14,5 @@
   <% else %>
     <%= button_to "Like", response_likes_path(response) %>
   <% end %>
+  <%= response.likes.size %>
 </div>
