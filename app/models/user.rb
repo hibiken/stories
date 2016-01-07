@@ -9,10 +9,24 @@ class User < ActiveRecord::Base
 
   has_many :posts, dependent: :destroy
   has_many :responses, dependent: :destroy
+  has_many :likes
+  has_many :liked_posts, through: :likes, source: :likeable, source_type: "Post"
 
   include UserFollowing
   include TagFollowing
   mount_uploader :avatar, AvatarUploader
+
+  def add_like_to(post)
+    likes.create(likeable: post)
+  end
+
+  def remove_like_from(post)
+    likes.find_by(likeable: post).destroy
+  end
+
+  def likes?(post)
+    liked_post_ids.include?(post.id)
+  end
 
   private
 

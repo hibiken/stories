@@ -6,6 +6,8 @@ class Post < ActiveRecord::Base
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
   has_many :responses, dependent: :destroy
+  has_many :likes, as: :likeable
+  has_many :likers, through: :likes, source: :user
 
   delegate :username, to: :user
 

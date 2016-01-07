@@ -62,4 +62,17 @@ RSpec.describe User, type: :model do
       expect(user).not_to be_following_tag(music_tag)
     end
   end
+
+  describe "adding likes" do
+    let(:user) { create(:user) }
+    let(:post) { create(:post) }
+
+    it "can like and unlike a post" do
+      user.add_like_to(post)
+      expect(user.likes?(post)).to be_truthy
+
+      user.remove_like_from(post)
+      expect(user.likes?(post)).to be_falsy
+    end
+  end
 end
