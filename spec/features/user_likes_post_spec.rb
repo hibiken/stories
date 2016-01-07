@@ -4,7 +4,7 @@ RSpec.feature "Liking a post" do
   let(:user) { create(:user) }
   let(:post) { create(:post) }
 
-  scenario "signed-in user likes a post successfully" do
+  scenario "signed-in user likes a post successfully", js: true do
     sign_in user
     visit post_path(post)
     click_on "Like"

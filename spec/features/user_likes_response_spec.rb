@@ -9,7 +9,7 @@ RSpec.feature "Liking a response" do
     post.responses << response
   end
 
-  scenario "signed-in user likes a response" do
+  scenario "signed-in user likes a response", js: true do
     sign_in user
     visit post_path(post)
     within(".response") do
