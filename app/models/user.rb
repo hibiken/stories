@@ -18,11 +18,11 @@ class User < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
 
   def add_like_to(likeable_obj)
-    likes.create(likeable: likeable_obj)
+    likes.where(likeable: likeable_obj).first_or_create
   end
 
   def remove_like_from(likeable_obj)
-    likes.find_by(likeable: likeable_obj).destroy
+    likes.where(likeable: likeable_obj).destroy_all
   end
 
   def likes_post?(post)
