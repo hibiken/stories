@@ -66,13 +66,25 @@ RSpec.describe User, type: :model do
   describe "adding likes" do
     let(:user) { create(:user) }
     let(:post) { create(:post) }
+    let(:response) { build(:response) }
+    before :each do
+      post.responses << response
+    end
 
     it "can like and unlike a post" do
       user.add_like_to(post)
-      expect(user.likes?(post)).to be_truthy
+      expect(user.likes_post?(post)).to be_truthy
 
       user.remove_like_from(post)
-      expect(user.likes?(post)).to be_falsy
+      expect(user.likes_post?(post)).to be_falsy
+    end
+
+    it "can like and unlike a response" do
+      user.add_like_to(response)
+      expect(user.likes_response?(response)).to be_truthy
+
+      user.remove_like_from(response)
+      expect(user.likes_response?(response)).to be_falsy
     end
   end
 end

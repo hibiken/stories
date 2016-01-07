@@ -8,4 +8,10 @@
   </div>
 
   <%= response.body %>
+
+  <% if user_signed_in? && current_user.likes_response?(response) %>
+    <%= button_to "Unlike", response_like_path(response, current_user.likes.find_by(likeable: response)), method: :delete %>
+  <% else %>
+    <%= button_to "Like", response_likes_path(response) %>
+  <% end %>
 </div>
