@@ -1,0 +1,1 @@
+<%= button_to "Unlike", post_like_path(post, current_user.likes.find_by(likeable: post)), method: :delete %>

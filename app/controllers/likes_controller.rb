@@ -1,3 +1,5 @@
+# This controller serves as a parent controller for other likes_controllers. Posts::LikesController for example.
+# Child controller that inherit from this LikesController should implement before_action :set_likeable, which sets @likeable.
 class LikesController < ApplicationController
   before_action :authenticate_user!
 

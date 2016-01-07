@@ -10,9 +10,9 @@
   <%= response.body %>
 
   <% if user_signed_in? && current_user.likes_response?(response) %>
-    <%= button_to "Unlike", response_like_path(response, current_user.likes.find_by(likeable: response)), method: :delete %>
+    <%= render partial: 'responses/unlike_button', locals: { response: response } %>
   <% else %>
-    <%= button_to "Like", response_likes_path(response) %>
+    <%= render partial: 'responses/like_button', locals: { response: response } %>
   <% end %>
   <%= response.likes.size %>
 </div>
