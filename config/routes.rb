@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update]
   resources :posts, except: [:index] do
     resources :responses, only: [:create]
+    resources :likes, only: [:create, :destroy]
   end
   resources :tags, only: [:show]
   resources :relationships, only: [:create, :destroy]

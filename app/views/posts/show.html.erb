@@ -5,6 +5,12 @@
     <h3 class="title"><%= @post.title %></h3>
     <p class="body"><%= @post.body %></p>
 
+    <% if user_signed_in? && current_user.likes?(@post) %>
+      <%= button_to "Unlike", post_like_path(@post, current_user.likes.find_by(likeable: @post)), method: :delete %>
+    <% else %>
+      <%= button_to "Like", post_likes_path(@post) %>
+    <% end %>
+
     <div class="post-tags">
       <% @post.tags.each do |tag| %>
         <%= link_to tag.name, tag, class: 'tag' %>
