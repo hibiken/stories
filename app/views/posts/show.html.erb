@@ -5,12 +5,14 @@
     <h3 class="title"><%= @post.title %></h3>
     <p class="body"><%= @post.body %></p>
 
-    <% if user_signed_in? && current_user.likes_post?(@post) %>
-      <%= render partial: 'unlike_button', locals: { post: @post } %>
-    <% else %>
-      <%= render partial: 'like_button', locals: { post: @post } %>
-    <% end %>
-    <%= @post.likes.size %>
+    <div class="like-button-wrapper">
+      <% if user_signed_in? && current_user.likes_post?(@post) %>
+        <%= render partial: 'unlike_button', locals: { post: @post } %>
+      <% else %>
+        <%= render partial: 'like_button', locals: { post: @post } %>
+      <% end %>
+    </div>
+    <span class="like-count"><%= @post.likes.size %></span>
 
     <div class="post-tags">
       <% @post.tags.each do |tag| %>

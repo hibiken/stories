@@ -1,1 +1,3 @@
-<%= button_to "Like", post_likes_path(post) %>
+<%= button_to post_likes_path(post), class: 'like-button' do %>
+  <span class="icon-heart-o"></span><span class="hide-text">Like</span>
+<% end %>

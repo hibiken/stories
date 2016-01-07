@@ -1,0 +1,25 @@
+.like-button,
+.unlike-button {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  span[class^='icon'] {
+    color: $accent-color;
+    font-size: 18px;
+  }
+} 
+
+.like-button-wrapper {
+  display: inline-block;
+  form.button_to {
+    display: inline-block;
+  }
+}
+.like-count {
+  font-size: 14px;
+  position: relative;
+  top: -2.5px;
+  left: -3px;
+  color: rgba(0,0,0,0.3);
+  font-weight: 600;
+}

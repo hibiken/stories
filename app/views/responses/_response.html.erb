@@ -7,12 +7,14 @@
     </div>
   </div>
 
-  <%= response.body %>
+  <p><%= response.body %></p>
 
-  <% if user_signed_in? && current_user.likes_response?(response) %>
-    <%= render partial: 'responses/unlike_button', locals: { response: response } %>
-  <% else %>
-    <%= render partial: 'responses/like_button', locals: { response: response } %>
-  <% end %>
-  <%= response.likes.size %>
+  <div class="like-button-wrapper">
+    <% if user_signed_in? && current_user.likes_response?(response) %>
+      <%= render partial: 'responses/unlike_button', locals: { response: response } %>
+    <% else %>
+      <%= render partial: 'responses/like_button', locals: { response: response } %>
+    <% end %>
+  </div>
+  <span class="like-count"><%= response.likes.size %></span>
 </div>

@@ -1,1 +1,3 @@
-<%= button_to "Unlike", response_like_path(response, current_user.likes.find_by(likeable: response)), method: :delete %>
+<%= button_to response_like_path(response, current_user.likes.find_by(likeable: response)), method: :delete, class: 'unlike-button' do %>
+  <span class="icon-heart2"></span><span class="hide-text">Unlike</span>
+<% end %>
