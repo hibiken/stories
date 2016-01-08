@@ -9,6 +9,9 @@ class Post < ActiveRecord::Base
   has_many :likes, as: :likeable
   has_many :likers, through: :likes, source: :user
 
+  has_many :bookmarks, as: :bookmarkable
+  has_many :bookmarkers, through: :bookmarks, source: :user
+
   delegate :username, to: :user
 
   default_scope { order(created_at: :desc) }

@@ -87,4 +87,17 @@ RSpec.describe User, type: :model do
       expect(user.likes_response?(response)).to be_falsy
     end
   end
+
+  describe "adding bookmarks" do
+    let(:user) { create(:user) }
+    let(:post) { create(:post) }
+
+    it "can bookmark and unbookmark a post" do
+      user.add_bookmark_to(post)
+      expect(user.bookmarked?(post)).to be_truthy
+
+      user.remove_bookmark_from(post)
+      expect(user.bookmarked?(post)).to be_falsy
+    end
+  end
 end
