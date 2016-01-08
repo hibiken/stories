@@ -13,5 +13,7 @@
     <%= render partial: 'responses/likes', locals: { response: response } %>
   </div>
 
-  <%= render partial: 'responses/bookmarks', locals: { response: response } %>
+  <div id="response_<%= response.id %>_bookmarks">
+    <%= render partial: 'responses/bookmarks', locals: { response: response } %>
+  </div>
   </div>

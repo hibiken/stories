@@ -9,7 +9,7 @@ RSpec.feature "Bookmarking a response" do
     post.responses << response
   end
 
-  scenario "signed-in user bookmarks a response" do
+  scenario "signed-in user bookmarks a response", js: true do
     sign_in user
     visit post_path(post)
     within(".response") do

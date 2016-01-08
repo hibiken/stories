@@ -3,11 +3,17 @@ class BookmarksController < ApplicationController
 
   def create
     current_user.add_bookmark_to(@bookmarkable)
-    redirect_to :back
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js
+    end
   end
 
   def destroy
     Bookmark.find(params[:id]).destroy
-    redirect_to :back
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js
+    end
   end
 end
