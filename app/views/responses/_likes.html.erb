@@ -1,5 +1,5 @@
 <div class="like-button-wrapper">
-  <% if user_signed_in? && current_user.likes_response?(response) %>
+  <% if user_signed_in? && current_user.liked?(response) %>
     <%= button_to response_like_path(response, current_user.likes.find_by(likeable: response)), method: :delete, remote: true, class: 'unlike-button' do %>
       <span class="icon-heart2"></span><span class="hide-text">Unlike</span>
     <% end %>

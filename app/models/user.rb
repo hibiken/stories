@@ -29,12 +29,8 @@ class User < ActiveRecord::Base
     likes.where(likeable: likeable_obj).destroy_all
   end
 
-  def likes_post?(post)
-    liked_post_ids.include?(post.id)
-  end
-
-  def likes_response?(response)
-    liked_response_ids.include?(response.id)
+  def liked?(likeable_obj)
+    send("liked_#{downcased_class_name(likeable_obj)}_ids").include?(likeable_obj.id)
   end
 
   def add_bookmark_to(bookmarkable_obj)
@@ -45,12 +41,8 @@ class User < ActiveRecord::Base
     bookmarks.where(bookmarkable: bookmarkable_obj).destroy_all
   end
 
-  def bookmarked_post?(post)
-    bookmarked_post_ids.include?(post.id)
-  end
-
-  def bookmarked_response?(response)
-    bookmarked_response_ids.include?(response.id)
+  def bookmarked?(bookmarkable_obj)
+    send("bookmarked_#{downcased_class_name(bookmarkable_obj)}_ids").include?(bookmarkable_obj.id)
   end
 
   private
@@ -60,5 +52,10 @@ class User < ActiveRecord::Base
       if avatar.size > 5.megabytes
         errors.add(:avatar, "should be less than 5MB")
       end
+    end
+
+    # Returns a string of the objects class name downcased.
+    def downcased_class_name(obj)
+      obj.class.to_s.downcase
     end
 end

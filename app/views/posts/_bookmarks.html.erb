@@ -1,5 +1,5 @@
 <div class="bookmark-button-wrapper">
-  <% if user_signed_in? && current_user.bookmarked_post?(post) %>
+  <% if user_signed_in? && current_user.bookmarked?(post) %>
     <%= button_to post_bookmark_path(post, current_user.bookmarks.find_by(bookmarkable: post)), method: :delete, remote: true, class: 'unbookmark-button' do %>
       <span class="icon-bookmark"></span><span class="hide-text">Unbookmark</span>
     <% end %>

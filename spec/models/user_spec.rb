@@ -73,18 +73,18 @@ RSpec.describe User, type: :model do
 
     it "can like and unlike a post" do
       user.add_like_to(post)
-      expect(user.likes_post?(post)).to be_truthy
+      expect(user.liked?(post)).to be_truthy
 
       user.remove_like_from(post)
-      expect(user.likes_post?(post)).to be_falsy
+      expect(user.liked?(post)).to be_falsy
     end
 
     it "can like and unlike a response" do
       user.add_like_to(response)
-      expect(user.likes_response?(response)).to be_truthy
+      expect(user.liked?(response)).to be_truthy
 
       user.remove_like_from(response)
-      expect(user.likes_response?(response)).to be_falsy
+      expect(user.liked?(response)).to be_falsy
     end
   end
 
@@ -98,18 +98,18 @@ RSpec.describe User, type: :model do
 
     it "can bookmark and unbookmark a post" do
       user.add_bookmark_to(post)
-      expect(user.bookmarked_post?(post)).to be_truthy
+      expect(user.bookmarked?(post)).to be_truthy
 
       user.remove_bookmark_from(post)
-      expect(user.bookmarked_post?(post)).to be_falsy
+      expect(user.bookmarked?(post)).to be_falsy
     end
 
     it "can bookmark and unbookmark a response" do
       user.add_bookmark_to(response)
-      expect(user.bookmarked_response?(response)).to be_truthy
+      expect(user.bookmarked?(response)).to be_truthy
 
       user.remove_bookmark_from(response)
-      expect(user.bookmarked_response?(response)).to be_falsy
+      expect(user.bookmarked?(response)).to be_falsy
     end
   end
 end
