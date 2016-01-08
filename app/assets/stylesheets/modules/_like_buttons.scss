@@ -1,8 +1,8 @@
 .like-button,
 .unlike-button {
   border: none;
-  background-color: transparent;
   outline: none;
+  background-color: transparent;
   span[class^='icon'] {
     color: $accent-color;
     font-size: 18px;
@@ -22,4 +22,22 @@
   left: -3px;
   color: rgba(0,0,0,0.3);
   font-weight: 600;
+}
+
+.bookmark-button-wrapper {
+  display: inline-block;
+  form.button_to {
+    display: inline-block;
+  }
+}
+
+.bookmark-button,
+.unbookmark-button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  span[class^='icon'] {
+    color: $light-gray;
+    font-size: 18px;
+  }
 }

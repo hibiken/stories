@@ -9,11 +9,7 @@
       <%= render partial: 'posts/likes', locals: { post: @post } %>
     </div>
 
-    <% if user_signed_in? && current_user.bookmarked_post?(@post) %>
-      <%= button_to "Unbookmark", post_bookmark_path(@post, current_user.bookmarks.find_by(bookmarkable: @post)), method: :delete %>
-    <% else %>
-      <%= button_to "Bookmark", post_bookmarks_path(@post) %>
-    <% end %>
+    <%= render partial: 'posts/bookmarks', locals: { post: @post } %>
 
     <div class="post-tags">
       <% @post.tags.each do |tag| %>
