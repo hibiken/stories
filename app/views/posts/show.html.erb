@@ -9,6 +9,8 @@
       <%= render partial: 'posts/likes', locals: { post: @post } %>
     </div>
 
+    <%= button_to "Bookmark", "#" %>
+
     <div class="post-tags">
       <% @post.tags.each do |tag| %>
         <%= link_to tag.name, tag, class: 'tag' %>
