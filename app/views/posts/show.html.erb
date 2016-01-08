@@ -5,12 +5,14 @@
     <h3 class="title"><%= @post.title %></h3>
     <p class="body"><%= @post.body %></p>
 
-    <div id="post_<%= @post.id %>_likes">
-      <%= render partial: 'posts/likes', locals: { post: @post } %>
-    </div>
+    <div class="post-stats clearfix">
+      <div id="post_<%= @post.id %>_likes" class="pull-left">
+        <%= render partial: 'posts/likes', locals: { post: @post } %>
+      </div>
 
-    <div id="post_<%= @post.id %>_bookmarks">
-      <%= render partial: 'posts/bookmarks', locals: { post: @post } %>
+      <div id="post_<%= @post.id %>_bookmarks" class="pull-right">
+        <%= render partial: 'posts/bookmarks', locals: { post: @post } %>
+      </div>
     </div>
 
     <div class="post-tags">

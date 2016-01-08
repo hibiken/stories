@@ -6,3 +6,9 @@
   width: 0;
   height: 0;
 }
+
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}

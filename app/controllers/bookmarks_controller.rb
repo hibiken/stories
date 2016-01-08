@@ -1,3 +1,7 @@
+# This controller serves as a base controller for other bookmarks_controllers.
+# Posts::BookmarksController for example.
+# Child controller that inherit from this BookmarksController should implement
+# before_action :set_bookmarkable, which sets @bookmarkable.
 class BookmarksController < ApplicationController
   before_action :authenticate_user!
 

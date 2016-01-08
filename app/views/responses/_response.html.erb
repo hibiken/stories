@@ -9,11 +9,13 @@
 
   <p><%= response.body %></p>
 
-  <div id="response_<%= response.id %>_likes">
-    <%= render partial: 'responses/likes', locals: { response: response } %>
-  </div>
+  <div class="response-stats clearfix">
+    <div id="response_<%= response.id %>_likes" class="pull-left">
+      <%= render partial: 'responses/likes', locals: { response: response } %>
+    </div>
 
-  <div id="response_<%= response.id %>_bookmarks">
-    <%= render partial: 'responses/bookmarks', locals: { response: response } %>
+    <div id="response_<%= response.id %>_bookmarks" class="pull-right">
+      <%= render partial: 'responses/bookmarks', locals: { response: response } %>
+    </div>
   </div>
-  </div>
+</div>
