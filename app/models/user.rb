@@ -45,8 +45,12 @@ class User < ActiveRecord::Base
     bookmarks.where(bookmarkable: bookmarkable_obj).destroy_all
   end
 
-  def bookmarked?(post)
+  def bookmarked_post?(post)
     bookmarked_post_ids.include?(post.id)
+  end
+
+  def bookmarked_response?(response)
+    bookmarked_response_ids.include?(response.id)
   end
 
   private

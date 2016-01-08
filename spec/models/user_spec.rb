@@ -91,13 +91,25 @@ RSpec.describe User, type: :model do
   describe "adding bookmarks" do
     let(:user) { create(:user) }
     let(:post) { create(:post) }
+    let(:response) { build(:response) }
+    before :each do
+      post.responses << response
+    end
 
     it "can bookmark and unbookmark a post" do
       user.add_bookmark_to(post)
-      expect(user.bookmarked?(post)).to be_truthy
+      expect(user.bookmarked_post?(post)).to be_truthy
 
       user.remove_bookmark_from(post)
-      expect(user.bookmarked?(post)).to be_falsy
+      expect(user.bookmarked_post?(post)).to be_falsy
+    end
+
+    it "can bookmark and unbookmark a response" do
+      user.add_bookmark_to(response)
+      expect(user.bookmarked_response?(response)).to be_truthy
+
+      user.remove_bookmark_from(response)
+      expect(user.bookmarked_response?(response)).to be_falsy
     end
   end
 end

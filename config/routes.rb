@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :responses, only: [] do
     resources :likes, only: [:create, :destroy], module: :responses
+    resources :bookmarks, only: [:create, :destroy], module: :responses
   end
 
   resources :tags, only: [:show]

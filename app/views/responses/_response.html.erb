@@ -13,5 +13,9 @@
     <%= render partial: 'responses/likes', locals: { response: response } %>
   </div>
 
-  <%= button_to "Bookmark", "#" %>
+  <% if user_signed_in? && current_user.bookmarked_response?(response) %>
+    <%= button_to "Unbookmark", response_bookmark_path(response, current_user.bookmarks.find_by(bookmarkable: response)), method: :delete %>
+  <% else %>
+    <%= button_to "Bookmark", response_bookmarks_path(response) %>
+  <% end %>
 </div>

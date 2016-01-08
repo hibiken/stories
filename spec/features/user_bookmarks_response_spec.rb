@@ -17,7 +17,7 @@ RSpec.feature "Bookmarking a response" do
     end
 
     expect(current_path).to eq(post_path(post))
-    within(".respose") do
+    within(".response") do
       expect(page).to have_button "Unbookmark"
       click_on "Unbookmark"
     end
