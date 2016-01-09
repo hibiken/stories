@@ -8,5 +8,14 @@
       text-decoration: none;
     }
   }
+
+  .response-count {
+    color: $super-light-font-color;
+    margin-right: 12px;
+    text-decoration: none;
+    &:hover {
+      color: $light-font-color;
+    }
+  }
 }
 

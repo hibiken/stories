@@ -36,7 +36,9 @@
     <% end %>
 
     <% if @post.responses.any? %>
-      <%= render @post.responses %>
+      <div id="responses">
+        <%= render @post.responses %>
+      </div>
     <% end %>
   </div>
 </div> 

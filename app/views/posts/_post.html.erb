@@ -6,7 +6,19 @@
     <div class="post-body"><%= post.body %></div>
   </div>
 
-  <div id="post_<%= post.id %>_likes">
-    <%= render partial: 'posts/likes', locals: { post: post } %>
+  <div class="post-stats clearfix">
+    <div id="post_<%= post.id %>_likes" class="pull-left">
+      <%= render partial: 'posts/likes', locals: { post: post } %>
+    </div>
+
+    <div id="post_<%= post.id %>_bookmarks" class="pull-right">
+      <%= render partial: 'posts/bookmarks', locals: { post: post } %>
+    </div>
+
+    <div class="response-count pull-right">
+      <% if post.responses.any? %>
+        <%= link_to_responses_to(post) %>
+      <% end %>
+    </div>
   </div>
 </div>
