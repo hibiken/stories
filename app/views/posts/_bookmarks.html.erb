@@ -1,10 +1,16 @@
 <div class="bookmark-button-wrapper">
-  <% if user_signed_in? && current_user.bookmarked?(post) %>
-    <%= button_to post_bookmark_path(post, current_user.bookmarks.find_by(bookmarkable: post)), method: :delete, remote: true, class: 'unbookmark-button' do %>
-      <span class="icon-bookmark"></span><span class="hide-text">Unbookmark</span>
+  <% if user_signed_in? %>
+    <% if current_user.bookmarked?(post) %>
+      <%= button_to post_bookmark_path(post, current_user.bookmarks.find_by(bookmarkable: post)), method: :delete, remote: true, class: 'unbookmark-button' do %>
+        <span class="icon-bookmark"></span><span class="hide-text">Unbookmark</span>
+      <% end %>
+    <% else %>
+      <%= button_to post_bookmarks_path(post), remote: true, class: 'bookmark-button' do %>
+        <span class="icon-bookmark-o"></span><span class="hide-text">Bookmark</span>
+      <% end %>
     <% end %>
   <% else %>
-    <%= button_to post_bookmarks_path(post), remote: true, class: 'bookmark-button' do %>
+    <%= button_to new_user_session_path, method: :get, class: 'bookmark-button' do %>
       <span class="icon-bookmark-o"></span><span class="hide-text">Bookmark</span>
     <% end %>
   <% end %>

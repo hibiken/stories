@@ -13,7 +13,7 @@ class Dashboard
     end
 
     case @filter
-    when 'bookmarks'
+    when :bookmarks
       return @user.bookmarked_posts
     end
 

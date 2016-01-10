@@ -11,7 +11,7 @@ RSpec.feature "Viewing bookmarked posts" do
 
   scenario "Signed in user can view his/hew bookmarked post in bookmark page" do
     sign_in user
-    visit dashboard_path
+    visit root_path
     click_on "Bookmarks"
 
     expect(page).to have_link "Interesting post"

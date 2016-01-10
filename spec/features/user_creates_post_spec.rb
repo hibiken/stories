@@ -32,7 +32,7 @@ feature "User creates post" do
     click_on "Updated Title"
     click_on "Delete"
 
-    expect(current_path).to eq(dashboard_path)
+    expect(current_path).to eq(root_path)
     expect(page).not_to have_content "Updated Title"
   end
 end

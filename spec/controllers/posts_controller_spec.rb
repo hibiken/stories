@@ -66,12 +66,12 @@ RSpec.describe PostsController do
 
     it "does not allow user to edit post" do
       get :edit, id: other_user_post.id
-      expect(response).to redirect_to(dashboard_path)
+      expect(response).to redirect_to(root_path)
     end
 
     it "does not allow user to update post" do
       patch :update, id: other_user_post.id, post: attributes_for(:post)
-      expect(response).to redirect_to(dashboard_path)
+      expect(response).to redirect_to(root_path)
     end
 
     it "does not allow user to delete post" do

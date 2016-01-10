@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "homes#show"
+  root "dashboards#show"
   devise_for :users
   resources :users, only: [:show, :edit, :update]
   resources :posts, except: [:index] do
@@ -16,8 +16,7 @@ Rails.application.routes.draw do
   resources :tags, only: [:show]
   resources :relationships, only: [:create, :destroy]
   resources :interests, only: [:create, :destroy]
-  resource :dashboard, only: [:show]
-  get "me/:filter" => "dashboards#show", as: :filtered_dashboard
+  get "me/bookmarks" => "dashboards#bookmarks", as: :dashboard_bookmarks
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

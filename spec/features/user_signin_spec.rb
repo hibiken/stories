@@ -5,6 +5,6 @@ feature "User signs in" do
     user = create(:user, username: 'exampleuser')
     sign_in user
     expect(page).to have_content 'Sign out'
-    expect(current_path).to eq(dashboard_path)
+    expect(current_path).to eq(root_path)
   end
 end

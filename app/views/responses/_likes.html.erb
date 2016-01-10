@@ -1,10 +1,16 @@
 <div class="like-button-wrapper">
-  <% if user_signed_in? && current_user.liked?(response) %>
-    <%= button_to response_like_path(response, current_user.likes.find_by(likeable: response)), method: :delete, remote: true, class: 'unlike-button' do %>
-      <span class="icon-heart2"></span><span class="hide-text">Unlike</span>
+  <% if user_signed_in? %>
+    <% if current_user.liked?(response) %>
+      <%= button_to response_like_path(response, current_user.likes.find_by(likeable: response)), method: :delete, remote: true, class: 'unlike-button' do %>
+        <span class="icon-heart2"></span><span class="hide-text">Unlike</span>
+      <% end %>
+    <% else %>
+      <%= button_to response_likes_path(response), remote: true, class: 'like-button' do %>
+        <span class="icon-heart-o"></span><span class="hide-text">Like</span>
+      <% end %>
     <% end %>
   <% else %>
-    <%= button_to response_likes_path(response), remote: true, class: 'like-button' do %>
+    <%= button_to new_user_session_path, method: :get, class: 'like-button' do %>
       <span class="icon-heart-o"></span><span class="hide-text">Like</span>
     <% end %>
   <% end %>
