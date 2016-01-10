@@ -1,11 +1,11 @@
-<%= form_for @post, html: { multipart: true } do |f| %>
+<%= form_for post, html: { multipart: true } do |f| %>
   <div class="form-group">
     <%= f.text_field :title, class: 'form-control', placeholder: 'Title' %>
   </div>
 
   <div class="form-group">
     <%= f.text_area :body, class: 'form-control',
-      placeholder: 'Write your story here ...', rows: 30 %>
+      placeholder: 'Write your story here ...' %>
   </div>
 
   <%= f.file_field :picture %>

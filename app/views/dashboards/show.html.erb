@@ -6,6 +6,10 @@
       <h3 class="heading-title"><%= @tag.name.titleize %></h3>
     </div>
   <% end %>
+
+  <% if user_signed_in? %>
+    <%= render partial: 'posts/form', locals: { post: @dashboard.new_post } %>
+  <% end %>
   <%= render @dashboard.posts %>
 </div>
 

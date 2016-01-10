@@ -31,4 +31,8 @@ class Dashboard
   def following_tags
     @user.following_tags
   end
+
+  def new_post
+    Post.new
+  end
 end
