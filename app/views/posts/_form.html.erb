@@ -1,4 +1,4 @@
-<%= form_for @post do |f| %>
+<%= form_for @post, html: { multipart: true } do |f| %>
   <div class="form-group">
     <%= f.text_field :title, class: 'form-control', placeholder: 'Title' %>
   </div>
@@ -7,6 +7,8 @@
     <%= f.text_area :body, class: 'form-control',
       placeholder: 'Write your story here ...', rows: 30 %>
   </div>
+
+  <%= f.file_field :picture %>
 
   <div class="form-group">
     <%= f.text_field :all_tags, class: 'form-control', placeholder: 'Tags separated by a comma ...' %>

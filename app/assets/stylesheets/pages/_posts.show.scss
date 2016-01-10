@@ -1,4 +1,13 @@
 body.posts.show {
+  .post-picture-wrapper {
+    padding: 2em 0;
+    img {
+      display: block;
+      max-width: 100%;
+      margin: auto;
+    }
+  }
+
   .title {
     color: $black;
     font-weight: 600;

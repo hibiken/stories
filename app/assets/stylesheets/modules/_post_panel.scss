@@ -2,6 +2,15 @@
   border-bottom: 1px solid $border-color;
   padding: 20px 0 25px;
 
+  .post-picture-wrapper {
+    padding: 1.2em 0 0;
+    img {
+      display: block;
+      max-width: 100%;
+      max-height: 180px;
+    }
+  }
+
   .main-body {
     .post-title a {
       color: $black;

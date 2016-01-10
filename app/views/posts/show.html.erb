@@ -2,6 +2,12 @@
   <div class="col-md-6 col-md-offset-3">
     <%= render partial: 'post_metadata', locals: { post: @post } %>
 
+    <% if @post.picture? %>
+      <div class="post-picture-wrapper">
+        <%= image_tag @post.picture.url(:thumb) %>
+      </div>
+    <% end %>
+
     <h3 class="title"><%= @post.title %></h3>
     <p class="body"><%= @post.body %></p>
 
