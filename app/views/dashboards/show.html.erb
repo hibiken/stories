@@ -7,7 +7,7 @@
     </div>
   <% end %>
 
-  <% if user_signed_in? %>
+  <% if user_signed_in? && !@dashboard.tag %>
     <%= render partial: 'posts/form', locals: { post: @dashboard.new_post } %>
   <% end %>
   <%= render @dashboard.posts %>
