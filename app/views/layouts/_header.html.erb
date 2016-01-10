@@ -6,12 +6,12 @@
     <ul class="nav navbar-nav filter-links">
       <li>
         <% if user_signed_in? %>
-          <%= link_to "Home", root_path %>
+          <%= nav_link_to "Home", root_path %>
         <% else %>
-          <%= link_to "Staff pick", root_path %>
+          <%= nav_link_to "Staff pick", root_path %>
         <% end %>
       </li>
-      <li><%= link_to "Bookmarks", dashboard_bookmarks_path %></li>
+      <li><%= nav_link_to "Bookmarks", dashboard_bookmarks_path %></li>
     </ul>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
