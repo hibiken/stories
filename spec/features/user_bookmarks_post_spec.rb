@@ -15,4 +15,10 @@ RSpec.feature "Bookmarking a post" do
     expect(current_path).to eq(post_path(post))
     expect(page).to have_button "Bookmark"
   end
+
+  scenario "non-logged in user cannot bookmark a post" do
+    visit post_path(post)
+    click_on "Bookmark"
+    expect(current_path).to eq(new_user_session_path)
+  end
 end

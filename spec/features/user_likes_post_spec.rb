@@ -15,4 +15,11 @@ RSpec.feature "Liking a post" do
     expect(current_path).to eq(post_path(post))
     expect(page).to have_button "Like"
   end
+
+  scenario "non-logged in user cannot like a post" do
+    visit post_path(post)
+    click_on "Like"
+
+    expect(current_path).to eq(new_user_session_path)
+  end
 end

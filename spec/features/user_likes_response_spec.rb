@@ -27,4 +27,13 @@ RSpec.feature "Liking a response" do
       expect(page).to have_button "Like"
     end
   end
+
+  scenario "non-logged in user cannot like a response" do
+    visit post_path(post)
+    within(".response") do
+      click_on "Like"
+    end
+
+    expect(current_path).to eq(new_user_session_path)
+  end
 end
