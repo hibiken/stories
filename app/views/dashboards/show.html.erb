@@ -1,13 +1,26 @@
 <div class="col-md-6 col-md-offset-1">
-  <%= render @posts %>
+  <% if @dashboard.tag %>
+    <%= follow_tag_button_for(@tag) %>
+    <div class="heading-container">
+      <small class="heading-prefix">Tagged in</small>
+      <h3 class="heading-title"><%= @tag.name.titleize %></h3>
+    </div>
+  <% end %>
+  <%= render @dashboard.posts %>
 </div>
 
 <% content_for :sidebar do %>
   <aside class="col-md-4 col-md-offset-1 main-sidebar">
     <h4 class="small-heading with-border">Features tags</h4>
     <div class="tags-wrapper">
-      <%= render @featured_tags %>
+      <%= render @dashboard.featured_tags %>
     </div>
-    <%= render 'shared/sidebar_following_tags' %>
+
+    <% if user_signed_in? %>
+    <h4 class="small-heading with-border">Tags you follow</h4>
+    <div class="tags-wrapper following-tags">
+      <%= render @dashboard.following_tags %>
+    </div>
+    <% end %>
   </aside>
 <% end %>
