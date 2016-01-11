@@ -1,13 +1,19 @@
 <div class="col-md-6 col-md-offset-1">
-  <% if @dashboard.tag %>
-    <%= follow_tag_button_for(@tag) %>
+  <% if @dashboard.with_tag? %>
+    <%= follow_tag_button_for(@dashboard.tag) %>
     <div class="heading-container">
       <small class="heading-prefix">Tagged in</small>
-      <h3 class="heading-title"><%= @tag.name.titleize %></h3>
+      <h3 class="heading-title"><%= @dashboard.tag.name.titleize %></h3>
     </div>
   <% end %>
 
-  <%= render @dashboard.posts %>
+  <% if user_signed_in? %>
+    <%= render @dashboard.feed if @dashboard.non_filtered? %>
+    <%= render @dashboard.tag_posts if @dashboard.with_tag? %>
+    <%= render @dashboard.filtered_posts if @dashboard.filtered? %>
+  <% else %>
+    <%= render @dashboard.posts %>
+  <% end %>
 </div>
 
 <% content_for :sidebar do %>

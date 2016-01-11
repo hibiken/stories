@@ -7,21 +7,23 @@ class Dashboard
     @tag = tag
   end
 
-  def posts
-    if @tag
-      return Post.tagged_with(@tag.name)
-    end
+  def tag_posts
+    Post.tagged_with(@tag.name)
+  end
 
+  def filtered_posts
     case @filter
     when :bookmarks
       return @user.bookmarked_posts
     end
+  end
 
-    if @user
-      return Feed.new(@user)
-    else
-      return Post.all.limit(8)
-    end
+  def posts
+    Post.all.limit(8)
+  end
+
+  def feed
+    Feed.new(@user)
   end
 
   def featured_tags
@@ -34,6 +36,14 @@ class Dashboard
 
   def new_post
     Post.new
+  end
+
+  def filtered?
+    !@filter.nil?
+  end
+
+  def with_tag?
+    !@tag.nil?
   end
 
   def non_filtered?

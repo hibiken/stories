@@ -1,7 +1,11 @@
 class DashboardsController < ApplicationController
   before_action :authenticate_user!, only: [:bookmarks]
   def show
-    @dashboard = Dashboard.new(user: current_user)
+    if user_signed_in?
+      @dashboard = Dashboard.new(user: current_user)
+    else
+      @dashboard = Dashboard.new
+    end
   end
 
   def bookmarks

@@ -17,12 +17,12 @@ module ApplicationHelper
   def follow_tag_button_for(tag)
     if user_signed_in?
       if current_user.following_tag?(tag)
-        render 'shared/unfollow_tag_button'
+        render partial: 'shared/unfollow_tag_button', locals: { tag: tag }
       else
-        render 'shared/follow_tag_button'
+        render partial: 'shared/follow_tag_button', locals: { tag: tag }
       end
     else
-      render 'shared/follow_tag_button'
+      render partial: 'shared/follow_tag_button', locals: { tag: tag }
     end
   end
 
