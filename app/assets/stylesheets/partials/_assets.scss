@@ -3,40 +3,50 @@
 
 /*** Icomoon ***/
 @font-face {
-  font-family: 'icomoon';
-  src:font-url('fonts/icomoon.eot?fygo8u');
-  src:font-url('fonts/icomoon.eot?fygo8u#iefix') format('embedded-opentype'),
-      font-url('fonts/icomoon.ttf?fygo8u') format('truetype'),
-      font-url('fonts/icomoon.woff?fygo8u') format('woff'),
-      font-url('fonts/icomoon.svg?fygo8u#icomoon') format('svg');
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'icomoon';
+    src:font-url('fonts/icomoon.eot?sm6yvs');
+    src:font-url('fonts/icomoon.eot?sm6yvs#iefix') format('embedded-opentype'),
+        font-url('fonts/icomoon.ttf?sm6yvs') format('truetype'),
+        font-url('fonts/icomoon.woff?sm6yvs') format('woff'),
+        font-url('fonts/icomoon.svg?sm6yvs#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
 
 [class^="icon-"], [class*=" icon-"] {
-  /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'icomoon' !important;
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
 
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-tags:before {
+    content: "\e903";
+}
+.icon-tag:before {
+    content: "\e904";
+}
 .icon-bookmark-o:before {
-  content: "\e900";
+    content: "\e900";
 }
 .icon-bookmark:before {
-  content: "\e901";
+    content: "\e901";
 }
 .icon-heart-o:before {
-  content: "\e90a";
+    content: "\e90a";
 }
 .icon-heart2:before {
-  content: "\e90b";
+    content: "\e90b";
 }
+.icon-price-tag:before {
+    content: "\e902";
+}
+

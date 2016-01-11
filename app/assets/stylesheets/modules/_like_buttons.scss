@@ -39,5 +39,9 @@
   span[class^='icon'] {
     color: $light-gray;
     font-size: 18px;
+    &:hover,
+    &:active {
+      color: $light-font-color;
+    }
   }
 }

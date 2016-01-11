@@ -1,8 +1,8 @@
 <% feed.posts.each do |post| %>
-  <% if feed.following_author?(post) %>
-    Published by <%= link_to post.username, post.user %>
-  <% elsif feed.tagged?(post) %>
-    Tagged in <%= link_to feed.tag_for(post).name, feed.tag_for(post) %>
+  <% if feed.tagged?(post) %>
+    <div class="feed-metadata">
+      <span class="icon-price-tag"></span> <%= link_to feed.tag_for(post).name, feed.tag_for(post) %>
+    </div>
   <% end %>
   <%= render partial: 'posts/post', locals: { post: post } %>
 <% end %>
