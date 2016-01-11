@@ -29,7 +29,7 @@ class Dashboard
   end
 
   def following_tags
-    @user.following_tags
+    @user.following_tags unless @user.nil?
   end
 
   def new_post
