@@ -7,7 +7,7 @@ class Feed
   end
 
   def posts
-    Post.find(post_ids)
+    Post.find(feed_post_ids)
   end
 
   def tagged?(post)
@@ -18,9 +18,18 @@ class Feed
     following_users_post_ids.include?(post.id)
   end
 
+  def recommended?(post)
+    recommended_post_ids.include?(post.id)
+  end
+
   def tag_for(post)
     tag_id = @user.following_tag_ids.select { |id| post.tag_ids.include?(id) }.first
     Tag.find_by(id: tag_id)
+  end
+
+  def recommender_for(post)
+    user_id = @user.following_ids.select { |id| post.liker_ids.include?(id) }.first
+    User.find_by(id: user_id)
   end
 
   private
@@ -37,7 +46,13 @@ class Feed
        Tagging.where(tag_id: @user.following_tag_ids).pluck(:post_id).uniq
      end
 
-     def post_ids
-       Post.where(user_id: user_ids).pluck(:id) + tagged_post_ids
+     def feed_post_ids
+       (Post.where(user_id: user_ids).pluck(:id) + tagged_post_ids + recommended_post_ids).uniq
+     end
+
+     def recommended_post_ids
+       post_ids = []
+       @user.following.each { |user| post_ids << user.liked_post_ids }
+       post_ids.flatten.uniq
      end
 end
