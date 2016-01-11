@@ -15,12 +15,12 @@ RSpec.feature "Following tags" do
       click_on "Music"
     end
     expect(current_path).to eq(tag_path(music_tag))
-    expect(page).to have_button "Follow"
-    expect(page).not_to have_button "Unfollow"
+    expect(page).to have_css ".follow-button"
+    expect(page).not_to have_css ".unfollow-button"
 
     click_on "Follow"
-    expect(page).to have_button "Unfollow"
-    expect(page).not_to have_button "Follow"
+    expect(page).to have_css ".unfollow-button"
+    expect(page).not_to have_css ".follow-button"
 
     visit root_path
     within(".following-tags") do

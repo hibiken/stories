@@ -1,0 +1,24 @@
+ .unfollow-button {
+   position: relative;
+   width: 94px;
+   overflow: hidden;
+   .content {
+     position: absolute;
+     padding: 0.5em 1em;
+     left: 0;
+     transition: top 0.4s ease 0.2s;
+     overflow: hidden;
+   }
+   .top {
+     top: 0;
+   }
+   &:hover .top {
+     top: -80px;
+   }
+   .bottom {
+     top: 80px;
+   }
+   &:hover .bottom {
+     top: 0;
+   }
+ }

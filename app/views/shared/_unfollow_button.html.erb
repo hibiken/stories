@@ -1,1 +1,4 @@
-<%= button_to "Unfollow", relationship_path(@relationship), method: :delete, class: 'button green-inner-button' %>
+<%= button_to relationship_path(@relationship), method: :delete, class: 'button green-inner-button unfollow-button' do %>
+  <span class="top content">Following</span><br/>
+  <span class="bottom content">Unfollow</span>
+<% end %>
