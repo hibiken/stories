@@ -1,5 +1,5 @@
 class Dashboard
-  attr_reader :tag
+  attr_reader :tag, :filter
 
   def initialize(user: nil, filter: nil, tag: nil )
     @user = user
@@ -34,5 +34,9 @@ class Dashboard
 
   def new_post
     Post.new
+  end
+
+  def non_filtered?
+    @filter.nil? && @tag.nil?
   end
 end
