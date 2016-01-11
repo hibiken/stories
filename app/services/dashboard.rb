@@ -18,7 +18,7 @@ class Dashboard
     end
 
     if @user
-      return Post.all.limit(8) # TODO: change this to Timeline.new(@user) or something like that
+      return Feed.new(@user)
     else
       return Post.all.limit(8)
     end
