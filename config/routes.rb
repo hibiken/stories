@@ -18,6 +18,10 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :interests, only: [:create, :destroy]
   get "me/bookmarks" => "dashboards#bookmarks", as: :dashboard_bookmarks
+
+  namespace :admin do
+    resource :dashboard, only: [:show]
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
