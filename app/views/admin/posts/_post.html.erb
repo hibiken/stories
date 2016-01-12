@@ -1,0 +1,15 @@
+<div class="post-panel">
+  <%= render partial: 'posts/post_metadata', locals: { post: post } %>
+
+  <% if post.picture? %>
+    <div class="post-picture-wrapper">
+      <%= image_tag post.picture.url(:thumb) %>
+    </div>
+  <% end %>
+
+  <div class="main-body">
+    <h3 class="post-title"><%= link_to post.title, post %></h3>
+    <div class="post-body"><%= truncate(post.body, length: 120) { link_to "Read more ...", post, class: 'read-more' } %></div>
+  </div>
+
+</div>

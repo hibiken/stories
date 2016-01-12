@@ -1,1 +1,24 @@
-<h1>Admin Dashboard</h1>
+<div class="col-md-6 col-md-offset-1">
+  <h1>Admin Dashboard</h1>
+
+  <%= render @dashboard.posts %>
+</div>
+
+
+<% content_for :sidebar do %>
+  <aside class="col-md-4 col-md-offset-1 main-sidebar">
+    <h4 class="small-heading with-border">Featured tags</h4>
+    <div class="tags-wrapper">
+      <% @dashboard.featured_tags.each do |tag| %>
+        <%= render partial: 'tags/tag', locals: { tag: tag } %>
+      <% end %>
+    </div>
+
+    <h4 class="small-heading with-border">Other tags</h4>
+    <div class="tags-wrapper">
+      <% @dashboard.all_tags.each do |tag| %>
+        <%= render partial: 'tags/tag', locals: { tag: tag } %>
+      <% end %>
+    </div>
+  </aside>
+<% end %>

@@ -34,6 +34,10 @@ class Dashboard
     @user.following_tags unless @user.nil?
   end
 
+  def all_tags
+    Tag.all.limit(50)
+  end
+
   def new_post
     Post.new
   end
