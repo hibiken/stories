@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root "dashboards#show"
+  devise_for :admins
   devise_for :users
   resources :users, only: [:show, :edit, :update]
   resources :posts, except: [:index] do
