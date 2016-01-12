@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resource :dashboard, only: [:show]
+    resources :featured_tags, only: [:create, :destroy]
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

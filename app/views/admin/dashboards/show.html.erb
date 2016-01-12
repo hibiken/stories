@@ -8,7 +8,7 @@
 <% content_for :sidebar do %>
   <aside class="col-md-4 col-md-offset-1 main-sidebar">
     <h4 class="small-heading with-border">Featured tags</h4>
-    <div class="tags-wrapper">
+    <div class="tags-wrapper featured-tags">
       <% @dashboard.featured_tags.each do |tag| %>
         <%= render partial: 'tags/tag', locals: { tag: tag } %>
       <% end %>
