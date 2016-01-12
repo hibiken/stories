@@ -12,7 +12,8 @@
     <%= render @dashboard.tag_posts if @dashboard.with_tag? %>
     <%= render @dashboard.filtered_posts if @dashboard.filtered? %>
   <% else %>
-    <%= render @dashboard.posts %>
+    <%= render @dashboard.posts if @dashboard.non_filtered? %>
+    <%= render @dashboard.tag_posts if @dashboard.with_tag? %>
   <% end %>
 </div>
 
