@@ -1,15 +1,10 @@
 <div class="col-md-6 col-md-offset-1">
   <% if @dashboard.with_tag? %>
-    <% if user_signed_in? %>
-      <%= follow_tag_button_for(@dashboard.tag) %>
-    <% end %>
 
     <% if admin_signed_in? %>
-      <% if @dashboard.tag.featured? %>
-        <%= link_to "Unfeature", admin_featured_tag_path(tag_id: @dashboard.tag.id), method: :delete, class: 'button green-inner-button pull-right' %>
-      <% else %>
-        <%= link_to "Feature", admin_featured_tags_path(tag_id: @dashboard.tag.id), method: :post, class: 'button green-border-button pull-right' %>
-      <% end %>
+      <%= feature_tag_button_for(@dashboard.tag) %>
+    <% else %>
+      <%= follow_tag_button_for(@dashboard.tag) %>
     <% end %>
 
     <div class="heading-container">
