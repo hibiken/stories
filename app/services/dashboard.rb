@@ -15,6 +15,8 @@ class Dashboard
     case @filter
     when :bookmarks
       return @user.bookmarked_posts
+    when :top_stories
+      return Post.top_stories(5)
     end
   end
 

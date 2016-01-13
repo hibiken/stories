@@ -14,6 +14,15 @@ class DashboardsController < ApplicationController
     render :show
   end
 
+  def top_stories
+    if user_signed_in?
+      @dashboard = Dashboard.new(user: current_user, filter: :top_stories)
+    else
+      @dashboard = Dashboard.new(filter: :top_stories)
+    end
+    render :show
+  end
+
   private
 
     def check_for_admin
