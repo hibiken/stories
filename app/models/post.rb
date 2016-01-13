@@ -16,6 +16,7 @@ class Post < ActiveRecord::Base
 
   default_scope { order(created_at: :desc) }
   scope :latest, ->(number) { order(created_at: :desc).limit(number) }
+  scope :top_stories, ->(number) { order(:likes_count).limit(number) }
 
   mount_uploader :picture, PictureUploader
 

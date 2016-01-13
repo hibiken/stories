@@ -15,4 +15,4 @@
     <% end %>
   <% end %>
 </div>
-<span class="like-count"><%= post.likes.size %></span>
+<span class="like-count"><%= post.reload.likes.size %></span>
