@@ -20,7 +20,9 @@ feature "User creates post" do
     visit root_path
     expect(page).to have_content "My awesome Article"
 
-    click_on "My awesome Article"
+    within(".dashboard-main-content") do
+      click_on "My awesome Article"
+    end
     expect(page).to have_link "Edit"
     expect(page).to have_link "Delete"
     click_on "Edit"
@@ -29,7 +31,9 @@ feature "User creates post" do
     click_on "Publish"
 
     visit root_path
-    click_on "Updated Title"
+    within(".dashboard-main-content") do
+      click_on "Updated Title"
+    end
     click_on "Delete"
 
     expect(current_path).to eq(root_path)
