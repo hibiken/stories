@@ -1,5 +1,13 @@
+body {
+  padding-top: 53px; /*** to deal with fixed top navbar ***/
+}
 nav.navbar {
-
+  margin-bottom: 0 !important;
+  border-radius: 0 !important;
+  border-color: $border-color !important;
+  &.navbar-default {
+    background-color: #fff !important;
+  }
   #logo {
     text-transform: uppercase;
     font-weight: bold;
@@ -14,7 +22,7 @@ nav.navbar {
       color: $light-font-color;
       letter-spacing: 0.1em;
       font-weight: 600;
-      border-bottom: 2px solid #f8f8f8;
+      border-bottom: 2px solid #fff;
       &.active {
         font-weight: bold;
         border-bottom: 2px solid;
