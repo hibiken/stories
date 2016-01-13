@@ -40,6 +40,10 @@ class Dashboard
     Tag.all.limit(50)
   end
 
+  def top_stories
+    Post.top_stories(5)
+  end
+
   def new_post
     Post.new
   end

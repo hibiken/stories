@@ -18,6 +18,7 @@ nav.navbar {
       &.active {
         font-weight: bold;
         border-bottom: 2px solid;
+        color: $accent-color;
       }
     }
   }
