@@ -19,6 +19,9 @@ function notificationsInitialize() {
         case "user":
           itemContent = notification.actor + " " + notification.action;
           break;
+        case "response":
+          itemContent = notification.actor + " " + notification.action + " " + notification.type
+          break;
       }
       imageTag = '<img width="35" class="avatar-image" src="' + notification.actor_avatar + '"/>';
 

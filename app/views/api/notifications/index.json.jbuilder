@@ -8,5 +8,6 @@ json.array! @notifications do |notification|
   json.url case notification.notifiable.class.to_s
            when "Post" then post_path(notification.notifiable)
            when "User" then user_path(notification.notifiable)
+           when "Response" then post_path(notification.notifiable.post, anchor: "response_#{notification.notifiable.id}")
            end
 end
