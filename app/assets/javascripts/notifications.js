@@ -30,6 +30,8 @@ function notificationsInitialize() {
       $dropdown.html(items.join(' '));
       $unreadCount.text(items.length);
       $bell.after($unreadCount);
+      $bell.hide();
+      $notifications.addClass('active');
     } else {
       $dropdown.html("<li><a>No notifications yet</a></li>");
     }
@@ -41,11 +43,14 @@ function notificationsInitialize() {
       method: 'POST',
       dataType: 'JSON',
       success: function() {
+        $bell.show();
+        $notifications.removeClass('active');
         $unreadCount.hide();
       }
     });
   };
 
+  /** Click handler to clear notifications **/
   $notifications.click(markAsRead);
 
   

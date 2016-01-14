@@ -33,11 +33,49 @@ nav.navbar {
 
   .new-post-button {
     margin-top: 7px;
+    margin-right: 10px;
   }
   // FIXME
   .avatar-wrapper {
     padding-top: 0;
     padding-bottom: 0;
     margin-top: 5px;
+  }
+}
+
+#notifications {
+  &.active a.dropdown-toggle {
+    background-color: rgba($accent-color, 0.8);
+  }
+  a.dropdown-toggle {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    position: relative;
+    border: 1.5px solid $border-color;
+    border-radius: 50%;
+    margin-top: 5px;
+    span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.3em;
+    }
+    span#bell {
+      color: $light-font-color;
+    }
+    span#unread-notifications-count {
+      color: #fff;
+    }
+  }
+}
+#notification-items {
+  .avatar-image {
+    margin-right: 5px;
+  }
+  li > a {
+    color: $light-font-color;
   }
 }
