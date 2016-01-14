@@ -24,6 +24,14 @@ Rails.application.routes.draw do
     resource :dashboard, only: [:show]
     resources :featured_tags, only: [:create, :destroy]
   end
+
+  namespace :api do
+    resources :notifications, only: [:index] do
+      collection do
+        post :mark_as_read
+      end
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -7,6 +7,10 @@ class LikesController < ApplicationController
 
   def create
     current_user.add_like_to(@likeable)
+    # Notify the user
+    unless current_user?(@likeable.user)
+      Notification.create(recipient: @likeable.user, actor: current_user, action: "liked your", notifiable: @likeable)
+    end
     respond_to do |format|
       format.html { redirect_to :back }
       format.js

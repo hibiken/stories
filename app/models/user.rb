@@ -17,6 +17,8 @@ class User < ActiveRecord::Base
   has_many :bookmarked_posts, through: :bookmarks, source: :bookmarkable, source_type: "Post"
   has_many :bookmarked_responses, through: :bookmarks, source: :bookmarkable, source_type: "Response"
 
+  has_many :notifications, foreign_key: :recipient_id
+
   include UserFollowing
   include TagFollowing
   mount_uploader :avatar, AvatarUploader
