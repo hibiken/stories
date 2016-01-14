@@ -35,6 +35,19 @@ function notificationsInitialize() {
     }
   };
 
+  var markAsRead = function() {
+    $.ajax({
+      url: '/api/notifications/mark_as_read',
+      method: 'POST',
+      dataType: 'JSON',
+      success: function() {
+        $unreadCount.hide();
+      }
+    });
+  };
+
+  $notifications.click(markAsRead);
+
   
   if ($notifications.length > 0) {
     $.ajax({
