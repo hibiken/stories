@@ -6,7 +6,7 @@ class RelationshipsController < ApplicationController
     user = User.find(params[:followed_id])
     current_user.follow(user)
     # Notify the user
-    Notification.create(recipient: user, actor: current_user, action: "started following you", notifiable: user)
+    Notification.create(recipient: user, actor: current_user, action: "started following you", notifiable: current_user)
     redirect_to user
   end
 
