@@ -4,6 +4,16 @@ $unreadCount = $('<span id="unread-notifications-count"></span>');
 var Notification = {
 
   setup: function() {
+    Notification.getNewNotifications();
+
+    setInterval(function() {
+      Notification.getNewNotifications();
+    }, 5000);
+
+    $('#notifications').click(Notification.markAsRead);
+  },
+
+  getNewNotifications: function() {
     if ($('#notifications').length > 0) {
       $.ajax({
         url: "/api/notifications.json",
@@ -12,8 +22,6 @@ var Notification = {
         success: Notification.render
       });
     }
-
-    $('#notifications').click(Notification.markAsRead);
   },
 
   render: function(data) {
