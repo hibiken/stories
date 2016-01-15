@@ -25,7 +25,7 @@ function notificationsInitialize() {
       }
       imageTag = '<img width="35" class="avatar-image" src="' + notification.actor_avatar + '"/>';
 
-      return '<li><a href="' + notification.url + '">' + imageTag + itemContent + '</a></li>';
+      return '<li><a href="' + notification.url + '">' + imageTag + itemContent + '</br><small>' + notification.time_ago + '</small></a></li>';
     });
 
 
