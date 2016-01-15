@@ -34,7 +34,7 @@ var Notification = {
       }
       imageTag = '<img width="35" class="avatar-image" src="' + notification.actor_avatar + '"/>';
 
-      return '<li><a href="' + notification.url + '">' + imageTag + itemContent + '</br><small>' + notification.time_ago + '</small></a></li>';
+      return '<li><a href="' + notification.url + '">' + imageTag + '<div>' + itemContent + '</br><small>' + notification.time_ago + '</small></div></a></li>';
     });
 
     if (items.length > 0) {
