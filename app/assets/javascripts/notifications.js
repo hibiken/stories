@@ -19,6 +19,7 @@ var Notification = {
   render: function(data) {
     console.log(data);
     var itemContent, imageTag;
+    var unreadCounter = 0;
 
     var items = $.map(data, function(notification) {
       switch(notification.type) {
@@ -33,16 +34,22 @@ var Notification = {
           break;
       }
       imageTag = '<img width="35" class="avatar-image" src="' + notification.actor_avatar + '"/>';
+      cssClass = (notification.unread) ? 'new-notification' : '';
+      if (notification.unread) {
+        unreadCounter++;
+      }
 
-      return '<li><a href="' + notification.url + '">' + imageTag + '<div>' + itemContent + '</br><small>' + notification.time_ago + '</small></div></a></li>';
+      return '<li class="' + cssClass + '"><a href="' + notification.url + '">' + imageTag + '<div class="notification-metadata">' + itemContent + '</br><small>' + notification.time_ago + '</small></div></a></li>';
     });
 
     if (items.length > 0) {
       $('#notification-items').html(items.join(' '));
-      $unreadCount.text(items.length);
-      $('#bell').after($unreadCount);
-      $('#bell').hide();
-      $('#notifications').addClass('active');
+      if (unreadCounter > 0) {
+        $unreadCount.text(unreadCounter);
+        $('#bell').after($unreadCount);
+        $('#bell').hide();
+        $('#notifications').addClass('active');
+      }
     } else {
       $('#notification-items').html("<li><a>No notifications yet</a></li>");
     }

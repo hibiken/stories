@@ -4,4 +4,5 @@ class Notification < ActiveRecord::Base
   belongs_to :notifiable, polymorphic: true
 
   scope :unread, -> { where(read_at: nil) }
+  scope :recent, ->(number) { order(created_at: :desc).limit(number) }
 end

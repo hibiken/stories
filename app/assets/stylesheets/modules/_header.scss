@@ -73,9 +73,20 @@ nav.navbar {
 }
 #notification-items {
   .avatar-image {
-    margin-right: 5px;
+    margin-right: 18px;
+    vertical-align: baseline;
+  }
+  li {
+    padding: 8px 0;
+    border-bottom: 1px solid $light-border-color;
+    &.new-notification {
+      border-left: 2px solid $accent-color;
+    }
   }
   li > a {
     color: $light-font-color;
+  }
+  .notification-metadata {
+    display: inline-block;
   }
 }
