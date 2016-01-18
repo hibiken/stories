@@ -16,6 +16,12 @@
     </ul>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
+        <li>
+          <%= form_for :search, url: search_path, method: :get do |f| %>
+            <%= f.text_field :q %>
+            <%= f.submit "Go", name: nil %>
+          <% end %>
+        </li>
         <li class="new-post-button"><%= link_to "Write a story", new_post_path, class: "button" %></li>
         <% if user_signed_in? %>
           <li id="notifications">

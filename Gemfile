@@ -21,6 +21,10 @@ gem 'fog',  '1.23.0'
 gem 'net-ssh'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+# Elasticsearch
+gem 'elasticsearch-model', '~> 0.1.8'
+gem 'elasticsearch-rails', '~> 0.1.8'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

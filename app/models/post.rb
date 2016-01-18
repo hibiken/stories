@@ -1,3 +1,5 @@
+require 'elasticsearch/model'
+
 class Post < ActiveRecord::Base
 
   validates :title, :body, :user_id, presence: true
@@ -21,6 +23,9 @@ class Post < ActiveRecord::Base
 
   mount_uploader :picture, PictureUploader
 
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
+
   def self.tagged_with(name)
     Tag.find_by!(name: name).posts
   end
@@ -35,3 +40,5 @@ class Post < ActiveRecord::Base
     tags.map(&:name).join(", ")
   end
 end
+
+Post.import

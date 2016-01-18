@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :interests, only: [:create, :destroy]
   get "me/bookmarks" => "dashboards#bookmarks", as: :dashboard_bookmarks
   get "top-stories" => "dashboards#top_stories", as: :top_stories
+  get "search" => "search#search", as: :search
 
   namespace :admin do
     resource :dashboard, only: [:show]
