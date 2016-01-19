@@ -1,5 +1,6 @@
 class SearchController < ApplicationController
   before_action :beautify_url
+  layout "simple"
 
   def show
     @posts = Post.search(params[:q]).records.to_a

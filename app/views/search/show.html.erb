@@ -1,4 +1,11 @@
-<h1>Search Results</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3 large-searchbar">
+    <%= form_for :search, url: search_path, method: :get do |f| %>
+      <%= f.search_field :q, value: params[:q], placeholder: 'Search Stories', autofocus: true, autocomplete: 'off' %>
+    <% end %>
+  </div>
+</div>
+
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">

@@ -17,3 +17,17 @@
     outline: none;
   }
 }
+
+.large-searchbar {
+  form {
+    margin: 1em 0;
+  }
+  input[type="search"] {
+    width: 100%;
+    font-size: 50px;
+    font-weight: 100;
+    border: none;
+    outline: none;
+    background-color: #fff;
+  }
+}
