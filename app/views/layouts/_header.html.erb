@@ -21,7 +21,7 @@
             <%= button_tag do %>
               <span class="glyphicon glyphicon-search"></span>
             <% end %>
-            <%= f.search_field :q, placeholder: 'Search Stories' %>
+            <%= f.search_field :q, value: params[:q], placeholder: 'Search Stories' %>
           <% end %>
         </li>
         <li class="new-post-button"><%= link_to "Write a story", new_post_path, class: "button" %></li>
