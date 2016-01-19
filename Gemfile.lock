@@ -45,6 +45,7 @@ GEM
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bonsai-elasticsearch-rails (0.0.4)
     bootstrap-sass (3.3.6)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
@@ -312,6 +313,7 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print (~> 1.6)
+  bonsai-elasticsearch-rails
   bootstrap-sass (~> 3.3.6)
   byebug
   capybara (~> 2.5.0)
