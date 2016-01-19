@@ -1,0 +1,27 @@
+<h1>Search Results</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= render @posts %>
+  </div>
+
+  <aside class="col-md-3">
+    <% if @users.any? %>
+      <h4 class="small-heading with-border">People</h4>
+      <% @users.each do |user| %>
+        <div class="user-card">
+          <div class="avatar-wrapper">
+            <%= avatar_for user, size: 50 %>
+          </div>
+          <div class="uc-metadata">
+            <h4><%= link_to user.username, user %></h4>
+            <p><%= user.description %></p>
+            <%= follow_button_for(user) %>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </aside>
+</div>
+
+

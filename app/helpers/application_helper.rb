@@ -4,13 +4,13 @@ module ApplicationHelper
     if user_signed_in?
       unless current_user?(user)
         if current_user.following?(user)
-          render 'shared/unfollow_button'
+          render partial: 'shared/unfollow_button', locals: { user: user }
         else
-          render 'shared/follow_button'
+          render partial: 'shared/follow_button', locals: { user: user }
         end
       end
     else
-      render 'shared/follow_button'
+      render partial: 'shared/follow_button', locals: { user: user }
     end
   end
 

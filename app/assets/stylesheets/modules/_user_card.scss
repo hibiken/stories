@@ -1,0 +1,21 @@
+.user-card {
+  display: flex;
+  padding-bottom: 1.5em;
+
+  .avatar-wrapper {
+    margin-right: 18px;
+  }
+
+  .uc-metadata {
+    h4 {
+      margin-bottom: 4px;
+    }
+    a {
+      text-decoration: none;
+      color: $font-black;
+    }
+    p {
+      font-size: 12px;
+    }
+  }
+}
