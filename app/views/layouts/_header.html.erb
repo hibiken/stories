@@ -16,10 +16,12 @@
     </ul>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li>
+        <li class="main-searchbar">
           <%= form_for :search, url: search_path, method: :get do |f| %>
-            <%= f.text_field :q %>
-            <%= f.submit "Go", name: nil %>
+            <%= button_tag do %>
+              <span class="glyphicon glyphicon-search"></span>
+            <% end %>
+            <%= f.search_field :q, placeholder: 'Search Stories' %>
           <% end %>
         </li>
         <li class="new-post-button"><%= link_to "Write a story", new_post_path, class: "button" %></li>
