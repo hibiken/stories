@@ -7,7 +7,7 @@ class Feed
   end
 
   def posts
-    Post.find(feed_post_ids)
+    Post.recent.find(feed_post_ids)
   end
 
   def tagged?(post)

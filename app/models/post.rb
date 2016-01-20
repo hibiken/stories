@@ -17,8 +17,8 @@ class Post < ActiveRecord::Base
 
   delegate :username, to: :user
 
-  default_scope { order(created_at: :desc) }
-  scope :latest, ->(number) { order(created_at: :desc).limit(number) }
+  scope :recent, -> { order(created_at: :desc) }
+  scope :latest, ->(number) { recent.limit(number) }
   scope :top_stories, ->(number) { order(likes_count: :desc).limit(number) }
 
   mount_uploader :picture, PictureUploader

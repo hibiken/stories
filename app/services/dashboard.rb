@@ -21,7 +21,7 @@ class Dashboard
   end
 
   def posts
-    Post.all.limit(8)
+    Post.recent.limit(8)
   end
 
   def feed
