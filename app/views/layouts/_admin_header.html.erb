@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse navbar-fixed-top navbar-admin">
   <div class="container-fluid">
     <div class="navbar-header">
       <%= link_to "Stories", root_path, class: "navbar-brand", id: "logo" %>
@@ -6,6 +6,9 @@
     <ul class="nav navbar-nav filter-links">
       <li>
         <%= nav_link_to "Dashboard", admin_dashboard_path %>
+      </li>
+      <li>
+        <a href="/sidekiq">Sidekiq</a>
       </li>
     </ul>
     <div class="collapse navbar-collapse">
