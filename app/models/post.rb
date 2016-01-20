@@ -24,7 +24,10 @@ class Post < ActiveRecord::Base
   mount_uploader :picture, PictureUploader
 
   include Elasticsearch::Model
-  include Elasticsearch::Model::Callbacks
+
+  # Sync up Elasticsearch with PostgreSQL.
+  after_save    :index_document
+  after_destroy :delete_document
 
   settings index: { number_of_shards: 1 } do
     mappings dynamic: 'false' do
@@ -75,6 +78,16 @@ class Post < ActiveRecord::Base
   def all_tags
     tags.map(&:name).join(", ")
   end
+
+  private
+
+    def index_document
+      PostIndexJob.perform_later('index', self.id)
+    end
+
+    def delete_document
+      PostIndexJob.perform_later('delete', self.id)
+    end
 end
 
 # Delete the previous posts index in Elasticsearch
