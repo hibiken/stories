@@ -1,2 +1,2 @@
-web: bin/rails server -p $PORT -e $RAILS_ENV
+web: bundle exec puma -C config/puma.rb
 worker: bundle exec sidekiq -q elasticsearch
