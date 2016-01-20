@@ -28,6 +28,9 @@ class User < ActiveRecord::Base
   include Elasticsearch::Model
   include Elasticsearch::Model::Callbacks
 
+  after_commit :index_document, on: [:create, :update]
+  after_commit :delete_document, on: [:destroy]
+
   settings index: { number_of_shards: 1 } do
     mappings dynamic: 'false' do
       indexes :username, analyzer: 'english'
@@ -92,6 +95,14 @@ class User < ActiveRecord::Base
     # Returns a string of the objects class name downcased.
     def downcased_class_name(obj)
       obj.class.to_s.downcase
+    end
+
+    def index_document
+      UserIndexJob.perform_later('index', self.id)
+    end
+
+    def delete_document
+      UserIndexJob.perform_later('delete', self.id)
     end
 end
 

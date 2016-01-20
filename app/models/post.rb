@@ -26,7 +26,7 @@ class Post < ActiveRecord::Base
   include Elasticsearch::Model
 
   # Sync up Elasticsearch with PostgreSQL.
-  after_commit    :index_document, on: [:create, :update]
+  after_commit :index_document, on: [:create, :update]
   after_commit :delete_document, on: [:destroy]
 
   settings index: { number_of_shards: 1 } do
@@ -82,7 +82,6 @@ class Post < ActiveRecord::Base
   private
 
     def index_document
-      logger.debug "#{title} with ID: #{self.id}"
       PostIndexJob.perform_later('index', self.id)
     end
 

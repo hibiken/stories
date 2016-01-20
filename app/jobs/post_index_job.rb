@@ -12,6 +12,7 @@ class PostIndexJob < ActiveJob::Base
   private
 
     def index(post_id)
+      # TODO: user find_by(id: ) and check for post's presence
       post = Post.find(post_id)
       post.__elasticsearch__.index_document
     end
