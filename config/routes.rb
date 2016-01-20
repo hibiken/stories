@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   root "dashboards#show"
   devise_for :admins, controllers: { sessions: 'admin/sessions' }
@@ -32,6 +34,10 @@ Rails.application.routes.draw do
         post :mark_as_read
       end
     end
+  end
+
+  authenticate :admin do
+    mount Sidekiq::Web => '/sidekiq' 
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
