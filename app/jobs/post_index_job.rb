@@ -12,7 +12,7 @@ class PostIndexJob < ActiveJob::Base
   private
 
     def index(post_id)
-      # TODO: there is a change that post record is deleted from DB.
+      # TODO: there is a chance that post record is deleted from DB.
       post = Post.find(post_id)
       post.__elasticsearch__.index_document
     end
