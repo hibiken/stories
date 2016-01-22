@@ -46,10 +46,10 @@ module SearchablePost
   end
 
   def index_document
-    PostIndexJob.perform_later('index', self.id)
+    ElasticsearchIndexJob.perform_later('index', 'Post', self.id)
   end
 
   def delete_document
-    PostIndexJob.perform_later('delete', self.id)
+    ElasticsearchIndexJob.perform_later('delete', 'Post', self.id)
   end
 end
