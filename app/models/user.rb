@@ -19,7 +19,9 @@ class User < ActiveRecord::Base
   has_many :bookmarked_posts, through: :bookmarks, source: :bookmarkable, source_type: "Post"
   has_many :bookmarked_responses, through: :bookmarks, source: :bookmarkable, source_type: "Response"
 
-  has_many :notifications, foreign_key: :recipient_id
+  has_many :notifications, dependent: :destroy, foreign_key: :recipient_id
+
+  after_destroy :clear_notifications
 
   include UserFollowing
   include TagFollowing
@@ -65,6 +67,10 @@ class User < ActiveRecord::Base
       obj.class.to_s.downcase
     end
 
+    # Clears notifications where deleted user is the actor.
+    def clear_notifications
+      Notification.where(actor_id: self.id).destroy_all
+    end
 end
 
 
