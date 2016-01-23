@@ -37,11 +37,11 @@ module SearchableUser
   end
 
   def index_document
-    UserIndexJob.perform_later('index', self.id)
+    ElasticsearchIndexJob.perform_later('index', 'User', self.id)
   end
 
   def delete_document
-    UserIndexJob.perform_later('delete', self.id)
+    ElasticsearchIndexJob.perform_later('delete', 'User', self.id)
   end
 
 end
