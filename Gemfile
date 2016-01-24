@@ -27,12 +27,8 @@ gem 'elasticsearch-rails', '~> 0.1.8'
 
 # Background Job
 gem 'sidekiq', '~> 4.0'
-
 gem 'sinatra', require: false
 gem 'slim'
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -48,10 +44,10 @@ end
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
-
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'guard-rspec', require: false
+  gem 'spring-commands-rspec', '~> 1.0'
 end
 
 group :test do
