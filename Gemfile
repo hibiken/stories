@@ -12,6 +12,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # gem 'therubyracer', platforms: :ruby
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails', '~> 5.0'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 

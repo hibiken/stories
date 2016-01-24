@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get "me/bookmarks" => "dashboards#bookmarks", as: :dashboard_bookmarks
   get "top-stories" => "dashboards#top_stories", as: :top_stories
   get "search" => "search#show", as: :search
+  get "autocomplete" => "search#autocomplete", as: :autocomplete
 
   namespace :admin do
     resource :dashboard, only: [:show]
