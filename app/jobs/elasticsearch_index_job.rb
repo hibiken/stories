@@ -12,9 +12,8 @@ class ElasticsearchIndexJob < ActiveJob::Base
   private
 
     def index(searchable_class, searchable_id)
-      # TODO: there is a chance that post record is deleted from DB.
-      searchable = searchable_class.constantize.find(searchable_id)
-      searchable.__elasticsearch__.index_document
+      searchable = searchable_class.constantize.find_by(id: searchable_id)
+      searchable.__elasticsearch__.index_document if searchable.present?
     end
 
     def delete(searchable_class, searchable_id)
