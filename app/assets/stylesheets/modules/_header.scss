@@ -91,6 +91,29 @@ nav.navbar {
   }
 }
 
+#autocomplete-items {
+  position: absolute;
+  top: 53px;
+  right: 120px;
+  list-style: none;
+  padding: 0 10px;
+  width: 360px;
+  background: #fff;
+  border: 1px solid $border-color;
+  border-radius: 3px;
+  display: block;
+  li {
+    padding: 8px 10px;
+    a {
+      color: $font-black;
+      font-size: 12px;
+    }
+  }
+  .avatar-image {
+    margin-right: 5px;
+  }
+}
+
 
 .navbar-admin {
   ul.nav.navbar-nav > li > a {
