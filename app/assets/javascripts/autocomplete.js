@@ -1,4 +1,5 @@
-$autocompleteItems = $('<ul id="autocomplete-items" class=""></ul>');
+$autocompleteItems = $('<div id="autocomplete-items"></div>');
+$postItemWrapper = $('<ul class="post-items"><li id="autocomplete-posts"><h4>Posts</h4></li></ul>');
 
 var Autocomplete = {
   setup: function() {
@@ -23,17 +24,24 @@ var Autocomplete = {
 
   render: function(data) {
     console.log(data);
+    var posts = data['posts'];
+    var users = data['users'];
+    console.log(posts);
+    console.log(users);
     var imageTag;
-    var items = $.map(data, function(post) {
+    var items = $.map(posts, function(post) {
       imageTag = '<img width="35" class="avatar-image" src="' + post.avatar_url + '"/>';
       return '<li><a href="' + post.url + '">' + imageTag + post.title + '</a></li>';
+    });
+    var userItems = $.map(users, function(user) {
+      avatarTag = '<img width="35" class="avatar-image" src="' + user.avatar_url + '"/>';
+      return '<li><a href="#">' + user.username + '</a></li>';
     });
 
     if (items.length > 0) {
       $autocompleteItems.html(items.join(' '));
       $('#main-searchbar').after($autocompleteItems);
       $autocompleteItems.show();
-      console.log('fired');
     } else {
       $('#autocomplete-items').html('');
       $autocompleteItems.hide();

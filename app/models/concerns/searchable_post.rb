@@ -17,6 +17,7 @@ module SearchablePost
         end
         indexes :user do
           indexes :username, analyzer: 'english'
+          indexes :avatar_url
         end
       end
     end
@@ -39,7 +40,7 @@ module SearchablePost
     self.as_json({
       only: [:title, :body],
       include: {
-        user: { only: :username },
+        user: {methods: [:avatar_url], only: [:username, :avatar_url] },
         tags: { only: :name }
       }
     })

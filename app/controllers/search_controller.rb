@@ -8,8 +8,8 @@ class SearchController < ApplicationController
   end
 
   def autocomplete
-    # render json: Post.search(params[:term]).map(&:title)
-    @posts = Post.search(params[:term]).records.to_a
+    @posts = Post.search(params[:term])
+    @users = User.search(params[:term])
   end
 
   private

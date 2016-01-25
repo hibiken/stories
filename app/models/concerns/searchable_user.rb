@@ -12,6 +12,7 @@ module SearchableUser
       mappings dynamic: 'false' do
         indexes :username, analyzer: 'english'
         indexes :email
+        indexes :avatar_url
       end
     end
 
@@ -32,7 +33,7 @@ module SearchableUser
 
   def as_indexed_json(options ={})
     self.as_json({
-      only: [:username, :email]
+      methods: [:avatar_url], only: [:username, :email, :avatar_url]
     })
   end
 
