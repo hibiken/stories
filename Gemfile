@@ -31,6 +31,9 @@ gem 'sidekiq', '~> 4.0'
 gem 'sinatra', require: false
 gem 'slim'
 
+# Profiling
+gem 'rack-mini-profiler', '~> 0.9.8'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
