@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 
 gem 'rails', '4.2.4'
+gem 'puma', '~> 2.15'
 gem 'pg'
 gem 'devise', '~> 3.5.3'
 gem 'bootstrap-sass', '~> 3.3.6'
@@ -66,6 +67,5 @@ end
 group :production do
   gem 'rails_12factor', '0.0.2'
   gem 'bonsai-elasticsearch-rails'
-  gem 'puma', '~> 2.15'
 end
 
