@@ -92,9 +92,6 @@ nav.navbar {
 }
 
 #autocomplete-items {
-  // position: absolute;
-  // top: 53px;
-  // right: 120px;
   list-style: none;
   padding: 0 10px;
   width: 360px;
@@ -111,6 +108,18 @@ nav.navbar {
   }
   .avatar-image {
     margin-right: 5px;
+  }
+  .glyphicon-search {
+    margin-right: 5px;
+  }
+  .autocomplete-heading {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: $font-black;
+    border-bottom: 1px solid $light-border-color;
+    margin-bottom: 0;
+    padding-bottom: 10px;
   }
 }
 
