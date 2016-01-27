@@ -21,7 +21,7 @@
             <%= button_tag do %>
               <span class="glyphicon glyphicon-search"></span>
             <% end %>
-            <%= f.search_field :q, value: params[:q], placeholder: 'Search Stories', autocomplete: 'off', "ng-model": "searchTerm" %>
+            <%= f.search_field :q, value: params[:q], placeholder: 'Search Stories', autocomplete: 'off', "ng-model" => "searchTerm" %>
           <% end %>
           <ul ng-show="searchTerm.length" class="dropdown-menu" id="autocomplete-items" ng-cloak>
             <li><a href="/search?q={{searchTerm}}"><span class="glyphicon glyphicon-search"></span> Search for <strong>{{ searchTerm }}</strong></a></li>
