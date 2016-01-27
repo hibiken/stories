@@ -14,7 +14,7 @@ gem 'coffee-rails', '~> 4.1.0'
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails', '~> 5.0'
-gem 'turbolinks'
+# gem 'turbolinks' 
 gem 'jbuilder', '~> 2.0'
 
 gem 'carrierwave', '0.10.0'

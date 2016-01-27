@@ -10,5 +10,6 @@ json.users do |json|
   json.array! @users do |user|
     json.username user.username
     json.avatar_url user.avatar_url.present? ? user.avatar_url : '/assets/default-avatar.jpg'
+    json.url user_path(user.id)
   end
 end

@@ -16,13 +16,24 @@
     </ul>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li class="main-searchbar" id="main-searchbar">
+        <li class="main-searchbar" id="main-searchbar" ng-controller="AutocompleteCtrl">
           <%= form_for :search, url: search_path, method: :get do |f| %>
             <%= button_tag do %>
               <span class="glyphicon glyphicon-search"></span>
             <% end %>
-            <%= f.search_field :q, value: params[:q], placeholder: 'Search Stories', autocomplete: 'off' %>
+            <%= f.search_field :q, value: params[:q], placeholder: 'Search Stories', autocomplete: 'off', "ng-model": "searchTerm" %>
           <% end %>
+          <ul ng-show="searchTerm.length" class="dropdown-menu" id="autocomplete-items">
+            <li><a href="/search?q={{searchTerm}}">Search for {{ searchTerm }}</a></li>
+            <li ng-show="posts.length"><h4>Posts</h4></li>
+            <li ng-repeat="post in posts">
+              <a ng-href="{{ post.url }}"><img width="35" class="avatar-image" ng-src="{{ post.avatar_url }}" />{{ post.title }}</a>
+            </li>
+            <li ng-show="users.length"><h4>People</h4></li>
+            <li ng-repeat="user in users">
+              <a ng-href="{{ user.url }}"><img width="35" class="avatar-image" ng-src="{{ user.avatar_url }}" />{{ user.username }}</a>
+            </li>
+          </ul>
         </li>
         <li class="new-post-button"><%= link_to "Write a story", new_post_path, class: "button" %></li>
         <% if user_signed_in? %>
