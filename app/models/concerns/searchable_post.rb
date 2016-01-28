@@ -8,9 +8,9 @@ module SearchablePost
     after_commit :index_document, on: [:create, :update]
     after_commit :delete_document, on: [:destroy]
 
-    settings index: { number_of_shards: 1 } do
+    settings INDEX_OPTIONS do
       mappings dynamic: 'false' do
-        indexes :title, analyzer: 'english'
+        indexes :title, analyzer: 'autocomplete'
         indexes :body, analyzer: 'english'
         indexes :tags do
           indexes :name, analyzer: 'english'
@@ -53,4 +53,26 @@ module SearchablePost
   def delete_document
     ElasticsearchIndexJob.perform_later('delete', 'Post', self.id)
   end
+
+  INDEX_OPTIONS =
+    { number_of_shards: 1, analysis: {
+    filter: {
+      "autocomplete_filter" => {
+        type: "edge_ngram",
+        min_gram: 1,
+        max_gram: 20
+      }
+    },
+    analyzer: {
+      "autocomplete" => {
+        type: "custom",
+        tokenizer: "standard",
+        filter: [
+          "lowercase",
+          "autocomplete_filter"
+        ]
+      }
+    }
+  }
+  }
 end

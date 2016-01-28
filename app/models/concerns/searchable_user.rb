@@ -8,9 +8,9 @@ module SearchableUser
     after_commit :index_document, on: [:create, :update]
     after_commit :delete_document, on: [:destroy]
 
-    settings index: { number_of_shards: 1 } do
+    settings INDEX_OPTIONS do
       mappings dynamic: 'false' do
-        indexes :username, analyzer: 'english'
+        indexes :username, analyzer: 'autocomplete'
         indexes :email
         indexes :avatar_url
       end
@@ -44,6 +44,28 @@ module SearchableUser
   def delete_document
     ElasticsearchIndexJob.perform_later('delete', 'User', self.id)
   end
+
+  INDEX_OPTIONS =
+    { number_of_shards: 1, analysis: {
+    filter: {
+      "autocomplete_filter" => {
+        type: "edge_ngram",
+        min_gram: 1,
+        max_gram: 20
+      }
+    },
+    analyzer: {
+      "autocomplete" => {
+        type: "custom",
+        tokenizer: "standard",
+        filter: [
+          "lowercase",
+          "autocomplete_filter"
+        ]
+      }
+    }
+  }
+  }
 
 end
 
