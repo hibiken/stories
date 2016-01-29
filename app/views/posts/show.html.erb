@@ -9,7 +9,9 @@
     <% end %>
 
     <h3 class="title"><%= @post.title %></h3>
-    <p class="body"><%= @post.body %></p>
+    <div class="body">
+      <p><%= markdown(@post.body) %></p>
+    </div>
 
     <div class="post-tags">
       <% @post.tags.each do |tag| %>

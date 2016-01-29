@@ -23,6 +23,8 @@ gem 'fog',  '1.23.0'
 gem 'net-ssh'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'redcarpet', '~> 3.3'
+
 # Elasticsearch
 gem 'elasticsearch-model', '~> 0.1.8'
 gem 'elasticsearch-rails', '~> 0.1.8'

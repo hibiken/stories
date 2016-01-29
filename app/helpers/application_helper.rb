@@ -40,4 +40,10 @@ module ApplicationHelper
     options[:class].strip!
     link_to text, url, options
   end
+
+  def markdown(text)
+    @renderer ||= Redcarpet::Render::HTML.new(filter_html: true, hard_wrap: true)
+    @markdowner ||= Redcarpet::Markdown.new(@renderer, autolink: true, no_intra_emphasi: true)
+    @markdowner.render(text).html_safe
+  end
 end
