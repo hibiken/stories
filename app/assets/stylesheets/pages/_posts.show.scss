@@ -42,6 +42,28 @@ body.posts.show {
     }
   }
 
+  .author-info {
+    display: flex;
+    padding: 2.5em 0;
+    border-top: 1px solid $light-border-color;
+    border-bottom: 1px solid $light-border-color;
+    margin: 2em 0 3em;
+    .avatar-image {
+      vertical-align: top;
+      margin-right: 20px;
+    }
+    .username-description {
+      display: inline-block;
+      min-width: 240px;
+      max-width: 300px;
+      margin-right: 20px;
+      color: $font-black;
+      h4 {
+        margin-top: 0;
+      }
+    }
+  }
+
   .edit-delete-button-wrapper {
     padding: 1em 0;
     margin-bottom: 1em;

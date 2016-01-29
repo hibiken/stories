@@ -11,6 +11,12 @@
     <h3 class="title"><%= @post.title %></h3>
     <p class="body"><%= @post.body %></p>
 
+    <div class="post-tags">
+      <% @post.tags.each do |tag| %>
+        <%= link_to tag.name, tag, class: 'tag' %>
+      <% end %>
+    </div>
+
     <div class="post-stats clearfix">
       <div id="post_<%= @post.id %>_likes" class="pull-left">
         <%= render partial: 'posts/likes', locals: { post: @post } %>
@@ -21,11 +27,17 @@
       </div>
     </div>
 
-    <div class="post-tags">
-      <% @post.tags.each do |tag| %>
-        <%= link_to tag.name, tag, class: 'tag' %>
-      <% end %>
+    <div class="author-info">
+      <div clas="author-metadata">
+        <%= avatar_for @post.user, size: 50 %>
+        <div class="username-description">
+          <h4><%= @post.user.username %></h4>
+          <p><%= @post.user.description %></p>
+        </div>
+      </div>
+      <%= follow_button_for @post.user %>
     </div>
+
 
     <% if user_signed_in? && current_user?(@post.user) %>
       <div class="edit-delete-button-wrapper">
