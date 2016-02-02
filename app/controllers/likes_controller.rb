@@ -19,7 +19,7 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    Like.find(params[:id]).destroy
+    current_user.remove_like_from(@likeable)
     respond_to do |format|
       format.html { redirect_to :back }
       format.js
