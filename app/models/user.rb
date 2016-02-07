@@ -22,6 +22,7 @@ class User < ActiveRecord::Base
   has_many :notifications, dependent: :destroy, foreign_key: :recipient_id
 
   after_destroy :clear_notifications
+  after_commit :send_welcome_email, on: [:create]
 
   include UserFollowing
   include TagFollowing
@@ -70,6 +71,10 @@ class User < ActiveRecord::Base
     # Clears notifications where deleted user is the actor.
     def clear_notifications
       Notification.where(actor_id: self.id).destroy_all
+    end
+
+    def send_welcome_email
+      WelcomeEmailJob.perform_later(self.id)
     end
 end
 
