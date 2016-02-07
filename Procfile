@@ -1,2 +1,2 @@
 web: bundle exec puma -C config/puma.rb
-worker: bundle exec sidekiq -q elasticsearch -c 3
+worker: bundle exec sidekiq -q elasticsearch -q mailer -c 3
