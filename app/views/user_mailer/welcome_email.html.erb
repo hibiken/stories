@@ -1,17 +1,37 @@
-<h1>Welcome to Stories!</h1>
+<div style="max-width: 600px; margin: 0 auto;">
+  <h2 style="color: rgba(0,0,0,0.8);
+            font-family: 'Open Sans', sans-serif;
+            font-size; 22px;
+            font-weight: normal;
+            line-height: 24px;
+            margin: 0;
+            padding-top: 15px;
+            padding-bottom: 5px;
+            text-align: center;
+            ">Welcome to Stories!</h2>
 
-<p>
-  Hi <%= @user.username %>, thank you for becoming a member of the Stories community!
-  We've got some suggestions to get you started :)
-</p>
+  <hr style="max-width: 40px; border: 1px solid rgba(0,0,0, 0.2);"/>
+
+  <p style="text-align: center; font-family: 'Open Sans', sans-serif; font-size: 18px;
+            color: rgba(0,0,0,0.6); line-height: 1.4;">
+  Hi <strong style="color: #00ab6b;"><%= @user.username %></strong>, thank you for becoming a member of the Stories community!<br/>
+    We've got some suggestions to get you started :)
+  </p>
+</div>
 
 
-<h4>Follow other users and tags to customize your feed</h4>
-<h4>Share your story with the community</h4>
+<div style="text-align: center;"> 
+  <h4 style="font-family: 'Open Sans', sans-serif; font-size: 18px;
+            color: rgba(0,0,0,0.6); line-height: 1.4;">Follow other users and tags to customize your feed</h4>
+  <h4 style="font-family: 'Open Sans', sans-serif; font-size: 18px;
+            color: rgba(0,0,0,0.6); line-height: 1.4;">Share your story with the community</h4>
+</div>
 
 
-<p>
+  <%= image_tag "rockies.jpg", alt: "canadian rockies", style: "display: block; max-width: 600px; margin: 0 auto;" %>
+<p style="text-align: center; font-family: 'Open Sans', sans-serif; font-size: 18px;
+            color: rgba(0,0,0,0.6); line-height: 1.4;">
   Again, thanks for creating an account on Stories, if you are Rails developer,
-  please checkout github repository of this web app.
-  <a href="https://github.com/kenny-hibino/stories">To github repo</a>
+  please checkout <a href="https://github.com/kenny-hibino/stories"
+                     style="color: #00ab6b;">github repository</a> of this web app.
 </p>
