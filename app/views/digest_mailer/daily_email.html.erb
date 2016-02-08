@@ -1,24 +1,57 @@
-<h1>Stories Daily Digest</h1>
+<div style="max-width: 600px; margin: 0 auto;">
+  <h2 style="color: rgba(0,0,0,0.8);
+            font-family: 'Open Sans', sans-serif;
+            font-size; 22px;
+            font-weight: normal;
+            line-height: 24px;
+            margin: 0;
+            padding-top: 15px;
+            padding-bottom: 5px;
+            text-align: center;
+            ">Stories Daily Digest</h2>
 
-<h4>Recommended by Stories Staff</h4>
-<% @recommended.each do |post| %>
-  <div>
-    <% if post.picture? %>
-      <%= image_tag post.picture.url(:thumb) %>
-    <% end %>
-    <h4><%= post.title %></h4>
-    <p><%= truncate(post.body, length: 120) %></p>
-    <div>
-      <%= avatar_for post.user, size: 40 %>
-      <div>
-        <%= post.username %><br/>
-        <small><%= time_ago_in_words(post.created_at) %> ago &#149; <%= post_length_in_minutes(post.body) %></small>
+    <hr style="max-width: 40px; border: 1px solid rgba(0,0,0, 0.2);"/>
+</div>
+
+<div style="max-width: 600px; margin: 0 auto;">
+  <div style="text-align: center; padding-top: 5px; padding-bottom: 3px;">
+    <small style="color: rgba(0,0,0,0.3); font-family: 'Open Sans', sans-serif;
+    font-size: 14px; font-weight: 100px; text-transform: uppercase; 
+    letter-spacing: 0.1px;" >Recommended by </small>
+  </div>
+  <div style="text-align: center;">
+    <small style="color: rgba(0,0,0,0.8); font-family: 'Open Sans', sans-serif;
+    font-size: 16px; font-weight: bold; text-transform: uppercase; 
+    letter-spacing: 0.9px;" >Stories Staff</small>
+  </div>
+  
+  <% @recommended.each do |post| %>
+    <div style="max-width: 400px; margin: 0 auto; padding: 30px 0;
+                border-bottom: 1px solid rgba(0,0,0,0.05);">
+      <% if post.picture? %>
+        <%= image_tag post.picture.url(:thumb), style: "display: block;
+            max-width: 400px; margin: 0 auto;" %>
+      <% end %>
+      <h4 style="margin: 0; padding: 5px 0;">
+        <%= link_to post.title, post_url(post), style: "color: rgba(0,0,0,0.8);
+              text-decoration: none; font-size: 24px;" %></h4>
+      <p style="margin: 0; padding: 0;"><%= truncate(post.body, length: 120) %></p>
+      <div style="margin: 0; padding-top: 15px; display: flex;">
+        <%= avatar_for post.user, size: 40, style: "border-radius: 50%; margin-right: 12px;" %>
+        <div>
+          <%= link_to post.username, user_url(post.user), style: "color: #00ab6b;
+              text-decoration: none;" %><br/>
+          <small style="color: rgba(0,0,0,0.8);"><%= time_ago_in_words(post.created_at) %> ago &#149; <%= post_length_in_minutes(post.body) %></small>
+        </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
 
-<div>
-  <%= link_to "Read more on Stories", root_url %>
+<div style="margin: 0; padding: 30px 0; text-align: center;">
+  <%= link_to "Read more on Stories", root_url,
+      style: "padding: 0.5em 1em; border-radius: 20px;
+              text-decoration: none; font-size: 16px; border: none; outline: none;
+              background-color: #02b875; color: #ffffff;" %>
 </div>
 
