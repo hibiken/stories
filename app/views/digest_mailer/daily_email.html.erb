@@ -1,0 +1,24 @@
+<h1>Stories Daily Digest</h1>
+
+<h4>Recommended by Stories Staff</h4>
+<% @recommended.each do |post| %>
+  <div>
+    <% if post.picture? %>
+      <%= image_tag post.picture.url(:thumb) %>
+    <% end %>
+    <h4><%= post.title %></h4>
+    <p><%= truncate(post.body, length: 120) %></p>
+    <div>
+      <%= avatar_for post.user, size: 40 %>
+      <div>
+        <%= post.username %><br/>
+        <small><%= time_ago_in_words(post.created_at) %> ago &#149; <%= post_length_in_minutes(post.body) %></small>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<div>
+  <%= link_to "Read more on Stories", root_url %>
+</div>
+
