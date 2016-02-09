@@ -4,7 +4,7 @@
   </div>
 
   <div class="form-group">
-    <%= f.text_area :body, class: 'form-control',
+    <%= f.text_area :body, class: 'form-control medium-editable',
       placeholder: 'Write your story here ...' %>
   </div>
 
@@ -16,3 +16,5 @@
 
   <%= f.submit "Publish", class: "button green-inner-button" %>
 <% end %>
+
+<script>var editor = new MediumEditor('.medium-editable');</script>
