@@ -1,13 +1,13 @@
 <div style="max-width: 600px; margin: 0 auto; text-align: center;">
-  <small style="color: rgba(0,0,0,0.8);
+  <strong style="color: rgba(0,0,0,0.8);
             font-family: 'Open Sans', sans-serif;
             font-size; 22px;
-            font-weight: normal;
+            font-weight: bold;
             line-height: 24px;
             margin: 0;
             padding-top: 15px;
             padding-bottom: 5px;
-            ">Stories Daily Digest</small>
+            ">Stories Daily Digest</strong>
 
     <hr style="max-width: 40px; border: 1px solid rgba(0,0,0, 0.2);"/>
 </div>
@@ -33,14 +33,18 @@
       <% end %>
       <h4 style="margin: 0; padding: 5px 0;">
         <%= link_to post.title, post_url(post), style: "color: rgba(0,0,0,0.8);
-              text-decoration: none; font-size: 24px;" %></h4>
-      <p style="margin: 0; padding: 0;"><%= truncate(post.body, length: 120) %></p>
+              text-decoration: none; font-size: 24px; font-family: 'Open Sans', sans-serif;" %></h4>
+      <p style="margin: 0; padding: 0; font-family: 'Open Sans', sans-serif;">
+        <%= truncate(post.body, length: 120, escape: false) %>
+      </p>
       <div style="margin: 0; padding-top: 15px; display: flex;">
         <%= avatar_for post.user, size: 40, style: "border-radius: 50%; margin-right: 12px;" %>
         <div>
           <%= link_to post.username, user_url(post.user), style: "color: #00ab6b;
-              text-decoration: none;" %><br/>
-          <small style="color: rgba(0,0,0,0.8);"><%= time_ago_in_words(post.created_at) %> ago &#149; <%= post_length_in_minutes(post.body) %></small>
+              text-decoration: none; font-family: 'Open Sans', sans-serif;" %><br/>
+              <small style="color: rgba(0,0,0,0.8); font-family: 'Open Sans', sans-serif;">
+                <%= time_ago_in_words(post.created_at) %> ago &#149; <%= post_length_in_minutes(post.body) %>
+              </small>
         </div>
       </div>
     </div>

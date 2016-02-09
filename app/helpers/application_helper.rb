@@ -42,7 +42,7 @@ module ApplicationHelper
   end
 
   def markdown(text)
-    @renderer ||= Redcarpet::Render::HTML.new(filter_html: true, hard_wrap: true)
+    @renderer ||= Redcarpet::Render::HTML.new(filter_html: false, hard_wrap: true) # Sets filter_html to false to use Medium Editor
     @markdown_parser ||= Redcarpet::Markdown.new(@renderer, autolink: true, no_intra_emphasi: true)
     @markdown_parser.render(text).html_safe
   end
