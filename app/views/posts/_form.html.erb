@@ -1,20 +1,33 @@
-<%= form_for post, html: { multipart: true } do |f| %>
+<%= form_for post, html: { multipart: true, class: "editor-form" } do |f| %>
   <div class="form-group">
-    <%= f.text_field :title, class: 'form-control', placeholder: 'Title' %>
+    <%= f.text_field :title, class: 'editor-title', placeholder: 'Title', autofocus: true %>
   </div>
 
   <div class="form-group">
-    <%= f.text_area :body, class: 'form-control medium-editable',
-      placeholder: 'Write your story here ...' %>
-  </div>
+    <%= f.text_area :body, class: 'medium-editable',
+      placeholder: 'Write your story here ...' %> </div>
 
-  <%= f.file_field :picture %>
+  <label class="picture_upload">
+    <%= f.file_field :picture %>
+    <span class="icon-camera"></span>
+  </label>
 
   <div class="form-group">
-    <%= f.text_field :all_tags, class: 'form-control', placeholder: 'Tags separated by a comma ...' %>
+    <%= f.text_field :all_tags, class: 'form-control',
+      placeholder: 'Tags separated by a comma ...' %>
   </div>
+
+  <div id="js-taggle"></div>
 
   <%= f.submit "Publish", class: "button green-inner-button" %>
 <% end %>
 
-<script>var editor = new MediumEditor('.medium-editable');</script>
+<script>
+var editor = new MediumEditor('.medium-editable', {
+  placeholder: {
+    text: "Tell your Story ..."
+  }
+});
+
+var my_taggle = new Taggle('js-taggle');
+</script>

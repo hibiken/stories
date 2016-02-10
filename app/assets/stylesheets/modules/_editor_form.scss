@@ -1,3 +1,36 @@
-.medium-editable {
-  height: 300px;
+.editor-form {
+  padding-top: 30px;
+
+  .editor-title {
+    font-size: 36px;
+    border: none;
+    outline: none;
+    font-weight: 600;
+  }
+  .medium-editable {
+    height: 300px;
+    outline: none;
+    font-size: 22px;
+
+    // border: 1px solid; // turn this off after development
+  }
+}
+
+label.picture_upload input[type="file"] {
+  position: fixed;
+  top: -1000px;
+}
+
+.picture_upload {
+  border: 2px solid #AAA;
+  border-radius: 4px;
+  padding: 5px 8px;
+  margin: 2px;
+  background: #fff;
+  display: inline-block;
+  border-radius: 50%;
+  color: #999;
+
+  float: right;
+  margin-right: 8px;
 }
