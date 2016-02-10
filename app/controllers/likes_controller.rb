@@ -4,6 +4,7 @@
 # before_action :set_likeable, which sets @likeable.
 class LikesController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_likeable
 
   def create
     current_user.add_like_to(@likeable)
@@ -25,4 +26,10 @@ class LikesController < ApplicationController
       format.js
     end
   end
+
+  private
+
+    def set_likeable
+      raise NotImplementedError, "This #{self.class} cannot respond to 'set_likeable'"
+    end
 end
