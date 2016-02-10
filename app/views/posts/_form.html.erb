@@ -12,12 +12,13 @@
     <span class="icon-camera"></span>
   </label>
 
-  <div class="form-group">
-    <%= f.text_field :all_tags, class: 'form-control',
-      placeholder: 'Tags separated by a comma ...' %>
+  <div class="hidden">
+    <%= f.text_field :all_tags %>
   </div>
 
-  <div id="js-taggle" style="position: relative;"></div>
+  <div class="clearfix">
+    <div id="js-taggle" style="position: relative;"></div>
+  </div>
 
   <%= f.submit "Publish", class: "button green-inner-button" %>
 <% end %>
