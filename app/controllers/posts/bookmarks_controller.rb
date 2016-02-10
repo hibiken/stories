@@ -1,5 +1,4 @@
 class Posts::BookmarksController < BookmarksController
-  before_action :set_bookmarkable
 
   private
 
