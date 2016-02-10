@@ -17,7 +17,7 @@
       placeholder: 'Tags separated by a comma ...' %>
   </div>
 
-  <div id="js-taggle"></div>
+  <div id="js-taggle" style="position: relative;"></div>
 
   <%= f.submit "Publish", class: "button green-inner-button" %>
 <% end %>
@@ -29,5 +29,11 @@ var editor = new MediumEditor('.medium-editable', {
   }
 });
 
-var my_taggle = new Taggle('js-taggle');
+var my_taggle = new Taggle('js-taggle', {
+  duplicateTagClass: 'bounce'
+});
+
+$('input[type="submit"]').hover(function() {
+  $('#post_all_tags').val(my_taggle.getTagValues());
+});
 </script>

@@ -1,0 +1,510 @@
+$project_color: #990033;
+$button_text_color: #fff;
+$gray: #8a8a8a;
+
+html {
+    background: url(/assets/images/projects/taggle/bg.png) repeat;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-shadow: 1px 1px 1px #fff;
+    color: #000;
+    font-weight: bold;
+    line-height: 1.5;
+    margin: 0;
+}
+
+pre {
+    border-radius: 3px;
+}
+
+p {
+    color: #000;
+}
+
+p a {
+    color: $project_color;
+    text-decoration: none;
+    transition: all .25s;
+    padding: 3px;
+}
+
+p a:hover {
+    color: #fff;
+    background: $project_color;
+    transition: all .25s;
+}
+
+.btn {
+    background: $project_color;
+    padding: 12px 30px;
+    border-radius: 3px;
+    margin-right: 10px;
+    color: $button_text_color !important;
+    position: relative;
+    display: inline-block;
+    width: 130px;
+
+    &:hover {
+        background: lighten($project_color, 10%);
+    }
+
+    &:active {
+        top: 1px;
+    }
+
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+::selection {
+    background: $project_color;
+    color: #fff;
+}
+
+::-moz-selection {
+    background: $project_color;
+    color: #fff;
+}
+
+@-webkit-keyframes bounce {
+
+    0%, 20%, 50%, 80%, 100% {
+        -webkit-transform: translateY(0);
+    }
+
+
+    40% {
+        -webkit-transform: translateY(-16px);
+    }
+
+
+    60% {
+        -webkit-transform: translateY(-7px);
+    }
+}
+
+@-moz-keyframes bounce {
+
+    0%, 20%, 50%, 80%, 100% {
+        -moz-transform: translateY(0);
+    }
+
+
+    40% {
+        -moz-transform: translateY(-16px);
+    }
+
+
+    60% {
+        -moz-transform: translateY(-7px);
+    }
+}
+
+@-o-keyframes bounce {
+
+    0%, 20%, 50%, 80%, 100% {
+        -o-transform: translateY(0);
+    }
+
+
+    40% {
+        -o-transform: translateY(-16px);
+    }
+
+
+    60% {
+        -o-transform: translateY(-7px);
+    }
+}
+
+@keyframes bounce {
+
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+
+
+    40% {
+        transform: translateY(-16px);
+    }
+
+
+    60% {
+        transform: translateY(-7px);
+    }
+}
+
+.bounce {
+    animation-name: bounce;
+}
+
+#forkongithub a{
+    background: $project_color;
+    color: $button_text_color;
+}
+
+// plugin specific styles
+
+.project_container a {
+    color: #000;
+}
+
+.clearfix:before, .clearfix:after {
+    display: block;
+    content: "";
+    line-height: 0;
+    clear: both;
+}
+
+.taggle_list {
+    float: left;
+    width: 100%;
+}
+
+.taggle_input {
+    border: none;
+    outline: none;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.taggle_list li {
+    float: left;
+    display: inline-block;
+    white-space: nowrap;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.taggle_list .taggle {
+    margin-right: 8px;
+    background: #E2E1DF;
+    padding: 5px 10px;
+    border-radius: 3px;
+    position: relative;
+    cursor: pointer;
+    transition: all .3s;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+.taggle_list .taggle_hot {
+    background: #cac8c4;
+}
+
+.taggle_list .taggle .close {
+    font-size: 1.1rem;
+    position: absolute;
+    top: 5px;
+    right: 3px;
+    text-decoration: none;
+    padding-left: 2px;
+    padding-top: 3px;
+    line-height: 0.5;
+    color: #ccc;
+    color: rgba(0, 0, 0, 0.2);
+    padding-bottom: 4px;
+    display: none;
+    border: 0;
+    background: none;
+    cursor: pointer;
+}
+
+.taggle_list .taggle:hover {
+    padding: 5px;
+    padding-right: 15px;
+    background: #ccc;
+    transition: all .3s;
+}
+
+.taggle_list .taggle:hover > .close {
+    display: block;
+}
+
+.taggle_list .taggle .close:hover {
+    color: $project_color;
+}
+
+.taggle_placeholder {
+    position: absolute;
+    color: #CCC;
+    top: 12px;
+    left: 8px;
+    transition: opacity, .25s;
+    user-select: none;
+}
+
+.taggle_input {
+    padding: 8px;
+    padding-left: 0;
+    float: left;
+    margin-top: -5px;
+    background: none;
+    width: 100%;
+    max-width: 100%;
+}
+
+.taggle_sizer {
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: -500px;
+    z-index: -1;
+    visibility: hidden;
+}
+
+/*container styles*/
+textarea.input,
+.textarea.input {
+    border: 0;
+    background: #FDFDFD;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2), 0 1px 1px rgba(255, 255, 255, 0.7);
+    min-height: 60px;
+    padding: 8px;
+    border-radius: 3px;
+    color: #555;
+    transition: all .25s;
+    cursor: text;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.textarea.input:focus,
+.textarea.input.active,
+textarea.input:focus,
+textarea.input.active {
+    background: #fff;
+    transition: all .25s;
+}
+
+.textarea.input,
+textarea.input {
+    height: auto;
+}
+
+
+.textarea.tags {
+    position: relative;
+}
+
+.textarea.tags * {
+    box-sizing: content-box;
+}
+
+
+.placeholder_input {
+    position: relative;
+}
+
+.placeholder_input span {
+    position: absolute;
+    color: #AAA;
+    top: 50%;
+    margin-top: -11px;
+    left: 10px;
+}
+
+.placeholder_input input {
+    width: 120px;
+}
+
+// jQuery autocomplete example
+
+
+.ui-autocomplete {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.ui-menu {
+    list-style: none;
+    padding: 2px;
+    margin: 0;
+    display: block;
+    outline: none;
+}
+
+.ui-widget-content {
+    background: #fff;
+    color: $project_color;
+}
+
+.ui-menu .ui-menu-item {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.ui-menu .ui-menu-item a {
+    text-decoration: none;
+    display: block;
+    padding: 2px .4em;
+    line-height: 1.5;
+    min-height: 0;
+    font-weight: normal;
+    color: $gray;
+    cursor: pointer;
+
+    &:hover {
+        color: #fff;
+        background: $project_color;
+    }
+}
+
+.ui-state-hover,
+.ui-widget-content .ui-state-hover,
+.ui-widget-header .ui-state-hover,
+.ui-state-focus,
+.ui-widget-content .ui-state-focus,
+.ui-widget-header .ui-state-focus {
+    background: $project_color;
+    color: #fff !important;
+}
+
+.ui-state-hover a,
+.ui-state-hover a:hover,
+.ui-state-hover a:link,
+.ui-state-hover a:visited {
+    color: #fff;
+}
+
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active {
+    border: 1px solid #aaaaaa;
+    background: #ffffff;
+    font-weight: normal;
+    color: #212121;
+}
+
+.ui-helper-hidden {
+    display: none;
+}
+
+.ui-helper-hidden-accessible {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.autocomplete {
+    max-height: 200px;
+    overflow: scroll;
+    position: absolute;
+    top: 66px;
+    background: white;
+    width: 99.5%;
+    left: 0.25%;
+    z-index: 2;
+}
+
+.autocomplete ul li {
+    display: block;
+    padding: 6px 8px;
+}
+
+.autocomplete ul li.selected, .autocomplete ul li:hover {
+    background: #ff6633;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+.ui-autocomplete {
+    max-height: 200px;
+    overflow: scroll;
+    width: 99% !important;
+}
+
+.custom.textarea {
+    border-radius: 0;
+    box-shadow: none;
+
+    .taggle {
+        border-radius: 0;
+        padding: 5px;
+        padding-right: 20px;
+
+        .close {
+            display: inline-block;
+            right: 3px;
+        }
+    }
+}
+
+.custom.delicious {
+    background-image: linear-gradient(top,#eee 1%,#fff 15%);
+    border: 1px solid #AAA;
+    min-height: 50px;
+
+    &.active {
+        border-color: #3274D1;
+        background-image: linear-gradient(top,#eee 1%,#fff 15%);
+    }
+
+    .taggle {
+        color: #444;
+        border-radius: 0;
+        border-top-left-radius: 1.5rem;
+        border-bottom-left-radius: 1.5rem;
+        background-color: #ddd;
+        font-family: sans-serif;
+        font-size: 0.8rem;
+        padding: 5px;
+        padding-left: 20px;
+
+        .close {
+            color: #aaa;
+            font-size: 0.9rem;
+            height: 0.7rem;
+            width: 0.7rem;
+            line-height: .1rem;
+            margin-top: 3px;
+            right: auto;
+            left: 5px;
+
+            &:hover {
+                color: #888;
+            }
+        }
+    }
+}
+
+.custom.stackoverflow {
+    border: 1px solid #ccc;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+    .taggle {
+        color: #3E6D8E;
+        border-radius: 0;
+        background-color: #E0EAF1;
+        font-weight: 200;
+
+        &.taggle_hot {
+            background: #BDD0DD;
+        }
+
+        .close {
+            color: #aaa;
+            border-radius: 0.7rem;
+            font-size: 0.9rem;
+            height: 0.7rem;
+            width: 0.7rem;
+            line-height: .1rem;
+            margin-top: 3px;
+
+            &:hover {
+                background: #C03434;
+                color: #fff;
+            }
+        }
+    }
+}
