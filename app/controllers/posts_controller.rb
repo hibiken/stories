@@ -12,8 +12,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = current_user.posts.build(post_params)
-    if post.save
+    @post = current_user.posts.build(post_params)
+    if @post.save
       redirect_to root_url, notice: "Successfully created a post!"
     else
       flash.now[:alert] = "Could not save the post, Please try again"

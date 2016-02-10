@@ -1,18 +1,26 @@
 .editor-form {
   padding-top: 30px;
+  position: relative;
 
   .editor-title {
     font-size: 36px;
     border: none;
     outline: none;
     font-weight: 600;
+    width: 100%;
   }
   .medium-editable {
     height: 300px;
     outline: none;
     font-size: 22px;
+    border: none;
 
     // border: 1px solid; // turn this off after development
+  }
+  .picture_upload {
+    position: absolute;
+    top: 38px;
+    left: -50px;
   }
 }
 
@@ -20,6 +28,7 @@ label.picture_upload input[type="file"] {
   position: fixed;
   top: -1000px;
 }
+
 
 .picture_upload {
   border: 2px solid #AAA;
@@ -33,4 +42,20 @@ label.picture_upload input[type="file"] {
 
   float: right;
   margin-right: 8px;
+}
+
+// Override Taggle stylesheet.
+.taggle_list {
+  padding: 0 !important;
+  float: none !important;
+  display: -webkit-flex;
+  display: -ms-flex;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+}
+.taggle_placeholder {
+  top: 3px !important;
+  left: 0px !important;
 }

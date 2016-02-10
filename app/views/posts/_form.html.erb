@@ -1,11 +1,12 @@
-<%= form_for post, html: { multipart: true, class: "editor-form" } do |f| %>
+<%= form_for post, html: { multipart: true, class: "editor-form", autocomplete: "off" } do |f| %>
   <div class="form-group">
     <%= f.text_field :title, class: 'editor-title', placeholder: 'Title', autofocus: true %>
   </div>
 
   <div class="form-group">
     <%= f.text_area :body, class: 'medium-editable',
-      placeholder: 'Write your story here ...' %> </div>
+      placeholder: 'Write your story here ...' %> 
+  </div>
 
   <label class="picture_upload">
     <%= f.file_field :picture %>
