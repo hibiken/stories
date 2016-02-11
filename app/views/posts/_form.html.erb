@@ -11,6 +11,10 @@
     <%= f.file_field :picture %>
     <span class="icon-camera"></span>
   </label>
+  <div class="file-upload-previewer">
+    <img src="#" id="image_preview"/>
+  </div>
+
 
   <div class="hidden">
     <%= f.text_field :all_tags %>
@@ -21,6 +25,7 @@
   </div>
 
   <%= f.submit "Publish", class: "button green-inner-button" %>
+
 <% end %>
 
 <script>
@@ -36,5 +41,22 @@ var my_taggle = new Taggle('js-taggle', {
 
 $('input[type="submit"]').hover(function() {
   $('#post_all_tags').val(my_taggle.getTagValues());
+});
+
+function readURL(input) { 
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function (e) {
+      $('#image_preview').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+$("#post_picture").change(function(){
+  readURL(this);
+  $('.picture_upload').addClass('active');
 });
 </script>

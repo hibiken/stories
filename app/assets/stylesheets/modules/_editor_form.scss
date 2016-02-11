@@ -21,10 +21,19 @@
     &:hover {
       cursor: pointer;
     }
+    &.active {
+      color: $accent-color;
+    }
   }
   label.picture_upload input[type="file"] {
     position: fixed;
     top: -1000px;
+  }
+  .file-upload-previewer {
+    padding: 2em 0;
+  }
+  #image_preview {
+    width: 100%;
   }
 }
 
