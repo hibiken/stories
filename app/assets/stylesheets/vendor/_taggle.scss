@@ -25,16 +25,6 @@ $gray: #8a8a8a;
     }
 }
 
-::selection {
-    background: $project_color;
-    color: #fff;
-}
-
-::-moz-selection {
-    background: $project_color;
-    color: #fff;
-}
-
 @-webkit-keyframes bounce {
 
     0%, 20%, 50%, 80%, 100% {

@@ -1,5 +1,12 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
+    <div class="post-metadata">
+      <%= avatar_for(current_user, size: 40) %>
+      <div class="post-info">
+        <%= link_to current_user.username, current_user %><br/>
+        <small>Edit Post</small>
+      </div>
+    </div>
     <%= render 'form', post: @post %>
   </div>
 </div>

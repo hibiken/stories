@@ -1,5 +1,4 @@
 .editor-form {
-  padding-top: 30px;
   position: relative;
 
   .editor-title {
@@ -14,20 +13,21 @@
     outline: none;
     font-size: 22px;
     border: none;
-
-    // border: 1px solid; // turn this off after development
   }
   .picture_upload {
     position: absolute;
-    top: 38px;
+    top: 8px;
     left: -50px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  label.picture_upload input[type="file"] {
+    position: fixed;
+    top: -1000px;
   }
 }
 
-label.picture_upload input[type="file"] {
-  position: fixed;
-  top: -1000px;
-}
 
 
 .picture_upload {
