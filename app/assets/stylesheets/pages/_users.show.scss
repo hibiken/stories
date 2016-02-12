@@ -55,7 +55,8 @@ body.users.edit{
     border-radius: 50%;
     padding: 2px 5px;
     margin: 2px;
-    background-size: contain;
+    background-size: cover;
+    background-repeat: no-repeat;
     display: inline-block;
     width: 100px;
     height: 100px;

@@ -3,20 +3,39 @@
     <%= form_for @user, html: { multipart: true } do |f| %>
         <header class="hero">
           <div class="profile-info">
-            <h1 class="hero-title"><%= f.text_field :username, placeholder: "Username" %></h1>
+            <h1 class="hero-title"><%= f.text_field :username, autofocus: true, placeholder: "Username" %></h1>
             <p class="hero-description"><%= f.text_area :description, rows: 5, placeholder: "Tell the world about yourself!" %></p>
           </div>
 
 
           <div class="hero-avatar">
-            <label class="change-avatar" style="background-image: url('<%= @user.avatar.url %>')">
+            <label class="change-avatar" id="change-avatar" style="background-image: url('<%= @user.avatar.url %>')">
               <%= f.file_field :avatar %>
               <span class="icon-camera"></span>
             </label>
           </div>
         </header>
 
-        <%= f.submit "Save", class: 'button green-inner-button' %>
+        <%= f.submit "Save Change", class: 'button green-inner-button' %>
     <% end %>
   </div>
 </div>
+
+<script type="text/javascript">
+function readURL(input) {
+
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#change-avatar').attr('style', "background-image: url('" + e.target.result + "')");
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#user_avatar").change(function(){
+    readURL(this);
+});
+</script>
