@@ -1,14 +1,22 @@
-<h1>Edit profile</h1>
+<div class="profile-container">
+  <div class="hero-wrapper">
+    <%= form_for @user, html: { multipart: true } do |f| %>
+        <header class="hero">
+          <div class="profile-info">
+            <h1 class="hero-title"><%= f.text_field :username, placeholder: "Username" %></h1>
+            <p class="hero-description"><%= f.text_area :description, rows: 5, placeholder: "Tell the world about yourself!" %></p>
+          </div>
 
-<%= form_for @user, html: { multipart: true } do |f| %>
 
-  <%= f.label :username %>
-  <%= f.text_field :username %>
+          <div class="hero-avatar">
+            <label class="change-avatar" style="background-image: url('<%= @user.avatar.url %>')">
+              <%= f.file_field :avatar %>
+              <span class="icon-camera"></span>
+            </label>
+          </div>
+        </header>
 
-  <%= f.label :description %>
-  <%= f.text_area :description %>
-
-  <%= f.file_field :avatar %>
-
-  <%= f.submit "Save" %>
-<% end %>
+        <%= f.submit "Save", class: 'button green-inner-button' %>
+    <% end %>
+  </div>
+</div>
