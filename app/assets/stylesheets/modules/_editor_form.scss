@@ -29,11 +29,12 @@
     position: fixed;
     top: -1000px;
   }
-  .file-upload-previewer {
-    padding: 2em 0;
-  }
-  #image_preview {
-    width: 100%;
+  .file-upload-previewer,
+  .existing-img-previewer {
+    padding: 0 0 2em;
+    > img {
+      width: 100%;
+    }
   }
 }
 

@@ -1,4 +1,18 @@
 <%= form_for post, html: { multipart: true, class: "editor-form", autocomplete: "off" } do |f| %>
+
+  <label class="picture_upload">
+    <%= f.file_field :picture %>
+    <span class="icon-camera"></span>
+  </label>
+  <div class="file-upload-previewer hidden">
+    <img src="#" id="image_preview"/>
+  </div>
+  <% if post.picture? %>
+    <div class="existing-img-previewer" id="existing-img-previewer">
+      <%= image_tag post.picture.url(:thumb) %>
+    </div>
+  <% end %>
+
   <div class="form-group">
     <%= f.text_field :title, class: 'editor-title', placeholder: 'Title', autofocus: true %>
   </div>
@@ -6,15 +20,6 @@
   <div class="form-group">
     <%= f.text_area :body, class: 'medium-editable' %> 
   </div>
-
-  <label class="picture_upload">
-    <%= f.file_field :picture %>
-    <span class="icon-camera"></span>
-  </label>
-  <div class="file-upload-previewer">
-    <img src="#" id="image_preview"/>
-  </div>
-
 
   <div class="hidden">
     <%= f.text_field :all_tags %>
@@ -57,6 +62,8 @@ function readURL(input) {
 
 $("#post_picture").change(function(){
   readURL(this);
+  $('#existing-img-previewer').addClass('hidden');
   $('.picture_upload').addClass('active');
+  $('.file-upload-previewer').removeClass('hidden');
 });
 </script>
