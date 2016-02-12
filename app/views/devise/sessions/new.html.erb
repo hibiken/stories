@@ -2,28 +2,28 @@
   <div class="col-md-6 col-md-offset-3">
     <h2>Log in</h2>
 
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="form-group">
-        <%= f.label :email %>
-        <%= f.email_field :email, autofocus: true, class: "form-control" %>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { autocomplete: 'off' }) do |f| %>
+      <div class="form-input-wrapper">
+        <%= f.email_field :email, autofocus: true, placeholder: "Email", autocomplete: 'off' %>
       </div>
 
-      <div class="form-group">
-        <%= f.label :password %>
-        <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+      <div class="form-input-wrapper">
+        <%= f.password_field :password, autocomplete: "off", placeholder: "Password" %>
       </div>
+
+      <%= f.submit "Log in", class: "button green-inner-button" %>
 
       <% if devise_mapping.rememberable? -%>
-        <div class="field">
+        <div class="field remember-me">
           <%= f.check_box :remember_me %>
           <%= f.label :remember_me %>
         </div>
       <% end -%>
 
-
-      <%= f.submit "Log in", class: "btn btn-primary" %>
     <% end %>
 
-    <%= render "devise/shared/links" %>
+    <div class="devise-links">
+      <%= render "devise/shared/links" %>
+    </div>
   </div>
 </div>

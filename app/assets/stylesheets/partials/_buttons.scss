@@ -12,7 +12,7 @@
   }
 
   &.green-border-button {
-    color: $accent-color;
+    color: $accent-color !important;
     border-color: $accent-color;
     background-color: #fff;
   }

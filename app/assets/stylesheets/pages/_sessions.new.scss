@@ -1,0 +1,26 @@
+body.sessions.new,
+body.registrations.new {
+  input[type="text"],
+  input[type="password"],
+  input[type="email"] {
+    font-size: 28px;
+    font-weight: 100;
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: rgb(250, 255, 189);
+  }
+  .form-input-wrapper {
+    padding: 1.5em 0;
+  }
+  .remember-me {
+    display: inline-block;
+    color: $font-black;
+  }
+  .devise-links {
+    margin-top: 2em;
+    a {
+      color: $font-black;
+    }
+  }
+}
