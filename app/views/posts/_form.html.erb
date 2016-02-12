@@ -25,7 +25,7 @@
     <%= f.text_field :all_tags %>
   </div>
 
-  <div class="clearfix">
+  <div class="clearfix" data-behavior="tags" data-tags="<%= post.all_tags %>">
     <div id="js-taggle" style="position: relative;"></div>
   </div>
 
@@ -40,10 +40,15 @@ var editor = new MediumEditor('.medium-editable', {
   }
 });
 
+// preload tags if its edit.
+var tags = $('[data-behavior="tags"]').data("tags").split(', ');
+
 var my_taggle = new Taggle('js-taggle', {
-  duplicateTagClass: 'bounce'
+  duplicateTagClass: 'bounce',
+  tags: tags
 });
 
+// FIXME: is there a better way to do this?
 $('input[type="submit"]').hover(function() {
   $('#post_all_tags').val(my_taggle.getTagValues());
 });
