@@ -9,9 +9,9 @@ feature "Editing profile" do
 
   scenario "current user successfully edit his/her own" do
     visit edit_user_path(user)
-    fill_in "Username", with: "New Username"
-    fill_in "Description", with: "Awesome Developer"
-    click_on "Save"
+    fill_in "user[username]", with: "New Username"
+    fill_in "user[description]", with: "Awesome Developer"
+    click_on "Save Change"
 
     expect(page).to have_content "New Username"
     expect(page).to have_content "Awesome Developer"
