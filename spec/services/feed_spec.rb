@@ -22,7 +22,7 @@ RSpec.describe Feed do
     travel_post.tags << travel_tag
     followed_user.add_like_to(liked_by_following)
   end
-  
+
   describe "#posts" do
     it "includes posts which user either follow the author or the tag" do
       expect(feed.posts).to include(followed_post, music_post, liked_by_following)
