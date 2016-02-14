@@ -23,6 +23,9 @@ class Post < ActiveRecord::Base
 
   mount_uploader :picture, PictureUploader
 
+  # will_pagination configuration
+  self.per_page = 5
+
   include SearchablePost
 
   def self.tagged_with(name)

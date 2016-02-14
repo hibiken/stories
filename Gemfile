@@ -14,7 +14,6 @@ gem 'coffee-rails', '~> 4.1.0'
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails', '~> 5.0'
-# gem 'turbolinks' 
 gem 'jbuilder', '~> 2.0'
 
 gem 'carrierwave', '0.10.0'
@@ -34,6 +33,8 @@ gem 'sidekiq', '~> 4.0'
 gem 'sinatra', require: false
 gem 'slim'
 gem 'sidetiq', '~> 0.7.0'
+
+gem 'will_paginate', '~> 3.1'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
