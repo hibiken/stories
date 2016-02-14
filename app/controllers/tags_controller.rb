@@ -12,6 +12,6 @@ class TagsController < ApplicationController
     end
 
     def tagged_posts
-      Post.tagged_with(@tag.name)
+      @_tagged_posts ||= Post.tagged_with(@tag.name).paginate(page: params[:page])
     end
 end

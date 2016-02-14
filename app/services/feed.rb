@@ -2,16 +2,17 @@ class Feed
   include ActiveModel::Model
   attr_reader :user, :page
 
-  # will_paginate
-  delegate :total_pages, :current_page, to: :posts
-
   def initialize(user, page: nil)
     @user = user
     @page = page
   end
 
+  def method_missing(method, *args, &block)
+    posts.send(method, *args, &block)
+  end
+
   def posts
-    Post.paginate(page: page).recent.find(feed_post_ids)
+    Post.recent.where(id: feed_post_ids).paginate(page: page)
   end
 
   def tagged?(post)
