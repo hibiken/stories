@@ -30,19 +30,19 @@ class DashboardsController < ApplicationController
     end
 
     def feed
-      Feed.new(current_user)
+      Feed.new(current_user, page: params[:page])
     end
 
     def bookmarked_posts
-      current_user.bookmarked_posts
+      current_user.bookmarked_posts.paginate(page: params[:page])
     end
 
     def top_posts
-      Post.top_stories(5)
+      Post.top_stories(5).paginate(page: params[:page])
     end
 
     def recent_posts
-      Post.recent
+      Post.recent.paginate(page: params[:page])
     end
 
 end
