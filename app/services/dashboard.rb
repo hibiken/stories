@@ -1,7 +1,7 @@
 class Dashboard
   attr_reader :user, :posts, :tag, :filter
 
-  def initialize(user: nil, posts: , tag: nil, filter: nil )
+  def initialize(user: nil, posts: nil, tag: nil, filter: nil )
     @user = user
     @posts = posts
     @tag = tag
