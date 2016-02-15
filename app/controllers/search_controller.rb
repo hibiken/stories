@@ -3,7 +3,8 @@ class SearchController < ApplicationController
   layout "simple"
 
   def show
-    @posts = Post.search(params[:q]).records.to_a
+    @post_records = Post.search(params[:q]).paginate(page: params[:page]).records
+    @posts = @post_records.to_a
     @users = User.search(params[:q]).records.to_a
   end
 
