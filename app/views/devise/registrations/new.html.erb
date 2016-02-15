@@ -6,7 +6,7 @@
       <%= devise_error_messages! %>
 
       <div class="form-input-wrapper">
-        <%= f.text_field :username, autofocus: true, placeholder: "Username" %>
+        <%= f.text_field :username, autofocus: true, placeholder: "Username", onfocus: "this.value = this.value;" %>
       </div>
 
       <div class="form-input-wrapper">

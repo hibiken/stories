@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3 large-searchbar">
     <%= form_for :search, url: search_path, method: :get do |f| %>
-      <%= f.search_field :q, value: params[:q], placeholder: 'Search Stories', autofocus: true, autocomplete: 'off' %>
+      <%= f.search_field :q, value: params[:q], placeholder: 'Search Stories', autofocus: true, autocomplete: 'off', onfocus: "this.value = this.value;" %>
     <% end %>
   </div>
 </div>

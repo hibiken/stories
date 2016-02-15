@@ -4,7 +4,7 @@
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { autocomplete: 'off' }) do |f| %>
       <div class="form-input-wrapper">
-        <%= f.email_field :email, autofocus: true, placeholder: "Email", autocomplete: 'off' %>
+        <%= f.email_field :email, autofocus: true, placeholder: "Email", autocomplete: 'off', onfocus: "this.value = this.value;" %>
       </div>
 
       <div class="form-input-wrapper">
