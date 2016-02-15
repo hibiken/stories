@@ -1,6 +1,7 @@
 class DashboardsController < ApplicationController
   before_action :check_for_admin, only: [:show]
   before_action :authenticate_user!, only: [:bookmarks]
+
   def show
     if user_signed_in?
       @dashboard = Dashboard.new(user: current_user, posts: feed)
@@ -11,7 +12,10 @@ class DashboardsController < ApplicationController
 
   def bookmarks
     @dashboard = Dashboard.new(user: current_user, posts: bookmarked_posts, filter: :bookmarks)
-    render :show
+    respond_to do |format|
+      format.html { render :show }
+      format.js   { render :show }
+    end
   end
 
   def top_stories
@@ -20,7 +24,10 @@ class DashboardsController < ApplicationController
     else
       @dashboard = Dashboard.new(posts: top_posts, filter: :top_stories)
     end
-    render :show
+    respond_to do |format|
+      format.html { render :show }
+      format.js   { render :show }
+    end
   end
 
   private

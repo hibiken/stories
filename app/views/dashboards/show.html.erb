@@ -13,7 +13,9 @@
     </div>
   <% end %>
 
-  <%= render @dashboard.posts %>
+  <div data-behavior="endless-scroll">
+    <%= render @dashboard.posts %>
+  </div>
 
   <%= will_paginate @dashboard.posts %>
 
