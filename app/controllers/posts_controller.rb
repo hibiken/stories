@@ -13,11 +13,20 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
-    if @post.save
-      redirect_to root_url, notice: "Successfully created a post!"
+    if params[:commit] =~ /publish/i
+      if @post.publish
+        redirect_to root_url, notice: "Successfully created a post!"
+      else
+        flash.now[:alert] = "Could not save the post. Please try again"
+        render :new
+      end
     else
-      flash.now[:alert] = "Could not save the post, Please try again"
-      render :new
+      if @post.save_as_draft
+        redirect_to root_url, notice: "Successfully saved as a draft!"
+      else
+        flash.now[:alert] = "Could not save the post. Please try again"
+        render :new
+      end
     end
   end
 
