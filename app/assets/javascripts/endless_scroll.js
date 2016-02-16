@@ -10,6 +10,7 @@ var EndlessScroll = {
           $.getScript(url);
         }
       });
+      $(window).scroll();
     }
   }
 };
