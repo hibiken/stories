@@ -14,20 +14,9 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if params[:commit] =~ /publish/i
-      if @post.publish
-        redirect_to root_url, notice: "Successfully published the post!"
-      else
-        @post.unpublish
-        flash.now[:alert] = "Could not save the post. Please try again"
-        render :new
-      end
+      publish!
     else
-      if @post.save_as_draft
-        redirect_to drafts_and_stories_url, notice: "Successfully saved as a draft!"
-      else
-        flash.now[:alert] = "Could not save the post. Please try again"
-        render :new
-      end
+      draft!
     end
   end
 
@@ -37,20 +26,9 @@ class PostsController < ApplicationController
   def update
     @post.assign_attributes(post_params)
     if params[:commit] =~ /publish/i
-      if @post.publish
-        redirect_to @post, notice: "Successfully published the post!"
-      else
-        @post.unpublish
-        flash.now[:alert] = "Could not update the post, Please try again"
-        render :edit
-      end
+      publish!
     else
-      if @post.save_as_draft
-        redirect_to drafts_and_stories_url, notice: "Successfully saved as a draft!"
-      else
-        flash.now[:alert] = "Could not save the post. Please try again"
-        render :edit
-      end
+      draft!
     end
   end
 
@@ -71,5 +49,24 @@ class PostsController < ApplicationController
 
     def authorize_user
       redirect_to root_url unless current_user?(@post.user)
+    end
+
+    def publish!
+      if @post.publish
+        redirect_to @post, notice: "Successfully published the post!"
+      else
+        @post.unpublish
+        flash.now[:alert] = "Could not update the post, Please try again"
+        render :edit
+      end
+    end
+
+    def draft!
+      if @post.save_as_draft
+        redirect_to drafts_and_stories_url, notice: "Successfully saved as a draft!"
+      else
+        flash.now[:alert] = "Could not save the post. Please try again"
+        render :edit
+      end
     end
 end

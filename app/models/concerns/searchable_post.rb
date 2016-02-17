@@ -57,7 +57,6 @@ module SearchablePost
   end
 
   def index_document
-    debugger
     ElasticsearchIndexJob.perform_later('index', 'Post', self.id) if self.published?
   end
 
