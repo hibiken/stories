@@ -54,6 +54,10 @@ class Post < ActiveRecord::Base
     save
   end
 
+  def unpublish
+    self.published_at = nil
+  end
+
   def published?
     published_at.present?
   end

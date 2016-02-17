@@ -12,6 +12,7 @@ module SearchablePost
       mappings dynamic: 'false' do
         indexes :title, analyzer: 'autocomplete'
         indexes :body, analyzer: 'english'
+        indexes :published_at
         indexes :tags do
           indexes :name, analyzer: 'english'
         end
@@ -26,9 +27,18 @@ module SearchablePost
       __elasticsearch__.search(
         {
           query: {
-            multi_match: {
-              query: term,
-              fields: ['title^10', 'body', 'user.username^5', 'tags.name^5']
+            filtered: {
+              query: {
+                multi_match: {
+                  query: term,
+                  fields: ['title^10', 'body', 'user.username^5', 'tags.name^5']
+                }
+              },
+              filter: {
+                exists: {
+                  field: "published_at"
+                }
+              }
             }
           }
         }
@@ -38,7 +48,7 @@ module SearchablePost
 
   def as_indexed_json(options = {})
     self.as_json({
-      only: [:title, :body],
+      only: [:title, :body, :published_at],
       include: {
         user: {methods: [:avatar_url], only: [:username, :avatar_url] },
         tags: { only: :name }
@@ -47,7 +57,8 @@ module SearchablePost
   end
 
   def index_document
-    ElasticsearchIndexJob.perform_later('index', 'Post', self.id)
+    debugger
+    ElasticsearchIndexJob.perform_later('index', 'Post', self.id) if self.published?
   end
 
   def delete_document
