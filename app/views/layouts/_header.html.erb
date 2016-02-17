@@ -47,9 +47,8 @@
             <a href="#" class="avatar-wrapper dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               <%= avatar_for(current_user, size: 40) %></a>
             <ul class="dropdown-menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
+              <li><%= link_to "New story", new_post_path %></li>
+              <li><%= link_to "Drafts and stories", drafts_and_stories_path %></li>
               <li role="separator" class="divider"></li>
               <li><%= link_to "Profile", current_user %></li>
               <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
