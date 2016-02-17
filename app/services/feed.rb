@@ -12,7 +12,7 @@ class Feed
   end
 
   def posts
-    Post.recent.where(id: feed_post_ids).paginate(page: page)
+    Post.recent.where(id: feed_post_ids).published.paginate(page: page)
   end
 
   def tagged?(post)

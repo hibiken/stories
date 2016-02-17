@@ -54,6 +54,10 @@ class Post < ActiveRecord::Base
     save
   end
 
+  def published?
+    published_at.present?
+  end
+
 end
 
 # Delete the previous posts index in Elasticsearch
