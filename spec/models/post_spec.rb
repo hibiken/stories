@@ -18,4 +18,25 @@ RSpec.describe Post do
       expect(post).to be_persisted
     end
   end
+
+  describe "scopes" do
+    let!(:post)  { create(:post) }
+    let!(:draft) { create(:draft) }
+
+    describe "published" do
+      it "returns published posts" do
+        posts = Post.published
+        expect(posts).to include(post)
+        expect(posts).not_to include(draft)
+      end
+    end
+
+    describe "drafts" do
+      it "returns drafts" do
+        drafts = Post.drafts
+        expect(drafts).to include(draft)
+        expect(drafts).not_to include(post)
+      end
+    end
+  end
 end
