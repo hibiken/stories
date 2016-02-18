@@ -39,4 +39,17 @@ RSpec.describe Post do
       end
     end
   end
+
+  describe "words and word_count" do
+    let(:post) { build(:post, body: "This is five words long.") }
+
+    it "returns an array of words" do
+      expect(post.words).to include("five")
+      expect(post.words.first).to eq("This")
+    end
+
+    it "returns the word count" do
+      expect(post.word_count).to eq(5)
+    end
+  end
 end

@@ -20,5 +20,14 @@ body.stories.published {
       color: $super-light-font-color;
       font-size: 14px;
     }
+    .btn-group .dropdown-toggle {
+      border: none;
+      outline: none;
+      background-color: #ffffff;
+    }
+    .btn-group.open .dropdown-toggle {
+      box-shadow: none;
+    }
+
   }
 }

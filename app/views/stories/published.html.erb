@@ -18,7 +18,17 @@
       <% @posts.each do |post| %>
         <div class="story-card">
           <strong class="sc-title"><%= link_to post.title, edit_post_path(post) %></strong>
-          <small class="sc-metadata">Published <%= time_ago_in_words(post.published_at) %> ago</small>
+          <small class="sc-metadata">Published <%= time_ago_in_words(post.published_at) %> ago &#149; <%= post_length_in_minutes(post.body) %>
+            <div class="btn-group">
+              <button type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="glyphicon glyphicon-chevron-down"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li><%= link_to "Edit", edit_post_path(post) %></li>
+                <li><%= link_to "Delete", post_path(post), method: :delete %></li>
+              </ul>
+            </div>
+          </small>
         </div>
       <% end %>
     </div>

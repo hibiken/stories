@@ -63,7 +63,7 @@ class PostsController < ApplicationController
 
     def draft!
       if @post.save_as_draft
-        redirect_to drafts_and_stories_url, notice: "Successfully saved as a draft!"
+        redirect_to stories_drafts_path, notice: "Successfully saved as a draft!"
       else
         flash.now[:alert] = "Could not save the post. Please try again"
         render :edit
