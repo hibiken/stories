@@ -28,6 +28,11 @@ body.stories.published {
     .btn-group.open .dropdown-toggle {
       box-shadow: none;
     }
-
+  }
+  .no-sc-message {
+    text-align: center;
+    font-size: 22px;
+    padding-top: 15px;
+    color: $light-font-color;
   }
 }
