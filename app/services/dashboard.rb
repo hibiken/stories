@@ -21,7 +21,7 @@ class Dashboard
   end
 
   def top_stories
-    Post.top_stories(5)
+    Post.published.top_stories(5)
   end
 
   def new_post

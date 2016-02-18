@@ -20,12 +20,12 @@ RSpec.describe PostsController do
 
   describe "POST #create" do
     it "requires a logged-in user" do
-      post :create, post: { title: "Awesome title", body: "Awesome content" }
+      post :create, post: { title: "Awesome title", body: "Awesome content", commit: "Publish" }
       expect(response).to redirect_to(new_user_session_path)
     end
 
     it "does not save a new record in database" do
-      expect {post :create, post: attributes_for(:post) }.not_to change(Post, :count)
+      expect {post :create, post: attributes_for(:post), commit: "Publish" }.not_to change(Post, :count)
     end
   end
 
@@ -41,14 +41,14 @@ RSpec.describe PostsController do
 
     describe "POST #create" do
       it "allows user to create a post" do
-        expect{post :create, post: attributes_for(:post) }.to change(Post, :count).by(1)
+        expect{post :create, post: attributes_for(:post), commit: "Publish" }.to change(Post, :count).by(1)
       end
 
       it "fails create gracefully" do
         new_post = Post.new
         expect(new_post).to receive(:save).and_return(false)
         allow(Post).to receive(:new).and_return(new_post)
-        post :create, post: attributes_for(:post)
+        post :create, post: attributes_for(:post), commit: "Publish"
         expect(response).to render_template(:new)
       end
     end
@@ -70,7 +70,7 @@ RSpec.describe PostsController do
     end
 
     it "does not allow user to update post" do
-      patch :update, id: other_user_post.id, post: attributes_for(:post)
+      patch :update, id: other_user_post.id, post: attributes_for(:post), commit: "Publish"
       expect(response).to redirect_to(root_path)
     end
 

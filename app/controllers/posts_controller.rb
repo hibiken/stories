@@ -57,7 +57,7 @@ class PostsController < ApplicationController
       else
         @post.unpublish
         flash.now[:alert] = "Could not update the post, Please try again"
-        render :edit
+        render_form
       end
     end
 
@@ -66,7 +66,15 @@ class PostsController < ApplicationController
         redirect_to stories_drafts_path, notice: "Successfully saved as a draft!"
       else
         flash.now[:alert] = "Could not save the post. Please try again"
+        render_form
+      end
+    end
+
+    def render_form
+      if @post.persisted?
         render :edit
+      else
+        render :new
       end
     end
 end

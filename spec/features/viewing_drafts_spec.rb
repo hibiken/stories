@@ -9,7 +9,7 @@ RSpec.feature "Viewing drafts" do
     fill_in "post[all_tags]", with: "travel, fun, life"
     click_on "Save as Draft"
 
-    visit drafts_and_stories_path
+    visit stories_drafts_path
     expect(page).to have_content "My first Article"
 
     visit root_path
