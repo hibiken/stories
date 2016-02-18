@@ -1,8 +1,11 @@
 class StoriesController < ApplicationController
   before_action :authenticate_user!
 
-  def index
+  def drafts
     @drafts = current_user.posts.drafts
-    @published_posts = current_user.posts.published
+  end
+
+  def published
+    @posts = current_user.posts.published
   end
 end

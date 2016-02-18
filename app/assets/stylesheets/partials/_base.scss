@@ -3,3 +3,18 @@ body {
   font-size: 14px;
 }
 
+.side-padding-5 {
+  padding: 0 5%;
+}
+
+.flex-container {
+  display: -ms-flex;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.flex-space-btw {
+  -ms-justify-content: space-between;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}

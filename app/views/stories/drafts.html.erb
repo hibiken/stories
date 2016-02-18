@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="side-padding-5">
+      <header class="hero flex-container flex-space-btw">
+        <h1 class="hero-title">Your Stories</h1>
+        <div class="button-set">
+          <%= link_to "Write a story", new_post_path, class: "button green-border-button" %>
+        </div>
+      </header>
+
+      <nav class="nav-tabs">
+        <ul>
+          <li><%= nav_link_to "Drafts", stories_drafts_path %></li>
+          <li><%= nav_link_to "Public", stories_published_path %></li>
+        </ul>
+      </nav>
+
+      <% @drafts.each do |draft| %>
+        <div class="story-card">
+          <strong class="sc-title"><%= link_to draft.title, edit_post_path(draft) %></strong>
+          <small class="sc-metadata">Last edited <%= time_ago_in_words(draft.updated_at) %> ago</small>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

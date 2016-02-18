@@ -1,0 +1,27 @@
+.nav-tabs {
+  border-top: 1px solid $border-color;
+  border-bottom: none;
+  ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    li {
+      margin-right: 25px;
+    }
+
+    li > a {
+      padding: 1.4em 0;
+      display: block;
+      color: $light-font-color;
+      font-size: 11px;
+      letter-spacing: 1.3px;
+      text-transform: uppercase;
+      text-decoration: none;
+      &.active {
+        font-weight: 700;
+        color: $font-black;
+        border-top: 1px solid;
+      }
+    }
+  }
+}

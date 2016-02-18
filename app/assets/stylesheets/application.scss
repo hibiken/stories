@@ -32,6 +32,7 @@
 @import 'pages/dashboard.show';
 @import 'pages/posts.new';
 @import 'pages/sessions.new';
+@import 'pages/stories.drafts';
 
 // Modules
 @import 'modules/header';
@@ -46,6 +47,8 @@
 @import 'modules/searchbar';
 @import 'modules/editor_form';
 @import 'modules/loader';
+@import 'modules/hero';
+@import 'modules/nav_tabs';
 
 // Vendor
 @import 'vendor/medium-editor';
