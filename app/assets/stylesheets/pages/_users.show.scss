@@ -1,6 +1,6 @@
 body.users.show,
 body.users.edit{
-  .profile-container {
+  .banner-container {
     background-color: #fafafa;
     width: 100%;
   }
@@ -43,9 +43,30 @@ body.users.edit{
 
   .posts-wrapper {
     padding-top: 22px;
+    padding-bottom: 22px;
     width: 50%;
     max-width: 550px;
     margin: auto;
+  }
+
+  .recommended-post-card {
+    display: block;
+    width: 50%;
+    padding: 1em 0;
+    &:first-child,
+    &:nth-child(2) {
+      border-bottom: 0.5px solid $light-border-color;
+    }
+  }
+  .rpc-title {
+    color: $font-black;
+    text-decoration: none;
+    font-size: 15px;
+    letter-spacing: 0.3px;
+  }
+  .rpc-username {
+    color: $super-light-font-color;
+    font-size: 14px;
   }
   label.change-avatar input[type="file"] {
     position: fixed;

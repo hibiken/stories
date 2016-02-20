@@ -10,3 +10,15 @@
     border-top: 1px solid $border-color;
   }
 }
+
+.heading-border-b {
+  color: $font-black;
+  font-weight: bold;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  border-bottom: 1px solid $border-color;
+  padding-bottom: 0.5em;
+  a {
+    color: $accent-color;
+  }
+}

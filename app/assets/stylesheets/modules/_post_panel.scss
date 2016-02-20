@@ -1,6 +1,9 @@
 .post-panel {
   border-bottom: 1px solid $border-color;
   padding: 20px 0 25px;
+  &:last-child {
+    border: none;
+  }
 
   .post-picture-wrapper {
     padding: 1.2em 0 0;

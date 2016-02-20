@@ -5,7 +5,8 @@ class UsersController < ApplicationController
   before_action :check_for_relationship, only: [:show]
 
   def show
-    @latest_posts = @user.posts.latest(3)
+    @latest_posts = @user.posts.latest(3).published
+    @recommended_posts = @user.liked_posts.latest(4).published
   end
 
   def edit

@@ -11,6 +11,12 @@ body {
   display: -ms-flex;
   display: -webkit-flex;
   display: flex;
+
+  &.f-wrap {
+    -ms-flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
 }
 
 .flex-space-btw {
