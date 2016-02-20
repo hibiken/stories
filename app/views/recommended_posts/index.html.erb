@@ -22,21 +22,6 @@
   </div>
 </div>
 <div class="posts-wrapper">
-  <h4 class="small-heading with-border">latest</h4>
-  <%= render @latest_posts %>
-</div>
-<div class="banner-container">
-  <div class="posts-wrapper">
-    <h4 class="heading-border-b">Recommended by <%= @user.username %> &#149; 
-      <%= link_to "See all", user_recommended_posts_path(@user) %>
-    </h4>
-    <div class="flex-container f-wrap">
-      <% @recommended_posts.each do |post| %>
-      <div class="recommended-post-card">
-        <%= link_to post.title, post, class: "rpc-title" %><br/>
-        <small class="rpc-username"><%= post.username %></small>
-      </div>
-      <% end %>
-    </div>
-  </div>
+  <h4 class="heading-border-b">Recommended by <%= @user.username %></h4>
+  <%= render @recommended_posts %>
 </div>

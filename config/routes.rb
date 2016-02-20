@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   root "dashboards#show"
   devise_for :admins, controllers: { sessions: 'admin/sessions' }
   devise_for :users, controllers: { sessions: 'users/sessions' }
-  resources :users, only: [:show, :edit, :update]
+
+  resources :users, only: [:show, :edit, :update] do
+    resources :recommended_posts, only: [:index]
+  end
+
   resources :posts, except: [:index] do
     resources :responses, only: [:create]
     resources :likes, only: [:create, :destroy], module: :posts
