@@ -1,12 +1,22 @@
 /*** Colors ***/
 $black: #000000;
+$white: #ffffff;
 $accent-color: #00ab6b;
+$light-gray: rgba(0,0,0,0.44);
+$super-light-gray: rgba(0,0,0,0.05);
+
+// border color
 $border-color: rgba(0, 0, 0, 0.1);
 $light-border-color: #f0f0f0;
 $border-hover-color: rgba(0, 0, 0, 0.3);
-$light-gray: rgba(0,0,0,0.44);
-$super-light-gray: rgba(0,0,0,0.05);
+
+// font colr
 $light-font-color: rgba(0,0,0,0.6);
 $font-black: rgba(0,0,0, 0.8);
 $super-light-font-color: $border-hover-color;
+
+// button color
 $button-green: #02b875;
+
+// background color
+$background-gray: #fafafa;

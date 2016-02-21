@@ -1,0 +1,7 @@
+$('[data-behavior="endless-scroll"]').append('<%= j render @dashboard.posts %>');
+
+<% if @dashboard.posts.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate @dashboard.posts %>');
+<% else %>
+  $('.pagination').remove();
+<% end %>

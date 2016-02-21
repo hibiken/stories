@@ -1,15 +1,17 @@
 <% feed.posts.each do |post| %>
-  <% if feed.tagged?(post) %>
-    <div class="feed-metadata">
-      <span class="icon-price-tag"></span> <%= link_to feed.tag_for(post).name, feed.tag_for(post) %>
-    </div>
-  <% elsif feed.recommended?(post) %>
+  <div class="feed-panel">
+    <% if feed.tagged?(post) %>
+      <div class="feed-metadata">
+        <span class="icon-price-tag"></span> <%= link_to feed.tag_for(post).name, feed.tag_for(post) %>
+      </div>
+    <% elsif feed.recommended?(post) %>
     <div class="feed-metadata">
       Recommended by <%= link_to feed.recommender_for(post).username, feed.recommender_for(post) %>
-    <% if (post.likes.count > 2) %>
-      and <%= pluralize(post.likes.count - 1, 'other') %>
-    <% end %>
+      <% if (post.likes.count > 2) %>
+        and <%= pluralize(post.likes.count - 1, 'other') %>
+      <% end %>
     </div>
-  <% end %>
-  <%= render partial: 'posts/post', locals: { post: post } %>
+    <% end %>
+    <%= render partial: 'posts/post', locals: { post: post } %>
+  </div>
 <% end %>

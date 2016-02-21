@@ -1,3 +1,19 @@
 .dashboard-main-content {
   padding-top: 2em;
 }
+
+body.dashboards.show,
+body.dashboards.bookmarks,
+body.dashboards.top_stories {
+  .main-container {
+    background: $background-gray;
+  }
+  .posts-wrapper > .post-panel {
+    background: $white;
+    padding: 20px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(0,0,0,.04);
+    box-shadow: 0 1px 4px rgba(0,0,0,.03);
+    border-radius: 3px;
+  }
+}
