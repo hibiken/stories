@@ -46,12 +46,13 @@
           <li>
             <a href="#" class="avatar-wrapper dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
               <%= avatar_for(current_user, size: 40) %></a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "New story", new_post_path %></li>
-              <li><%= link_to "Drafts and stories", stories_drafts_path %></li>
+            <ul class="dropdown-menu nav-dropdown">
+              <span class="dropdown-arrow"></span>
+              <li class="nd-main"><%= link_to "New story", new_post_path %></li>
+              <li class="nd-main"><%= link_to "Drafts and stories", stories_drafts_path %></li>
               <li role="separator" class="divider"></li>
-              <li><%= link_to "Profile", current_user %></li>
-              <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+              <li class="nd-sub"><%= link_to "Profile", current_user %></li>
+              <li class="nd-sub"><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
             </ul>
           </li>
         <% else %>
