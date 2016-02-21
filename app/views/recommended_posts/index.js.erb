@@ -1,0 +1,7 @@
+$('[data-behavior="endless-scroll"]').append('<%= j render @recommended_posts %>');
+
+<% if @recommended_posts.next_page %>
+  $('.pagination').replaceWith('<%= j will_paginate @recommended_posts %>');
+<% else %>
+  $('.pagination').remove();
+<% end %>

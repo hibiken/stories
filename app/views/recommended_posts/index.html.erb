@@ -23,5 +23,8 @@
 </div>
 <div class="posts-wrapper">
   <h4 class="heading-border-b">Recommended by <%= @user.username %></h4>
-  <%= render @recommended_posts %>
+  <div data-behavior="endless-scroll">
+    <%= render @recommended_posts %>
+  </div>
+  <%= will_paginate @recommended_posts %>
 </div>
