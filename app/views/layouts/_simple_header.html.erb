@@ -7,23 +7,8 @@
       <ul class="nav navbar-nav navbar-right">
         <li class="new-post-button"><%= link_to "Write a story", new_post_path, class: "button" %></li>
         <% if user_signed_in? %>
-          <li id="notifications">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              <span class="icon-bell-o notification-bell" id="bell"></span></a>
-            <ul class="dropdown-menu" id="notification-items">
-            </ul>
-          </li>
-          <li>
-            <a href="#" class="avatar-wrapper dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-              <%= avatar_for(current_user, size: 40) %></a>
-            <ul class="dropdown-menu">
-              <li><%= link_to "New story", new_post_path %></li>
-              <li><%= link_to "Drafts and stories", stories_drafts_path %></li>
-              <li role="separator" class="divider"></li>
-              <li><%= link_to "Profile", current_user %></li>
-              <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
-            </ul>
-          </li>
+          <%= render 'layouts/notifications' %>
+          <%= render 'layouts/avatar_dropdown' %>
         <% else %>
           <li><%= link_to "Sign in / Sign up", new_user_session_path, class: 'button green-border-button sign-in-button' %></li>
         <% end %>
