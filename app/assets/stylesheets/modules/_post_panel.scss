@@ -17,16 +17,19 @@
   .main-body {
     margin-bottom: 20px;
     .post-title a {
-      color: $black;
+      color: $font-black;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 700;
+      font-size: 29px;
+      letter-spacing: -.022em;
+      line-height: 1.12;
     }
 
     .post-body {
-      font-size: 18px;
-      line-height: 1.5;
-      letter-spacing: -0.004em;
-      font-weight: 200;
+      font-size: 21px;
+      line-height: 1.18;
+      letter-spacing: -.022em;
+      color: $light-gray;
     }
 
     .read-more {
