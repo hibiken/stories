@@ -1,6 +1,6 @@
 json.array! @notifications do |notification|
   json.actor notification.actor.username
-  json.actor_avatar notification.actor.avatar? ? notification.actor.avatar.url : '/assets/default-avatar.jpg'
+  json.actor_avatar notification.actor.avatar? ? notification.actor.avatar.url : image_url('/assets/default-avatar.jpg')
   json.action notification.action
 
   json.type notification.notifiable.class.to_s.underscore.humanize.downcase
