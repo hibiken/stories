@@ -45,7 +45,7 @@ class DashboardsController < ApplicationController
     end
 
     def top_posts
-      Post.published.top_stories(5).paginate(page: params[:page])
+      Post.published.top_stories(5)
     end
 
     def recent_posts

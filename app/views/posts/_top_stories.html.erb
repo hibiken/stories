@@ -1,0 +1,37 @@
+<% posts.each_with_index do |post, index| %>
+  <div class="post-panel">
+    <div class="top-story-rank">
+      <div class="count-button-wrapper">
+        <span class="count-button"><%= index + 1 %></span>
+      </div>
+    </div>
+    <%= render partial: 'posts/post_metadata', locals: { post: post } %>
+
+    <% if post.picture? %>
+      <div class="post-picture-wrapper">
+        <%= image_tag post.picture.url(:thumb) %>
+      </div>
+    <% end %>
+
+    <div class="main-body">
+      <h3 class="post-title"><%= link_to post.title, post %></h3>
+      <div class="post-body"><%= truncate(post.body, length: 90, escape: false) { link_to "Read more ...", post, class: 'read-more' } %></div>
+    </div>
+
+    <div class="post-stats clearfix">
+      <div id="post_<%= post.id %>_likes" class="pull-left">
+        <%= render partial: 'posts/likes', locals: { post: post } %>
+      </div>
+
+      <div id="post_<%= post.id %>_bookmarks" class="pull-right">
+        <%= render partial: 'posts/bookmarks', locals: { post: post } %>
+      </div>
+
+      <div class="response-count pull-right">
+        <% if post.responses.any? %>
+          <%= link_to_responses_to(post) %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

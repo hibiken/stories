@@ -35,4 +35,8 @@ class Dashboard
   def filtered?
     filter.present?
   end
+
+  def top_stories?
+    filter == :top_stories
+  end
 end

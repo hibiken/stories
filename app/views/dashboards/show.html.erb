@@ -13,11 +13,19 @@
     </div>
   <% end %>
 
-  <div class="posts-wrapper" data-behavior="endless-scroll">
-    <%= render @dashboard.posts %>
-  </div>
+  <% unless @dashboard.top_stories? %>
+    <div class="posts-wrapper" data-behavior="endless-scroll">
+      <%= render @dashboard.posts %>
+    </div>
+  <% else %>
+    <div class="posts-wrapper">
+      <%= render 'posts/top_stories', posts: @dashboard.posts %>
+    </div>
+  <% end %>
 
-  <%= will_paginate @dashboard.posts %>
+  <% unless @dashboard.top_stories? %>
+    <%= will_paginate @dashboard.posts %>
+  <% end %>
 
 </div>
 

@@ -17,3 +17,14 @@ body.dashboards.top_stories {
     border-radius: 3px;
   }
 }
+
+body.dashboards.top_stories {
+  .top-story-rank {
+    padding-bottom: 1.2em;
+  }
+  .count-button-wrapper {
+    margin: auto;
+    width: 40px;
+    height: 40px;
+  }
+}
