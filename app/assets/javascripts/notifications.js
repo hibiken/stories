@@ -41,7 +41,7 @@ var Notification = {
           itemContent = notification.actor + " " + notification.action + " " + notification.type
           break;
       }
-      imageTag = '<img width="35" class="avatar-image" src="' + notification.actor_avatar + '"/>';
+      imageTag = notification.actor_avatar_img_tag;
       cssClass = (notification.unread) ? 'new-notification' : '';
       if (notification.unread) {
         unreadCounter++;
