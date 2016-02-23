@@ -46,7 +46,8 @@ var tags = tag_string.length > 0 ? tag_string.split(', ') : [];
 
 var my_taggle = new Taggle('js-taggle', {
   duplicateTagClass: 'bounce',
-  tags: tags
+  tags: tags,
+  preserveCase: true
 });
 
 // FIXME: is there a better way to do this?
