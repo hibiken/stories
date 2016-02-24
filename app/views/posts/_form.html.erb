@@ -14,11 +14,11 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.text_field :title, class: 'editor-title', placeholder: 'Title', autofocus: true %>
+    <%= f.text_field :title, class: 'editor-title', placeholder: 'Title', autofocus: true, data: { behavior: "autosave" } %>
   </div>
 
   <div class="form-group">
-    <%= f.text_area :body, class: 'medium-editable' %> 
+    <%= f.text_area :body, class: 'medium-editable', data: { behavior: "autosave" } %> 
   </div>
 
   <div class="hidden">
@@ -73,4 +73,9 @@ $("#post_picture").change(function(){
   $('.picture_upload').addClass('active');
   $('.file-upload-previewer').removeClass('hidden');
 });
+
+// Autosave
+$('[data-behavior="autosave"]').autoSave(function() {
+  console.log('autosave!');
+}, 500);
 </script>

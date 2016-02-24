@@ -15,6 +15,7 @@
 //= require angular
 //= require medium-editor
 //= require taggle
+//= require jquery.autoSave
 //= require bootstrap-sprockets
 //= require app
 //= require_tree .
