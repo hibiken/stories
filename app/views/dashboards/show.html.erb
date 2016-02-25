@@ -1,17 +1,4 @@
 <div class="col-md-6 col-md-offset-1 dashboard-main-content">
-  <% if @dashboard.with_tag? %>
-
-    <% if admin_signed_in? %>
-      <%= feature_tag_button_for(@dashboard.tag) %>
-    <% else %>
-      <%= follow_tag_button_for(@dashboard.tag) %>
-    <% end %>
-
-    <div class="heading-container">
-      <small class="heading-prefix">Tagged in</small>
-      <h3 class="heading-title"><%= @dashboard.tag.name.titleize %></h3>
-    </div>
-  <% end %>
 
   <% unless @dashboard.top_stories? %>
     <div class="posts-wrapper" data-behavior="endless-scroll">

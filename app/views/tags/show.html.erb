@@ -1,17 +1,15 @@
 <div class="col-md-6 col-md-offset-1 dashboard-main-content">
-  <% if @dashboard.with_tag? %>
 
-    <% if admin_signed_in? %>
-      <%= feature_tag_button_for(@dashboard.tag) %>
-    <% else %>
-      <%= follow_tag_button_for(@dashboard.tag) %>
-    <% end %>
-
-    <div class="heading-container">
-      <small class="heading-prefix">Tagged in</small>
-      <h3 class="heading-title"><%= @dashboard.tag.name %></h3>
-    </div>
+  <% if admin_signed_in? %>
+    <%= feature_tag_button_for(@dashboard.tag) %>
+  <% else %>
+    <%= follow_tag_button_for(@dashboard.tag) %>
   <% end %>
+
+  <div class="heading-container">
+    <small class="heading-prefix">Tagged in</small>
+    <h3 class="heading-title"><%= @dashboard.tag.name %></h3>
+  </div>
 
   <div class="posts-wrapper" data-behavior="endless-scroll">
     <%= render @dashboard.posts %>

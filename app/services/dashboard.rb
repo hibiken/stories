@@ -28,10 +28,6 @@ class Dashboard
     Post.new
   end
 
-  def with_tag?
-    !tag.nil?
-  end
-
   def filtered?
     filter.present?
   end
