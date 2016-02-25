@@ -3,13 +3,26 @@ class API::PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
-    @post.save(validate: false)
+    if @post.published?
+      @post.save
+    else
+      @post.save_as_draft
+    end
   end
 
   def update
     @post = current_user.posts.find(params[:id])
     @post.assign_attributes(post_params)
-    @post.save(validate: false)
+    if @post.published?
+      @post.save
+    else
+      @post.save_as_draft
+    end
+  end
+
+  def destroy
+    @post = current_user.posts.find(params[:id])
+    @post.destroy
   end
 
   private

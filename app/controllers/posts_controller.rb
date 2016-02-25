@@ -15,10 +15,12 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
-    if params[:commit] =~ /publish/i
-      publish!
+    if @post.publish
+      redirect_to @post, notice: "Successfully published the post!"
     else
-      draft!
+      @post.unpublish
+      flash.now[:alert] = "Could not update the post, Please try again"
+      render :new
     end
   end
 
@@ -27,10 +29,12 @@ class PostsController < ApplicationController
 
   def update
     @post.assign_attributes(post_params)
-    if params[:commit] =~ /publish/i
-      publish!
+    if @post.publish
+      redirect_to @post, notice: "Successfully published the post!"
     else
-      draft!
+      @post.unpublish
+      flash.now[:alert] = "Could not update the post, Please try again"
+      render :edit
     end
   end
 
@@ -51,32 +55,5 @@ class PostsController < ApplicationController
 
     def authorize_user
       redirect_to root_url unless current_user?(@post.user)
-    end
-
-    def publish!
-      if @post.publish
-        redirect_to @post, notice: "Successfully published the post!"
-      else
-        @post.unpublish
-        flash.now[:alert] = "Could not update the post, Please try again"
-        render_form
-      end
-    end
-
-    def draft!
-      if @post.save_as_draft
-        redirect_to stories_drafts_path, notice: "Successfully saved as a draft!"
-      else
-        flash.now[:alert] = "Could not save the post. Please try again"
-        render_form
-      end
-    end
-
-    def render_form
-      if @post.persisted?
-        render :edit
-      else
-        render :new
-      end
     end
 end

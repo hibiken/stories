@@ -51,7 +51,7 @@ class Post < ActiveRecord::Base
 
   def save_as_draft
     self.published_at = nil
-    save
+    save(validation: false)
   end
 
   def unpublish

@@ -42,7 +42,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :posts, only: [:create, :update]
+    resources :posts, only: [:create, :update, :destroy]
   end
 
   authenticate :admin do

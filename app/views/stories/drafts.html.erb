@@ -17,7 +17,7 @@
 
       <% if @drafts.any? %>
         <% @drafts.each do |draft| %>
-          <div class="story-card">
+          <div class="story-card" id="story_<%= draft.id %>">
             <strong class="sc-title"><%= link_to draft.title, edit_post_path(draft) %></strong>
             <small class="sc-metadata">
               Last edited <%= time_ago_in_words(draft.updated_at) %> ago &#149; <%= post_length_in_minutes(draft.body) %> (<%= pluralize(draft.word_count, 'word') %>) so far &#149;
@@ -27,7 +27,7 @@
                 </button>
                 <ul class="dropdown-menu">
                   <li><%= link_to "Edit", edit_post_path(draft) %></li>
-                  <li><%= link_to "Delete", post_path(draft), method: :delete %></li>
+                  <li><%= link_to "Delete", api_post_path(draft), method: :delete, remote: true %></li>
                 </ul>
               </div>
             </small>
