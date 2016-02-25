@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Stories</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="<%= controller.controller_name %> <%= controller.action_name %>">
+  <%= render 'layouts/editor_header' %>
+  <%= render 'layouts/alert_messages' %>
+
+  <div class="container-fluid">
+    <%= yield %>
+    <%= yield :sidebar %>
+  </div> 
+
+</body>
+</html>
+

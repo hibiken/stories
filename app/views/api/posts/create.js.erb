@@ -1,0 +1,7 @@
+console.log('... replacing form URL....');
+var title = $('.editor-title').val();
+$('#new_post').replaceWith('<%= j render 'posts/form', post: @post %>');
+$('.editor-title').val(title).focus();
+window.setTimeout(function() {
+  $('[data-behavior="editor-message"]').text('Saved');
+}, 2000);

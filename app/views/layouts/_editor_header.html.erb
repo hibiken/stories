@@ -1,0 +1,22 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <%= link_to "Stories", root_path, class: "navbar-brand", id: "logo" %>
+    </div>
+
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="#" data-behavior="editor-message">
+        </a>
+      </li>
+    </ul>
+
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <%= render 'layouts/notifications' %>
+        <%= render 'layouts/avatar_dropdown' %>
+      </ul>
+    </div> 
+  </div>
+</nav>
+

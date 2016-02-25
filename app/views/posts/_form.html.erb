@@ -14,7 +14,7 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.text_field :title, class: 'editor-title', placeholder: 'Title', autofocus: true, data: { behavior: "autosave" } %>
+    <%= f.text_field :title, class: 'editor-title', placeholder: 'Title', autofocus: true, data: { behavior: "autosave" }, onfocus: "this.value = this.value;" %>
   </div>
 
   <div class="form-group">
@@ -26,7 +26,7 @@
   </div>
 
   <div class="clearfix" data-behavior="tags" data-tags="<%= post.all_tags %>">
-    <div id="js-taggle" style="position: relative;"></div>
+    <div id="js-taggle" style="position: relative;" data-behavior="autosave"></div>
   </div>
 
   <%= f.submit "Publish", class: "button green-inner-button" %>
@@ -55,6 +55,8 @@ $('input[type="submit"]').hover(function() {
   $('#post_all_tags').val(my_taggle.getTagValues());
 });
 
+
+/*** Image Preview ***/
 function readURL(input) { 
   if (input.files && input.files[0]) {
     var reader = new FileReader();
@@ -74,8 +76,33 @@ $("#post_picture").change(function(){
   $('.file-upload-previewer').removeClass('hidden');
 });
 
-// Autosave
+
+
+/*** Autosave ***/
 $('[data-behavior="autosave"]').autoSave(function() {
-  console.log('autosave!');
-}, 500);
+  $('[data-behavior="editor-message"]').text('Saving...');
+  $('#post_all_tags').val(my_taggle.getTagValues());
+  postAutosave($('.editor-form').attr('action'),
+                $('input[name="_method"]').val(),
+                $('#post_title').val(),
+                $('#post_body').val(),
+                $('#post_all_tags').val()
+                );
+}, 500); 
+
+function postAutosave(url, method, title, body, all_tags) {
+  $.ajax({
+    url: '/api' + url,
+    dataType: "script",
+    method: method || "POST",
+    data: {
+      post: {
+        title: title,
+        body: body,
+        all_tags: all_tags
+      }
+    },
+    success: function() { console.log('autosave successful'); }
+  });
+}
 </script>
