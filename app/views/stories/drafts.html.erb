@@ -18,7 +18,7 @@
       <% if @drafts.any? %>
         <% @drafts.each do |draft| %>
           <div class="story-card" id="story_<%= draft.id %>">
-            <strong class="sc-title"><%= link_to draft.title, edit_post_path(draft) %></strong>
+            <strong class="sc-title"><%= link_to draft.title, edit_post_path(draft) if draft.title.present? %></strong>
             <small class="sc-metadata">
               Last edited <%= time_ago_in_words(draft.updated_at) %> ago &#149; 
               <% if draft.body.present? %>
