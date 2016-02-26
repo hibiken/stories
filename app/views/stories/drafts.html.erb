@@ -20,7 +20,11 @@
           <div class="story-card" id="story_<%= draft.id %>">
             <strong class="sc-title"><%= link_to draft.title, edit_post_path(draft) %></strong>
             <small class="sc-metadata">
-              Last edited <%= time_ago_in_words(draft.updated_at) %> ago &#149; <%= post_length_in_minutes(draft.body) %> (<%= pluralize(draft.word_count, 'word') %>) so far &#149;
+              Last edited <%= time_ago_in_words(draft.updated_at) %> ago &#149; 
+              <% if draft.body.present? %>
+                <%= post_length_in_minutes(draft.body) %> 
+                (<%= pluralize(draft.word_count, 'word') %>) so far &#149;
+              <% end %>
               <div class="btn-group">
                 <button type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span class="glyphicon glyphicon-chevron-down"></span>

@@ -10,7 +10,7 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    @post = Post.new_draft_for(current_user)
   end
 
   def create
