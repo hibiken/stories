@@ -8,6 +8,6 @@ class Admin::DashboardsController < ApplicationController
   private
 
     def all_posts
-      Post.all
+      Post.published
     end
 end
