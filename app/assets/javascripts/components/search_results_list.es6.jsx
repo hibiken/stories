@@ -8,9 +8,9 @@ class SearchResultsList extends React.Component {
             <span className="glyphicon glyphicon-search"></span> Search for <strong>{this.props.term}</strong>
           </a>
         </li>
-        {this.renderPostHeader()}
+        {this.renderPostHeading()}
         {this.renderPosts()}
-        {this.renderUserHeader()}
+        {this.renderUserHeading()}
         {this.renderUsers()}
       </ul>
     );
@@ -28,13 +28,13 @@ class SearchResultsList extends React.Component {
     });
   }
 
-  renderPostHeader() {
+  renderPostHeading() {
     if (this.props.posts.length === 0) { return; }
 
     return <li><h4 className="autocomplete-heading">Posts</h4></li>
   }
 
-  renderUserHeader() {
+  renderUserHeading() {
     if (this.props.users.length === 0) { return; }
 
     return <li><h4 className="autocomplete-heading">People</h4></li>
