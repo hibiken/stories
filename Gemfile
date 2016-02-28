@@ -5,10 +5,10 @@ gem 'rails', '4.2.5'
 gem 'puma', '~> 2.15'
 gem 'pg'
 gem 'devise', '~> 3.5.3'
+gem 'react-rails', '~> 1.6'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
