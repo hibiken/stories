@@ -9,25 +9,43 @@ nav.navbar {
     background-color: #fff !important;
   }
   #logo {
-    text-transform: uppercase;
-    font-weight: bold;
+    width: 152px;
+    position: relative;
+    img, span {
+      position: absolute;
+    }
+    img {
+      top: -2px;
+    }
+    span {
+      right: 0;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
   }
 
   .filter-links {
     margin-left: 1.5em;
     li > a {
       text-decoration: none;
-      text-transform: uppercase;
-      font-size: 11px;
+      font-size: 14px;
       color: $light-font-color;
-      letter-spacing: 0.1em;
-      font-weight: 600;
-      border-bottom: 2px solid #fff;
+      font-weight: 400;
       &.active {
-        font-weight: bold;
-        border-bottom: 2px solid;
-        color: $accent-color;
+        color: $font-black;
       }
+    }
+  }
+
+  .new-post-button a {
+    transition: all .1s;
+    color: $light-gray !important; 
+  }
+
+  .new-post-button:hover {
+    a {
+      color: $light-font-color !important;
+      border-color: $border-hover-color !important;
     }
   }
 

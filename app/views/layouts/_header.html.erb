@@ -1,7 +1,9 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-      <%= link_to "Stories", root_path, class: "navbar-brand", id: "logo" %>
+      <%= link_to root_path, class: "navbar-brand", id: "logo" do %>
+        <%= image_tag('stories-logo.png', width: 55) %> <span>Stories</span>
+      <% end %>
     </div>
     <ul class="nav navbar-nav filter-links">
       <li>
@@ -30,3 +32,9 @@
     </div> 
   </div>
 </nav>
+
+<style>
+.profiler-results {
+  display: none !important;
+}
+</style>
