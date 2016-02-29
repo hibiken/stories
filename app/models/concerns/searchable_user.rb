@@ -39,10 +39,16 @@ module SearchableUser
 
   def index_document
     ElasticsearchIndexJob.perform_later('index', 'User', self.id)
+    self.posts.find_each do |post|
+      ElasticsearchIndexJob.perform_later('index', 'Post', post.id) if post.published?
+    end
   end
 
   def delete_document
     ElasticsearchIndexJob.perform_later('delete', 'User', self.id)
+    self.posts.find_each do |post|
+      ElasticsearchIndexJob.perform_later('delete', 'Post', post.id) if post.published?
+    end
   end
 
   INDEX_OPTIONS =
