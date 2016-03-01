@@ -1,6 +1,18 @@
 body {
   padding-top: 51px; /*** to deal with fixed top navbar ***/
 }
+
+
+/** Navbar animation **/
+nav.navbar {
+  transition: 0.3s transform;
+  &.is-inView {
+    transform: translateY(0);
+  }
+  &.is-hidden {
+    transform: translateY(-100%);
+  }
+}
 nav.navbar {
   margin-bottom: 0 !important;
   border-radius: 0 !important;
