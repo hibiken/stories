@@ -3,14 +3,10 @@ module ApplicationHelper
   def follow_button_for(user)
     if user_signed_in?
       unless current_user?(user)
-        if current_user.following?(user)
-          render partial: 'shared/unfollow_button', locals: { user: user }
-        else
-          render partial: 'shared/follow_button', locals: { user: user }
-        end
+        react_component('UserFollowButton', { following: current_user.following?(user), followed_id: user.id }, { prerender: true });
       end
     else
-      render partial: 'shared/follow_button', locals: { user: user }
+      link_to "Follow", relationships_path(followed_id: user.id), method: :post, class: 'button green-border-button follow-button' # this will redirected to new_user_session_path
     end
   end
 

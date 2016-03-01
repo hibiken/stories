@@ -21,7 +21,8 @@ Rails.application.routes.draw do
   end
 
   resources :tags, only: [:show]
-  resources :relationships, only: [:create, :destroy]
+  post    "relationships" => "relationships#create"
+  delete  "relationships" => "relationships#destroy"
   resources :interests, only: [:create, :destroy]
   get "me/bookmarks" => "dashboards#bookmarks", as: :dashboard_bookmarks
   get "top-stories" => "dashboards#top_stories", as: :top_stories
