@@ -1,8 +1,8 @@
-class UserFollowButton extends React.Component {
+class TagFollowButton extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = { following: this.props.following };
+    this.state = { following: this.props.following }
   }
 
   render () {
@@ -16,20 +16,20 @@ class UserFollowButton extends React.Component {
   renderButton() {
     if (this.state.following) {
       return (
-        <button 
-          className="button green-inner-button unfollow-button" 
+        <button
           onClick={this.handleUnfollowClick.bind(this)}
+          className="pull-right button green-inner-button unfollow-button" 
           rel="nofollow" 
-          >
+        >
           <span className="top content">Following</span><br />
           <span className="bottom content">Unfollow</span>
         </button>
       );
     } else {
       return (
-        <button
+        <button 
           onClick={this.handleFollowClick.bind(this)}
-          className="button green-border-button follow-button" 
+          className="pull-right button green-border-button follow-button" 
           rel="nofollow" 
         >
           Follow
@@ -40,7 +40,7 @@ class UserFollowButton extends React.Component {
 
   handleFollowClick(event) {
     $.ajax({
-      url: `/relationships?followed_id=${this.props.followed_id}`,
+      url: `/interests?tag_id=${this.props.tag_id}`,
       method: 'POST',
       success: () => {
         this.setState({
@@ -52,7 +52,7 @@ class UserFollowButton extends React.Component {
 
   handleUnfollowClick(event) {
     $.ajax({
-      url: `/relationships?followed_id=${this.props.followed_id}`,
+      url: `/interests?tag_id=${this.props.tag_id}`,
       method: 'DELETE',
       success: () => {
         this.setState({
@@ -61,9 +61,8 @@ class UserFollowButton extends React.Component {
       }
     });
   }
-
 }
 
-UserFollowButton.propTypes = {
+TagFollowButton.propTypes = {
   following: React.PropTypes.bool
 };
