@@ -6,7 +6,7 @@ module ApplicationHelper
         react_component('UserFollowButton', { following: current_user.following?(user), followed_id: user.id }, { prerender: true })
       end
     else
-      link_to "Follow", relationships_path(followed_id: user.id), method: :post, class: 'button green-border-button follow-button' # this will redirected to new_user_session_path
+      link_to "Follow", api_relationships_path(followed_id: user.id), method: :post, class: 'button green-border-button follow-button' # this will redirected to new_user_session_path
     end
   end
 
@@ -14,7 +14,7 @@ module ApplicationHelper
     if user_signed_in?
       react_component('TagFollowButton', { following: current_user.following_tag?(tag), tag_id: tag.id }, { prerender: true })
     else
-      link_to "Follow", interests_path(tag_id: tag.id), method: :post, class: 'pull-right button green-border-button follow-button' # this will redirected to new_user_session_path
+      link_to "Follow", api_interests_path(tag_id: tag.id), method: :post, class: 'pull-right button green-border-button follow-button' # this will redirected to new_user_session_path
     end
   end
 

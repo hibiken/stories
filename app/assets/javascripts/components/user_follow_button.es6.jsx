@@ -40,7 +40,7 @@ class UserFollowButton extends React.Component {
 
   handleFollowClick(event) {
     $.ajax({
-      url: `/relationships?followed_id=${this.props.followed_id}`,
+      url: `/api/relationships?followed_id=${this.props.followed_id}`,
       method: 'POST',
       success: (data) => {
         this.setState({
@@ -56,7 +56,7 @@ class UserFollowButton extends React.Component {
 
   handleUnfollowClick(event) {
     $.ajax({
-      url: `/relationships?followed_id=${this.props.followed_id}`,
+      url: `/api/relationships?followed_id=${this.props.followed_id}`,
       method: 'DELETE',
       success: (data) => {
         this.setState({

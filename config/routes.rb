@@ -22,11 +22,6 @@ Rails.application.routes.draw do
 
   resources :tags, only: [:show]
 
-  post    "relationships" => "relationships#create"
-  delete  "relationships" => "relationships#destroy"
-  post    "interests" => "interests#create"
-  delete  "interests" => "interests#destroy"
-
   get "me/bookmarks" => "dashboards#bookmarks", as: :dashboard_bookmarks
   get "top-stories" => "dashboards#top_stories", as: :top_stories
   get "me/stories/drafts" => "stories#drafts", as: :stories_drafts
@@ -47,6 +42,11 @@ Rails.application.routes.draw do
     end
 
     resources :posts, only: [:create, :update, :destroy]
+
+    post    "relationships" => "relationships#create"
+    delete  "relationships" => "relationships#destroy"
+    post    "interests" => "interests#create"
+    delete  "interests" => "interests#destroy"
   end
 
   authenticate :admin do

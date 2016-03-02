@@ -40,7 +40,7 @@ class TagFollowButton extends React.Component {
 
   handleFollowClick(event) {
     $.ajax({
-      url: `/interests?tag_id=${this.props.tag_id}`,
+      url: `/api/interests?tag_id=${this.props.tag_id}`,
       method: 'POST',
       success: () => {
         this.setState({
@@ -52,7 +52,7 @@ class TagFollowButton extends React.Component {
 
   handleUnfollowClick(event) {
     $.ajax({
-      url: `/interests?tag_id=${this.props.tag_id}`,
+      url: `/api/interests?tag_id=${this.props.tag_id}`,
       method: 'DELETE',
       success: () => {
         this.setState({

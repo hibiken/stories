@@ -1,4 +1,4 @@
-class InterestsController < ApplicationController
+class API::InterestsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_tag
 
