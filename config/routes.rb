@@ -27,8 +27,7 @@ Rails.application.routes.draw do
   get "me/stories/drafts" => "stories#drafts", as: :stories_drafts
   get "me/stories/public" => "stories#published", as: :stories_published
   get "search" => "search#show", as: :search
-  get "autocomplete" => "search#autocomplete", as: :autocomplete
-
+  
   namespace :admin do
     resource :dashboard, only: [:show]
     resources :featured_tags, only: [:create, :destroy]
@@ -40,6 +39,8 @@ Rails.application.routes.draw do
         post :mark_as_read
       end
     end
+
+    get "autocomplete" => "search_autocomplete#index"
 
     resources :posts, only: [:create, :update, :destroy]
 

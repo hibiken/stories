@@ -9,7 +9,7 @@ class SearchContainer extends React.Component {
     this.setState({ term });
 
     $.ajax({
-      url: `/autocomplete.json/?term=${term}`,
+      url: `/api/autocomplete.json/?term=${term}`,
       method: 'GET',
       success: (data) => { this.setState({
         posts: data.posts,

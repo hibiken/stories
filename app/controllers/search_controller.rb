@@ -8,12 +8,6 @@ class SearchController < ApplicationController
     @users = User.search(params[:q]).records.to_a
   end
 
-  # GET /autocomplete.json?term=rails
-  def autocomplete
-    @posts = Post.search(params[:term])
-    @users = User.search(params[:term])
-  end
-
   private
 
     def beautify_url
