@@ -42,10 +42,14 @@ class UserFollowButton extends React.Component {
     $.ajax({
       url: `/relationships?followed_id=${this.props.followed_id}`,
       method: 'POST',
-      success: () => {
+      success: (data) => {
         this.setState({
           following: true
         });
+
+        if (this.props.onFollowerCountChange) {
+          this.props.onFollowerCountChange(data.followerCount);
+        }
       }
     });
   }
@@ -54,10 +58,14 @@ class UserFollowButton extends React.Component {
     $.ajax({
       url: `/relationships?followed_id=${this.props.followed_id}`,
       method: 'DELETE',
-      success: () => {
+      success: (data) => {
         this.setState({
           following: false
         });
+
+        if (this.props.onFollowerCountChange) {
+          this.props.onFollowerCountChange(data.followerCount);
+        }
       }
     });
   }

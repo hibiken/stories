@@ -33,7 +33,7 @@ body.recommended_posts.index {
   }
   .following-metadata {
     margin: 1em 0 1.2em;
-    span {
+    > span {
       color: $light-font-color;
       font-size: 16px;
     }

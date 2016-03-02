@@ -9,16 +9,25 @@
         <%= avatar_for @user, size: 100 %>
       </div>
     </header>
-    <div class="following-metadata">
-      <span class="following-count"><b><%= @user.following.size %></b> Following</span>
-      <span class="follower-count"><%= highlight(pluralize(@user.followers.size, "Follower"), /\d+/, highlighter: '<b>\1</b>') %>
-    </div>
+
+    <% if user_signed_in? %>
+      <%= react_component('UserFollowContainer', 
+      { followerCount: @user.followers.size, followingCount: @user.following.size, following: current_user.following?(@user), followed_id: @user.id, hideButton: current_user?(@user) },
+      { prerender: true }) %>
+    <% else %>
+      <div>
+        <div class="following-metadata">
+          <span class="following-count"><b><%= @user.following.size %></b> Following</span>
+          <span class="follower-count"><%= highlight(pluralize(@user.followers.size, "Follower"), /\d+/, highlighter: '<b>\1</b>') %></span>
+        </div>
+        <%= follow_button_for(@user) %>
+      </div>
+    <% end %>
 
     <% if user_signed_in? && current_user?(@user) %>
       <%= link_to "Edit", edit_user_path(@user), class: 'button green-border-button' %>
     <% end %>
 
-    <%= follow_button_for(@user) %>
   </div>
 </div>
 <div class="posts-wrapper">

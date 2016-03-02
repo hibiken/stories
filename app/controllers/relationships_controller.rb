@@ -7,13 +7,13 @@ class RelationshipsController < ApplicationController
     current_user.follow(@user)
     # Notify the user
     Notification.create(recipient: @user, actor: current_user, action: "started following you", notifiable: current_user)
-    head status: 200
+    render json: { followerCount: @user.followers.size }, render: 200
   end
 
   # Unfollow a user.
   def destroy
     current_user.unfollow(@user)
-    head status: 200
+    render json: { followerCount: @user.followers.size }, render: 200
   end
 
   private

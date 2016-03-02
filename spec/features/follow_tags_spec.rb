@@ -9,7 +9,7 @@ RSpec.feature "Following tags" do
     post.tags << music_tag
   end
 
-  scenario "signed in user follows a tag successfully" do
+  scenario "signed in user follows a tag successfully", js: true do
     visit post_path(post)
     within(".post-tags") do
       click_on "Music"

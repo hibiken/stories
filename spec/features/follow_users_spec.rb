@@ -6,7 +6,7 @@ RSpec.feature "Signed in User follow other users" do
   let(:others_post) { create(:post, user: other_user) }
   let(:self_post) { create(:post, user: user) }
 
-  scenario "by navigating to other user's profile page and click on follow button" do
+  scenario "by navigating to other user's profile page and click on follow button", js: true do
     sign_in user
     visit user_path(other_user)
     expect(page).to have_css ".follow-button"
@@ -21,7 +21,7 @@ RSpec.feature "Signed in User follow other users" do
     expect(page).not_to have_css ".unfollow-button"
   end
 
-  scenario "by navigating to other user's post show page and click on follow button" do
+  scenario "by navigating to other user's post show page and click on follow button",js: true do
     sign_in user
     visit post_path(others_post)
     expect(page).to have_css ".follow-button"
