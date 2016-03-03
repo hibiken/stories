@@ -7,8 +7,12 @@ class UserPopover extends React.Component {
         <div className="arrow" />
         <div className="flex-container flex-space-btw up-main">
           <div>
-          <h3 className="po-username">{this.props.user.username}</h3>
-          <h4 className="po-description">{this.props.user.description}</h4>
+            <h3 className="po-username">
+              <a href={this.props.user.urlPath}>
+                {this.props.user.username}
+              </a>
+            </h3>
+            <h4 className="po-description">{this.props.user.description}</h4>
           </div>
           <div dangerouslySetInnerHTML={this.renderAvatarImage()} />
         </div>
