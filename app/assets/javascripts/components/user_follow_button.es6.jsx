@@ -14,6 +14,15 @@ class UserFollowButton extends React.Component {
   }
 
   renderButton() {
+
+    if (this.props.isSignedIn === false) {
+      return (
+        <a href="/users/sign_in" className="button green-border-button follow-button">
+          Follow
+        </a>
+      );
+    }
+
     if (this.state.following) {
       return (
         <button 

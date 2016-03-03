@@ -16,6 +16,7 @@ class UserPopover extends React.Component {
           followerCount={this.props.user.followerCount}
           followingCount={this.props.user.followingCount}
           hideButton={this.props.user.hideButton}
+          isSignedIn={this.props.user.isSignedIn}
           className="flex-container flex-space-btw user-follow-container"
         />
       </div>
@@ -28,9 +29,9 @@ class UserPopover extends React.Component {
 
   cssStyles() {
     if (this.props.position === "bottom") {
-      return { top: 1 + 'em' };
+      return { transform: 'translate(-50%, 14px)' };
     } else {
-      return { top: -140 + 'px' };
+      return { transform: 'translate(-50%, -100%)' };
     }
   }
 }

@@ -22,6 +22,10 @@ class UserFollowContainer extends React.Component {
   renderFollowButton() {
     if (this.props.hideButton) { return; }
 
+    if (!this.props.isSignedIn) { return (
+      <UserFollowButton isSignedIn={false} />
+    ); }
+
     return (
       <UserFollowButton 
         following={this.props.following}

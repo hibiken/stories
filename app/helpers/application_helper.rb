@@ -6,7 +6,7 @@ module ApplicationHelper
         react_component('UserFollowButton', { following: current_user.following?(user), followed_id: user.id }, { prerender: true })
       end
     else
-      link_to "Follow", api_relationships_path(followed_id: user.id), method: :post, class: 'button green-border-button follow-button' # this will redirected to new_user_session_path
+      react_component('UserFollowButton', { isSignedIn: false });
     end
   end
 
