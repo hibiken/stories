@@ -2,6 +2,8 @@ class UserPopover extends React.Component {
   render () {
     return (
       <div className={`user-popover popover ${this.props.position}`} style={this.cssStyles()}>
+        <div className="po-buffer-top" />
+        <div className="po-buffer-bottom" />
         <div className="arrow" />
         <div className="flex-container flex-space-btw up-main">
           <div>
