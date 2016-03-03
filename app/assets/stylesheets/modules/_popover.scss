@@ -47,7 +47,8 @@
   }
 
   .following-count, .follower-count {
-    color: $light-gray;
+    color: $light-gray !important;
+    font-size: 14px !important;
   }
   
   .following-count {
