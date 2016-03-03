@@ -2,7 +2,7 @@ class PopoverLink extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { showPopover: false, user: null };
+    this.state = { showPopover: false, user: null, position: null };
   }
 
   render () {
@@ -24,6 +24,7 @@ class PopoverLink extends React.Component {
       return (
         <UserPopover 
           user={this.state.user}
+          position={this.state.position}
         />
       );
     } else {
@@ -32,12 +33,18 @@ class PopoverLink extends React.Component {
   }
 
   handleMouseEnter(event) {
+    let position;
+    if (window.innerHeight/2 > event.clientY) {
+      position = "bottom";
+    } else {
+      position = "top";
+    }
     $.ajax({
       url: `/api/users/${this.props.user_id}`,
       method: 'GET',
       success: (data) => {
         console.log(data);
-        this.setState({ user: data, showPopover: true });
+        this.setState({ user: data, showPopover: true, position: position });
       }
     });
   }

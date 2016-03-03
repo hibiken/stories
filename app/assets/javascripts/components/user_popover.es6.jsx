@@ -1,7 +1,7 @@
 class UserPopover extends React.Component {
   render () {
     return (
-      <div className="user-popover popover bottom">
+      <div className={`user-popover popover ${this.props.position}`} style={this.cssStyles()}>
         <div className="arrow" />
         <div className="flex-container flex-space-btw up-main">
           <div>
@@ -24,6 +24,14 @@ class UserPopover extends React.Component {
 
   renderAvatarImage() {
     return {__html: this.props.user.avatar_image_tag};
+  }
+
+  cssStyles() {
+    if (this.props.position === "bottom") {
+      return { top: 1 + 'em' };
+    } else {
+      return { top: -140 + 'px' };
+    }
   }
 }
 
