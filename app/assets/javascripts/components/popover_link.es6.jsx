@@ -2,16 +2,16 @@ class PopoverLink extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { showPopover: false, user:  { username: 'ken', description: 'JavaScript developer', followingCount: 3, followerCount: 4 }
- };
+    this.state = { showPopover: false, user: null };
   }
 
   render () {
     return (
-      <span className="popover-link">
-        <a href={this.props.url} 
-          onMouseEnter={this.handleMouseEnter.bind(this)} 
-          onMouseLeave={this.handleMouseLeave.bind(this)}>
+      <span className="popover-link"
+        onMouseEnter={this.handleMouseEnter.bind(this)} 
+        onMouseLeave={this.handleMouseLeave.bind(this)}
+      >
+        <a href={this.props.url}>
           {this.props.text}
         </a>
         {this.renderPopover()}
@@ -20,7 +20,7 @@ class PopoverLink extends React.Component {
   }
 
   renderPopover() {
-    if (true) {
+    if (this.state.showPopover) {
       return (
         <UserPopover 
           user={this.state.user}
@@ -32,9 +32,13 @@ class PopoverLink extends React.Component {
   }
 
   handleMouseEnter(event) {
-    this.setState({ 
-      showPopover: true,
-      user: { username: 'ken', description: 'JavaScript developer', followingCount: 3, followerCount: 4 }
+    $.ajax({
+      url: `/api/users/${this.props.user_id}`,
+      method: 'GET',
+      success: (data) => {
+        console.log(data);
+        this.setState({ user: data, showPopover: true });
+      }
     });
   }
 
