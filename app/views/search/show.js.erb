@@ -1,5 +1,7 @@
 $('[data-behavior="endless-scroll"]').append('<%= j render @posts %>');
 
+ReactRailsUJS.mountComponents();
+
 <% if @post_records.next_page %>
   $('.pagination').replaceWith('<%= j will_paginate @post_records %>');
 <% else %>

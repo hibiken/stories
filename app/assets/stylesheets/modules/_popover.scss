@@ -3,9 +3,12 @@
 }
 
 .user-popover {
-  position: absolute;
+  display: block !important;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 1em;
   min-width: 300px;
-  padding: 12px;
+  padding: 18px;
   background-color: $white;
   border-radius: 5px;
   border: 1px solid $border-color;
@@ -15,14 +18,17 @@
   .po-description {
     margin: 0;
   }
+  .up-main {
+    margin-bottom: 20px;
+  }
   .po-username {
     font-size: 18px;
     margin-bottom: 8px;
   }
   .po-description {
     font-size: 14px;
+    font-weight: normal;
     color: $light-gray;
-    margin-bottom: 8px;
   }
   .po-metadata {
     padding-top: 12px;
@@ -45,6 +51,9 @@
   .unfollow-button {
     font-size: 11px;
     width: 72px
+  }
+  .follow-button {
+    font-size: 11px;
   }
 }
 
