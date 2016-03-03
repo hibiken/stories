@@ -43,6 +43,7 @@ Rails.application.routes.draw do
     get "autocomplete" => "search_autocomplete#index"
 
     resources :posts, only: [:create, :update, :destroy]
+    resources :users, only: [:show]
 
     post    "relationships" => "relationships#create"
     delete  "relationships" => "relationships#destroy"
