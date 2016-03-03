@@ -7,7 +7,7 @@ class UserFollowContainer extends React.Component {
 
   render () {
     return (
-      <div>
+      <div className={this.props.className}>
         <div className="following-metadata">
           <span className="following-count">
             <b>{this.props.followingCount}</b> Following</span>

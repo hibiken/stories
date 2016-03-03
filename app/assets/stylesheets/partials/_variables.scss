@@ -10,7 +10,7 @@ $border-color: rgba(0, 0, 0, 0.1);
 $light-border-color: #f0f0f0;
 $border-hover-color: rgba(0, 0, 0, 0.3);
 
-// font colr
+// font color
 $light-font-color: rgba(0,0,0,0.6);
 $font-black: rgba(0,0,0, 0.8);
 $super-light-font-color: $border-hover-color;
@@ -20,3 +20,6 @@ $button-green: #02b875;
 
 // background color
 $background-gray: #fafafa;
+
+/*** Z-index ***/
+$popover: 20;
