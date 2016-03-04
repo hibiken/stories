@@ -55,12 +55,25 @@ class User < ActiveRecord::Base
   end
 
   def self.find_or_create_from_facebook_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]
-      user.username = auth.info.name
-      user.remote_avatar_url = auth.info.image.gsub('http://','https://') + '?type=normal'
-    end
+    user = where(provider: auth.provider, uid: auth.uid).first_or_create
+    user.remote_avatar_url = auth.info.image.gsub('http://','https://') + '?type=large'
+    user.update(
+      email: auth.info.email,
+      password: Devise.friendly_token[0,20],
+      username: auth.info.name
+    )
+    user
+  end
+
+  def self.find_or_create_from_twitter_omniauth(auth)
+    user = where(provider: auth.provider, uid: auth.uid).first_or_create
+    user.remote_avatar_url = auth.info.image.gsub('http://', 'https://').gsub('_normal', '')
+    user.update(
+      username: auth.info.name,
+      password: Devise.friendly_token[0, 20],
+      email: auth.info.email || "#{auth.info.nickname}@mymediumclone.com"
+    )
+    user
   end
 
   def self.new_with_session(params, session)
