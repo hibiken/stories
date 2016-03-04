@@ -3,6 +3,7 @@
     <h2>Log in</h2>
 
     <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+    <%= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2) %>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { autocomplete: 'off' }) do |f| %>
       <div class="form-input-wrapper">
