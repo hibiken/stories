@@ -2,6 +2,8 @@
   <div class="col-md-6 col-md-offset-3">
     <h2>Log in</h2>
 
+    <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
+
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { autocomplete: 'off' }) do |f| %>
       <div class="form-input-wrapper">
         <%= f.email_field :email, autofocus: true, placeholder: "Email", autocomplete: 'off', onfocus: "this.value = this.value;" %>
