@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, :omniauth_providers => [:facebook]
+         :omniauthable, :omniauth_providers => [:facebook, :twitter]
   validates :username, presence: true
   validate :avatar_image_size
 
@@ -54,7 +54,7 @@ class User < ActiveRecord::Base
     send("bookmarked_#{downcased_class_name(bookmarkable_obj)}_ids").include?(bookmarkable_obj.id)
   end
 
-  def self.from_omniauth(auth)
+  def self.find_or_create_from_facebook_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
@@ -75,6 +75,10 @@ class User < ActiveRecord::Base
   end
 
   def password_required?
+    super && provider.blank?
+  end
+
+  def email_required?
     super && provider.blank?
   end
 

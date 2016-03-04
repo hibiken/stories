@@ -1,6 +1,6 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def facebook
-    @user = User.from_omniauth(request.env["omniauth.auth"])
+    @user = User.find_or_create_from_facebook_omniauth(auth_hash)
 
     if @user.persisted?
       sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
@@ -11,7 +11,17 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
   end
 
+  def twitter
+    render :text => "<pre>" + env["omniauth.auth"].to_yaml and return
+  end
+
   def failure
     redirect_to root_path
   end
+
+  private
+
+    def auth_hash
+      request.env["omniauth.auth"]
+    end
 end
