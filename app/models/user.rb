@@ -58,17 +58,24 @@ class User < ActiveRecord::Base
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
-      user.username = auth.info.name   # assuming the user model has a name
+      user.username = auth.info.name
       user.remote_avatar_url = auth.info.image.gsub('http://','https://') + '?type=normal'
     end
   end
 
   def self.new_with_session(params, session)
-    super.tap do |user|
-      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
-        user.email = data["email"] if user.email.blank?
+    if session["devise.user_attributes"]
+      new(session["devise.user_attributes"], without_protection: true) do |user|
+        user.attributes = params
+        user.valid?
       end
+    else
+      super
     end
+  end
+
+  def password_required?
+    super && provider.blank?
   end
 
   private

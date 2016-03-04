@@ -13,13 +13,15 @@
         <%= f.email_field :email, placeholder: "Email" %>
       </div>
 
-      <div class="form-input-wrapper">
-        <%= f.password_field :password, autocomplete: "off", placeholder: "Password (#{@minimum_password_length} characters minimum)" %>
-      </div>
+      <% if f.object.password_required? %>
+        <div class="form-input-wrapper">
+          <%= f.password_field :password, autocomplete: "off", placeholder: "Password (#{@minimum_password_length} characters minimum)" %>
+        </div>
 
-      <div class="form-input-wrapper">
-        <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Re-enter Password" %>
-      </div>
+        <div class="form-input-wrapper">
+          <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: "Re-enter Password" %>
+        </div>
+      <% end %>
 
       <%= f.submit "Create Account", class: "button green-inner-button" %>
 
