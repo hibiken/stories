@@ -1,6 +1,7 @@
 body.posts.show {
   .main-content {
     padding-top: 2em;
+    padding-bottom: 2em;
   }
   .post-picture-wrapper {
     padding: 2em 0;
@@ -18,9 +19,7 @@ body.posts.show {
   }
 
   .body {
-    font-size: 21px;
-    line-height: 1.5;
-    font-weight: 300;
+    @include well-read;
   }
 
   .post-tags {

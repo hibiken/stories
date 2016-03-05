@@ -1,5 +1,6 @@
 .editor-form {
   position: relative;
+  padding-bottom: 2em;
 
   .editor-title {
     font-size: 36px;
@@ -11,8 +12,7 @@
   .medium-editable {
     min-height: 300px;
     outline: none;
-    font-size: 22px;
-    border: none;
+    @include well-read;
   }
   .picture_upload {
     position: absolute;
