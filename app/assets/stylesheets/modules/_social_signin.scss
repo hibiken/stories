@@ -1,0 +1,49 @@
+.signin-wrapper {
+  margin-top: 80px;
+}
+.omniauth-button-group {
+  text-align: center;
+
+  .signin-signup-link {
+    color: $accent-color;
+  }
+}
+.omniauth-button {
+  margin: 30px 0;
+
+  .button {
+    font-size: 16px;
+    display: inline-block;
+    width: 232px;
+    color: $white;
+    text-align: left;
+    transition: background-color 0.2s;
+  }
+
+  .facebook {
+    background-color: $facebook-blue;
+    &:hover {
+      background-color: darken($facebook-blue, 10%);
+    }
+  }
+
+  .google {
+    background-color: $google-red;
+    &:hover {
+      background-color: darken($google-red, 10%);
+    }
+  }
+
+  .twitter {
+    background-color: $twitter-blue;
+    &:hover {
+      background-color: darken($twitter-blue, 10%);
+    }
+  }
+
+  [class^="icon-"] {
+    margin-right: 13px;
+  }
+}
+
+

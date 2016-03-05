@@ -12,7 +12,7 @@
           <%= render 'layouts/notifications' %>
           <%= render 'layouts/avatar_dropdown' %>
         <% else %>
-          <li><%= link_to "Sign in / Sign up", new_user_session_path, class: 'button green-border-button sign-in-button' %></li>
+          <li><%= link_to "Sign in / Sign up", social_sign_in_path, class: 'button green-border-button sign-in-button' %></li>
         <% end %>
       </ul>
     </div> 

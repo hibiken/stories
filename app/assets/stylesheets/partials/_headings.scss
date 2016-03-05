@@ -22,3 +22,12 @@
     color: $accent-color;
   }
 }
+
+.center {
+  text-align: center;
+}
+.grayed-heading {
+  color: $light-gray;
+  font-weight: bold;
+  font-size: 16px;
+}
