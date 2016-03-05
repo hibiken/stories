@@ -6,7 +6,7 @@ class DashboardsController < ApplicationController
     if user_signed_in?
       @dashboard = Dashboard.new(user: current_user, posts: feed)
     else
-      @dashboard = Dashboard.new(posts: recent_posts)
+      @dashboard = Dashboard.new(posts: recent_posts) # TODO: change this to 'recommended by Stories staff'
     end
   end
 
