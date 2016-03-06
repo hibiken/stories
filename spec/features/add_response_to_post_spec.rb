@@ -32,7 +32,6 @@ RSpec.feature "Add a response to a post" do
     logout(:user)
 
     sign_in author
-    save_and_open_page
 
     # See new notification
     within("#notifications") do

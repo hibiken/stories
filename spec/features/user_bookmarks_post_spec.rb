@@ -16,9 +16,9 @@ RSpec.feature "Bookmarking a post" do
     expect(page).to have_button "Bookmark"
   end
 
-  scenario "non-logged in user cannot bookmark a post" do
+  scenario "non-logged in user cannot bookmark a post", js: true do
     visit post_path(post)
     click_on "Bookmark"
-    expect(current_path).to eq(new_user_session_path)
+    expect(page).to have_content("Sign in with Facebook")
   end
 end
