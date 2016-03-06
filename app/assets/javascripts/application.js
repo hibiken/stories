@@ -19,4 +19,5 @@
 //= require react
 //= require react_ujs
 //= require components
+//= require overlay
 //= require_tree .

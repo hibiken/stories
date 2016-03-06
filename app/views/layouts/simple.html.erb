@@ -7,6 +7,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= controller.controller_name %> <%= controller.action_name %>">
+  <%= render 'layouts/overlay' unless user_signed_in? %>
   <%= render 'layouts/simple_header' %>
   <%= render 'layouts/alert_messages' %>
 
