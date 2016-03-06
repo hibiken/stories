@@ -1,8 +1,8 @@
 # Welcome to Stories
 
-Welcome to Stories. In December 2015 [Kenny Hibino](https://github.com/kenny-hibino “Kenny Hibino”) began creating a Medium clone as a personal side project to learn Ruby on Rails and React. 
+Welcome to Stories. In December 2015 [Ken Hibino](https://github.com/kenny-hibino “Ken Hibino”) began creating a Medium clone as a personal side project to learn Ruby on Rails and ReactJS. 
 
-Soon Kenny decided to create a [YouTube series](https://www.youtube.com/playlist?list=PLoUInciCQ806CUFxld2W29V6rbGNfHzbX “Let’s create a Medium Clone with Rails”) based on the project to help other people learn the technologies. 
+Soon Ken decided to create a [YouTube series](https://www.youtube.com/playlist?list=PLoUInciCQ806CUFxld2W29V6rbGNfHzbX “Let’s create a Medium Clone with Rails”) based on the project to help other people learn the technologies. 
 
 People began following the lessons, making contributions and improving the app… slowly it began to blossom into an [elegant and powerful application](http://my-medium-clone.herokuapp.com/ “Stories”).
 
