@@ -10,11 +10,15 @@ class UserFollowContainer extends React.Component {
       <div className={this.props.className}>
         <div className="following-metadata">
           <span className="following-count">
-            <b>{this.props.followingCount}</b> Following</span>
+            <OverlayTriggerButton
+              text={`<b>${this.props.followingCount}</b> Following`}
+              apiEndpoint={`/api/following?user_id=${this.props.followed_id}`}
+              overlayHeading={`${this.props.username} is Following`} />
+          </span>
           <span className="follower-count">
             <OverlayTriggerButton 
-              text={`<b>${this.state.followerCount}</b> ${this.pluralizeFollower()}`} 
-              apiEndpoint={`/api/followers?user_id=${this.props.followed_id}`} 
+              text={`<b>${this.state.followerCount}</b> ${this.pluralizeFollower()}`}
+              apiEndpoint={`/api/followers?user_id=${this.props.followed_id}`}
               overlayHeading={`${this.props.username} is Followed by`} />
           </span>
         </div>
@@ -26,9 +30,11 @@ class UserFollowContainer extends React.Component {
   renderFollowButton() {
     if (this.props.hideButton) { return; }
 
-    if (this.props.isSignedIn === false) { return (
-      <UserFollowButton isSignedIn={false} />
-    ); }
+    if (this.props.isSignedIn === false) { 
+      return (
+        <UserFollowButton isSignedIn={false} />
+      );
+    }
 
     return (
       <UserFollowButton 
