@@ -118,3 +118,25 @@
   -webkit-transform: translateY(25%) rotateX(-35deg);
   transform: translateY(25%) rotateX(-35deg);
 }
+
+/*** Overlay for displaying users ***/
+.overlay-hugeinc nav.users-overlay {
+  ul > li {
+    display: flex;
+    justify-content: flex-start;
+    width: 380px;
+    margin: 35px 0;
+    position: relative;
+    text-align: left;
+    button {
+      position: absolute;
+      right: 0;
+    }
+    img {
+      margin-right: 20px;
+    }
+    a {
+      color: $light-font-color;
+    }
+  }
+}

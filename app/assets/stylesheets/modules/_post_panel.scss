@@ -56,5 +56,10 @@
       color: $light-font-color;
     }
   }
+
+  [data-react-class="OverlayTriggerButton"] {
+    display: inline-block;
+    cursor: pointer;
+  }
 }
 
