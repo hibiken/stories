@@ -12,7 +12,11 @@ class UserFollowContainer extends React.Component {
           <span className="following-count">
             <b>{this.props.followingCount}</b> Following</span>
           <span className="follower-count">
-            <b>{this.state.followerCount}</b> {this.pluralizeFollower()}</span>
+            <OverlayTriggerButton 
+              text={`<b>${this.state.followerCount}</b> ${this.pluralizeFollower()}`} 
+              apiEndpoint={`/api/followers?user_id=${this.props.followed_id}`} 
+              overlayHeading={`${this.props.username} is Followed by`} />
+          </span>
         </div>
         {this.renderFollowButton()}
       </div>
@@ -51,5 +55,6 @@ UserFollowContainer.propTypes = {
   hideButton: React.PropTypes.bool,
   followed_id: React.PropTypes.number,
   followerCount: React.PropTypes.number,
-  followingCount: React.PropTypes.number
+  followingCount: React.PropTypes.number,
+  username: React.PropTypes.string
 };

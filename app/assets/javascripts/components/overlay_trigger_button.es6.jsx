@@ -9,8 +9,7 @@ class OverlayTriggerButton extends React.Component {
     if (this.state.isOpen) {
       return (
         <span>
-          <span>
-            {this.props.text}
+          <span dangerouslySetInnerHTML={ {__html: this.props.text} }>
           </span>
           <div className="overlay overlay-hugeinc open">
             <button className="overlay-close" onClick={this.handleCloseClick.bind(this)}>
@@ -28,8 +27,7 @@ class OverlayTriggerButton extends React.Component {
     } else {
       return (
         <span>
-          <span onClick={this.handleOpenClick.bind(this)}>
-            {this.props.text}
+          <span dangerouslySetInnerHTML={ {__html: this.props.text} } onClick={this.handleOpenClick.bind(this)}>
           </span>
           <div className="overlay overlay-hugeinc">
             <button className="overlay-close" onClick={this.handleCloseClick.bind(this)}>
@@ -74,6 +72,7 @@ class OverlayTriggerButton extends React.Component {
     $.ajax({
       url: this.props.apiEndpoint,
       method: 'GET',
+      dataType: 'json',
       success: (data) => {
         console.log(data);
         this.setState({ isOpen: true, users: data });
