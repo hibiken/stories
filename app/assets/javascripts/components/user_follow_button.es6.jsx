@@ -15,7 +15,7 @@ class UserFollowButton extends React.Component {
 
   renderButton() {
 
-    if (this.props.isSignedIn === false) {
+    if (window.userSignedIn === false) {
       return (
         <a href="" className="button green-border-button follow-button" onClick={this.openOverlay}>
           Follow

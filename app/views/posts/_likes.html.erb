@@ -17,7 +17,9 @@
 </div>
 <% if post.reload.likes.size > 0 %>
   <% if user_signed_in? %>
-    <span class="like-count"><%= react_component('OverlayTriggerButton', { text: post.likes.size, post_id: post.id, title: post.title }) %></span>
+    <span class="like-count">
+      <%= react_component('OverlayTriggerButton', { text: post.likes.size.to_s, overlayHeading: "People liked '#{post.title}'", apiEndpoint: api_likers_path(post_id: post.id) }) %>
+    </span>
   <% else %>
     <span class="like-count"><%= post.likes.size %></span>
   <% end %>

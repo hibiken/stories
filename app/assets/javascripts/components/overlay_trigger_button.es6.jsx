@@ -9,17 +9,16 @@ class OverlayTriggerButton extends React.Component {
     if (this.state.isOpen) {
       return (
         <span>
-          <span>
-            {this.props.text}
+          <span dangerouslySetInnerHTML={ {__html: this.props.text} }>
           </span>
-          <div data-behavior="overlay" className="overlay overlay-hugeinc open">
+          <div className="overlay overlay-hugeinc open">
             <button className="overlay-close" onClick={this.handleCloseClick.bind(this)}>
               <span className="glyphicon glyphicon-remove"></span>
             </button>
             <nav className="users-overlay">
-              <h2 className="grayed-heading center">People Liked "{this.props.title}"</h2>
-              <ul className="">
-                {this.renderLikers()}
+              <h2 className="grayed-heading center">{this.props.overlayHeading}</h2>
+              <ul>
+                {this.renderUsers()}
               </ul>
             </nav>
           </div>
@@ -28,28 +27,15 @@ class OverlayTriggerButton extends React.Component {
     } else {
       return (
         <span>
-          <span onClick={this.handleOpenClick.bind(this)}>
-            {this.props.text}
+          <span dangerouslySetInnerHTML={ {__html: this.props.text} } onClick={this.handleOpenClick.bind(this)}>
           </span>
           <div className="overlay overlay-hugeinc">
             <button className="overlay-close" onClick={this.handleCloseClick.bind(this)}>
               <span className="glyphicon glyphicon-remove"></span>
             </button>
             <nav className="users-overlay">
-              <h2 className="grayed-heading center">People Liked {this.props.title}</h2>
-              <ul className="">
-                <li className="">
-                  <a href=''></a>
-                </li>
-
-                <li className="">
-                  <a href=""></a>
-                </li>
-
-                <li className="">
-                  <a href=''></a>
-                </li>
-
+              <h2 className="grayed-heading center">{this.props.overlayHeading}</h2>
+              <ul>
               </ul>
             </nav>
           </div>
@@ -58,10 +44,10 @@ class OverlayTriggerButton extends React.Component {
     }
   }
 
-  renderLikers() {
+  renderUsers() {
     return this.state.users.map((user) => {
       return (
-        <li key={user.id} className="flex-container flex-space-btw">
+        <li key={user.id}>
           <div dangerouslySetInnerHTML={this.renderAvatarImage(user)} />
           <a href={user.urlPath}>
             <strong>{user.username}</strong>
@@ -78,14 +64,15 @@ class OverlayTriggerButton extends React.Component {
   }
 
   renderUserFollowButton(user) {
-    if (user.isSelf) { return; }
+    if (user.isSelf || !window.userSignedIn) { return; }
     return <UserFollowButton following={user.following} followed_id={user.id} />
   }
 
   handleOpenClick(event) {
     $.ajax({
-      url: `/api/likers/?post_id=${this.props.post_id}`,
+      url: this.props.apiEndpoint,
       method: 'GET',
+      dataType: 'json',
       success: (data) => {
         console.log(data);
         this.setState({ isOpen: true, users: data });
@@ -99,3 +86,9 @@ class OverlayTriggerButton extends React.Component {
 
 }
 
+
+OverlayTriggerButton.propTypes = {
+  text: React.PropTypes.string,
+  overlayHeading: React.PropTypes.string,
+  apiEndpoint: React.PropTypes.string.isRequired
+};
