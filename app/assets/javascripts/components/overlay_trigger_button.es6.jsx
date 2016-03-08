@@ -64,7 +64,7 @@ class OverlayTriggerButton extends React.Component {
   }
 
   renderUserFollowButton(user) {
-    if (user.isSelf) { return; }
+    if (user.isSelf || !window.userSignedIn) { return; }
     return <UserFollowButton following={user.following} followed_id={user.id} />
   }
 

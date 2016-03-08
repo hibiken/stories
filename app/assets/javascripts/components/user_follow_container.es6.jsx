@@ -10,16 +10,10 @@ class UserFollowContainer extends React.Component {
       <div className={this.props.className}>
         <div className="following-metadata">
           <span className="following-count">
-            <OverlayTriggerButton
-              text={`<b>${this.props.followingCount}</b> Following`}
-              apiEndpoint={`/api/following?user_id=${this.props.followed_id}`}
-              overlayHeading={`${this.props.username} is Following`} />
+            {this.renderFollowingCount()}
           </span>
           <span className="follower-count">
-            <OverlayTriggerButton 
-              text={`<b>${this.state.followerCount}</b> ${this.pluralizeFollower()}`}
-              apiEndpoint={`/api/followers?user_id=${this.props.followed_id}`}
-              overlayHeading={`${this.props.username} is Followed by`} />
+            {this.renderFollowerCount()}
           </span>
         </div>
         {this.renderFollowButton()}
@@ -27,14 +21,42 @@ class UserFollowContainer extends React.Component {
     );
   }
 
-  renderFollowButton() {
-    if (this.props.hideButton) { return; }
-
-    if (this.props.isSignedIn === false) { 
+  renderFollowingCount() {
+    if (this.props.overlayTrigger) {
       return (
-        <UserFollowButton isSignedIn={false} />
+        <OverlayTriggerButton
+          text={`<b>${this.props.followingCount}</b> Following`}
+          apiEndpoint={`/api/following?user_id=${this.props.followed_id}`}
+          overlayHeading={`${this.props.username} is Following`} />
+      );
+    } else {
+      return (
+        <span className="following-count">
+          <b>{this.props.followingCount}</b> Following
+        </span>
       );
     }
+  }
+
+  renderFollowerCount() {
+    if (this.props.overlayTrigger) {
+      return (
+        <OverlayTriggerButton 
+          text={`<b>${this.state.followerCount}</b> ${this.pluralizeFollower()}`}
+          apiEndpoint={`/api/followers?user_id=${this.props.followed_id}`}
+          overlayHeading={`${this.props.username} is Followed by`} />
+      );
+    } else {
+      return (
+        <span className="follower-count">
+          <b>{this.state.followerCount}</b> {this.pluralizeFollower()}
+        </span>
+      );
+    }
+  }
+
+  renderFollowButton() {
+    if (this.props.hideButton) { return; }
 
     return (
       <UserFollowButton 
@@ -62,5 +84,10 @@ UserFollowContainer.propTypes = {
   followed_id: React.PropTypes.number,
   followerCount: React.PropTypes.number,
   followingCount: React.PropTypes.number,
-  username: React.PropTypes.string
+  username: React.PropTypes.string,
+  overlayTrigger: React.PropTypes.bool
+};
+
+UserFollowContainer.defaultProps = {
+  overlayTrigger: false
 };
