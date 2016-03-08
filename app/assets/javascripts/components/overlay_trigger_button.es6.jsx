@@ -12,14 +12,14 @@ class OverlayTriggerButton extends React.Component {
           <span>
             {this.props.text}
           </span>
-          <div data-behavior="overlay" className="overlay overlay-hugeinc open">
+          <div className="overlay overlay-hugeinc open">
             <button className="overlay-close" onClick={this.handleCloseClick.bind(this)}>
               <span className="glyphicon glyphicon-remove"></span>
             </button>
             <nav className="users-overlay">
               <h2 className="grayed-heading center">People Liked "{this.props.title}"</h2>
-              <ul className="">
-                {this.renderLikers()}
+              <ul>
+                {this.renderUsers()}
               </ul>
             </nav>
           </div>
@@ -37,19 +37,7 @@ class OverlayTriggerButton extends React.Component {
             </button>
             <nav className="users-overlay">
               <h2 className="grayed-heading center">People Liked {this.props.title}</h2>
-              <ul className="">
-                <li className="">
-                  <a href=''></a>
-                </li>
-
-                <li className="">
-                  <a href=""></a>
-                </li>
-
-                <li className="">
-                  <a href=''></a>
-                </li>
-
+              <ul>
               </ul>
             </nav>
           </div>
@@ -58,10 +46,10 @@ class OverlayTriggerButton extends React.Component {
     }
   }
 
-  renderLikers() {
+  renderUsers() {
     return this.state.users.map((user) => {
       return (
-        <li key={user.id} className="flex-container flex-space-btw">
+        <li key={user.id}>
           <div dangerouslySetInnerHTML={this.renderAvatarImage(user)} />
           <a href={user.urlPath}>
             <strong>{user.username}</strong>
