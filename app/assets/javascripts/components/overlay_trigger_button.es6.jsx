@@ -3,6 +3,11 @@ class OverlayTriggerButton extends React.Component {
     super(props);
 
     this.state = { isOpen: false, users: [], currentPage: null, nextPage: null };
+
+    this.handleCloseClick = this.handleCloseClick.bind(this);
+    this.handleOpenClick = this.handleOpenClick.bind(this);
+    this.handlePrevClick = this.handlePrevClick.bind(this);
+    this.handleNextClick = this.handleNextClick.bind(this);
   }
 
   render () {
@@ -12,7 +17,7 @@ class OverlayTriggerButton extends React.Component {
           <span dangerouslySetInnerHTML={ {__html: this.props.text} }>
           </span>
           <div className="overlay overlay-hugeinc open">
-            <button className="overlay-close" onClick={this.handleCloseClick.bind(this)}>
+            <button className="overlay-close" onClick={this.handleCloseClick}>
               <span className="glyphicon glyphicon-remove"></span>
             </button>
             <nav className="users-overlay">
@@ -31,10 +36,10 @@ class OverlayTriggerButton extends React.Component {
     } else {
       return (
         <span>
-          <span dangerouslySetInnerHTML={ {__html: this.props.text} } onClick={this.handleOpenClick.bind(this)}>
+          <span dangerouslySetInnerHTML={ {__html: this.props.text} } onClick={this.handleOpenClick}>
           </span>
           <div className="overlay overlay-hugeinc">
-            <button className="overlay-close" onClick={this.handleCloseClick.bind(this)}>
+            <button className="overlay-close" onClick={this.handleCloseClick}>
               <span className="glyphicon glyphicon-remove"></span>
             </button>
             <nav className="users-overlay">
@@ -75,7 +80,7 @@ class OverlayTriggerButton extends React.Component {
   renderPrevButton() {
     if (this.state.currentPage > 1) {
       return (
-        <a className="button" onClick={this.handlePrevClick.bind(this)}>Prev</a>
+        <a className="button" onClick={this.handlePrevClick}>Prev</a>
       );
     }
   }
@@ -83,7 +88,7 @@ class OverlayTriggerButton extends React.Component {
   renderNextButton() {
     if (this.state.nextPage !== null) {
       return (
-        <a className="button" onClick={this.handleNextClick.bind(this)}>Next</a>
+        <a className="button" onClick={this.handleNextClick}>Next</a>
       );
     }
   }
