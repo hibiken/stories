@@ -6,4 +6,6 @@ json.array! @likers do |liker|
   json.urlPath user_path(liker)
   json.following current_user.following?(liker)
   json.isSelf current_user?(liker)
+  json.currentPage @current_page
+  json.nextPage @next_page
 end

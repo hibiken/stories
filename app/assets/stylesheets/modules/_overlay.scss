@@ -121,6 +121,7 @@
 
 /*** Overlay for displaying users ***/
 .overlay-hugeinc nav.users-overlay {
+  top: 40%;
   ul > li {
     display: flex;
     justify-content: flex-start;
@@ -138,5 +139,13 @@
     a {
       color: $light-font-color;
     }
+  }
+  .pagination-button-group {
+    display: -ms-flex;
+    display: -webkit-flex;
+    display: flex;
+    -ms-justify-content: space-around;
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
   }
 }

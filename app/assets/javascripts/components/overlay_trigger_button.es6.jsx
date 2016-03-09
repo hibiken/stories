@@ -2,7 +2,7 @@ class OverlayTriggerButton extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { isOpen: false, users: [] };
+    this.state = { isOpen: false, users: [], currentPage: null, nextPage: null };
   }
 
   render () {
@@ -19,6 +19,10 @@ class OverlayTriggerButton extends React.Component {
               <h2 className="grayed-heading center">{this.props.overlayHeading}</h2>
               <ul>
                 {this.renderUsers()}
+                <li className="pagination-button-group">
+                  {this.renderPrevButton()}
+                  {this.renderNextButton()}
+                </li>
               </ul>
             </nav>
           </div>
@@ -68,20 +72,71 @@ class OverlayTriggerButton extends React.Component {
     return <UserFollowButton following={user.following} followed_id={user.id} />
   }
 
+  renderPrevButton() {
+    if (this.state.currentPage > 1) {
+      return (
+        <a className="button" onClick={this.handlePrevClick.bind(this)}>Prev</a>
+      );
+    }
+  }
+
+  renderNextButton() {
+    if (this.state.nextPage !== null) {
+      return (
+        <a className="button" onClick={this.handleNextClick.bind(this)}>Next</a>
+      );
+    }
+  }
+
   handleOpenClick(event) {
     $.ajax({
       url: this.props.apiEndpoint,
       method: 'GET',
       dataType: 'json',
       success: (data) => {
-        console.log(data);
-        this.setState({ isOpen: true, users: data });
+        console.log('called');
+        this.setState({
+          isOpen: true,
+          users: data,
+          currentPage: data[0].currentPage,
+          nextPage: data[0].nextPage
+        });
       }
     });
   }
 
   handleCloseClick(event) {
     this.setState({ isOpen: false });
+  }
+
+  handlePrevClick() {
+    $.ajax({
+      url: `${this.props.apiEndpoint}&page=${this.state.currentPage - 1}`,
+      method: 'GET',
+      dataType: 'json',
+      success: (data) => {
+        this.setState({
+          users: data,
+          currentPage: data[0].currentPage,
+          nextPage: data[0].nextPage
+        });
+      }
+    });
+  }
+
+  handleNextClick() {
+    $.ajax({
+      url: `${this.props.apiEndpoint}&page=${this.state.nextPage}`,
+      method: 'GET',
+      dataType: 'json',
+      success: (data) => {
+        this.setState({
+          users: data,
+          currentPage: data[0].currentPage,
+          nextPage: data[0].nextPage
+        });
+      }
+    });
   }
 
 }

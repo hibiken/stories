@@ -72,4 +72,9 @@ body.posts.show {
       margin-top: 12px;
     }
   }
+  [data-react-class="OverlayTriggerButton"] {
+    display: inline-block;
+    cursor: pointer;
+  }
 }
+
