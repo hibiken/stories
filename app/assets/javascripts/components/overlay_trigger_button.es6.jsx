@@ -94,13 +94,14 @@ class OverlayTriggerButton extends React.Component {
       method: 'GET',
       dataType: 'json',
       success: (data) => {
-        console.log('called');
-        this.setState({
-          isOpen: true,
-          users: data,
-          currentPage: data[0].currentPage,
-          nextPage: data[0].nextPage
-        });
+        if (data.length) {
+          this.setState({
+            isOpen: true,
+            users: data,
+            currentPage: data[0].currentPage,
+            nextPage: data[0].nextPage
+          });
+        }
       }
     });
   }
