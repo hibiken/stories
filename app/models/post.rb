@@ -22,6 +22,7 @@ class Post < ActiveRecord::Base
   scope :top_stories, ->(number) { order(likes_count: :desc).limit(number) }
   scope :published, -> { where.not(published_at: nil) }
   scope :drafts, -> { where(published_at: nil) }
+  scope :featured, -> { where(featured: true) }
 
   mount_uploader :picture, PictureUploader
 
