@@ -26,6 +26,14 @@ module ApplicationHelper
     end
   end
 
+  def feature_post_button_for(post)
+    if post.featured?
+      render partial: 'admin/unfeature_post_button', locals: { post: post }
+    else
+      render partial: 'admin/feature_post_button', locals: { post: post }
+    end
+  end
+
   def nav_link_to(text, url, options = {})
     options[:class] ||= ""
     options[:class] += " active" if current_page?(url)
