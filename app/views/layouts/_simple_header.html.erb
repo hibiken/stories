@@ -7,12 +7,13 @@
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li class="new-post-button"><%= link_to "Write a story", new_post_path, class: "button" %></li>
         <% if user_signed_in? %>
+          <li class="new-post-button"><%= link_to "Write a story", new_post_path, class: "button" %></li>
           <%= render 'layouts/notifications' %>
           <%= render 'layouts/avatar_dropdown' %>
         <% else %>
-          <li><%= link_to "Sign in / Sign up", social_sign_in_path, class: 'button green-border-button sign-in-button' %></li>
+          <li class="new-post-button"><%= link_to "Write a story", new_post_path, class: "button", data: { behavior: 'trigger-overlay' } %></li>
+          <li><%= link_to "Sign in / Sign up", new_user_session_path, class: 'button green-border-button sign-in-button', data: { behavior: 'trigger-overlay' } %></li>
         <% end %>
       </ul>
     </div> 

@@ -1,0 +1,29 @@
+<div data-behavior="overlay" class="overlay overlay-hugeinc">
+  <button data-behavior="close-overlay" type="button" class="overlay-close"><span class="glyphicon glyphicon-remove"></span></button>
+  <nav>
+    <h2 class="grayed-heading center">Sign in or create an account</h2>
+    <ul class="omniauth-button-group">
+      <li class="omniauth-button">
+        <%= link_to user_omniauth_authorize_path(:facebook), class: 'button facebook' do %>
+          <span class="icon-facebook-official"></span>Sign in with Facebook
+        <% end %>
+      </li>
+
+      <li class="omniauth-button google">
+        <%= link_to user_omniauth_authorize_path(:google_oauth2), class: 'button google' do %>
+          <span class="icon-google"></span>Sign in with Google
+        <% end %>
+      </li>
+
+      <li class="omniauth-button twitter">
+        <%= link_to user_omniauth_authorize_path(:twitter), class: 'button twitter' do %>
+          <span class="icon-twitter2"></span>Sign in with Twitter
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to "Sign in or Sign up with email", new_user_session_path, class: "signin-signup-link" %>
+      </li>
+    </ul>
+  </nav>
+</div>

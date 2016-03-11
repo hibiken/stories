@@ -19,11 +19,11 @@ RSpec.feature "Liking a post" do
     expect(page).not_to have_button "Unlike"
   end
 
-  scenario "non-logged in user cannot like a post" do
+  scenario "non-logged in user cannot like a post", js: true do
     visit post_path(post)
     click_on "Like"
 
-    expect(current_path).to eq(new_user_session_path)
+    expect(page).to have_content("Sign in with Facebook")
   end
 
   scenario "creates a notification for author of the post", js: true do

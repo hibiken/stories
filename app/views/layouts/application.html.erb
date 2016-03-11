@@ -7,6 +7,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body class="<%= controller.controller_name %> <%= controller.action_name %>">
+  <%= render 'layouts/overlay' unless user_signed_in? %>
+
   <% if admin_signed_in? %>
     <%= render 'layouts/admin_header' %>
   <% else %>
@@ -20,4 +22,7 @@
   </div> 
 
 </body>
+<script type="text/javascript">
+  window.userSignedIn = <%= user_signed_in? %>;
+</script>
 </html>

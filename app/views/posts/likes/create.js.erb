@@ -1,1 +1,2 @@
 $('#<%= @likeable.class.to_s.downcase %>_<%= @likeable.id %>_likes').html("<%=j render partial: 'posts/likes', locals: { post: @likeable } %>");
+ReactRailsUJS.mountComponents();

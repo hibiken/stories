@@ -1,7 +1,7 @@
 <% if notice %>
-  <p class="alert alert-success" role="alert"><%= notice %></p>
+  <%= react_component('AlertMessage', { message: notice, type: 'success' }) %>
 <% end %>
 
 <% if alert %>
-  <p class="alert alert-danger" role="alert"><%= alert %></p>
+  <%= react_component('AlertMessage', { message: alert, type: 'danger' }) %>
 <% end %>

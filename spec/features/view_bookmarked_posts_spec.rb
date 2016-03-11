@@ -18,9 +18,9 @@ RSpec.feature "Viewing bookmarked posts" do
     expect(page).not_to have_link "Not so interesting post"
   end
 
-  scenario "non-logged in user cannot go to bookmarked post page" do
+  scenario "non-logged in user cannot go to bookmarked post page", js: true do
     visit root_path
     click_on "Bookmarks"
-    expect(current_path).to eq(new_user_session_path)
+    expect(page).to have_content("Sign in with Facebook")
   end
 end
