@@ -22,7 +22,7 @@ $loader-dot--size: 20px;
     animation-iteration-count: infinite !important;
     height: $loader-dot--size;
     width: $loader-dot--size;
-    border-radius: 50%;
+    @include border-radius($round);
     background-color: black;
     position: absolute;
     border: 2px solid white;

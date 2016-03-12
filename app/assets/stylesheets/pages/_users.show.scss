@@ -75,7 +75,7 @@ body.recommended_posts.index {
     top: -1000px;
   }
   .change-avatar {
-    border-radius: 50%;
+    @include border-radius($round);
     padding: 2px 5px;
     margin: 2px;
     background-size: cover;

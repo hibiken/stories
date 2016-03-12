@@ -9,10 +9,10 @@
   min-width: 300px;
   padding: 18px;
   background-color: $white;
-  border-radius: 5px;
+  @include border-radius($popover);
   border: 1px solid $border-color;
   color: $font-black;
-  z-index: $popover;
+  z-index: $z-popover;
   .po-username,
   .po-description {
     margin: 0;

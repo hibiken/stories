@@ -2,9 +2,9 @@
   background: $white;
   padding: 0 20px;
   margin-bottom: 10px;
-  border: 1px solid rgba(0,0,0, 0.04);
-  box-shadow: 0 1px 4px rgba(0,0,0, 0.03);
-  border-radius: 3px;
+  border: 1px solid rgba(0,0,0, 0.09);
+  @include box-shadow;
+  @include border-radius($radius);
 }
 .feed-metadata {
   padding-top: 1.4em;

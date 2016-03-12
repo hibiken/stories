@@ -1,7 +1,7 @@
 .button {
   border: 1px solid $border-color;
   padding: 0.5em 1em !important;
-  border-radius: 20px;
+  @include border-radius($button);
   text-decoration: none;
   color: rgba(0,0,0,0.6);
   font-size: 14px;
@@ -28,7 +28,7 @@
   width: 35px;
   height: 35px;
   border: 1px solid $border-color;
-  border-radius: 50%;
+  @include border-radius($round);
   background-color: #fff;
   margin-right: 20px;
   .count-button {

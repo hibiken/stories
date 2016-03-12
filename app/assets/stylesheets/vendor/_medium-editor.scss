@@ -76,7 +76,7 @@
   -webkit-animation: medium-editor-image-loading 1s infinite ease-in-out;
           animation: medium-editor-image-loading 1s infinite ease-in-out;
   background-color: #333;
-  border-radius: 100%;
+  @include border-radius(100%);
   display: inline-block;
   height: 40px;
   width: 40px; }
