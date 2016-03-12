@@ -41,17 +41,19 @@
 
 
 .picture_upload {
-  border: 2px solid #AAA;
-  border-radius: 4px;
-  padding: 5px 8px;
+  border: 1px solid $light-gray;
+  @include border-radius(50%);
+  padding: 6px 8px 4px 8px;
   margin: 2px;
-  background: #fff;
+  color: $light-gray;
   display: inline-block;
-  border-radius: 50%;
-  color: #999;
-
   float: right;
   margin-right: 8px;
+  transition: all 0.5s ease;
+}
+.picture_upload:hover {
+  border: 1px solid $accent-color;
+  color: $accent-color;
 }
 
 // Override Taggle stylesheet.
