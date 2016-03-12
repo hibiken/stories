@@ -9,7 +9,10 @@
 
   <div class="main-body">
     <h3 class="post-title"><%= link_to post.title, post %></h3>
-    <div class="post-body"><%= truncate(post.body, length: 90, escape: false) { link_to "Read more ...", post, class: 'read-more' } %></div>
+    <% if post.lead %>
+      <div class="post-body"><%= truncate(post.lead, length: 140, separator: ' ', escape: false) %></div>
+      <%= link_to "Read more", post, class: 'read-more' %>
+    <% end %>
   </div>
 
   <div class="post-stats clearfix">

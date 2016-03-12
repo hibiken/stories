@@ -425,6 +425,7 @@ DEPENDENCIES
   launchy (~> 2.4.3)
   mini_magick (= 3.8.0)
   net-ssh
+  nokogiri (~> 1.6)
   omniauth-facebook (~> 3.0)
   omniauth-google-oauth2 (~> 0.3.1)
   omniauth-twitter (~> 1.2)
