@@ -31,11 +31,24 @@
 
   <%= f.submit "Publish", class: "button green-inner-button" %>
 <% end %>
-
+<scirpt src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.amd.js"></script>
 <script>
 var editor = new MediumEditor('.medium-editable', {
   placeholder: {
     text: "Tell your Story ..."
+  }
+});
+
+$('.medium-editable').mediumInsert({
+  editor: editor,
+  addons: {
+    images: {
+      fileUploadOptions: {
+        url: $('.editor-form').attr('action'),
+        acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
+        method: 'PATCH'
+      }
+    }
   }
 });
 
