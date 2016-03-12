@@ -7,7 +7,7 @@
   button[type="submit"] {
     border: none;
     outline: none;
-    background-color: #fff;
+    background-color: transparent;
     span {
       color: $light-font-color;
     }
@@ -15,6 +15,7 @@
   input[type="search"] {
     border: none;
     outline: none;
+    background-color: transparent;
   }
 }
 

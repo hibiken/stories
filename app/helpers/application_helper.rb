@@ -26,6 +26,14 @@ module ApplicationHelper
     end
   end
 
+  def feature_post_button_for(post)
+    if post.featured?
+      render partial: 'admin/unfeature_post_button', locals: { post: post }
+    else
+      render partial: 'admin/feature_post_button', locals: { post: post }
+    end
+  end
+
   def nav_link_to(text, url, options = {})
     options[:class] ||= ""
     options[:class] += " active" if current_page?(url)
@@ -33,9 +41,4 @@ module ApplicationHelper
     link_to text, url, options
   end
 
-  def markdown(text)
-    @renderer ||= Redcarpet::Render::HTML.new(filter_html: false, hard_wrap: true) # Sets filter_html to false to use Medium Editor
-    @markdown_parser ||= Redcarpet::Markdown.new(@renderer, autolink: true, no_intra_emphasi: true)
-    @markdown_parser.render(text).html_safe
-  end
 end

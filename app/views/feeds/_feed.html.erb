@@ -11,6 +11,10 @@
         and <%= pluralize(post.likes.count - 1, 'other') %>
       <% end %>
     </div>
+    <% elsif feed.featured?(post) %>
+      <div class="feed-metadata">
+        Featured by Stories Staff and recommended by <%= pluralize(post.likes.count, 'other') %>
+      </div>
     <% end %>
     <%= render partial: 'posts/post', locals: { post: post } %>
   </div>
