@@ -44,13 +44,13 @@
 .picture_upload {
   border: 1px solid $light-gray;
   @include border-radius($round);
-  padding: 6px 8px 4px 8px;
+  padding: 6px 8px 5px 9px;
   margin: 2px;
   color: $light-gray;
   display: inline-block;
   float: right;
   margin-right: 8px;
-  transition: all 0.5s ease;
+  transition: all .1s;
 }
 .picture_upload:hover {
   border: 1px solid $accent-color;
