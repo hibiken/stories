@@ -79,7 +79,7 @@ nav.navbar {
   // FIXME
   .nav-dropdown {
     background: #fff;
-    border-radius: 4px;
+    @include border-radius($popover);
     box-shadow: 0 1px 2px rgba(0,0,0,.25),0 0 1px rgba(0,0,0,.35);
     border: none !important;
     top: 134% !important;
@@ -103,28 +103,26 @@ nav.navbar {
       line-height: 1.4;
     }
     .dropdown-arrow-top {
-      width: 0; 
-      height: 0; 
-      border-left: 16px solid transparent;
-      border-right: 16px solid transparent;
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
       z-index: 20;
-
-      border-bottom: 16px solid #fff;
+      border-bottom: 10px solid #fff;
       position: absolute;
-      right: 4px;
-      top: -13px;
+      right: 7px;
+      top: -10px;
     }
     .dropdown-arrow-bottom {
-      width: 0; 
-      height: 0; 
-      border-left: 15px solid transparent;
-      border-right: 15px solid transparent;
+      width: 0;
+      height: 0;
+      border-left: 12px solid transparent;
+      border-right: 12px solid transparent;
       z-index: 10;
-
-      border-bottom: 15px solid rgba(0,0,0,0.11);
+      border-bottom: 11px solid rgba(0, 0, 0, 0.11);
       position: absolute;
       right: 5px;
-      top: -15px;
+      top: -11px;
     }
   }
 }
@@ -140,7 +138,7 @@ nav.navbar {
     padding: 0;
     position: relative;
     border: 1.5px solid $border-color;
-    border-radius: 50%;
+    @include border-radius($round);
     margin-top: 5px;
     span {
       position: absolute;

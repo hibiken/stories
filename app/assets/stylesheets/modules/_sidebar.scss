@@ -21,7 +21,7 @@ aside.main-sidebar {
     background-color: #fff;
     padding: 0.5em 0.7em;
     border: 1px solid $light-border-color;
-    border-radius: 3px;
+    @include border-radius($radius);
     text-decoration: none;
     margin-right: 10px;
     margin-bottom: 12px;

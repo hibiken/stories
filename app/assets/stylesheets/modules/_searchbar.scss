@@ -1,6 +1,6 @@
 .main-searchbar form {
   padding: 0.4em 0.8em;
-  border-radius: 20px;
+  @include border-radius($button);
   margin-top: 6px;
   margin-right: 8px;
   border: 1px solid #e0e0e0;

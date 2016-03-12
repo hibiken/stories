@@ -5,7 +5,7 @@ $gray: #8a8a8a;
 .btn {
     background: $project_color;
     padding: 12px 30px;
-    border-radius: 3px;
+    @include border-radius($radius);
     margin-right: 10px;
     color: $button_text_color !important;
     position: relative;
