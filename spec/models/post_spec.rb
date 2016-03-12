@@ -52,4 +52,20 @@ RSpec.describe Post do
       expect(post.word_count).to eq(5)
     end
   end
+
+  describe "#generate_lead" do
+    let(:post1) { build(:post, body: "<p>this is a simple content.</p>") }
+    let(:post2) { build(:post, body: "<p><span>this is more complicated content</span></p>") }
+    let(:post3) { build(:post, body: "<h2>Subtitle</h2><span>hello world</span><p>cool</p>") }
+
+    it "generate lead for published posts" do
+      post1.generate_lead!
+      post2.generate_lead!
+      post3.generate_lead!
+
+      expect(post1.lead).to eq("<p>this is a simple content.</p>")
+      expect(post2.lead).to eq("<p><span>this is more complicated content</span></p>")
+      expect(post3.lead).to eq("<h2>Subtitle</h2>\n")
+    end
+  end
 end
