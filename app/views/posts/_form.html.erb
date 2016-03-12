@@ -1,3 +1,4 @@
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 <%= form_for post, html: { multipart: true, class: "editor-form", autocomplete: "off" } do |f| %>
 
   <label class="picture_upload">
@@ -43,7 +44,7 @@ $('.medium-editable').mediumInsert({
   editor: editor,
   addons: {
     images: {
-      fileUploadOptions: {
+      fileUploadOptions: { // TODO: figure out how to upload pictures to AS3
         url: $('.editor-form').attr('action'),
         acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
         method: 'PATCH'
