@@ -4,10 +4,9 @@ Welcome to Stories. In December 2015 [Ken Hibino](https://github.com/kenny-hibin
 
 Soon Ken decided to create a [YouTube series](https://www.youtube.com/playlist?list=PLoUInciCQ806CUFxld2W29V6rbGNfHzbX “Let’s create a Medium Clone with Rails”) based on the project to help other people learn the technologies. 
 
-People began following the lessons, making contributions and improving the app… slowly it began to blossom into an [elegant and powerful application](http://my-medium-clone.herokuapp.com/ “Stories”).
+People began following the lessons, making contributions and improving the app… slowly it began to blossom into an [elegant and powerful application](http://my-medium-clone.herokuapp.com/).
 
 If your keen to gain some new skills, get started by following the install and configuration below, make a [topic branch](https://github.com/dchelimsky/rspec/wiki/Topic-Branches “Topic Branches Explained”) and submit a pull request… lets learn together.
-
 
 ## System dependencies
 
@@ -19,7 +18,7 @@ If your keen to gain some new skills, get started by following the install and c
 
 ## Step by Step - Install & Configuration
 
-**1. Instal Homebrew**
+**1. Install Homebrew**
 
 Homebrew allows us to install and compile software packages easily from source.
 
@@ -48,7 +47,7 @@ rbenv global 2.3.0
 ruby -v
 ```
 
-**3. Instal Rails**
+**3. Install Rails**
 
 Installing Rails is really simple:
 
