@@ -7,14 +7,10 @@
 
   .post-picture-wrapper {
     padding: 1.2em 0 0;
-    position: relative;
-    height: 180px;
-    overflow: hidden;
     img {
       display: block;
       width: 100%;
       height: 100%;
-      position: absolute;
     }
   }
 
