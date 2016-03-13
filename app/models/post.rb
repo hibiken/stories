@@ -22,9 +22,11 @@ class Post < ActiveRecord::Base
   scope :top_stories, ->(number) { order(likes_count: :desc).limit(number) }
   scope :published, -> { where.not(published_at: nil) }
   scope :drafts, -> { where(published_at: nil) }
+  scope :featured, -> { where(featured: true) }
 
   mount_uploader :picture, PictureUploader
 
+  before_save :generate_lead!
   # will_pagination configuration
   self.per_page = 5
 
@@ -74,6 +76,21 @@ class Post < ActiveRecord::Base
 
   def word_count
     words.size
+  end
+
+  # Generate a lead which appears in post panel.
+  # FIXME: this method needs refactoring or completely different approach
+  def generate_lead!
+    if self.published?
+      post_body = Nokogiri::HTML::Document.parse(self.body)
+      if post_body.css('h2').size > 0
+        self.lead = post_body.css('h2')[0].to_s
+      elsif post_body.css('h3').size > 0
+        self.lead = post_body.css('h3')[0].to_s
+      elsif post_body.css('p').size > 0
+        self.lead = post_body.css('p')[0].to_s
+      end
+    end
   end
 
 end

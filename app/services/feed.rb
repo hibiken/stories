@@ -27,6 +27,10 @@ class Feed
     recommended_post_ids.include?(post.id)
   end
 
+  def featured?(post)
+    featured_post_ids.include?(post.id)
+  end
+
   def tag_for(post)
     tag_id = user.following_tag_ids.select { |id| post.tag_ids.include?(id) }.first
     Tag.find_by(id: tag_id)
@@ -51,8 +55,12 @@ class Feed
        Tagging.where(tag_id: user.following_tag_ids).pluck(:post_id).uniq
      end
 
+     def featured_post_ids
+       Post.where(featured: true).pluck(:id)
+     end
+
      def feed_post_ids
-       (Post.where(user_id: user_ids).pluck(:id) + tagged_post_ids + recommended_post_ids).uniq
+       (Post.where(user_id: user_ids).pluck(:id) + tagged_post_ids + recommended_post_ids + featured_post_ids).uniq
      end
 
      def recommended_post_ids
