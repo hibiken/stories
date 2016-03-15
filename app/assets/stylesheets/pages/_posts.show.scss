@@ -2,6 +2,8 @@ body.posts.show {
   .main-content {
     padding-top: 2em;
     padding-bottom: 2em;
+    padding-left: 3%;
+    padding-right: 3%;
   }
   .post-picture-wrapper {
     padding: 2em 0;
@@ -42,11 +44,16 @@ body.posts.show {
   }
 
   .author-info {
+    display: -ms-flex;
+    display: -webkit-flex;
     display: flex;
+    -ms-justify-content: space-around;
+    -webkit-justify-content: space-around;
+    justify-content: space-around;
     padding: 2.5em 0;
     border-top: 1px solid $light-border-color;
     border-bottom: 1px solid $light-border-color;
-    margin: 2em 0 3em;
+    margin: 2em 0 0;
     .avatar-image {
       vertical-align: top;
       margin-right: 20px;
@@ -75,6 +82,10 @@ body.posts.show {
   [data-react-class="OverlayTriggerButton"] {
     display: inline-block;
     cursor: pointer;
+  }
+
+  .post-show-footer {
+    background-color: $background-gray;
   }
 }
 

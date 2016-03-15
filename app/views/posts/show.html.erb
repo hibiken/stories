@@ -52,6 +52,11 @@
       </div>
     <% end %>
 
+  </div>
+
+</div> 
+<div class="post-show-footer row">
+  <div class="col-xs-10 col-sm-10 col-md-8 col-md-offset-2 col-sm-offset-1 col-xs-offset-1 main-content">
     <%= form_for [@post, @response] do |f| %>
       <div class="form-group">
         <%= f.text_area :body, class: "form-control", placeholder: "Write a response ..." %>
@@ -65,5 +70,4 @@
       </div>
     <% end %>
   </div>
-</div> 
-  
+</div>  
