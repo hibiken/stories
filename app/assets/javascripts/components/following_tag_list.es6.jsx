@@ -2,7 +2,13 @@ class FollowingTagList extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { followingTags: this.props.followingTags };
+    this.state = { followingTags: this.props.followingTags  };
+  }
+
+  componentWillMount() {
+    PubSub.subscribe('TagFollowButton:onClick', () => {
+      this.fetchTags();
+    })
   }
 
   render () {
@@ -13,14 +19,29 @@ class FollowingTagList extends React.Component {
     );
   }
 
-  renderFollowingTag() {
-    this.state.followingTags.map(tag => {
+  renderFollowingTags() {
+    console.log(this.state.followingTags);
+    return this.state.followingTags.map(tag => {
       return (
-        <a href={`/tags/${tag.id}`}>
+        <a
+          key={tag.id}
+          className="tag"
+          href={`/tags/${tag.id}`}>
           {tag.name}
         </a>
       );
     })
+  }
+
+  fetchTags() {
+    $.ajax({
+      url: '/api/following_tags.json',
+      method: 'GET',
+      success: (data) => {
+        console.log(data);
+        this.setState({ followingTags: data });
+      }
+    });
   }
 }
 

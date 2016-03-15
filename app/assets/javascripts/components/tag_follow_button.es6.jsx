@@ -46,6 +46,7 @@ class TagFollowButton extends React.Component {
         this.setState({
           following: true
         });
+        PubSub.publish('TagFollowButton:onClick');
       }
     });
   }
@@ -58,6 +59,7 @@ class TagFollowButton extends React.Component {
         this.setState({
           following: false
         });
+        PubSub.publish('TagFollowButton:onClick');
       }
     });
   }
