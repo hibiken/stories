@@ -70,4 +70,25 @@
       </div>
     <% end %>
   </div>
-</div>  
+</div>
+<div class="post-metadata-bar">
+  <div class="flex-container">
+    <div class="post-stats clearfix">
+      <div id="post_<%= @post.id %>_likes" class="pull-left">
+        <%= render partial: 'posts/likes', locals: { post: @post } %>
+      </div>
+
+      <div id="post_<%= @post.id %>_bookmarks" class="pull-right">
+        <%= render partial: 'posts/bookmarks', locals: { post: @post } %>
+      </div>
+    </div>
+    <div class="metabar-author-info flex-container flex-space-btw">
+      <div>
+        <%= avatar_for @post.user, size: 35 %>
+        <strong><%= @post.username %></strong>
+      </div>
+      <%= follow_button_for @post.user %>
+    </div>
+  </div>
+</div>
+

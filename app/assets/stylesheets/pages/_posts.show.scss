@@ -87,5 +87,40 @@ body.posts.show {
   .post-show-footer {
     background-color: $background-gray;
   }
+
+  .post-metadata-bar > .flex-container {
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    background-color: $white;
+    width: 720px;
+    padding: 0.8em 0.8em 0.5em;
+    left: 50%;
+    transform: translate(-50%, 0);
+    box-shadow: 0 0 1px rgba(0,0,0,.44);
+    border-radius: 3px 3px 0 0;
+    .post-stats {
+      width: 55%;
+      padding-right: 10px;
+      border-right: 1px solid $border-color;
+    }
+    .metabar-author-info {
+      width: 45%;
+      padding-left: 10px;
+    }
+  }
+
+  .metabar-author-info {
+    [data-react-class="UserFollowButton"] {
+      display: inline-block;
+      .button {
+        font-size: 12px;
+      }
+      .unfollow-button {
+        width: 80px;
+      }
+    }
+  }
 }
 
