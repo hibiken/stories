@@ -48,6 +48,7 @@ Rails.application.routes.draw do
     resources :likers, only: [:index]
     resources :followers, only: [:index]
     resources :following, only: [:index]
+    resources :following_tags, only: [:index]
 
     post    "relationships" => "relationships#create"
     delete  "relationships" => "relationships#destroy"
