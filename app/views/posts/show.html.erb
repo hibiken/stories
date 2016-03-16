@@ -72,7 +72,7 @@
   </div>
 </div>
 <div class="post-metadata-bar">
-  <div class="flex-container">
+  <div class="flex-container" data-behavior="animated-metadata">
     <div class="post-stats clearfix">
       <%# TODO: Refactor OverlayTrggerButton so that we don't have to disable Overlay here,
         we can simply call render partial: 'post/likes' %>
@@ -105,7 +105,7 @@
     <div class="metabar-author-info flex-container flex-space-btw">
       <div>
         <%= avatar_for @post.user, size: 35 %>
-        <strong><%= @post.username %></strong>
+        <%= react_component("PopoverLink", { user_id: @post.user.id, url: user_path(@post.user), text: @post.username }) %>
       </div>
       <%= follow_button_for @post.user %>
     </div>

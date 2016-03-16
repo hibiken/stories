@@ -97,9 +97,16 @@ body.posts.show {
     width: 720px;
     padding: 0.8em 0.8em 0.5em;
     left: 50%;
-    transform: translate(-50%, 0);
     box-shadow: 0 0 1px rgba(0,0,0,.44);
     border-radius: 3px 3px 0 0;
+    transition: 0.3s transform;
+    transform: translate(-50%, 0);
+    &.is-inView {
+      transform: translate(-50%, 0);
+    }
+    &.is-hidden {
+      transform: translate(-50%, 100%);
+    }
     .post-stats {
       width: 55%;
       padding-right: 10px;
@@ -108,10 +115,18 @@ body.posts.show {
     .metabar-author-info {
       width: 45%;
       padding-left: 10px;
+      align-items: center;
     }
   }
 
   .metabar-author-info {
+    [data-react-class="PopoverLink"] {
+      display: inline-block;
+      margin-left: 8px;
+      a {
+        color: $light-font-color;
+      }
+    }
     [data-react-class="UserFollowButton"] {
       display: inline-block;
       .button {
@@ -123,4 +138,5 @@ body.posts.show {
     }
   }
 }
+
 
