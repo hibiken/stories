@@ -50,6 +50,11 @@ Rails.application.routes.draw do
     resources :following, only: [:index]
     resources :following_tags, only: [:index]
 
+    resources :posts, only: [] do
+      resource :likes, only: [:create, :destroy], module: :posts
+      resource :bookmarks, only: [:create, :destroy], module: :posts
+    end
+
     post    "relationships" => "relationships#create"
     delete  "relationships" => "relationships#destroy"
     post    "interests" => "interests#create"
