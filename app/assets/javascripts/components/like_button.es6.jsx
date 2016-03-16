@@ -14,7 +14,6 @@ class LikeButton extends React.Component {
   componentWillMount() {
     const { likeableType, likeableId } = this.props;
     this.token = PubSub.subscribe('LikeButton:onClick', (msg, data) => {
-      console.log('likebutton click detected', data);
       if (likeableType === data.type && likeableId === data.id) {
         this.setState({ liked: data.liked, likeCount: data.count });
       }
@@ -89,7 +88,6 @@ class LikeButton extends React.Component {
       method: 'POST',
       dataType: 'json',
       success: (data) => {
-        console.log(data);
         this.setState({ liked: data.liked, likeCount: data.count });
         PubSub.publish('LikeButton:onClick', data);
       }
