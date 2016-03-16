@@ -54,19 +54,20 @@ class LikeButton extends React.Component {
   }
 
   renderLikeCount() {
+    if (this.state.likeCount === 0 ) {
+      return;
+    }
     if (this.props.disableOverlay) {
       return <span className="like-count">{this.state.likeCount}</span>
     }
-    if (this.state.likeCount > 0) {
-      return (
-        <span className="like-count">
-            <OverlayTriggerButton 
-              text={this.state.likeCount} 
-              overlayHeading={this.props.overlayHeading} 
-              apiEndpoint={this.props.overlayEndpoint} />
-        </span>
-      );
-    }
+    return (
+      <span className="like-count">
+          <OverlayTriggerButton 
+            text={this.state.likeCount} 
+            overlayHeading={this.props.overlayHeading} 
+            apiEndpoint={this.props.overlayEndpoint} />
+      </span>
+    );
   }
 
   onUnlikeClick(e) {
@@ -75,7 +76,6 @@ class LikeButton extends React.Component {
       method: 'DELETE',
       dataType: 'json',
       success: (data) => {
-        console.log(data);
         this.setState({ liked: data.liked, likeCount: data.count });
         PubSub.publish('LikeButton:onClick', data);
       }

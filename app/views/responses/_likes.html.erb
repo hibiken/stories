@@ -1,18 +1,17 @@
 <div class="like-button-wrapper">
   <% if user_signed_in? %>
-    <% if current_user.liked?(response) %>
-      <%= button_to response_like_path(response, current_user.likes.find_by(likeable: response)), method: :delete, remote: true, class: 'unlike-button' do %>
-        <span class="icon-heart2"></span><span class="hide-text">Unlike</span>
-      <% end %>
-    <% else %>
-      <%= button_to response_likes_path(response), remote: true, class: 'like-button' do %>
-        <span class="icon-heart-o"></span><span class="hide-text">Like</span>
-      <% end %>
-    <% end %>
+    <%= react_component('LikeButton',
+                        { liked: current_user.liked?(response),
+                          likeCount: response.likes.size,
+                          likeEndpoint: api_response_likes_path(response),
+                          unlikeEndpoint: api_response_likes_path(response),
+                          likeableType: 'Response',
+                          likeableId: response.id,
+                          disableOverlay: true }) %>
   <% else %>
-    <%= button_to new_user_session_path, method: :get, class: 'like-button' do %>
+    <%= button_to '', method: :get, class: 'like-button', data: { behavior: 'trigger-overlay' } do %>
       <span class="icon-heart-o"></span><span class="hide-text">Like</span>
     <% end %>
+    <span class="like-count"><%= response.likes.size %></span>
   <% end %>
 </div>
-<span class="like-count"><%= response.reload.likes.size %></span>

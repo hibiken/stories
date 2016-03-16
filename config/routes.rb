@@ -11,13 +11,6 @@ Rails.application.routes.draw do
 
   resources :posts, except: [:index] do
     resources :responses, only: [:create]
-    resources :likes, only: [:create, :destroy], module: :posts
-    resources :bookmarks, only: [:create, :destroy], module: :posts
-  end
-
-  resources :responses, only: [] do
-    resources :likes, only: [:create, :destroy], module: :responses
-    resources :bookmarks, only: [:create, :destroy], module: :responses
   end
 
   resources :tags, only: [:show]
@@ -53,6 +46,11 @@ Rails.application.routes.draw do
     resources :posts, only: [] do
       resource :likes, only: [:create, :destroy], module: :posts
       resource :bookmarks, only: [:create, :destroy], module: :posts
+    end
+
+    resources :responses, only: [] do
+      resource :likes, only: [:create, :destroy], module: :responses
+      resource :bookmarks, only: [:create, :destroy], module: :responses
     end
 
     post    "relationships" => "relationships#create"

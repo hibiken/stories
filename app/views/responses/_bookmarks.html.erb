@@ -1,16 +1,13 @@
 <div class="bookmark-button-wrapper">
   <% if user_signed_in? %>
-    <% if current_user.bookmarked?(response) %>
-      <%= button_to response_bookmark_path(response, current_user.bookmarks.find_by(bookmarkable: response)), method: :delete, remote: true, class: 'unbookmark-button' do %>
-        <span class="icon-bookmark"></span><span class="hide-text">Unbookmark</span>
-      <% end %>
-    <% else %>
-      <%= button_to response_bookmarks_path(response), remote: true, class: 'bookmark-button' do %>
-        <span class="icon-bookmark-o"></span><span class="hide-text">Bookmark</span>
-      <% end %>
-    <% end %>
+    <%= react_component('BookmarkButton',
+                        { bookmarked: current_user.bookmarked?(response),
+                          bookmarkEndpoint: api_response_bookmarks_path(response),
+                          unbookmarkEndpoint: api_response_bookmarks_path(response),
+                          bookmarkableType: 'Response',
+                          bookmarkableId: response.id }) %>
   <% else %>
-    <%= button_to new_user_session_path, method: :get, class: 'bookmark-button' do %>
+    <%= button_to '', method: :get, class: 'bookmark-button', data: { behavior: 'trigger-overlay' } do %>
       <span class="icon-bookmark-o"></span><span class="hide-text">Bookmark</span>
     <% end %>
   <% end %>
