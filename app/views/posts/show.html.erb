@@ -74,8 +74,28 @@
 <div class="post-metadata-bar">
   <div class="flex-container">
     <div class="post-stats clearfix">
+      <%# TODO: Refactor OverlayTrggerButton so that we don't have to disable Overlay here,
+        we can simply call render partial: 'post/likes' %>
       <div id="post_<%= @post.id %>_likes" class="pull-left">
-        <%= render partial: 'posts/likes', locals: { post: @post } %>
+        <div class="like-button-wrapper">
+          <% if user_signed_in? %>
+            <%= react_component('LikeButton',
+                                { liked: current_user.liked?(@post),
+                                  likeCount: @post.likes.size,
+                                  likeEndpoint: api_post_likes_path(@post),
+                                  unlikeEndpoint: api_post_likes_path(@post),
+                                  likeableType: 'Post',
+                                  likeableId: @post.id,
+                                  disableOverlay: true }) %>
+          <% else %>
+            <%= button_to '', method: :get, class: 'like-button', data: { behavior: 'trigger-overlay' } do %>
+              <span class="icon-heart-o"></span><span class="hide-text">Like</span>
+            <% end %>
+            <% if @post.likes.size > 0 %>
+              <span class="like-count"><%= @post.likes.size %></span>
+            <% end %>
+          <% end %>
+        </div>
       </div>
 
       <div id="post_<%= @post.id %>_bookmarks" class="pull-right">

@@ -31,9 +31,8 @@ class LikeButton extends React.Component {
         <div className="like-button-wrapper">
           {this.renderLikeButton()}
         </div>
-        <span className="like-count">{this.state.likeCount}</span>
-        <OverlayTriggerButton text={this.state.likeCount} overlayHeading="People liked this post" apiEndpoint={`/api/likers/?post_id=${this.props.likeableId}`} />
-      </div>
+          {this.renderLikeCount()}
+        </div>
     );
   }
 
@@ -51,6 +50,22 @@ class LikeButton extends React.Component {
           <span className="icon-heart-o" />
           <span className="hide-text">Like</span>
         </button>
+      );
+    }
+  }
+
+  renderLikeCount() {
+    if (this.props.disableOverlay) {
+      return <span className="like-count">{this.state.likeCount}</span>
+    }
+    if (this.state.likeCount > 0) {
+      return (
+        <span className="like-count">
+            <OverlayTriggerButton 
+              text={this.state.likeCount} 
+              overlayHeading={this.props.overlayHeading} 
+              apiEndpoint={this.props.overlayEndpoint} />
+        </span>
       );
     }
   }
@@ -84,9 +99,14 @@ class LikeButton extends React.Component {
 
 LikeButton.propTypes = {
   liked: React.PropTypes.bool.isRequired,
-  likeCount: React.PropTypes.number.isRequired,
+  likeCount: React.PropTypes.oneOfType([React.PropTypes.number, React.PropTypes.string]).isRequired,
   likeEndpoint: React.PropTypes.string.isRequired,
   unlikeEndpoint: React.PropTypes.string.isRequired,
   likeableType: React.PropTypes.string.isRequired,
-  likeableId: React.PropTypes.number.isRequired
+  likeableId: React.PropTypes.number.isRequired,
+  disableOverlay: React.PropTypes.bool
 };
+
+LikeButton.defaultProps = {
+  disableOverlay: false
+}

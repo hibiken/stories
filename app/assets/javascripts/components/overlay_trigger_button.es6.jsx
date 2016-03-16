@@ -149,7 +149,7 @@ class OverlayTriggerButton extends React.Component {
 
 
 OverlayTriggerButton.propTypes = {
-  text: React.PropTypes.string,
+  text: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.number]).isRequired,
   overlayHeading: React.PropTypes.string,
   apiEndpoint: React.PropTypes.string.isRequired
 };
