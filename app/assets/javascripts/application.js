@@ -21,6 +21,7 @@
 //= require medium-editor-insert-plugin
 //= require taggle
 //= require jquery.autoSave
+//= require pubsub
 //= require bootstrap-sprockets
 //= require react
 //= require react_ujs
