@@ -43,7 +43,6 @@
 @import 'modules/sidebar';
 @import 'modules/like_buttons';
 @import 'modules/feed';
-@import 'modules/unfollow_button';
 @import 'modules/user_card';
 @import 'modules/searchbar';
 @import 'modules/editor_form';
@@ -57,5 +56,7 @@
 
 // Vendor
 @import 'vendor/medium-editor';
+@import 'vendor/medium-editor-insert-plugin';
+@import 'vendor/medium-editor-insert-plugin-frontend';
 @import 'vendor/flat';
 @import 'vendor/taggle';

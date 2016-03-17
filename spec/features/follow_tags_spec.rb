@@ -23,7 +23,7 @@ RSpec.feature "Following tags" do
     expect(page).not_to have_css ".follow-button"
 
     visit root_path
-    within(".following-tags") do
+    within(".following-tag-list") do
       expect(page).to have_content "Music"
       click_on "Music"
     end
@@ -32,7 +32,7 @@ RSpec.feature "Following tags" do
     click_on "Unfollow"
 
     visit root_path
-    within(".following-tags") do
+    within(".following-tag-list") do
       expect(page).not_to have_content "Music"
     end
   end

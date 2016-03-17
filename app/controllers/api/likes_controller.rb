@@ -2,7 +2,7 @@
 # Posts::LikesController for example.
 # Child controller that inherit from this LikesController should implement 
 # before_action :set_likeable, which sets @likeable.
-class LikesController < ApplicationController
+class API::LikesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_likeable
 
@@ -12,19 +12,14 @@ class LikesController < ApplicationController
     unless current_user?(@likeable.user)
       Notification.create(recipient: @likeable.user, actor: current_user, action: "liked your", notifiable: @likeable)
     end
-    respond_to do |format|
-      format.html { redirect_to :back }
-      format.js
-    end
-    
+
+    render json: { liked: true, count: @likeable.reload.likes.size, type: @likeable.class.to_s, id: @likeable.id }, status: 200
   end
 
   def destroy
     current_user.remove_like_from(@likeable)
-    respond_to do |format|
-      format.html { redirect_to :back }
-      format.js
-    end
+
+    render json: { liked: false, count: @likeable.reload.likes.size, type: @likeable.class.to_s, id: @likeable.id }, status: 200
   end
 
   private
@@ -33,3 +28,4 @@ class LikesController < ApplicationController
       raise NotImplementedError, "This #{self.class} cannot respond to 'set_likeable'"
     end
 end
+

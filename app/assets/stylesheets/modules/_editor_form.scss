@@ -14,6 +14,10 @@
     min-height: 300px;
     outline: none;
     @include well-read;
+    line-height: 1.5;
+    position: relative;
+    left: -60px;
+    padding-left: 60px;
   }
   .picture_upload {
     position: absolute;
@@ -71,4 +75,11 @@
 .taggle_placeholder {
   top: 3px !important;
   left: 0px !important;
+}
+
+// Override Medium Editor Insert Plugin.
+.medium-insert-buttons {
+  a {
+    color: $light-gray;
+  }
 }

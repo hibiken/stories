@@ -1,4 +1,4 @@
-class Posts::LikesController < LikesController
+class API::Posts::LikesController < API::LikesController
 
   private
 

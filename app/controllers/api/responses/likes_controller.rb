@@ -1,4 +1,4 @@
-class Responses::LikesController < LikesController
+class API::Responses::LikesController < API::LikesController
 
   private
 

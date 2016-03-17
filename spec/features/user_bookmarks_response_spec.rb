@@ -28,7 +28,7 @@ RSpec.feature "Bookmarking a response" do
     end
   end
 
-  scenario "non-logged in user cannot bookmark a response" do
+  scenario "non-logged in user cannot bookmark a response", js: true do
     visit post_path(post)
     within(".response") do
       click_on "Bookmark"

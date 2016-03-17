@@ -52,6 +52,11 @@
       </div>
     <% end %>
 
+  </div>
+
+</div> 
+<div class="post-show-footer row">
+  <div id="responses" class="col-xs-10 col-sm-10 col-md-8 col-md-offset-2 col-sm-offset-1 col-xs-offset-1 main-content">
     <%= form_for [@post, @response] do |f| %>
       <div class="form-group">
         <%= f.text_area :body, class: "form-control", placeholder: "Write a response ..." %>
@@ -60,10 +65,57 @@
     <% end %>
 
     <% if @post.responses.any? %>
-      <div id="responses">
+      <div>
         <%= render @post.responses %>
       </div>
     <% end %>
   </div>
-</div> 
-  
+</div>
+<div class="post-metadata-bar">
+  <div class="flex-container" data-behavior="animated-metadata">
+    <div class="post-stats flex-container">
+      <%# TODO: Refactor OverlayTrggerButton so that we don't have to disable Overlay here,
+        we can simply call render partial: 'post/likes' %>
+      <div id="post_<%= @post.id %>_likes">
+        <div class="like-button-wrapper">
+          <% if user_signed_in? %>
+            <%= react_component('LikeButton',
+                                { liked: current_user.liked?(@post),
+                                  likeCount: @post.likes.size,
+                                  likeEndpoint: api_post_likes_path(@post),
+                                  unlikeEndpoint: api_post_likes_path(@post),
+                                  likeableType: 'Post',
+                                  likeableId: @post.id,
+                                  disableOverlay: true }) %>
+          <% else %>
+            <%= button_to '', method: :get, class: 'like-button', data: { behavior: 'trigger-overlay' } do %>
+              <span class="icon-heart-o"></span><span class="hide-text">Like</span>
+            <% end %>
+            <% if @post.likes.size > 0 %>
+              <span class="like-count"><%= @post.likes.size %></span>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+
+      <div>
+        <%= link_to post_path(@post, anchor: 'responses'), class: "response-icon-wrapper" do %>
+          <span class="icon-comment-o"></span>
+          <span class="response-count"><%= @post.responses.size %></span>
+        <% end %>
+      </div>
+
+      <div id="post_<%= @post.id %>_bookmarks" class="bookmark-button">
+        <%= render partial: 'posts/bookmarks', locals: { post: @post } %>
+      </div>
+    </div>
+    <div class="metabar-author-info flex-container flex-space-btw">
+      <div>
+        <%= avatar_for @post.user, size: 35 %>
+        <%= react_component("PopoverLink", { user_id: @post.user.id, url: user_path(@post.user), text: @post.username }) %>
+      </div>
+      <%= follow_button_for @post.user %>
+    </div>
+  </div>
+</div>
+
