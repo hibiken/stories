@@ -61,7 +61,7 @@ class LikeButton extends React.Component {
       return <span className="like-count">{this.state.likeCount}</span>
     }
     return (
-      <span className="like-count">
+      <span className="like-count" style={{ cursor: 'pointer' }}>
           <OverlayTriggerButton 
             text={this.state.likeCount} 
             overlayHeading={this.props.overlayHeading} 
