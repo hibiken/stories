@@ -117,6 +117,25 @@ body.posts.show {
       padding-left: 10px;
       align-items: center;
     }
+    .response-icon-wrapper {
+      margin-left: 22px;
+      text-decoration: none;
+      display: inline-block;
+      padding-top: 0.5px;
+    }
+    .icon-comment-o {
+      font-size: 18px;
+      color: $font-black;
+    }
+    .response-count {
+      font-size: 14px;
+      margin-left: 3px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.3);
+    }
+    .bookmark-button {
+      margin-left: auto;
+    }
   }
 
   .metabar-author-info {

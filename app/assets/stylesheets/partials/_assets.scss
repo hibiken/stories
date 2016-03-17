@@ -8,11 +8,11 @@
 /*** Icomoon ***/
 @font-face {
     font-family: 'icomoon';
-    src:font-url('fonts/icomoon.eot?c65xmz');
-    src:font-url('fonts/icomoon.eot?c65xmz#iefix') format('embedded-opentype'),
-        font-url('fonts/icomoon.ttf?c65xmz') format('truetype'),
-        font-url('fonts/icomoon.woff?c65xmz') format('woff'),
-        font-url('fonts/icomoon.svg?c65xmz#icomoon') format('svg');
+    src:font-url('fonts/icomoon.eot?tet8ad');
+    src:font-url('fonts/icomoon.eot?tet8ad#iefix') format('embedded-opentype'),
+        font-url('fonts/icomoon.ttf?tet8ad') format('truetype'),
+        font-url('fonts/icomoon.woff?tet8ad') format('woff'),
+        font-url('fonts/icomoon.svg?tet8ad#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -32,8 +32,11 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-google-plus:before {
-    content: "\e90e";
+.icon-commenting-o:before {
+    content: "\e910";
+}
+.icon-comment-o:before {
+    content: "\e911";
 }
 .icon-google:before {
     content: "\e90f";
@@ -55,9 +58,6 @@
 }
 .icon-bell:before {
     content: "\e906";
-}
-.icon-tags:before {
-    content: "\e903";
 }
 .icon-tag:before {
     content: "\e904";

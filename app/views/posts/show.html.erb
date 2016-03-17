@@ -56,7 +56,7 @@
 
 </div> 
 <div class="post-show-footer row">
-  <div class="col-xs-10 col-sm-10 col-md-8 col-md-offset-2 col-sm-offset-1 col-xs-offset-1 main-content">
+  <div id="responses" class="col-xs-10 col-sm-10 col-md-8 col-md-offset-2 col-sm-offset-1 col-xs-offset-1 main-content">
     <%= form_for [@post, @response] do |f| %>
       <div class="form-group">
         <%= f.text_area :body, class: "form-control", placeholder: "Write a response ..." %>
@@ -65,7 +65,7 @@
     <% end %>
 
     <% if @post.responses.any? %>
-      <div id="responses">
+      <div>
         <%= render @post.responses %>
       </div>
     <% end %>
@@ -73,10 +73,10 @@
 </div>
 <div class="post-metadata-bar">
   <div class="flex-container" data-behavior="animated-metadata">
-    <div class="post-stats clearfix">
+    <div class="post-stats flex-container">
       <%# TODO: Refactor OverlayTrggerButton so that we don't have to disable Overlay here,
         we can simply call render partial: 'post/likes' %>
-      <div id="post_<%= @post.id %>_likes" class="pull-left">
+      <div id="post_<%= @post.id %>_likes">
         <div class="like-button-wrapper">
           <% if user_signed_in? %>
             <%= react_component('LikeButton',
@@ -98,7 +98,14 @@
         </div>
       </div>
 
-      <div id="post_<%= @post.id %>_bookmarks" class="pull-right">
+      <div>
+        <%= link_to post_path(@post, anchor: 'responses'), class: "response-icon-wrapper" do %>
+          <span class="icon-comment-o"></span>
+          <span class="response-count"><%= @post.responses.size %></span>
+        <% end %>
+      </div>
+
+      <div id="post_<%= @post.id %>_bookmarks" class="bookmark-button">
         <%= render partial: 'posts/bookmarks', locals: { post: @post } %>
       </div>
     </div>
