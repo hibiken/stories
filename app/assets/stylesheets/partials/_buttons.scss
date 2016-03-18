@@ -6,9 +6,11 @@
   color: rgba(0,0,0,0.6);
   font-size: 14px;
   outline: none;
+  transition: all .1s;
   &:hover {
     text-decoration: none;
     color: rgba(0,0,0,0.8);
+    border-color: $border-hover-color;
   }
 
   &.green-border-button {
@@ -19,6 +21,11 @@
   &.green-inner-button {
     color: #fff;
     background-color: $button-green;
+    border-color: $button-green;
+  }
+  &.green-inner-button:hover {
+    color: $button-green;
+    background-color: $white;
     border-color: $button-green;
   }
 }
