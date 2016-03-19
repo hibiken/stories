@@ -19,12 +19,14 @@ body.recommended_posts.index {
     -ms-justify-content: space-between;
     -webkit-justify-content: space-between;
     justify-content: space-between;
+    padding-bottom: 10px;
   }
   .hero-title {
     font-weight: 700;
     font-size: 32px;
   }
   .hero-description {
+    width: 85%;
     font-size: 16px;
     font-weight: normal;
     line-height: 1.2;

@@ -125,7 +125,7 @@
   ul > li {
     display: flex;
     justify-content: flex-start;
-    width: 380px;
+    width: 420px;
     margin: 35px 0;
     position: relative;
     text-align: left;
@@ -138,6 +138,7 @@
     }
     a {
       color: $light-font-color;
+      width: 61%;
     }
   }
   .pagination-button-group {
