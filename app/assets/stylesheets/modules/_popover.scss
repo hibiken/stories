@@ -12,6 +12,7 @@
   @include border-radius($popover);
   border: 1px solid $border-color;
   color: $font-black;
+  max-height: 200px;
   z-index: $z-popover;
   .po-username,
   .po-description {

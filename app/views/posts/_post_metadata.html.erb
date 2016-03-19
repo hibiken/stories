@@ -1,7 +1,7 @@
 <div class="post-metadata">
   <%= avatar_for post.user, size: 40 %>
   <div class="post-info">
-    <%= react_component("PopoverLink", { user_id: post.user.id, url: user_path(post.user), text: post.username }) %>
+    <%= react_component("PopoverLink", { user_id: post.user.id, url: user_path(post.user), children: post.username }) %>
     <small><%= time_ago_in_words(post.created_at) %> ago &#149; <%= post_length_in_minutes(post.body) %></small>
   </div>
 </div>

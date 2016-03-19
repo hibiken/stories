@@ -7,10 +7,13 @@ class TagFollowersList extends React.Component {
 
   componentWillMount() {
     this.fetchFollowers();
+    this.token = PubSub.subscribe('TagFollowButton:onClick', () => {
+      this.fetchFollowers();
+    })
   }
 
   componentWillUnmount() {
-
+    PubSub.unsubscribe(this.token);
   }
 
   render () {
@@ -35,7 +38,9 @@ class TagFollowersList extends React.Component {
   renderFollowers() {
     return this.state.followers.map(follower => {
       return (
-        <div key={follower.id} dangerouslySetInnerHTML={ { __html: follower.avatar_image_tag }} />
+        <PopoverLink key={follower.id} user_id={follower.id} url={follower.urlPath}>
+          <div dangerouslySetInnerHTML={ { __html: follower.avatar_image_tag }} />
+        </PopoverLink>
       );
     });
   }

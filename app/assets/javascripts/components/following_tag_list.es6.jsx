@@ -6,9 +6,13 @@ class FollowingTagList extends React.Component {
   }
 
   componentWillMount() {
-    PubSub.subscribe('TagFollowButton:onClick', () => {
+    this.token = PubSub.subscribe('TagFollowButton:onClick', () => {
       this.fetchTags();
     })
+  }
+
+  componentWillUnmount() {
+    PubSub.unsubscribe(this.token);
   }
 
   render () {

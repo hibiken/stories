@@ -1,5 +1,5 @@
 .heading-container {
-  margin: 35px 0;
+  margin: 35px 0 20px;
   padding-bottom: 35px;
   border-bottom: 1px solid $border-color;
 }
@@ -16,4 +16,24 @@
   margin: 0;
   font-size: 32px;
   font-weight: 300;
+}
+.tag-followers-list {
+  padding-bottom: 35px;
+  border-bottom: 1px solid $border-color;
+}
+[data-react-class="TagFollowersList"] {
+  display: -ms-flex;
+  display: -webkit-flex;
+  display: flex;
+  -ms-justify-content: flex-start;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+  -ms-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  .popover-link {
+    display: inline-block;
+    margin-right: 3px;
+  }
 }
