@@ -13,6 +13,11 @@
 
   </div>
 
+  <div>
+    <small class="heading-prefix">People Interested in <%= @dashboard.tag.name %></small>
+    <%= react_component('TagFollowersList', { tagId: @dashboard.tag.id, followers: @dashboard.tag.followers }) %>
+  </div>
+
   <div class="posts-wrapper" data-behavior="endless-scroll">
     <%= render @dashboard.posts %>
   </div>

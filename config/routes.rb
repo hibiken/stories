@@ -39,6 +39,7 @@ Rails.application.routes.draw do
     resources :posts, only: [:create, :update, :destroy]
     resources :users, only: [:show]
     resources :likers, only: [:index]
+    resources :tag_followers, only: [:index]
     resources :followers, only: [:index]
     resources :following, only: [:index]
     resources :following_tags, only: [:index]
