@@ -10,7 +10,7 @@ class API::LikesController < ApplicationController
     current_user.add_like_to(@likeable)
     # Notify the user
     unless current_user?(@likeable.user)
-      Notification.create(recipient: @likeable.user, actor: current_user, action: "liked your", notifiable: @likeable)
+      Notification.create(recipient: @likeable.user, actor: current_user, action: "liked your", notifiable: @likeable, is_new: true)
     end
 
     render json: { liked: true, count: @likeable.reload.likes.size, type: @likeable.class.to_s, id: @likeable.id }, status: 200

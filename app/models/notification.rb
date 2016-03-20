@@ -3,6 +3,7 @@ class Notification < ActiveRecord::Base
   belongs_to :actor, class_name: "User"
   belongs_to :notifiable, polymorphic: true
 
+  scope :pristine, -> { where(is_new: true) }
   scope :unread, -> { where(read_at: nil) }
   scope :recent, ->(number) { order(created_at: :desc).limit(number) }
 end

@@ -29,9 +29,8 @@ Rails.application.routes.draw do
 
   namespace :api do
     resources :notifications, only: [:index] do
-      collection do
-        post :mark_as_read
-      end
+      post :mark_as_touched, on: :collection
+      post :mark_as_read, on: :member
     end
 
     get "autocomplete" => "search_autocomplete#index"

@@ -6,7 +6,7 @@ class API::RelationshipsController < ApplicationController
   def create
     current_user.follow(@user)
     # Notify the user
-    Notification.create(recipient: @user, actor: current_user, action: "started following you", notifiable: current_user)
+    Notification.create(recipient: @user, actor: current_user, action: "started following you", notifiable: current_user, is_new: true)
     render json: { followerCount: @user.followers.size }, render: 200
   end
 
