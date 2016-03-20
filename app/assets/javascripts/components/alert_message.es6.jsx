@@ -29,6 +29,6 @@ class AlertMessage extends React.Component {
 }
 
 AlertMessage.propTypes = {
-  message: React.PropTypes.string,
+  message: React.PropTypes.string.isRequired,
   type: React.PropTypes.string
 };

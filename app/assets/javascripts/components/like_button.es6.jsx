@@ -102,7 +102,9 @@ LikeButton.propTypes = {
   unlikeEndpoint: React.PropTypes.string.isRequired,
   likeableType: React.PropTypes.string.isRequired,
   likeableId: React.PropTypes.number.isRequired,
-  disableOverlay: React.PropTypes.bool
+  disableOverlay: React.PropTypes.bool,
+  overlayHeading: React.PropTypes.string,
+  overlayEndpoint: React.PropTypes.string
 };
 
 LikeButton.defaultProps = {
