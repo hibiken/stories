@@ -15,7 +15,9 @@
 
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <%= render 'layouts/notifications' %>
+        <li id="notifications">
+          <%= react_component('NotificationsContainer', {}) %>
+        </li>
         <%= render 'layouts/avatar_dropdown' %>
       </ul>
     </div> 

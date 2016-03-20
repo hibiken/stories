@@ -139,7 +139,7 @@ nav.navbar {
 }
 
 #notifications {
-  &.active a.dropdown-toggle {
+  a.dropdown-toggle.active {
     background-color: rgba($accent-color, 0.8);
   }
   a.dropdown-toggle {
@@ -162,15 +162,21 @@ nav.navbar {
     span#bell {
       color: $light-font-color;
     }
-    span#unread-notifications-count {
-      color: #fff;
+    span#new-notifications-count {
+      color: $white;
     }
   }
   a.dropdown-toggle:hover {
     border: 1.5px solid $border-hover-color;
   }
 }
-
+.notification-container {
+  ul.dropdown-menu {
+    max-height: 450px;
+    overflow: hidden;
+    overflow-y: scroll;
+  }
+}
 
 #notification-items {
   .avatar-image {
@@ -180,7 +186,7 @@ nav.navbar {
   li {
     padding: 8px 0;
     border-bottom: 1px solid $light-border-color;
-    &.new-notification {
+    &.unread-notification {
       border-left: 2px solid $accent-color;
     }
   }

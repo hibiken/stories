@@ -9,7 +9,9 @@
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
           <li class="new-post-button"><%= link_to "Write a story", new_post_path, class: "button" %></li>
-          <%= render 'layouts/notifications' %>
+          <li id="notifications">
+            <%= react_component('NotificationsContainer', {}) %>
+          </li>
           <%= render 'layouts/avatar_dropdown' %>
         <% else %>
           <li class="new-post-button"><%= link_to "Write a story", new_post_path, class: "button", data: { behavior: 'trigger-overlay' } %></li>
