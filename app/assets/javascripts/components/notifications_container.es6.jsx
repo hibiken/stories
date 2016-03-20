@@ -36,7 +36,6 @@ class NotificationsContainer extends React.Component {
       dataType: "JSON",
       method: "GET",
       success: (data) => {
-        console.log('notifcations fetched ', data);
         this.setState({
           newNotificationCount: data.new_notification_count,
           currentPage: data.current_page,
@@ -77,13 +76,10 @@ class NotificationsContainer extends React.Component {
     }
     return (
       <li>
-        <a>
-          <button 
-            className="button"
-            onMouseOver={() => this.handleLoadMore()}
-          >
-            Load More
-          </button>
+        <a
+          onMouseOver={() => this.handleLoadMore()}
+        >
+          See More
         </a>
       </li>
     );
@@ -104,8 +100,10 @@ class NotificationsContainer extends React.Component {
   }
 
   handleScroll() {
+    //TODO: call this.handleLoadMore when it gets near the bottom of the
+    //dropdown.
     // console.log($(this.dropdownRef).scrollTop());
-    this.handleLoadMore();
+    // this.handleLoadMore();
   }
 
   handleLoadMore() {
@@ -117,7 +115,6 @@ class NotificationsContainer extends React.Component {
       method: 'GET',
       dataType: 'json',
       success: (data) => {
-        console.log(data);
         this.fetching = false;
         this.setState({
           newNotificationCount: data.new_notification_count,
