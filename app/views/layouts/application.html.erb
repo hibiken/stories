@@ -5,6 +5,8 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+
+  <%= favicon_link_tag 'images/favicon.png', type: 'image/png' %>
 </head>
 <body class="<%= controller.controller_name %> <%= controller.action_name %>">
   <%= render 'layouts/overlay' unless user_signed_in? %>
@@ -19,7 +21,7 @@
   <div class="container-fluid main-container">
     <%= yield %>
     <%= yield :sidebar %>
-  </div> 
+  </div>
 
 </body>
 <script type="text/javascript">

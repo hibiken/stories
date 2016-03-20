@@ -28,7 +28,7 @@ nav.navbar {
       position: absolute;
     }
     img {
-      top: -2px;
+      top: 5px;
     }
     span {
       right: 0;
@@ -52,7 +52,7 @@ nav.navbar {
 
   .new-post-button a {
     transition: all .1s;
-    color: $light-gray !important; 
+    color: $light-gray !important;
   }
 
   .new-post-button:hover {
