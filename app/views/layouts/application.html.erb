@@ -7,6 +7,8 @@
   <%= csrf_meta_tags %>
 
   <%= favicon_link_tag 'images/favicon.png', type: 'image/png' %>
+  <%= favicon_link_tag 'images/stories-icon-apple-touch-180x180.png', rel: 'apple-touch-icon', type: 'image/png' %>
+
 </head>
 <body class="<%= controller.controller_name %> <%= controller.action_name %>">
   <%= render 'layouts/overlay' unless user_signed_in? %>

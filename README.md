@@ -4,7 +4,7 @@
 
 Welcome to Stories. Stories is a Medium clone which began as [Ken Hibino](https://github.com/kenny-hibino “Ken Hibino”)'s personal side project to learn **Ruby on Rails** and **ReactJS**.
 
-As the app was built a [screen casts tutorials](https://www.youtube.com/playlist?list=PLoUInciCQ806CUFxld2W29V6rbGNfHzbX) were created to help other people learn... slowly it began to blossom into an elegant and powerful application and more people began to get involved, fixing bugs, improving the design and building the community.
+As the app was built [screen casts tutorials](https://www.youtube.com/playlist?list=PLoUInciCQ806CUFxld2W29V6rbGNfHzbX) were created to help other people learn... slowly it began to blossom into an elegant and powerful application and more people began to get involved, fixing bugs, improving the design and building the community.
 
 If your keen to gain some new skills, get started by following the install and configuration below, join our [gitter community](https://gitter.im/kenny-hibino/stories), look for an "**easy fix**" in the [issues list](https://github.com/kenny-hibino/stories/issues), make a [topic branch](https://github.com/dchelimsky/rspec/wiki/Topic-Branches) and submit a pull request… lets learn together. :octocat:
 
