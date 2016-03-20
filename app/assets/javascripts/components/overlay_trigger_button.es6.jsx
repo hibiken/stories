@@ -58,7 +58,7 @@ class OverlayTriggerButton extends React.Component {
       return (
         <li key={user.id}>
           <div dangerouslySetInnerHTML={this.renderAvatarImage(user)} />
-          <a href={user.urlPath}>
+          <a href={user.urlPath} className="overlay-user-info">
             <strong>{user.username}</strong>
             <p>{user.description}</p>
           </a>
