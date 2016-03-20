@@ -112,7 +112,7 @@
     <div class="metabar-author-info flex-container flex-space-btw">
       <div>
         <%= avatar_for @post.user, size: 35 %>
-        <%= react_component("PopoverLink", { user_id: @post.user.id, url: user_path(@post.user), text: @post.username }) %>
+        <%= react_component("PopoverLink", { user_id: @post.user.id, url: user_path(@post.user), children: @post.username }) %>
       </div>
       <%= follow_button_for @post.user %>
     </div>
