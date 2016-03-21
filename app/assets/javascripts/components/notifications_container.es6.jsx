@@ -27,6 +27,8 @@ class NotificationsContainer extends React.Component {
           className="dropdown-menu"
           ref={(ref) => {this.dropdownRef = ref}}
         >
+          <span className="dropdown-arrow-top"></span>
+          <span className="dropdown-arrow-bottom"></span>
           <div className="notification-header">
             <span>Notifications</span>
             <a className="pull-right mark-all-as-read"

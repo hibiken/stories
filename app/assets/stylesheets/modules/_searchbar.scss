@@ -19,6 +19,34 @@
   }
 }
 
+.main-searchbar {
+  .dropdown-menu {
+    margin-top: 14px;
+    .dropdown-arrow-top {
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      z-index: 20;
+      border-bottom: 10px solid #fff;
+      position: absolute;
+      right: 96px;
+      top: -10px;
+    }
+    .dropdown-arrow-bottom {
+      width: 0;
+      height: 0;
+      border-left: 12px solid transparent;
+      border-right: 12px solid transparent;
+      z-index: 10;
+      border-bottom: 11px solid rgba(0, 0, 0, 0.11);
+      position: absolute;
+      right: 94px;
+      top: -11px;
+    }
+  }
+}
+
 .large-searchbar {
   form {
     margin: 1em 0;

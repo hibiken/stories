@@ -3,6 +3,8 @@ class SearchResultsList extends React.Component {
   render() {
     return (
       <ul className="dropdown-menu" id="autocomplete-items">
+        <span className="dropdown-arrow-top"></span>
+        <span className="dropdown-arrow-bottom"></span>
         <li>
           <a href={`/search?q=${this.props.term}`}>
             <span className="glyphicon glyphicon-search"></span> Search for <strong>{this.props.term}</strong>
