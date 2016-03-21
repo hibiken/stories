@@ -5,7 +5,6 @@ class NotificationsContainer extends React.Component {
     this.state = {
       newNotificationCount: 0,
       notifications: [],
-      currentPage: null,
       nextPage: null
     };
   }
@@ -56,7 +55,6 @@ class NotificationsContainer extends React.Component {
       success: (data) => {
         this.setState({
           newNotificationCount: data.new_notification_count,
-          currentPage: data.current_page,
           nextPage: data.next_page,
           notifications: data.notifications
         });
@@ -152,7 +150,6 @@ class NotificationsContainer extends React.Component {
         this.fetching = false;
         this.setState({
           newNotificationCount: data.new_notification_count,
-          currentPage: data.current_page,
           nextPage: data.next_page,
           notifications: [ ...this.state.notifications, ...data.notifications ]
         });
