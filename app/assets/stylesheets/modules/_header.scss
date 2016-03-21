@@ -173,13 +173,26 @@ nav.navbar {
 .notification-container {
   .dropdown-menu {
     width: 360px;
-    max-height: 450px;
+  }
+  .notification-header {
+    padding: 4px 20px;
+    border-bottom: 1px solid $light-border-color;
+    color: $font-black;
+  }
+  .mark-all-as-read {
+    cursor: pointer;
+    color: $accent-color;
+  }
+  .notifications-list {
     overflow: hidden;
     overflow-y: scroll;
+    max-height: 440px;
+    list-style: none;
+    padding: 0;
   }
 }
 
-#notification-items {
+.notifications-list {
   .avatar-image {
     margin-right: 18px;
     vertical-align: baseline;
@@ -193,6 +206,11 @@ nav.navbar {
   }
   li > a {
     color: $light-font-color;
+    display: block;
+    padding: 3px 0 3px 20px;
+    clear: both;
+    white-space: nowrap;
+    font-weight: normal;
   }
   .notification-metadata {
     display: inline-block;

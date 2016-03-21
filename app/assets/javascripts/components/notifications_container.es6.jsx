@@ -23,23 +23,25 @@ class NotificationsContainer extends React.Component {
           data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
           {this.renderNotificationIcon()}
         </a>
-        <ul
+        <div
           className="dropdown-menu"
-          id="notification-items"
-          onScroll={() => this.handleScroll()}
           ref={(ref) => {this.dropdownRef = ref}}
         >
-          <li>
-            <div>
-              <span>Notifications</span>
-              <a className="pull-right" onClick={(e) => this.handleMarkAllAsRead(e)}>
-                Mark All as Read
-              </a>
-            </div>
-          </li>
-          {this.renderNotificationItems()}
-          {this.loadMoreButton()}
-        </ul>
+          <div className="notification-header">
+            <span>Notifications</span>
+            <a className="pull-right mark-all-as-read"
+              onClick={(e) => this.handleMarkAllAsRead(e)}>
+              Mark All as Read
+            </a>
+          </div>
+          <ul
+            onScroll={() => this.handleScroll()}
+            ref={(ref) => {this.notificationsListRef = ref}}
+            className="notifications-list">
+            {this.renderNotificationItems()}
+            {this.loadMoreButton()}
+          </ul>
+        </div>
       </div>
     );
   }
@@ -113,10 +115,10 @@ class NotificationsContainer extends React.Component {
   }
 
   handleScroll() {
-    let scrollHeight = $(this.dropdownRef)[0].scrollHeight;
+    let scrollHeight = $(this.notificationsListRef)[0].scrollHeight;
     const OFFSET = 50;
-    let scrollTop = $(this.dropdownRef).scrollTop(); 
-    if (scrollHeight - (scrollTop + OFFSET) < $(this.dropdownRef).innerHeight()) {
+    let scrollTop = $(this.notificationsListRef).scrollTop(); 
+    if (scrollHeight - (scrollTop + OFFSET) < $(this.notificationsListRef).innerHeight()) {
       this.handleLoadMore();
     }
   }
