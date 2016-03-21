@@ -12,17 +12,23 @@ class NotificationsContainer extends React.Component {
 
   componentWillMount() {
     this.fetchNotifications();
+    // TODO: set timer to poll
   }
 
   render () {
     return (
-      <div className="notification-container" onScroll={() => this.handleScroll()}>
+      <div className="notification-container">
         <a className={`dropdown-toggle ${this.state.newNotificationCount > 0 ? 'active' : ''}`}
           onClick={() => this.handleMarkAsTouched()}
           data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
           {this.renderNotificationIcon()}
         </a>
-        <ul className="dropdown-menu" id="notification-items" ref={(ref) => {this.dropdownRef = ref}}>
+        <ul
+          className="dropdown-menu"
+          id="notification-items"
+          onScroll={() => this.handleScroll()}
+          ref={(ref) => {this.dropdownRef = ref}}
+        >
           {this.renderNotificationItems()}
           {this.loadMoreButton()}
         </ul>
@@ -70,15 +76,14 @@ class NotificationsContainer extends React.Component {
     });
   }
 
+  // Keep this as a fallack fro handleScroll
   loadMoreButton() {
     if (this.state.nextPage === null) {
       return;
     }
     return (
       <li>
-        <a
-          onMouseOver={() => this.handleLoadMore()}
-        >
+        <a onMouseOver={() => this.handleLoadMore()}>
           See More
         </a>
       </li>
@@ -100,16 +105,17 @@ class NotificationsContainer extends React.Component {
   }
 
   handleScroll() {
-    //TODO: call this.handleLoadMore when it gets near the bottom of the
-    //dropdown.
-    // console.log($(this.dropdownRef).scrollTop());
-    // this.handleLoadMore();
+    let scrollHeight = $(this.dropdownRef)[0].scrollHeight;
+    const OFFSET = 50;
+    let scrollTop = $(this.dropdownRef).scrollTop(); 
+    if (scrollHeight - (scrollTop + OFFSET) < $(this.dropdownRef).innerHeight()) {
+      this.handleLoadMore();
+    }
   }
 
   handleLoadMore() {
     if (this.fetching || !this.state.nextPage) { return; }
     this.fetching = true;
-    console.log('called');
     $.ajax({
       url: `/api/notifications.json/?page=${this.state.nextPage}`,
       method: 'GET',

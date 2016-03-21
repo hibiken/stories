@@ -2,7 +2,7 @@ class API::NotificationsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @notifications = Notification.where(recipient: current_user).recent.paginate(page: params[:page], per_page: 5)
+    @notifications = Notification.where(recipient: current_user).recent.paginate(page: params[:page], per_page: 7)
     @new_notification_count = Notification.where(recipient: current_user, is_new: true).count
   end
 
