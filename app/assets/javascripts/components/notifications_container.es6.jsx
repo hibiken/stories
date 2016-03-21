@@ -29,6 +29,14 @@ class NotificationsContainer extends React.Component {
           onScroll={() => this.handleScroll()}
           ref={(ref) => {this.dropdownRef = ref}}
         >
+          <li>
+            <div>
+              <span>Notifications</span>
+              <a className="pull-right" onClick={(e) => this.handleMarkAllAsRead(e)}>
+                Mark All as Read
+              </a>
+            </div>
+          </li>
           {this.renderNotificationItems()}
           {this.loadMoreButton()}
         </ul>
@@ -111,6 +119,22 @@ class NotificationsContainer extends React.Component {
     if (scrollHeight - (scrollTop + OFFSET) < $(this.dropdownRef).innerHeight()) {
       this.handleLoadMore();
     }
+  }
+
+  handleMarkAllAsRead() {
+    $(this.dropdownRef).parent().addClass('open'); // workaround jquery dropdown
+    $.ajax({
+      url: '/api/notifications/mark_all_as_read',
+      method: 'POST',
+      dataType: 'json',
+      success: () => {
+        this.setState({
+          notifications: this.state.notifications.map(notification => {
+            return { ...notification, unread: false };
+          })
+        });
+      }
+    });
   }
 
   handleLoadMore() {

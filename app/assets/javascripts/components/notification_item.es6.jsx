@@ -5,6 +5,12 @@ class NotificationItem extends React.Component {
     this.state = { unread: this.props.unread };
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      unread: nextProps.unread
+    });
+  }
+
   render () {
     return (
       <li

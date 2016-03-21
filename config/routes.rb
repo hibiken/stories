@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :notifications, only: [:index] do
       post :mark_as_touched, on: :collection
+      post :mark_all_as_read, on: :collection
       post :mark_as_read, on: :member
     end
 
