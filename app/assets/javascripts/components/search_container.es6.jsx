@@ -2,7 +2,7 @@ class SearchContainer extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = { term: '', posts: [], users: [] }
+    this.state = { term: '', posts: [], users: [], tags: [] }
   }
 
   search(term) {
@@ -13,7 +13,8 @@ class SearchContainer extends React.Component {
       method: 'GET',
       success: (data) => { this.setState({
         posts: data.posts,
-        users: data.users
+        users: data.users,
+        tags: data.tags
       });}
     });
   }
@@ -40,6 +41,7 @@ class SearchContainer extends React.Component {
         term={this.state.term} 
         posts={this.state.posts}
         users={this.state.users}
+        tags={this.state.tags}
       />
     );
   }

@@ -15,3 +15,11 @@ json.users do |json|
     json.url user_path(user.id)
   end
 end
+
+json.tags do |json|
+  json.array! @tags do |tag|
+    json.id tag.id
+    json.name tag.name
+    json.url tag_path(tag.id)
+  end
+end

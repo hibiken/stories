@@ -14,6 +14,8 @@ class SearchResultsList extends React.Component {
         {this.renderPosts()}
         {this.renderUserHeading()}
         {this.renderUsers()}
+        {this.renderTagHeading()}
+        {this.renderTags()}
       </ul>
     );
   }
@@ -30,6 +32,12 @@ class SearchResultsList extends React.Component {
     });
   }
 
+  renderTags() {
+    return this.props.tags.slice(0, 3).map((tag) => {
+      return <SearchTagListItem key={tag.id} tag={tag} />
+    });
+  }
+
   renderPostHeading() {
     if (this.props.posts.length === 0) { return; }
 
@@ -40,6 +48,12 @@ class SearchResultsList extends React.Component {
     if (this.props.users.length === 0) { return; }
 
     return <li><h4 className="autocomplete-heading">People</h4></li>
+  }
+
+  renderTagHeading() {
+    if (this.props.tags.length === 0) { return; }
+
+    return <li><h4 className="autocomplete-heading">Tags</h4></li>
   }
 }
 
