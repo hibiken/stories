@@ -61,9 +61,52 @@
   }
 }
 
+#autocomplete-items {
+  list-style: none;
+  padding: 6px 8px;
+  width: 300px;
+  background: $white;
+  border: 1px solid $border-color;
+  border-radius: 3px;
+  display: block;
+  li {
+    padding: 4px 10px;
+    a {
+      color: $light-font-color;
+      font-size: 12px;
+      padding: 3px 0 !important;
+      &:hover {
+        background-color: $white;
+        color: $font-black;
+      }
+    }
+  }
+  .avatar-image {
+    margin-right: 5px;
+  }
+  .glyphicon-search {
+    margin-right: 5px;
+  }
+  .autocomplete-heading {
+    padding-bottom: 0;
+    h4 {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: $font-black;
+      border-bottom: 1px solid $light-border-color;
+      margin: 0;
+      padding-bottom: 6px;
+    }
+  }
+}
+
 // search dropdown list items
 .search-tag-list-item {
   .icon-tag {
-    margin-right: 8px;
+    margin-right: 11px;
+    font-size: 18px;
+    padding-left: 10px;
+    color: $light-font-color;
   }
 }

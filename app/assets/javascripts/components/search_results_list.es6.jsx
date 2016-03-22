@@ -41,19 +41,19 @@ class SearchResultsList extends React.Component {
   renderPostHeading() {
     if (this.props.posts.length === 0) { return; }
 
-    return <li><h4 className="autocomplete-heading">Posts</h4></li>
+    return <li className="autocomplete-heading"><h4>Posts</h4></li>
   }
 
   renderUserHeading() {
     if (this.props.users.length === 0) { return; }
 
-    return <li><h4 className="autocomplete-heading">People</h4></li>
+    return <li className="autocomplete-heading"><h4>People</h4></li>
   }
 
   renderTagHeading() {
     if (this.props.tags.length === 0) { return; }
 
-    return <li><h4 className="autocomplete-heading">Tags</h4></li>
+    return <li className="autocomplete-heading"><h4>Tags</h4></li>
   }
 }
 

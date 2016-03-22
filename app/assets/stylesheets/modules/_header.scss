@@ -138,40 +138,6 @@ nav.navbar {
   }
 }
 
-
-#autocomplete-items {
-  list-style: none;
-  padding: 0 10px;
-  width: 360px;
-  background: #fff;
-  border: 1px solid $border-color;
-  border-radius: 3px;
-  display: block;
-  li {
-    padding: 8px 10px;
-    a {
-      color: $font-black;
-      font-size: 12px;
-    }
-  }
-  .avatar-image {
-    margin-right: 5px;
-  }
-  .glyphicon-search {
-    margin-right: 5px;
-  }
-  .autocomplete-heading {
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: $font-black;
-    border-bottom: 1px solid $light-border-color;
-    margin-bottom: 0;
-    padding-bottom: 10px;
-  }
-}
-
-
 .navbar-admin {
   ul.nav.navbar-nav > li > a {
     color: #fff;
