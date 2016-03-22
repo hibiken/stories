@@ -22,7 +22,7 @@ class SearchContainer extends React.Component {
   }
 
   hideDropdown() {
-    this.setState({ showDropdown: false });
+    setTimeout(() => { this.setState({ showDropdown: false }) }, 250); //FIXME: really hacky workaround.
   }
 
   showDropdown() {
