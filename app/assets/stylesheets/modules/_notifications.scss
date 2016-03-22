@@ -94,6 +94,10 @@
     clear: both;
     white-space: nowrap;
     font-weight: normal;
+    transition: color 200ms;
+    &:hover {
+      color: $font-black;
+    }
   }
   .notification-metadata {
     display: inline-block;
