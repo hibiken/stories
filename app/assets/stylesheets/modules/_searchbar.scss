@@ -75,6 +75,7 @@
       color: $light-font-color;
       font-size: 12px;
       padding: 3px 0 !important;
+      overflow: hidden;
       &:hover {
         background-color: $white;
         color: $font-black;

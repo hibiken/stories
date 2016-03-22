@@ -2,7 +2,9 @@ class SearchContainer extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = { term: '', posts: [], users: [], tags: [] }
+    this.state = { showDropdown: false, term: '', posts: [], users: [], tags: [] }
+    this.hideDropdown = this.hideDropdown.bind(this);
+    this.showDropdown = this.showDropdown.bind(this);
   }
 
   search(term) {
@@ -19,10 +21,20 @@ class SearchContainer extends React.Component {
     });
   }
 
+  hideDropdown() {
+    this.setState({ showDropdown: false });
+  }
+
+  showDropdown() {
+    this.setState({ showDropdown: true });
+  }
+
   render () {
     return (
       <div>
         <SearchBar 
+          onInputFocus={this.showDropdown}
+          onInputBlur={this.hideDropdown}
           term={this.state.term} 
           onSearchTermChange={(term) => {this.search(term)}}
         />
@@ -32,13 +44,13 @@ class SearchContainer extends React.Component {
   }
 
   renderSearchResults() {
-    if(this.state.posts.length === 0 && this.state.users.length === 0) {
+    if(!this.state.showDropdown || (this.state.posts.length === 0 && this.state.users.length === 0 && this.state.tags.length === 0)) {
       return;
     }
 
     return (
-      <SearchResultsList 
-        term={this.state.term} 
+      <SearchResultsList
+        term={this.state.term}
         posts={this.state.posts}
         users={this.state.users}
         tags={this.state.tags}
