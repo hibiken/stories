@@ -42,7 +42,11 @@
   }
   .mark-all-as-read {
     cursor: pointer;
-    color: $accent-color;
+    color: $light-font-color;
+    &:hover,
+    &:active {
+      color: $accent-color;
+    }
   }
   .notifications-list {
     overflow: hidden;
@@ -94,9 +98,28 @@
     clear: both;
     white-space: nowrap;
     font-weight: normal;
+    &:hover {
+      color: $font-black;
+    }
   }
   .notification-metadata {
     display: inline-block;
+  }
+
+  [class^="icon-"] {
+    margin-right: 8px;
+  }
+
+  .icon-heart-o {
+    color: #e81c4f;
+  }
+
+  .icon-user {
+    color: lightblue;
+  }
+
+  .icon-commenting-o {
+    color: $light-font-color;
   }
 }
 
