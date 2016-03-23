@@ -2,36 +2,6 @@ aside.main-sidebar {
   padding-top: 2em;
   background-color: $background-gray;
 
-  .tags-wrapper {
-    padding-top: 22px;
-    padding-bottom: 22px;
-    display: -ms-flex;
-    display: -webkit-flex;
-    display: flex;
-    -ms-justify-content: flex-start;
-    -webkit-justify-content: flex-start;
-    justify-content: flex-start;
-    -ms-flex-wrap: wrap;
-    -webkit-flex-wrap: wrap;
-    flex-wrap: wrap;
-  }
-
-  a.tag {
-    color: $light-font-color;
-    background-color: #fff;
-    padding: 0.5em 0.7em;
-    border: 1px solid $light-border-color;
-    @include border-radius($radius);
-    text-decoration: none;
-    margin-right: 10px;
-    margin-bottom: 12px;
-    font-size: 13px;
-    &:hover {
-      border-color: $border-hover-color;
-      color: #555;
-    }
-  }
-
   .sidebar-top-stories {
     ul {
       list-style: none;

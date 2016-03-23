@@ -6,7 +6,7 @@ class SearchController < ApplicationController
     @post_records = Post.search(params[:q]).paginate(page: params[:page]).records
     @posts = @post_records.to_a
     @users = User.search(params[:q]).records.to_a
-    @tags = Tag.search(params[:q])
+    @tags = Tag.search(params[:q]).records
   end
 
   def users
