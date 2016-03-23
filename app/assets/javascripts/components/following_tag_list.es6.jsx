@@ -17,23 +17,8 @@ class FollowingTagList extends React.Component {
 
   render () {
     return (
-      <div className="tags-wrapper following-tag-list">
-        {this.renderFollowingTags()}
-      </div>
+      <TagList tags={this.state.followingTags} className="following-tag-list" />
     );
-  }
-
-  renderFollowingTags() {
-    return this.state.followingTags.map(tag => {
-      return (
-        <a
-          key={tag.id}
-          className="tag"
-          href={`/tags/${tag.id}`}>
-          {tag.name}
-        </a>
-      );
-    })
   }
 
   fetchTags() {
