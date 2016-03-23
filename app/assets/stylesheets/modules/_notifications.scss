@@ -125,10 +125,45 @@
 }
 
 // Bell Animation for "No Notifications"
+
   .no-notifications {
     margin: 10px 11px 8px 10px;
     padding: 10px;
     text-align: center;
+    position: relative;
+
+    .speech-bubble {
+      border: $border-color 1px solid;
+      padding: 10px;
+      @include border-radius($radius);
+      width: 170px;
+      margin: 0 auto;
+      color: $light-font-color;
+    }
+
+    .speech-arrow-top {
+      width: 0;
+      height: 0;
+      border-left: 11px solid transparent;
+      border-right: 11px solid transparent;
+      z-index: 20;
+      border-top: 10px solid #fff;
+      position: absolute;
+      right: 46.7%;
+      top: 36.5%;
+    }
+
+    .speech-arrow-bottom {
+      width: 0;
+      height: 0;
+      border-left: 12px solid transparent;
+      border-right: 12px solid transparent;
+      z-index: 10;
+      border-top: 11px solid $border-color;
+      position: absolute;
+      right: 46.3%;
+      top: none;
+    }
 
     .ringer {
       margin: 0 auto;

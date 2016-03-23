@@ -84,7 +84,9 @@ class NotificationsContainer extends React.Component {
     if (!this.state.notifications.length) {
       return (
       <div className="no-notifications">
-        No notifications yet
+        <div className="speech-bubble">Nothing to see here...</div>
+        <span className="speech-arrow-top"></span>
+        <span className="speech-arrow-bottom"></span>
 
         <div className="ringer">
         <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 119.4 128.6">
