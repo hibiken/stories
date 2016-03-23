@@ -132,13 +132,12 @@
 
     .ringer {
       margin: 0 auto;
-      width: 40%;
+      width: 50px;
       margin-top: 20px;
     }
   }
 
-  .bell-jar{opacity:0.2;fill:$black;}
-  .mouth,.eye{fill:$white;}
+  .bell-jar,.mouth,.eye{opacity:0.2;fill:$black;}
 
   .blink, {
     animation: blink 5s step-start 0s infinite;
@@ -147,35 +146,35 @@
 
   @keyframes blink {
     53% {
-      opacity: 1;
+      opacity: 0.2;
     }
     55% {
       opacity: 0.0;
     }
     57% {
-      opacity: 1;
+      opacity: 0.2;
     }
     59% {
       opacity: 0.0;
     }
     61% {
-      opacity: 1;
+      opacity: 0.2;
     }
   }
   @-webkit-keyframes blink {
     53% {
-      opacity: 1;
+      opacity: 0.2;
     }
     55% {
       opacity: 0.0;
     }
     57% {
-      opacity: 1;
+      opacity: 0.2;
     }
     59% {
       opacity: 0.0;
     }
     61% {
-      opacity: 1;
+      opacity: 0.2;
     }
   }
