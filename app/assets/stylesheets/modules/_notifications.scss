@@ -124,4 +124,58 @@
   }
 }
 
+// Bell Animation for "No Notifications"
+  .no-notifications {
+    margin: 10px 11px 8px 10px;
+    padding: 10px;
+    text-align: center;
 
+    .ringer {
+      margin: 0 auto;
+      width: 40%;
+      margin-top: 20px;
+    }
+  }
+
+  .bell-jar{opacity:0.2;fill:$black;}
+  .mouth,.eye{fill:$white;}
+
+  .blink, {
+    animation: blink 5s step-start 0s infinite;
+    -webkit-animation: blink 5s step-start 0s infinite;
+  }
+
+  @keyframes blink {
+    53% {
+      opacity: 1;
+    }
+    55% {
+      opacity: 0.0;
+    }
+    57% {
+      opacity: 1;
+    }
+    59% {
+      opacity: 0.0;
+    }
+    61% {
+      opacity: 1;
+    }
+  }
+  @-webkit-keyframes blink {
+    53% {
+      opacity: 1;
+    }
+    55% {
+      opacity: 0.0;
+    }
+    57% {
+      opacity: 1;
+    }
+    59% {
+      opacity: 0.0;
+    }
+    61% {
+      opacity: 1;
+    }
+  }
