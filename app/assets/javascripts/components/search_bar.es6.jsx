@@ -11,8 +11,8 @@ class SearchBar extends React.Component {
           <span className="glyphicon glyphicon-search"></span>
         </button>
         <input
-          onFocus={() => this.props.onInputFocus()}
-          onBlur={() => this.props.onInputBlur()}
+          onFocus={() => this.props.showDropdown()}
+          onBlur={() => this.props.hideDropdown()}
           value={this.props.term}
           onChange={(event) => {this.handleInputChange(event.target.value)}}
           placeholder="Search Stories" 

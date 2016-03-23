@@ -2,7 +2,7 @@ class SearchResultsList extends React.Component {
 
   render() {
     return (
-      <ul className="dropdown-menu" id="autocomplete-items">
+      <ul className="dropdown-menu" id="autocomplete-items" onMouseEnter={() => {this.props.setPreventHideDropdown()}} onMouseLeave={() => {this.props.resetPreventHideDropdown()}}>
         <span className="dropdown-arrow-top"></span>
         <span className="dropdown-arrow-bottom"></span>
         <li>
