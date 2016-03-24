@@ -21,16 +21,18 @@
         </div>
       </div>
 
-      <div class="col-md-6">
+      <div class="col-md-7">
         <div>
           <% @users.each do |user| %>
-            <div class="user-card">
+            <div class="user-panel">
               <div class="avatar-wrapper">
-                <%= avatar_for user, size: 50 %>
+                <%= avatar_for user, size: 60 %>
               </div>
-              <div class="uc-metadata">
+              <div class="user-metadata">
                 <h4><%= link_to user.username, user %></h4>
                 <p><%= user.description %></p>
+              </div>
+              <div class="follow-button-wrapper">
                 <%= follow_button_for(user) %>
               </div>
             </div>

@@ -27,4 +27,40 @@ body.search.users {
       }
     }
   }
+
+  a.tag {
+    background-color: $background-gray;
+    &:hover {
+      background-color: $white;
+    }
+  }
+}
+
+body.search.users {
+  .user-panel {
+    display: -ms-flex;
+    display: -webkit-flex;
+    display: flex;
+    padding: 20px 0;
+    border-bottom: 1px solid $light-border-color;
+
+    .avatar-wrapper {
+      margin-right: 18px;
+    }
+
+    .user-metadata {
+      a {
+        color: $font-black;
+        text-decoration: none;
+        transition: color 200ms;
+        &:hover {
+          color: $accent-color;
+        }
+      }
+    }
+
+    .follow-button-wrapper {
+      margin-left: auto;
+    }
+  }
 }
