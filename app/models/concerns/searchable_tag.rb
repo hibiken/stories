@@ -35,11 +35,11 @@ module SearchableTag
   end
 
   def index_document
-    ElasticsearchIndexJob.perform_later('index', 'Tag', self.id) if self.published?
+    ElasticsearchIndexJob.perform_later('index', 'Tag', self.id)
   end
 
   def delete_document
-    ElasticsearchIndexJob.perform_later('delete', 'Tag', self.id) if self.published?
+    ElasticsearchIndexJob.perform_later('delete', 'Tag', self.id)
   end
 
   INDEX_OPTIONS =
