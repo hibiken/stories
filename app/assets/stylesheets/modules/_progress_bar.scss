@@ -1,0 +1,25 @@
+.progress-bar.active {
+  background-color: $progress-bar;
+  position: fixed;
+  height: 2px;
+  top: 0;
+  z-index: $navbar-fixed-top + 1;
+  border: none;
+  outline: none;
+  -webkit-animation-name: progressBar;
+  -webkit-animation-duration: 800ms;
+  -webkit-animation-iteration-count: infinite;
+  animation-name: progressBar;
+  animation-duration: 800ms;
+  animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes progressBar {
+  0% { width: 0%; }
+  100% { width: 100% }
+}
+
+@keyframes progressBar {
+  0% { width: 0%; }
+  100% { width: 100% }
+}
