@@ -1,0 +1,30 @@
+body.search.show,
+body.search.users {
+  padding-top: 0;
+  .navbar.navbar-default {
+    border: none;
+  }
+  .search-filter-links {
+    .filter-link {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+    }
+
+    a {
+      padding: 12px 0;
+      display: inline-block;
+      width: 100%;
+      color: $light-font-color;
+      text-decoration: none;
+    }
+
+    .active {
+      border-top: 1px solid $font-black;
+      a {
+        color: $font-black;
+      }
+    }
+  }
+}

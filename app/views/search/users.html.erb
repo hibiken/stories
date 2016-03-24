@@ -2,7 +2,7 @@
   <div class="col-md-10 col-md-offset-1">
     <div class="row">
       <div class="col-md-12 large-searchbar">
-        <%= form_for :search, url: search_path, method: :get do |f| %>
+        <%= form_for :search, url: search_users_path, method: :get do |f| %>
           <%= f.search_field :q, value: params[:q], placeholder: 'Search Stories', autofocus: true, autocomplete: 'off', onfocus: "this.value = this.value;" %>
         <% end %>
       </div>
@@ -12,30 +12,17 @@
     <div class="row">
       <div class="col-md-2">
         <div class="search-filter-links">
+          <div class="filter-link"><%= link_to 'All', search_path(q: params[:q]) %></div>
           <div class="active filter-link">
-            <%= link_to search_path(q: params[:q]) do %>
-              All <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+            <%= link_to search_users_path(q: params[:q]) do %>
+              People <span class="glyphicon glyphicon-chevron-right pull-right"></span>
             <% end %>
           </div>
-          <div class="filter-link"><%= link_to 'People', search_users_path(q: params[:q]) %></div>
         </div>
       </div>
 
       <div class="col-md-6">
-        <div data-behavior="endless-scroll">
-          <%= render @posts %>
-        </div>
-
-        <%= will_paginate @post_records %>
-      </div>
-
-      <aside class="col-md-4">
-        <% if @tags.any? %>
-          <h4 class="small-heading with-border">Tags</h4>
-          <%= react_component('TagList', { tags: @tags }, { prerender: true }) %>
-        <% end %>
-        <% if @users.any? %>
-          <h4 class="small-heading with-border">People</h4>
+        <div>
           <% @users.each do |user| %>
             <div class="user-card">
               <div class="avatar-wrapper">
@@ -45,11 +32,12 @@
                 <h4><%= link_to user.username, user %></h4>
                 <p><%= user.description %></p>
                 <%= follow_button_for(user) %>
-                </div>
               </div>
-            <% end %>
+            </div>
           <% end %>
-        </aside>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
