@@ -11,6 +11,7 @@
 /log/*
 !/log/.keep
 /tmp
+/spec/tmp
 
 # Ignore .DS_Store files
 /**/.DS_Store
@@ -21,4 +22,8 @@
 
 #Ignore rails best practice report file
 rails_best_practices_output.html
+
+# Ignore .byebug_history, .rspec
+.byebug_history
+.rspec
 
