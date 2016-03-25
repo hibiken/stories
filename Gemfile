@@ -62,7 +62,7 @@ group :development do
   gem 'guard-rspec', require: false
   gem 'spring-commands-rspec', '~> 1.0'
   # Profiling
-  # gem 'rack-mini-profiler', '~> 0.9.8', require: false
+  gem 'rack-mini-profiler', '~> 0.9.8', require: false
 end
 
 group :test do
