@@ -44,11 +44,7 @@ body.posts.show {
   }
 
   .author-info {
-    display: -ms-flex;
-    display: -webkit-flex;
     display: flex;
-    -ms-justify-content: space-around;
-    -webkit-justify-content: space-around;
     justify-content: space-around;
     padding: 2.5em 0;
     border-top: 1px solid $light-border-color;
@@ -157,5 +153,3 @@ body.posts.show {
     }
   }
 }
-
-

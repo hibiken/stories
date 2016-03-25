@@ -10,15 +10,10 @@
 
 // Border Radius with vendor prefixes for older browsers
 @mixin border-radius($radius) {
-  -webkit-border-radius: $radius;
-     -moz-border-radius: $radius;
-      -ms-border-radius: $radius;
-          border-radius: $radius;
+  border-radius: $radius;
 }
 
 // Box Shadow with vendor prefixes
 @mixin box-shadow {
-  -webkit-box-shadow: 0 1px 4px rgba(0,0,0, 0.03);
-     -moz-box-shadow: 0 1px 4px rgba(0,0,0, 0.03);
-          box-shadow: 0 1px 4px rgba(0,0,0, 0.03);
+  box-shadow: 0 1px 4px rgba(0,0,0, 0.03);
 }

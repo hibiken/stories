@@ -1,52 +1,22 @@
-@-webkit-keyframes medium-editor-image-loading {
-  0% {
-    -webkit-transform: scale(0);
-            transform: scale(0); }
-  100% {
-    -webkit-transform: scale(1);
-            transform: scale(1); } }
 
 @keyframes medium-editor-image-loading {
-  0% {
-    -webkit-transform: scale(0);
-            transform: scale(0); }
-  100% {
-    -webkit-transform: scale(1);
-            transform: scale(1); } }
-
-@-webkit-keyframes medium-editor-pop-upwards {
-  0% {
-    opacity: 0;
-    -webkit-transform: matrix(0.97, 0, 0, 1, 0, 12);
-            transform: matrix(0.97, 0, 0, 1, 0, 12); }
-  20% {
-    opacity: .7;
-    -webkit-transform: matrix(0.99, 0, 0, 1, 0, 2);
-            transform: matrix(0.99, 0, 0, 1, 0, 2); }
-  40% {
-    opacity: 1;
-    -webkit-transform: matrix(1, 0, 0, 1, 0, -1);
-            transform: matrix(1, 0, 0, 1, 0, -1); }
-  100% {
-    -webkit-transform: matrix(1, 0, 0, 1, 0, 0);
-            transform: matrix(1, 0, 0, 1, 0, 0); } }
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
 
 @keyframes medium-editor-pop-upwards {
   0% {
     opacity: 0;
-    -webkit-transform: matrix(0.97, 0, 0, 1, 0, 12);
-            transform: matrix(0.97, 0, 0, 1, 0, 12); }
+    transform: matrix(0.97, 0, 0, 1, 0, 12); }
   20% {
     opacity: .7;
-    -webkit-transform: matrix(0.99, 0, 0, 1, 0, 2);
-            transform: matrix(0.99, 0, 0, 1, 0, 2); }
+    transform: matrix(0.99, 0, 0, 1, 0, 2); }
   40% {
     opacity: 1;
-    -webkit-transform: matrix(1, 0, 0, 1, 0, -1);
-            transform: matrix(1, 0, 0, 1, 0, -1); }
+    transform: matrix(1, 0, 0, 1, 0, -1); }
   100% {
-    -webkit-transform: matrix(1, 0, 0, 1, 0, 0);
-            transform: matrix(1, 0, 0, 1, 0, 0); } }
+    transform: matrix(1, 0, 0, 1, 0, 0); }
+  }
 
 .medium-editor-anchor-preview {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -73,8 +43,7 @@
   background: #ddd; }
 
 .medium-editor-image-loading {
-  -webkit-animation: medium-editor-image-loading 1s infinite ease-in-out;
-          animation: medium-editor-image-loading 1s infinite ease-in-out;
+  animation: medium-editor-image-loading 1s infinite ease-in-out;
   background-color: #333;
   @include border-radius(100%);
   display: inline-block;
@@ -156,8 +125,7 @@
   position: relative; }
 
 .medium-editor-toolbar-active.medium-editor-stalker-toolbar {
-  -webkit-animation: medium-editor-pop-upwards 160ms forwards linear;
-          animation: medium-editor-pop-upwards 160ms forwards linear; }
+  animation: medium-editor-pop-upwards 160ms forwards linear; }
 
 .medium-editor-action-bold {
   font-weight: bolder; }
@@ -185,9 +153,7 @@
     display: inline-block; }
     .medium-editor-toolbar-form .medium-editor-toolbar-input:focus,
     .medium-editor-toolbar-form label:focus {
-      -webkit-appearance: none;
-         -moz-appearance: none;
-              appearance: none;
+      appearance: none;
       border: none;
       box-shadow: none;
       outline: 0; }

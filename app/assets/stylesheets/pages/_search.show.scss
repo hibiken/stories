@@ -38,8 +38,6 @@ body.search.users {
 
 body.search.users {
   .user-panel {
-    display: -ms-flex;
-    display: -webkit-flex;
     display: flex;
     padding: 20px 0;
     border-bottom: 1px solid $light-border-color;

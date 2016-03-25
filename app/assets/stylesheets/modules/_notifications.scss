@@ -176,27 +176,9 @@
 
   .blink, {
     animation: blink 5s step-start 0s infinite;
-    -webkit-animation: blink 5s step-start 0s infinite;
   }
 
   @keyframes blink {
-    53% {
-      opacity: 0.2;
-    }
-    55% {
-      opacity: 0.0;
-    }
-    57% {
-      opacity: 0.2;
-    }
-    59% {
-      opacity: 0.0;
-    }
-    61% {
-      opacity: 0.2;
-    }
-  }
-  @-webkit-keyframes blink {
     53% {
       opacity: 0.2;
     }

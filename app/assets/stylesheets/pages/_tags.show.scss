@@ -22,14 +22,8 @@
   border-bottom: 1px solid $border-color;
 }
 [data-react-class="TagFollowersList"] {
-  display: -ms-flex;
-  display: -webkit-flex;
   display: flex;
-  -ms-justify-content: flex-start;
-  -webkit-justify-content: flex-start;
   justify-content: flex-start;
-  -ms-flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
   margin-top: 10px;
   .popover-link {

@@ -25,69 +25,14 @@ $gray: #8a8a8a;
     }
 }
 
-@-webkit-keyframes bounce {
-
-    0%, 20%, 50%, 80%, 100% {
-        -webkit-transform: translateY(0);
-    }
-
-
-    40% {
-        -webkit-transform: translateY(-16px);
-    }
-
-
-    60% {
-        -webkit-transform: translateY(-7px);
-    }
-}
-
-@-moz-keyframes bounce {
-
-    0%, 20%, 50%, 80%, 100% {
-        -moz-transform: translateY(0);
-    }
-
-
-    40% {
-        -moz-transform: translateY(-16px);
-    }
-
-
-    60% {
-        -moz-transform: translateY(-7px);
-    }
-}
-
-@-o-keyframes bounce {
-
-    0%, 20%, 50%, 80%, 100% {
-        -o-transform: translateY(0);
-    }
-
-
-    40% {
-        -o-transform: translateY(-16px);
-    }
-
-
-    60% {
-        -o-transform: translateY(-7px);
-    }
-}
-
 @keyframes bounce {
 
     0%, 20%, 50%, 80%, 100% {
         transform: translateY(0);
     }
-
-
     40% {
         transform: translateY(-16px);
     }
-
-
     60% {
         transform: translateY(-7px);
     }
@@ -396,4 +341,3 @@ textarea.input {
         }
     }
 }
-

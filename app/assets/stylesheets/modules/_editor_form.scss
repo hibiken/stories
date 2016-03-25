@@ -65,11 +65,7 @@
 .taggle_list {
   padding: 0 !important;
   float: none !important;
-  display: -webkit-flex;
-  display: -ms-flex;
   display: flex;
-  -webkit-flex-wrap: nowrap;
-  -ms-flex-wrap: nowrap;
   flex-wrap: nowrap;
 }
 .taggle_placeholder {

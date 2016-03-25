@@ -12,10 +12,6 @@ $loader-dot--size: 20px;
   margin: auto;
 
   .loader-dot {
-    -webkit-animation-name: loader;
-    -webkit-animation-timing-function: ease-in-out;
-    -webkit-animation-duration: 3s;
-    -webkit-animation-iteration-count: infinite;
     animation-name: loader !important;
     animation-timing-function: ease-in-out !important;
     animation-duration: 3s !important;
@@ -28,32 +24,26 @@ $loader-dot--size: 20px;
     border: 2px solid white;
     &:first-child {
       background-color: #8cc759;
-      -webkit-animation-delay: 0.5s;
       animation-delay: 0.5s;
     }
     &:nth-child(2) {
       background-color: #8c6daf;
-      -webkit-animation: 0.4s;
       animation-delay: 0.4s;
     }
     &:nth-child(3) {
       background-color: #ef5d74;
-      -webkit-animation-delay: 0.3s;
       animation-delay: 0.3s;
     }
     &:nth-child(4) {
       background-color: #f9a74b;
-      -webkit-animation-delay: 0.2s;
       animation-delay: 0.2s;
     }
     &:nth-child(5) {
       background-color: #60beeb;
-      -webkit-animation-delay: 0.1s;
       animation-delay: 0.1s;
     }
     &:nth-child(6) {
       background-color: #fbef5a;
-      -webkit-animation-delay: 0s;
       animation-delay: 0s;
     }
   }
@@ -69,9 +59,6 @@ $loader-dot--size: 20px;
     &:after {
       content: "Loading";
       font-weight: bold;
-      -webkit-animation-name: loadingtext;
-      -webkit-animation-duration: 3s;
-      -webkit-animation-iteration-count: infinite;
       animation-name: loadingtext;
       animation-duration: 3s;
       animation-iteration-count: infinite;
