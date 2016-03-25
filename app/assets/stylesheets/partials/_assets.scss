@@ -27,7 +27,7 @@
     text-transform: none;
     line-height: 1;
 
-    /* Better Font Rendering =========== */
+    /* Better Font Rendering - (keep, as no standard for font smoothing, 25/03/16) =========== */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
