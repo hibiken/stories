@@ -160,6 +160,12 @@ rake db:setup
 rake db:migrate
 ```
 
+Create Index with elasticsearch
+```
+
+rake es:recreate_index
+```
+
 Lets run the App:
 ```
 rails server
