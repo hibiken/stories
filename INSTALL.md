@@ -162,7 +162,7 @@ rake db:migrate
 
 Create Index with elasticsearch
 ```
-rake es:recreate_index
+rake elasticsearch:reindex
 ```
 
 Lets run the App:
