@@ -1,11 +1,11 @@
 <div class="col-md-6 col-md-offset-1 dashboard-main-content">
 
   <% unless @dashboard.top_stories? %>
-    <div class="posts-wrapper" data-behavior="endless-scroll">
+    <div class="posts-wrapper" data-behavior="endless-scroll" data-animation="fadeInUp-fadeOutDown">
       <%= render @dashboard.posts %>
     </div>
   <% else %>
-    <div class="posts-wrapper">
+    <div class="posts-wrapper" data-animation="fadeInUp-fadeOutDown">
       <%= render 'posts/top_stories', posts: @dashboard.posts %>
     </div>
   <% end %>
