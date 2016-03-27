@@ -32,6 +32,9 @@ class Post < ActiveRecord::Base
 
   include SearchablePost
 
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
   def self.new_draft_for(user)
     post = self.new(user_id: user.id)
     post.save_as_draft
@@ -54,11 +57,13 @@ class Post < ActiveRecord::Base
 
   def publish
     self.published_at = Time.zone.now
+    self.slug = nil # let FriendlyId generate slug
     save
   end
 
   def save_as_draft
     self.published_at = nil
+    self.slug = SecureRandom.urlsafe_base64
     save(validate: false)
   end
 

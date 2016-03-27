@@ -3,6 +3,6 @@ class API::Posts::LikesController < API::LikesController
   private
 
     def set_likeable
-      @likeable = Post.find(params[:post_id])
+      @likeable = Post.friendly.find(params[:post_id])
     end
 end

@@ -8,5 +8,13 @@ namespace :slug do
         record.save!
       end
     end
+
+    Post.find_each do |post|
+      if post.published?
+        post.publish
+      else
+        post.save_as_draft
+      end
+    end
   end
 end
