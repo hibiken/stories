@@ -1,24 +1,25 @@
 <div class="col-md-6 col-md-offset-1 dashboard-main-content">
 
 
-  <div class="heading-container">
-    <% if admin_signed_in? %>
-      <%= feature_tag_button_for(@dashboard.tag) %>
-    <% else %>
-      <%= follow_tag_button_for(@dashboard.tag) %>
-    <% end %>
-    
-    <small class="heading-prefix">Tagged in</small>
-    <h3 class="heading-title"><%= @dashboard.tag.name %></h3>
+  <div data-animation="bounceInLeft-bounceOutLeft">
+    <div class="heading-container">
+      <% if admin_signed_in? %>
+        <%= feature_tag_button_for(@dashboard.tag) %>
+      <% else %>
+        <%= follow_tag_button_for(@dashboard.tag) %>
+      <% end %>
+      <small class="heading-prefix">Tagged in</small>
+      <h3 class="heading-title"><%= @dashboard.tag.name %></h3>
 
+    </div>
+
+    <div class="tag-followers-list">
+      <small class="heading-prefix">People Interested in <%= @dashboard.tag.name %></small>
+      <%= react_component('TagFollowersList', { tagId: @dashboard.tag.id }) %>
+    </div>
   </div>
 
-  <div class="tag-followers-list">
-    <small class="heading-prefix">People Interested in <%= @dashboard.tag.name %></small>
-    <%= react_component('TagFollowersList', { tagId: @dashboard.tag.id }) %>
-  </div>
-
-  <div class="posts-wrapper" data-behavior="endless-scroll">
+  <div class="posts-wrapper" data-behavior="endless-scroll" data-animation="fadeInUp-fadeOutDown">
     <%= render @dashboard.posts %>
   </div>
 
