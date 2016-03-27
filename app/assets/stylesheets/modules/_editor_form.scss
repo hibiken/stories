@@ -1,3 +1,5 @@
+$editor-padding-left: 60px;
+
 .editor-form {
   position: relative;
   padding-bottom: 2em;
@@ -16,8 +18,8 @@
     @include well-read;
     line-height: 1.5;
     position: relative;
-    left: -60px;
-    padding-left: 60px;
+    left: -$editor-padding-left;
+    padding-left: $editor-padding-left;
   }
   .picture_upload {
     position: absolute;
@@ -78,4 +80,9 @@
   a {
     color: $light-gray;
   }
+}
+
+.medium-editor-insert-plugin.medium-editor-placeholder:after {
+  color: $light-gray;
+  padding-left: $editor-padding-left !important;
 }

@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" data-animation="fadeInUp-fadeOutDown">
   <div class="col-xs-10 col-sm-10 col-md-8 col-md-offset-2 col-sm-offset-1 col-xs-offset-1 main-content">
     <% if admin_signed_in? %>
       <%= feature_post_button_for(@post) %>
@@ -44,18 +44,17 @@
       <%= follow_button_for @post.user %>
     </div>
 
-
     <% if user_signed_in? && current_user?(@post.user) %>
       <div class="edit-delete-button-wrapper">
         <%= link_to "Edit", edit_post_path(@post), class: 'button' %>
         <%= link_to "Delete", post_path(@post), method: :delete, class: 'button' %>
       </div>
     <% end %>
-
   </div>
-
 </div> 
-<div class="post-show-footer row">
+
+
+<div class="post-show-footer row" data-animation="fadeInUp-fadeOutDown">
   <div id="responses" class="col-xs-10 col-sm-10 col-md-8 col-md-offset-2 col-sm-offset-1 col-xs-offset-1 main-content">
     <%= form_for [@post, @response] do |f| %>
       <div class="form-group">
@@ -71,6 +70,8 @@
     <% end %>
   </div>
 </div>
+
+
 <div class="post-metadata-bar">
   <div class="flex-container" data-behavior="animated-metadata">
     <div class="post-stats flex-container">
