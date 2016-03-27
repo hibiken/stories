@@ -19,6 +19,6 @@ class API::RelationshipsController < ApplicationController
   private
 
     def set_user
-      @user = User.find(params[:followed_id])
+      @user = User.friendly.find(params[:followed_id])
     end
 end

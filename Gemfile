@@ -12,7 +12,7 @@ gem 'react-rails', '~> 1.6'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
-gem 'autoprefixer-rails'
+gem 'autoprefixer-rails', '~> 6.3'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -20,6 +20,8 @@ gem 'turbolinks', '~> 2.5'
 gem 'jquery-rails'
 gem 'jquery-ui-rails', '~> 5.0'
 gem 'jbuilder', '~> 2.0'
+
+gem 'friendly_id', '~> 5.1'
 
 gem 'carrierwave', '0.10.0'
 gem 'mini_magick', '3.8.0'

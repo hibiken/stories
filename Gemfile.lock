@@ -155,6 +155,8 @@ GEM
       fog-core
       fog-json
     formatador (0.2.5)
+    friendly_id (5.1.0)
+      activerecord (>= 4.0.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     guard (2.13.0)
@@ -413,7 +415,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  autoprefixer-rails
+  autoprefixer-rails (~> 6.3)
   awesome_print (~> 1.6)
   bonsai-elasticsearch-rails
   bootstrap-sass (~> 3.3.6)
@@ -427,6 +429,7 @@ DEPENDENCIES
   factory_girl_rails (~> 4.5.0)
   faker (~> 1.6.1)
   fog (= 1.23.0)
+  friendly_id (~> 5.1)
   guard-rspec
   jbuilder (~> 2.0)
   jquery-rails
