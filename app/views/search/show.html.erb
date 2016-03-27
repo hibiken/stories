@@ -21,7 +21,7 @@
         </div>
       </div>
 
-      <div class="col-md-6">
+      <div class="col-md-6" data-animation="fadeInUp-fadeOutDown">
         <div data-behavior="endless-scroll">
           <h4 class="small-heading with-border">Stories</h4>
           <%= render @posts %>
@@ -30,7 +30,7 @@
         <%= will_paginate @post_records %>
       </div>
 
-      <aside class="col-md-4">
+      <aside class="col-md-4" data-animation="fadeInUp-fadeOutDown">
         <% if @tags.any? %>
           <h4 class="small-heading with-border">Tags</h4>
           <%= react_component('TagList', { tags: @tags }, { prerender: true }) %>
