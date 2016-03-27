@@ -22,12 +22,13 @@
       </div>
 
       <div class="col-md-6" data-animation="fadeInUp-fadeOutDown">
-        <div data-behavior="endless-scroll">
-          <h4 class="small-heading with-border">Stories</h4>
-          <%= render @posts %>
-        </div>
-
-        <%= will_paginate @post_records %>
+        <% if @posts.any? %>
+          <div data-behavior="endless-scroll">
+            <h4 class="small-heading with-border">Stories</h4>
+            <%= render @posts %>
+          </div>
+          <%= will_paginate @post_records %>
+        <% end %>
       </div>
 
       <aside class="col-md-4" data-animation="fadeInUp-fadeOutDown">
@@ -38,19 +39,11 @@
         <% if @users.any? %>
           <h4 class="small-heading with-border">People</h4>
           <% @users.each do |user| %>
-            <div class="user-card">
-              <div class="avatar-wrapper">
-                <%= avatar_for user, size: 50 %>
-              </div>
-              <div class="uc-metadata">
-                <h4><%= link_to user.username, user %></h4>
-                <p><%= user.description %></p>
-                <%= follow_button_for(user) %>
-                </div>
-              </div>
-            <% end %>
+            <%= render partial: 'search/user_card', locals: { user: user } %>
           <% end %>
-        </aside>
+        <% end %>
+      </aside>
+
     </div>
   </div>
 </div>
