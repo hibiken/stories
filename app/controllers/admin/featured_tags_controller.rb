@@ -14,6 +14,6 @@ class Admin::FeaturedTagsController < ApplicationController
   protected
 
     def tag
-      @_tag ||= Tag.find(params[:tag_id])
+      @_tag ||= Tag.friendly.find(params[:tag_id])
     end
 end

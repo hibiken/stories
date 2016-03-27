@@ -13,7 +13,7 @@ class TagList extends React.Component {
         <a
           key={tag.id}
           className="tag"
-          href={`/tags/${tag.id}`}>
+          href={`/tags/${tag.slug}`}>
           {tag.name}
         </a>
       );
