@@ -27,11 +27,11 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:username, :description, :avatar)
+      params.require(:user).permit(:description, :avatar)
     end
 
     def check_for_correct_user
-      unless current_user.id == params[:id].to_i
+      unless current_user.slug == params[:id]
         redirect_to root_url
       end
     end

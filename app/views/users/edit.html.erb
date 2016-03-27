@@ -3,8 +3,8 @@
     <%= form_for @user, html: { multipart: true } do |f| %>
         <header class="hero">
           <div class="profile-info">
-            <h1 class="hero-title"><%= f.text_field :username, autofocus: true, placeholder: "Username" %></h1>
-            <p class="hero-description"><%= f.text_area :description, rows: 5, placeholder: "Tell the world about yourself!" %></p>
+            <h1 class="hero-title"><%= @user.username %></h1>
+            <p class="hero-description"><%= f.text_area :description, rows: 5, autofocus: true, placeholder: "Tell the world about yourself!" %></p>
           </div>
 
 
