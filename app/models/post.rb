@@ -33,7 +33,7 @@ class Post < ActiveRecord::Base
   include SearchablePost
 
   extend FriendlyId
-  friendly_id :title, use: :slugged
+  friendly_id :title, use: [ :slugged, :history ]
 
   def self.new_draft_for(user)
     post = self.new(user_id: user.id)
