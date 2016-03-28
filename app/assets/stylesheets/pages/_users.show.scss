@@ -36,7 +36,18 @@ body.recommended_posts.index {
   }
   .hero-location {
     width: 85%;
+    font-size: 18px;
     color: $light-font-color;
+    .icon-map-marker {
+      color: tomato;
+      margin-right: 6px;
+    }
+    input {
+      width: 90%;
+    }
+  }
+  [data-react-class="UserFollowContainer"] {
+    display: inline-block;
   }
   .following-metadata {
     margin: 1em 0 1.2em;
@@ -48,6 +59,9 @@ body.recommended_posts.index {
   }
   .following-count {
     margin-right: 12px;
+  }
+  .edit-button {
+    transform: translateX(-24px);
   }
 
   .posts-wrapper {

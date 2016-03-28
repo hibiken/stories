@@ -4,12 +4,18 @@
       <div class="profile-info">
         <h1 class="hero-title"><%= @user.username %></h1>
         <p class="hero-description"><%= @user.description %></p>
+        <% if @user.location.present? %>
+          <div class="hero-location">
+            <span class="icon-map-marker"></span><%= @user.location %>
+          </div>
+        <% end %>
       </div>
       <div class="hero-avatar">
         <%= avatar_for @user, size: 100 %>
       </div>
     </header>
 
+    <div>
     <% if user_signed_in? %>
       <%= react_component('UserFollowContainer', 
                           { followerCount: @user.followers.size, 
@@ -34,9 +40,10 @@
     <% end %>
 
     <% if user_signed_in? && current_user?(@user) %>
-      <%= link_to "Edit", edit_user_path(@user), class: 'button green-border-button' %>
+      <%= link_to "Edit", edit_user_path(@user), class: 'button green-border-button pull-right edit-button' %>
     <% end %>
 
+    </div>
   </div>
 </div>
 

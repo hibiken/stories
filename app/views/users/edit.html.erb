@@ -6,9 +6,9 @@
           <div class="profile-info">
             <h1 class="hero-title"><%= @user.username %></h1>
             <p class="hero-description"><%= f.text_area :description, rows: 3, autofocus: true, placeholder: "Tell the world about yourself!" %></p>
-            <div id="locationField">
-              <span class="icon-map-marker"></span><input class="hero-location" id="autocomplete" placeholder="Enter your address"
-                                       onFocus="geolocate()" type="text"></input>
+            <div class="hero-location">
+              <span class="icon-map-marker"></span>
+              <%= f.text_field :location, id: 'autocomplete', onFocus: 'geolocate()', placeholder: 'Where do you live?' %>
             </div>
           </div>
 
