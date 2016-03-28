@@ -10,5 +10,5 @@ class Tag < ActiveRecord::Base
   include SearchableTag
 
   extend FriendlyId
-  friendly_id :name, use: :slugged
+  friendly_id :name, use: [ :slugged, :finders ]
 end

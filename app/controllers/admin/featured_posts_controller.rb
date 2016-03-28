@@ -14,6 +14,6 @@ class Admin::FeaturedPostsController < ApplicationController
   private
 
     def post
-      @_post ||= Post.friendly.find(params[:post_id])
+      @_post ||= Post.find(params[:post_id])
     end
 end

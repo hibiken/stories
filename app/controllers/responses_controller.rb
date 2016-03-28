@@ -2,7 +2,7 @@ class ResponsesController < ApplicationController
   before_action :authenticate_user!
 
   def create
-    post = Post.friendly.find(params[:post_id])
+    post = Post.find(params[:post_id])
     if current_user.responses.create(body: params[:response][:body], post_id: post.id)
 
       # Create the notifications for all commented users and author of post
