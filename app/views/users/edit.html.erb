@@ -3,16 +3,13 @@
     <%= form_for @user, html: { multipart: true } do |f| %>
         <header class="hero">
 
-
-          <div id="locationField">
-            <input id="autocomplete" placeholder="Enter your address"
-                                     onFocus="geolocate()" type="text"></input>
-          </div>
-
-
           <div class="profile-info">
             <h1 class="hero-title"><%= @user.username %></h1>
-            <p class="hero-description"><%= f.text_area :description, rows: 5, autofocus: true, placeholder: "Tell the world about yourself!" %></p>
+            <p class="hero-description"><%= f.text_area :description, rows: 3, autofocus: true, placeholder: "Tell the world about yourself!" %></p>
+            <div id="locationField">
+              <span class="icon-map-marker"></span><input class="hero-location" id="autocomplete" placeholder="Enter your address"
+                                       onFocus="geolocate()" type="text"></input>
+            </div>
           </div>
 
 
