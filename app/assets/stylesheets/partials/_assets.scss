@@ -8,11 +8,11 @@
 /*** Icomoon ***/
 @font-face {
     font-family: 'icomoon';
-    src:font-url('fonts/icomoon.eot?1bv21n');
-    src:font-url('fonts/icomoon.eot?1bv21n#iefix') format('embedded-opentype'),
-        font-url('fonts/icomoon.ttf?1bv21n') format('truetype'),
-        font-url('fonts/icomoon.woff?1bv21n') format('woff'),
-        font-url('fonts/icomoon.svg?1bv21n#icomoon') format('svg');
+    src:font-url('fonts/icomoon.eot?qpalqi');
+    src:font-url('fonts/icomoon.eot?qpalqi#iefix') format('embedded-opentype'),
+        font-url('fonts/icomoon.ttf?qpalqi') format('truetype'),
+        font-url('fonts/icomoon.woff?qpalqi') format('woff'),
+        font-url('fonts/icomoon.svg?qpalqi#icomoon') format('svg');
     font-weight: normal;
     font-style: normal;
 }
@@ -27,11 +27,29 @@
     text-transform: none;
     line-height: 1;
 
-    /* Better Font Rendering - (keep, as no standard for font smoothing, 25/03/16) =========== */
+    /* Better Font Rendering =========== */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-calendar:before {
+    content: "\e912";
+}
+.icon-calendar2:before {
+    content: "\e913";
+}
+.icon-chain:before {
+    content: "\e914";
+}
+.icon-globe:before {
+    content: "\e915";
+}
+.icon-home:before {
+    content: "\e916";
+}
+.icon-map-marker:before {
+    content: "\e917";
+}
 .icon-user-plus:before {
     content: "\e90e";
 }
@@ -88,6 +106,9 @@
 }
 .icon-price-tag:before {
     content: "\e902";
+}
+.icon-link:before {
+    content: "\e918";
 }
 .icon-circle-down:before {
     content: "\e90c";

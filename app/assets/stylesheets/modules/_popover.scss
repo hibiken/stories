@@ -6,7 +6,7 @@
   display: block !important;
   left: 50%;
   transform: translateX(-50%);
-  min-width: 300px;
+  min-width: 330px;
   padding: 18px;
   background-color: $white;
   @include border-radius($popover);
@@ -32,6 +32,15 @@
     font-size: 14px;
     font-weight: normal;
     color: $light-gray;
+  }
+  .po-location {
+    margin-top: 4px;
+    font-size: 14px;
+    color: $light-gray;
+    .icon-map-marker {
+      color: tomato;
+      margin-right: 4px;
+    }
   }
   .po-metadata {
     padding-top: 12px;

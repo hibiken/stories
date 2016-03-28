@@ -2,9 +2,14 @@
   <div class="hero-wrapper">
     <%= form_for @user, html: { multipart: true } do |f| %>
         <header class="hero">
+
           <div class="profile-info">
             <h1 class="hero-title"><%= @user.username %></h1>
-            <p class="hero-description"><%= f.text_area :description, rows: 5, autofocus: true, placeholder: "Tell the world about yourself!" %></p>
+            <p class="hero-description"><%= f.text_area :description, rows: 3, autofocus: true, placeholder: "Tell the world about yourself!" %></p>
+            <div class="hero-location">
+              <span class="icon-map-marker"></span>
+              <%= f.text_field :location, id: 'autocomplete', onFocus: 'geolocate()', placeholder: 'Where do you live?' %>
+            </div>
           </div>
 
 
@@ -39,4 +44,46 @@ function readURL(input) {
 $("#user_avatar").change(function(){
     readURL(this);
 });
+
+/*** Google Map JavaScript API V3 ***/
+
+var autocomplete;
+
+function initAutocomplete() {
+  // Create the autocomplete object, restricting the search to geographical
+  // location types.
+  autocomplete = new google.maps.places.Autocomplete(
+      (document.getElementById('autocomplete')),
+      {types: ['geocode']});
+
+  // When the user selects an address from the dropdown, populate the address
+  // fields in the form.
+  autocomplete.addListener('place_changed', fillInAddress);
+}
+
+function fillInAddress() {
+  // Get the place details from the autocomplete object.
+  var place = autocomplete.getPlace();
+  console.log(place);
+}
+
+// Bias the autocomplete object to the user's geographical location,
+// as supplied by the browser's 'navigator.geolocation' object.
+function geolocate() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var geolocation = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      var circle = new google.maps.Circle({
+        center: geolocation,
+        radius: position.coords.accuracy
+      });
+      autocomplete.setBounds(circle.getBounds());
+    });
+  }
+}
 </script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAu7lncsYacttWvXdmhRadOixqxX0ODlBA&libraries=places&callback=initAutocomplete"
+        async defer></script>
