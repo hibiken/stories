@@ -63,7 +63,7 @@ class Post < ActiveRecord::Base
 
   def save_as_draft
     self.published_at = nil
-    self.slug = SecureRandom.urlsafe_base64
+    self.slug ||= SecureRandom.urlsafe_base64
     save(validate: false)
   end
 

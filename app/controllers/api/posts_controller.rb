@@ -2,7 +2,7 @@ class API::PostsController < ApplicationController
   before_action :authenticate_user!
 
   def update
-    @post = current_user.posts.find(params[:id])
+    @post = current_user.posts.friendly.find(params[:id])
     @post.assign_attributes(post_params)
     if @post.published?
       @post.save
@@ -12,7 +12,7 @@ class API::PostsController < ApplicationController
   end
 
   def destroy
-    @post = current_user.posts.find(params[:id])
+    @post = current_user.posts.friendly.find(params[:id])
     @post.destroy
   end
 
