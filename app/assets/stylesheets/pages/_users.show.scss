@@ -64,6 +64,9 @@ body.recommended_posts.index {
     transform: translateX(-24px);
   }
 
+  .tag {
+    background-color: $background-gray;
+  }
   .posts-wrapper {
     padding-top: 22px;
     padding-bottom: 22px;

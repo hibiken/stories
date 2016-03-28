@@ -49,6 +49,11 @@
 
 
 <div class="posts-wrapper" data-animation="fadeInUp-fadeOutDown">
+  <% if @user.following_tags.any? %>
+    <h4 class="small-heading with-border">Interests</h4>
+    <%= react_component('TagList', { tags: @user.following_tags }, { prerender: true }) %>
+  <% end %>
+
   <h4 class="small-heading with-border">latest</h4>
   <%= render @latest_posts %>
 </div>
