@@ -12,20 +12,22 @@ class AddTagPopover extends React.Component {
           Add your interest
         </h3>
         <div className="popover-content">
-          <div className="input-group">
-            <input
-              type="text"
-              value={this.state.tagName}
-              onChange={this.handleInputChange.bind(this)}
-              className="form-control"
-            />
-            <span
-              onClick={this.handleAddClick.bind(this)}
-              className="input-group-addon add-button"
-            >
-              Add
-            </span>
-          </div>
+          <form onSubmit={this.handleAddTag.bind(this)}>
+            <div className="input-group">
+              <input
+                type="text"
+                value={this.state.tagName}
+                onChange={this.handleInputChange.bind(this)}
+                className="form-control"
+              />
+              <span
+                type="submit"
+                className="input-group-addon add-button"
+              >
+                Add
+              </span>
+            </div>
+          </form>
         </div>
       </div>
     );
@@ -35,9 +37,20 @@ class AddTagPopover extends React.Component {
     this.setState({ tagName: e.target.value });
   }
 
-  handleAddClick() {
-    console.log('Add ', this.state.tagName);
-    this.props.closePopover();
+  handleAddTag(e) {
+    e.preventDefault();
+    if (this.state.tagName.length) {
+      $.ajax({
+        url: `/api/tags?tag_name=${this.state.tagName}`,
+        method: 'POST',
+        dataType: 'json',
+        success: () => {
+          console.log('success!');
+        }
+      });
+      PubSub.publish('TagFollowButton:onClick');
+      this.props.closePopover();
+    }
   }
 }
 

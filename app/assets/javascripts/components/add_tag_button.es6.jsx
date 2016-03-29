@@ -21,7 +21,7 @@ class AddTagButton extends React.Component {
           <button onClick={this.closePopover}>
             <span className="icon-plus active" />
           </button>
-          <AddTagPopover />
+          <AddTagPopover closePopover={this.closePopover}/>
         </div>
       );
     }
