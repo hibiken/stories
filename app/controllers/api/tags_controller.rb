@@ -4,10 +4,8 @@ class API::TagsController < ApplicationController
   def create
     if params[:tag_name].strip.present?
       tag = Tag.where(name: params[:tag_name].strip).first_or_create!
-      unless current_user.following_tags.include?(tag)
-        current_user.following_tags << tag
-      end
+      current_user.following_tags << tag unless current_user.following_tag?(tag)
     end
-    render nothing: true, status: 200
+    render json: tag.to_json, status: 200
   end
 end

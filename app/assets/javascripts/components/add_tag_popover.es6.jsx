@@ -44,11 +44,10 @@ class AddTagPopover extends React.Component {
         url: `/api/tags?tag_name=${this.state.tagName}`,
         method: 'POST',
         dataType: 'json',
-        success: () => {
-          console.log('success!');
+        success: (data) => {
+          PubSub.publish('TagFollowButton:onClick');
         }
       });
-      PubSub.publish('TagFollowButton:onClick');
       this.props.closePopover();
     }
   }
