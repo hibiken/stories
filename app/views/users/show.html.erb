@@ -52,6 +52,7 @@
   <% if @user.following_tags.any? %>
     <h4 class="small-heading with-border">Interests</h4>
     <%= react_component('TagList', { tags: @user.following_tags }, { prerender: true }) %>
+    <%= react_component('AddTagButton') %>
   <% end %>
 
   <h4 class="small-heading with-border">latest</h4>
