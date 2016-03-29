@@ -17,6 +17,10 @@ body.recommended_posts.index {
     justify-content: space-between;
     padding-bottom: 10px;
   }
+  .profile-info {
+    max-width: 450px;
+    width: 80%;
+  }
   .hero-title {
     font-weight: 700;
     font-size: 32px;
@@ -30,6 +34,21 @@ body.recommended_posts.index {
     margin-top: 4px;
     color: $light-font-color;
   }
+  .hero-location {
+    width: 85%;
+    font-size: 18px;
+    color: $light-font-color;
+    .icon-map-marker {
+      color: tomato;
+      margin-right: 6px;
+    }
+    input {
+      width: 90%;
+    }
+  }
+  [data-react-class="UserFollowContainer"] {
+    display: inline-block;
+  }
   .following-metadata {
     margin: 1em 0 1.2em;
     > span {
@@ -41,7 +60,13 @@ body.recommended_posts.index {
   .following-count {
     margin-right: 12px;
   }
+  .edit-button {
+    transform: translateX(-24px);
+  }
 
+  .tag {
+    background-color: $background-gray;
+  }
   .posts-wrapper {
     padding-top: 22px;
     padding-bottom: 22px;

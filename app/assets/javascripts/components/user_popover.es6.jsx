@@ -13,6 +13,7 @@ class UserPopover extends React.Component {
               </a>
             </h3>
             <h4 className="po-description">{this.props.user.description}</h4>
+            {this.renderLocation()}
           </div>
           <div dangerouslySetInnerHTML={this.renderAvatarImage()} />
         </div>
@@ -31,6 +32,16 @@ class UserPopover extends React.Component {
 
   renderAvatarImage() {
     return {__html: this.props.user.avatar_image_tag};
+  }
+
+  renderLocation() {
+    if (this.props.user.location) {
+      return (
+        <div className="po-location">
+          <span className="icon-map-marker"></span>{this.props.user.location}
+        </div>
+      );
+    }
   }
 
   cssStyles() {
