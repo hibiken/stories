@@ -36,21 +36,27 @@ class PopoverLink extends React.Component {
     let position;
     const POPOVER_HEIGHT = 200;
     if ( POPOVER_HEIGHT + 30 > event.clientY) {
-      position = "bottom";
+      this.position = "bottom";
     } else {
-      position = "top";
+      this.position = "top";
     }
-    $.ajax({
-      url: `/api/users/${this.props.user_id}`,
-      method: 'GET',
-      success: (data) => {
-        this.setState({ user: data, showPopover: true, position: position });
-      }
-    });
+    this.timeoutID = setTimeout(() => {
+      $.ajax({
+        url: `/api/users/${this.props.user_id}`,
+        method: 'GET',
+        success: (data) => {
+          this.setState({ user: data, showPopover: true, position: this.position });
+        }
+      });
+    }, 450);
   }
 
   handleMouseLeave(event) {
-    setTimeout(() => { this.setState({ showPopover: false }); }, 180);
+    if (this.timeoutID) {
+      clearTimeout(this.timeoutID);
+      this.timeoutID = null;
+    }
+    setTimeout(() => { this.setState({ showPopover: false, position: null }); }, 180);
   }
 }
 
