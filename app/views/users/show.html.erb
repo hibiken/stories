@@ -49,8 +49,11 @@
 
 
 <div class="posts-wrapper" data-animation="fadeInUp-fadeOutDown">
-  <% if @user.following_tags.any? %>
-    <h4 class="small-heading with-border">Interests</h4>
+  <h4 class="small-heading with-border">Interests</h4>
+  <% if current_user?(@user) %>
+    <%= react_component('FollowingTagList', { followingTags: current_user.following_tags }) %>
+    <%= react_component('AddTagButton') %>
+  <% else %>
     <%= react_component('TagList', { tags: @user.following_tags }, { prerender: true }) %>
   <% end %>
 
