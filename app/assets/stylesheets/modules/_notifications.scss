@@ -12,14 +12,15 @@
     border: 1.5px solid $border-color;
     transition: all .1s;
     @include border-radius($round);
-    span {
+    i.fa-bell-o,
+    span#new-notifications-count {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       font-size: 1.3em;
     }
-    span#bell {
+    #bell {
       color: $light-font-color;
     }
     span#new-notifications-count {
@@ -107,19 +108,19 @@
     display: inline-block;
   }
 
-  [class^="icon-"] {
+  .fa {
     margin-right: 8px;
   }
 
-  .icon-heart-o {
+  .fa-heart-o {
     color: #e81c4f;
   }
 
-  .icon-user {
+  .fa-user {
     color: lightblue;
   }
 
-  .icon-commenting-o {
+  .fa-commenting-o {
     color: $light-font-color;
   }
 }

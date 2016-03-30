@@ -29,14 +29,14 @@ class BookmarkButton extends React.Component {
     if (this.state.bookmarked) {
       return (
         <button className="unbookmark-button" onClick={this.onUnbookmarkClick}>
-          <span className="icon-bookmark" />
+          <i className="fa fa-bookmark" />
           <span className="hide-text">Unbookmark</span>
         </button>
       );
     } else {
       return (
         <button className="bookmark-button" onClick={this.onBookmarkClick}>
-          <span className="icon-bookmark-o" />
+          <i className="fa fa-bookmark-o" />
           <span className="hide-text">Bookmark</span>
         </button>
       );

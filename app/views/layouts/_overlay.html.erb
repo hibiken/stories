@@ -5,19 +5,19 @@
     <ul class="omniauth-button-group">
       <li class="omniauth-button">
         <%= link_to user_omniauth_authorize_path(:facebook), class: 'button facebook' do %>
-          <span class="icon-facebook-official"></span>Sign in with Facebook
+          <%= icon('facebook-official') %>Sign in with Facebook
         <% end %>
       </li>
 
       <li class="omniauth-button google">
         <%= link_to user_omniauth_authorize_path(:google_oauth2), class: 'button google' do %>
-          <span class="icon-google"></span>Sign in with Google
+          <%= icon('google') %>Sign in with Google
         <% end %>
       </li>
 
       <li class="omniauth-button twitter">
         <%= link_to user_omniauth_authorize_path(:twitter), class: 'button twitter' do %>
-          <span class="icon-twitter2"></span>Sign in with Twitter
+          <%= icon('twitter') %>Sign in with Twitter
         <% end %>
       </li>
 

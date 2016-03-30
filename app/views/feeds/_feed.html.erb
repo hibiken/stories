@@ -2,7 +2,7 @@
   <div class="feed-panel">
     <% if feed.tagged?(post) %>
       <div class="feed-metadata">
-        <span class="icon-price-tag"></span> <%= link_to feed.tag_for(post).name, feed.tag_for(post) %>
+        <%= icon('tag') %> <%= link_to feed.tag_for(post).name, feed.tag_for(post) %>
       </div>
     <% elsif feed.recommended?(post) %>
     <div class="feed-metadata">

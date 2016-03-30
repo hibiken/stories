@@ -157,6 +157,8 @@ GEM
     fog-softlayer (1.1.0)
       fog-core
       fog-json
+    font-awesome-sass (4.5.0)
+      sass (>= 3.2)
     formatador (0.2.5)
     friendly_id (5.1.0)
       activerecord (>= 4.0.0)
@@ -433,6 +435,7 @@ DEPENDENCIES
   factory_girl_rails (~> 4.5.0)
   faker (~> 1.6.1)
   fog (= 1.23.0)
+  font-awesome-sass (~> 4.5)
   friendly_id (~> 5.1)
   guard-rspec
   jbuilder (~> 2.0)

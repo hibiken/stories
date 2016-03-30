@@ -9,9 +9,11 @@
 .feed-metadata {
   padding-top: 1.4em;
   color: $light-gray;
-  span[class^="icon"] {
+  .fa-tag {
     margin-right: 5px;
     color: $light-gray;
+    transform: rotate(90deg);
+    font-size: 17px;
   }
   a {
     color: $super-light-font-color;

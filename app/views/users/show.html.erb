@@ -6,7 +6,7 @@
         <p class="hero-description"><%= @user.description %></p>
         <% if @user.location.present? %>
           <div class="hero-location">
-            <span class="icon-map-marker"></span><%= @user.location %>
+            <%= icon('map-marker') %><%= @user.location %>
           </div>
         <% end %>
       </div>

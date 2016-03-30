@@ -8,7 +8,7 @@ class SearchBar extends React.Component {
       <form action="/search" acceptCharset="UTF-8" method="get">
         <input name="utf8" type="hidden" value="√" />
         <button name="button" type="submit">
-          <span className="glyphicon glyphicon-search"></span>
+          <i className="fa fa-search"></i>
         </button>
         <input
           onFocus={() => this.props.showDropdown()}

@@ -38,7 +38,7 @@ body.recommended_posts.index {
     width: 85%;
     font-size: 18px;
     color: $light-font-color;
-    .icon-map-marker {
+    .fa-map-marker {
       color: tomato;
       margin-right: 6px;
     }
@@ -113,7 +113,7 @@ body.recommended_posts.index {
     position: relative;
     transition: all .1s;
 
-    span.icon-camera {
+    .fa-camera {
       position: absolute;
       top: 50%;
       left: 50%;

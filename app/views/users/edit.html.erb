@@ -7,7 +7,7 @@
             <h1 class="hero-title"><%= @user.username %></h1>
             <p class="hero-description"><%= f.text_area :description, rows: 3, autofocus: true, placeholder: "Tell the world about yourself!" %></p>
             <div class="hero-location">
-              <span class="icon-map-marker"></span>
+              <%= icon('map-marker') %>
               <%= f.text_field :location, id: 'autocomplete', onFocus: 'geolocate()', placeholder: 'Where do you live?' %>
             </div>
           </div>
@@ -16,7 +16,7 @@
           <div class="hero-avatar">
             <label class="change-avatar" id="change-avatar" style="background-image: url('<%= @user.avatar.url %>')">
               <%= f.file_field :avatar %>
-              <span class="icon-camera"></span>
+              <%= icon('camera') %>
             </label>
           </div>
         </header>
