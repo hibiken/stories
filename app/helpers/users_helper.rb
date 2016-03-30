@@ -9,7 +9,7 @@ module UsersHelper
         image_tag user.avatar.url, width: size, height: size, alt: user.username, class: 'avatar-image', style: style
       end
     else
-      image_tag 'default-avatar.jpg', width: size, height: size, alt: 'avatar image', class: 'avatar-image', style: style
+      image_tag 'default-avatar.svg', width: size, height: size, alt: 'avatar image', class: 'avatar-image', style: style
     end
   end
 end

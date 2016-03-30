@@ -1,9 +1,8 @@
-<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 <%= form_for post, html: { multipart: true, class: "editor-form", autocomplete: "off" } do |f| %>
 
   <label class="picture_upload">
     <%= f.file_field :picture %>
-    <span class="icon-camera"></span>
+    <i class="fa fa-camera"></i>
   </label>
   <div class="file-upload-previewer hidden">
     <img src="" id="image_preview"/>

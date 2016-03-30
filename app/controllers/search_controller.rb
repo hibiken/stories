@@ -3,14 +3,14 @@ class SearchController < ApplicationController
   layout "simple"
 
   def show
-    @post_records = Post.search(params[:q]).paginate(page: params[:page]).records
+    @post_records = Post.search(query_term).paginate(page: params[:page]).records
     @posts = @post_records.to_a
-    @users = User.search(params[:q]).records.to_a
-    @tags = Tag.search(params[:q]).records
+    @users = User.search(query_term).records.to_a
+    @tags = Tag.search(query_term).records
   end
 
   def users
-    @users = User.search(params[:q]).records.to_a
+    @users = User.search(query_term).records.to_a
   end
 
   private
@@ -24,5 +24,9 @@ class SearchController < ApplicationController
           redirect_to search_users_url(q: params[:search][:q])
         end
       end
+    end
+
+    def query_term
+      params[:q] || ''
     end
 end

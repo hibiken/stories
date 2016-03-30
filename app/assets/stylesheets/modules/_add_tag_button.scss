@@ -1,0 +1,43 @@
+[data-react-class="AddTagButton"] {
+  display: inline-block;
+  position: relative;
+  top: -7px;
+  left: 8px;
+}
+.add-tag-button > button {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  line-height: 18px;
+  border-radius: 50%;
+  background-color: $white;
+  font-size: 16px;
+  color: $white;
+  border: 1px solid;
+  color: $light-gray;
+  outline: none;
+  transition: all 200ms;
+  display: block;
+  &.active {
+    transform: rotate(45deg);
+  }
+}
+.add-tag-popover {
+  display: block;
+  transform: translate(-43%, -100%);
+  min-width: 220px;
+  .popover-title {
+    color: $light-font-color;
+    text-align: center;
+  }
+  .popover-content {
+    text-align: center;
+    .form-control:focus {
+      outline: none !important;
+    }
+    .add-button {
+      background: rgba($accent-color, 0.7);
+      color: $white;
+    }
+  }
+}

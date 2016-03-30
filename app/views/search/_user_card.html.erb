@@ -1,0 +1,10 @@
+<div class="user-card">
+  <div class="avatar-wrapper">
+    <%= avatar_for user, size: 50 %>
+  </div>
+  <div class="uc-metadata">
+    <h4><%= link_to user.username, user %></h4>
+    <p><%= user.description %></p>
+    <%= follow_button_for(user) %>
+  </div>
+</div>

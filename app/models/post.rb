@@ -1,3 +1,21 @@
+# == Schema Information
+#
+# Table name: posts
+#
+#  id           :integer          not null, primary key
+#  title        :string
+#  body         :text
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  user_id      :integer
+#  picture      :string
+#  likes_count  :integer          default("0")
+#  published_at :datetime
+#  featured     :boolean          default("false")
+#  lead         :text
+#  slug         :string
+#
+
 require 'elasticsearch/model'
 
 class Post < ActiveRecord::Base
@@ -32,6 +50,9 @@ class Post < ActiveRecord::Base
 
   include SearchablePost
 
+  extend FriendlyId
+  friendly_id :title, use: [ :slugged, :history, :finders ]
+
   def self.new_draft_for(user)
     post = self.new(user_id: user.id)
     post.save_as_draft
@@ -44,7 +65,7 @@ class Post < ActiveRecord::Base
 
   def all_tags=(names)
     self.tags = names.split(",").map do |name|
-      Tag.where(name: name.strip).first_or_create!
+      Tag.first_or_create_with_name!(name)
     end
   end
 
@@ -54,11 +75,13 @@ class Post < ActiveRecord::Base
 
   def publish
     self.published_at = Time.zone.now
+    self.slug = nil # let FriendlyId generate slug
     save
   end
 
   def save_as_draft
     self.published_at = nil
+    self.slug ||= SecureRandom.urlsafe_base64
     save(validate: false)
   end
 
@@ -94,14 +117,3 @@ class Post < ActiveRecord::Base
   end
 
 end
-
-# Delete the previous posts index in Elasticsearch
-Post.__elasticsearch__.client.indices.delete index: Post.index_name rescue nil
-
-# Create the new index with the new mapping
-Post.__elasticsearch__.client.indices.create \
-  index: Post.index_name,
-  body: { settings: Post.settings.to_hash, mappings: Post.mappings.to_hash }
-
-# Index all post records from the DB to Elasticsearch
-Post.import

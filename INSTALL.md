@@ -90,15 +90,15 @@ lunchy start postgres
 
 **5. Install Elasticsearch**
 
-Where would we be without search? The app uses ElasticSearch which is a search server - quite simply it’s going to help you find posts and users in the app.
+Where would we be without search? The app uses ElasticSearch 1.7.3 which is a search server - quite simply it’s going to help you find posts and users in the app.
 
 ```
-brew install elasticsearch
+brew install elasticsearch17
 ```
 
 Start Elasticsearch:
 ```
-elastic search —config=/usr/local/opt/elasticsearch/config/elasticsearch.yml
+elasticsearch --config=/usr/local/opt/elasticsearch17/config/elasticsearch.yml
 ```
 
 Lets check it is running by visiting [http://localhost:9200](http://localhost:9200) in your browser. You should get something like this:
@@ -158,6 +158,11 @@ Set up and migrate the database:
 ```
 rake db:setup
 rake db:migrate
+```
+
+Create Index with elasticsearch
+```
+rake elasticsearch:reindex
 ```
 
 Lets run the App:

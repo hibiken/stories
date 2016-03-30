@@ -1,4 +1,4 @@
-<div class="banner-container">
+<div class="banner-container" data-animation="fadeInUp-fadeOutDown-slow">
   <div class="hero-wrapper">
     <header class="hero">
       <div class="profile-info">
@@ -21,7 +21,9 @@
     <%= follow_button_for(@user) %>
   </div>
 </div>
-<div class="posts-wrapper">
+
+
+<div class="posts-wrapper" data-animation="fadeInUp-fadeOutDown">
   <h4 class="heading-border-b">Recommended by <%= @user.username %></h4>
   <div data-behavior="endless-scroll">
     <%= render @recommended_posts %>

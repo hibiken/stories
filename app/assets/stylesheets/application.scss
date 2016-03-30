@@ -16,6 +16,8 @@
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 @import "partials/assets";
 @import "partials/variables";
@@ -57,7 +59,8 @@
 @import 'modules/notifications';
 @import 'modules/tags';
 @import 'modules/progress_bar';
-
+@import 'modules/page_load_animations';
+@import 'modules/add_tag_button';
 // Vendor
 @import 'vendor/medium-editor';
 @import 'vendor/medium-editor-insert-plugin';

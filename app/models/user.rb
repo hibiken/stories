@@ -1,3 +1,29 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id                     :integer          not null, primary key
+#  email                  :string           default(""), not null
+#  encrypted_password     :string           default(""), not null
+#  reset_password_token   :string
+#  reset_password_sent_at :datetime
+#  remember_created_at    :datetime
+#  sign_in_count          :integer          default("0"), not null
+#  current_sign_in_at     :datetime
+#  last_sign_in_at        :datetime
+#  current_sign_in_ip     :inet
+#  last_sign_in_ip        :inet
+#  created_at             :datetime         not null
+#  updated_at             :datetime         not null
+#  username               :string
+#  description            :text
+#  avatar                 :string
+#  provider               :string
+#  uid                    :string
+#  slug                   :string
+#  location               :string
+#
+
 require 'elasticsearch/model'
 
 class User < ActiveRecord::Base
@@ -30,6 +56,9 @@ class User < ActiveRecord::Base
 
   include SearchableUser
   include OmniauthableUser
+
+  extend FriendlyId
+  friendly_id :username, use: [ :slugged, :finders ]
 
   def add_like_to(likeable_obj)
     likes.where(likeable: likeable_obj).first_or_create
@@ -78,15 +107,3 @@ class User < ActiveRecord::Base
       WelcomeEmailJob.perform_later(self.id)
     end
 end
-
-
-# Delete the previous users index in Elasticsearch
-User.__elasticsearch__.client.indices.delete index: User.index_name rescue nil
-
-# Create the new index with the new mapping
-User.__elasticsearch__.client.indices.create \
-  index: User.index_name,
-  body: { settings: User.settings.to_hash, mappings: User.mappings.to_hash }
-
-# Index all user records from the DB to Elasticsearch
-User.import

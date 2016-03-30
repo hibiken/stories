@@ -37,6 +37,9 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     addressable (2.4.0)
+    annotate (2.6.5)
+      activerecord (>= 2.3.0)
+      rake (>= 0.8.7)
     arel (6.0.3)
     autoprefixer-rails (6.3.4)
       execjs
@@ -154,7 +157,11 @@ GEM
     fog-softlayer (1.1.0)
       fog-core
       fog-json
+    font-awesome-sass (4.5.0)
+      sass (>= 3.2)
     formatador (0.2.5)
+    friendly_id (5.1.0)
+      activerecord (>= 4.0.0)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
     guard (2.13.0)
@@ -413,7 +420,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  autoprefixer-rails
+  annotate
+  autoprefixer-rails (~> 6.3)
   awesome_print (~> 1.6)
   bonsai-elasticsearch-rails
   bootstrap-sass (~> 3.3.6)
@@ -427,6 +435,8 @@ DEPENDENCIES
   factory_girl_rails (~> 4.5.0)
   faker (~> 1.6.1)
   fog (= 1.23.0)
+  font-awesome-sass (~> 4.5)
+  friendly_id (~> 5.1)
   guard-rspec
   jbuilder (~> 2.0)
   jquery-rails

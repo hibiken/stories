@@ -3,7 +3,7 @@
   border: none;
   outline: none;
   background-color: transparent;
-  span[class^='icon'] {
+  i.fa {
     color: $accent-color;
     font-size: 18px;
   }
@@ -37,7 +37,7 @@
   border: none;
   outline: none;
   background-color: transparent;
-  span[class^='icon'] {
+  i.fa {
     color: $light-gray;
     font-size: 18px;
     &:hover,

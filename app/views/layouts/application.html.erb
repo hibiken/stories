@@ -12,6 +12,7 @@
 </head>
 <body class="<%= controller.controller_name %> <%= controller.action_name %>">
   <%= render 'layouts/overlay' unless user_signed_in? %>
+  <%= react_component('UserOverlay', {}) %>
 
   <div data-behavior="progress-bar" class="progress-bar"></div>
 

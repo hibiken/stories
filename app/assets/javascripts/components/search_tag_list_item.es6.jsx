@@ -3,7 +3,7 @@ class SearchTagListItem extends React.Component {
     return (
       <li className="search-tag-list-item">
         <a href={this.props.tag.url}>
-          <span className="icon-tag"></span>
+          <i className="fa fa-tag" />
           <span dangerouslySetInnerHTML={{ __html: this.props.tag.name }} />
         </a>
       </li>

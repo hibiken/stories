@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: tags
+#
+#  id         :integer          not null, primary key
+#  name       :string
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  featured   :boolean          default("false")
+#  slug       :string
+#
+
 class Tag < ActiveRecord::Base
   has_many :taggings, dependent: :destroy
   has_many :posts, through: :taggings
@@ -5,16 +17,16 @@ class Tag < ActiveRecord::Base
   has_many :interests, dependent: :destroy
   has_many :followers, through: :interests, source: :follower
 
+  validates :name, presence: true
+
   include SearchableTag
+
+  extend FriendlyId
+  friendly_id :name, use: [ :slugged, :finders ]
+
+  def self.first_or_create_with_name!(name)
+    where(lowercase_name: name.strip.downcase).first_or_create! do |tag|
+      tag.name = name.strip
+    end
+  end
 end
-
-# Delete the previous posts index in Elasticsearch
-Tag.__elasticsearch__.client.indices.delete index: Tag.index_name rescue nil
-
-# Create the new index with the new mapping
-Tag.__elasticsearch__.client.indices.create \
-  index: Tag.index_name,
-  body: { settings: Tag.settings.to_hash, mappings: Tag.mappings.to_hash }
-
-# Index all post records from the DB to Elasticsearch
-Tag.import

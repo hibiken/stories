@@ -1,6 +1,7 @@
 json.id @user.id
 json.username @user.username
 json.description @user.description
+json.location @user.location
 json.avatar_image_tag avatar_for(@user, size: 50)
 json.urlPath user_path(@user)
 json.followingCount @user.following.size

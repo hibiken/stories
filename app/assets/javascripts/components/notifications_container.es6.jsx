@@ -71,7 +71,7 @@ class NotificationsContainer extends React.Component {
       );
     } else {
       return (
-        <span className="icon-bell-o notification-bell" id="bell"></span>
+        <i className="fa fa-bell-o notification-bell" id="bell"></i>
       );
     }
   }
