@@ -21,8 +21,8 @@ class AddTagPopover extends React.Component {
                 className="form-control"
               />
               <span
-                type="submit"
                 className="input-group-addon add-button"
+                onClick={this.handleAddTag.bind(this)}
               >
                 Add
               </span>
