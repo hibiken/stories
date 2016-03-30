@@ -38,7 +38,7 @@ class UserPopover extends React.Component {
     if (this.props.user.location) {
       return (
         <div className="po-location">
-          <span className="icon-map-marker"></span>{this.props.user.location}
+          <i className="fa fa-map-marker"></i>{this.props.user.location}
         </div>
       );
     }
