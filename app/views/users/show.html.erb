@@ -50,7 +50,10 @@
 
 <div class="posts-wrapper" data-animation="fadeInUp-fadeOutDown">
   <div class="flex-container border-top">
-    <h4 class="small-heading">Interests</h4><%= react_component('AddTagButton') %>
+    <h4 class="small-heading">Interests</h4>
+    <% if user_signed_in? && current_user?(@user) %>
+      <%= react_component('AddTagButton') %>
+    <% end %>
   </div>
   <% if user_signed_in? && current_user?(@user) %>
     <%= react_component('FollowingTagList', { followingTags: current_user.following_tags }) %>
