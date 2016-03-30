@@ -1,26 +1,25 @@
 [data-react-class="AddTagButton"] {
   display: inline-block;
-  position: absolute;
-  right: 0;
-  transform: translateY(-120%);
+  position: relative;
+  top: -7px;
+  left: 8px;
 }
 .add-tag-button > button {
   display: inline-block;
-  width: 30px;
-  height: 30px;
-  line-height: 20px;
+  width: 25px;
+  height: 25px;
+  line-height: 18px;
   border-radius: 50%;
-  background-color: rgba($accent-color, 0.7);
-  font-size: 17px;
+  background-color: $white;
+  font-size: 16px;
   color: $white;
-  border: none;
+  border: 1px solid;
+  color: $light-gray;
   outline: none;
-  .icon-plus {
-    transition: all 200ms;
-    display: block;
-    &.active {
-      transform: rotate(45deg);
-    }
+  transition: all 200ms;
+  display: block;
+  &.active {
+    transform: rotate(45deg);
   }
 }
 .add-tag-popover {

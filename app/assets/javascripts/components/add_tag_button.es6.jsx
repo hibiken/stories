@@ -11,15 +11,15 @@ class AddTagButton extends React.Component {
       return (
         <div className="add-tag-button">
           <button onClick={this.handleButtonClick.bind(this)}>
-            <span className="icon-plus" />
+            +
           </button>
         </div>
       );
     } else {
       return (
         <div className="add-tag-button">
-          <button onClick={this.closePopover}>
-            <span className="icon-plus active" />
+          <button className="active" onClick={this.closePopover}>
+            +
           </button>
           <AddTagPopover closePopover={this.closePopover}/>
         </div>
