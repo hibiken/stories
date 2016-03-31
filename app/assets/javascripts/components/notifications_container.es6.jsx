@@ -112,9 +112,9 @@ class NotificationsContainer extends React.Component {
       return;
     }
     return (
-      <li>
+      <li className="load-more">
         <a onMouseOver={() => this.handleLoadMore()}>
-          See More
+          <i className="fa fa-spinner fa-pulse"></i>
         </a>
       </li>
     );
