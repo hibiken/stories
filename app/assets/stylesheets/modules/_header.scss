@@ -1,7 +1,3 @@
-body {
-  padding-top: 51px; /*** to deal with fixed top navbar ***/
-}
-
 
 /** Navbar animation **/
 nav.navbar {
@@ -14,28 +10,13 @@ nav.navbar {
   }
 }
 nav.navbar {
-  margin-bottom: 0 !important;
-  padding: 8px 0;
-  border-radius: 0 !important;
-  border-color: $super-light-gray !important;
+  margin-bottom: 0;
+  border-radius: 0;
+  border-color: $super-light-gray;
   &.navbar-default {
-    background-color: rgba(255, 255, 255, 0.9) !important;
+    background-color: rgba(255, 255, 255, 0.9);
   }
-  #logo {
-    width: 152px;
-    position: relative;
-    img, span {
-      position: absolute;
-    }
-    img {
-      top: 5px;
-    }
-    span {
-      right: 0;
-      text-transform: uppercase;
-      font-weight: bold;
-    }
-  }
+
 
   .filter-links {
     margin-left: 1.5em;
@@ -74,7 +55,7 @@ nav.navbar {
   a.avatar-wrapper {
     padding: 0;
     display: inline;
-    margin: 5px 20px 0 10px;
+    margin: 3px 15px 0 10px;
   }
   a.avatar-wrapper img.avatar-image {
     border: 1.5px solid $border-color;
@@ -143,4 +124,135 @@ nav.navbar {
     color: #fff;
     border: none;
   }
+}
+
+/* Yellow */
+/* Extra small devices (phones, less than 768px) */
+
+.container-fluid {
+  padding: 0;
+}
+
+.navbar-header {
+  padding: 8px 0;
+  border-bottom: 1px solid $super-light-gray;
+}
+
+body {
+  padding-top: 0;
+}
+.navbar-fixed-top {
+  position: relative;
+}
+.navbar-nav, .navbar-nav > li {
+  display: inline-block;
+}
+.navbar-nav {
+  margin: 5 10px;
+}
+nav.navbar .filter-links {
+  margin-left: 9px;
+}
+.navbar-nav > li > a {
+  padding: 5px 9px;
+}
+
+nav.navbar {
+
+  .navbar-brand {
+    height: 40px;
+  }
+  .folding-nav {
+    position: absolute;
+    top: 3px;
+    right: 0;
+  }
+  .navbar-right {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-content: stretch;
+    align-items: flex-start;
+  }
+
+  .navbar-right > li {
+    order: 0;
+    flex: 0 1 auto;
+    align-self: auto;
+  }
+
+  .new-post-button {
+    display: none;
+  }
+
+
+  #logo {
+    width: 128px;
+    margin-left: 15px;
+    position: relative;
+    img, span {
+      position: absolute;
+    }
+    img {
+      top: 5px;
+      height: 31px;
+    }
+    span {
+      right: 0;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+  }
+
+}
+
+
+/* red */
+/* Small devices (tablets, 768px and up) */
+@media (min-width: $screen-sm-min) {
+
+  .navbar-header {
+    background: red;
+  }
+
+  body {
+    padding-top: 81px;
+  }
+  .navbar-fixed-top {
+    position: fixed;
+  }
+
+  nav.navbar {
+
+    #logo {
+      width: 152px;
+    }
+    .new-post-button {
+      display: inline-flex;
+    }
+
+  }
+
+}
+
+/* blue */
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: $screen-md-min) {
+
+  .navbar-header {
+    background: blue;
+  }
+
+}
+
+/* green */
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: $screen-lg-min) {
+
+  .navbar-header {
+    background: green;
+  }
+
 }

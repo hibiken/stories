@@ -20,7 +20,8 @@
         <li><a href='' data-behavior="trigger-overlay">Bookmarks</a></li>
       <% end %>
     </ul>
-    <div class="collapse navbar-collapse">
+
+    <div class="folding-nav">
       <ul class="nav navbar-nav navbar-right">
         <li class="main-searchbar">
           <%= react_component('SearchContainer', {}, { prerender: true }) %>
@@ -37,5 +38,6 @@
         <% end %>
       </ul>
     </div>
+
   </div>
 </nav>
