@@ -25,5 +25,8 @@ body.posts.create {
     input.taggle_input {
       width: 100% !important;
     }
+    ul.taggle_list {
+      flex-wrap: wrap !important;
+    }
   }
 }
