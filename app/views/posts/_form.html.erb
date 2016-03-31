@@ -25,11 +25,6 @@
     <%= f.text_field :all_tags %>
   </div>
 
-  <div class="clearfix" data-behavior="tags" data-tags="<%= post.all_tags %>">
-    <div id="js-taggle" style="position: relative;" data-behavior="autosave"></div>
-  </div>
-
-  <%= f.submit "Publish", class: "button green-inner-button" %>
 <% end %>
 <scirpt src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.amd.js"></script>
 <script>
@@ -54,7 +49,7 @@ $('.medium-editable').mediumInsert({
 
 // preload tags if its edit.
 var tag_string = $('[data-behavior="tags"]').data("tags");
-var tags = tag_string.length > 0 ? tag_string.split(', ') : [];
+var tags = tag_string.length > 0 ? tag_string.split(', ') : ['Story', 'Music'];
 
 var my_taggle = new Taggle('js-taggle', {
   duplicateTagClass: 'bounce',
@@ -63,7 +58,7 @@ var my_taggle = new Taggle('js-taggle', {
 });
 
 // FIXME: is there a better way to do this?
-$('input[type="submit"]').hover(function() {
+$('[data-behavior="publish-button"').hover(function() {
   $('#post_all_tags').val(my_taggle.getTagValues());
 });
 
@@ -117,4 +112,14 @@ function postAutosave(url, method, title, body, all_tags) {
     success: function() { console.log('autosave successful'); }
   });
 }
+
+/*** Form submit ***/
+$('[data-behavior="publish-button"]').on('click', function() {
+  $('.editor-form').submit();
+});
+
+$('.publish-dropdown').on('click', function(e) {
+  e.stopPropagation();
+});
+
 </script>

@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authorize_user, only: [:edit, :update, :destroy]
 
-  layout "editor", only: [:new, :edit]
+  layout "editor", only: [:new, :edit, :create, :update]
 
   def show
     @response = Response.new

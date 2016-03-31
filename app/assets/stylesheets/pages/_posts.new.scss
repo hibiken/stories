@@ -6,4 +6,24 @@ body.posts.create {
     padding: 30px 0 15px;
     margin-top: 20px;
   }
+  .publish-button {
+    margin-top: 8px;
+    margin-right: 70px;
+  }
+  .publish-dropdown {
+    width: 300px;
+    right: -100px;
+    margin-top: 5px;
+    padding: 1em;
+    color: $light-font-color;
+    .dropdown-arrow-top {
+      right: 138px;
+    }
+    .dropdown-arrow-bottom {
+      right: 136px;
+    }
+    input.taggle_input {
+      width: 100% !important;
+    }
+  }
 }
