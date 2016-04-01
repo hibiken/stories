@@ -27,5 +27,5 @@
 //= require react
 //= require react_ujs
 //= require components
-//= require overlay
-//= require_tree .
+//= require init
+//= require page_specific
