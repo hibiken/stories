@@ -48,6 +48,11 @@ body.dashboards.top_stories {
     .editor-form {
       margin: 0;
       height: 30px; // FIXME
+      min-width: 60%;
+      cursor: text;
+      .form-group {
+        height: 100%;
+      }
     }
     .go-full-screen,
     .cancel-button {
@@ -79,6 +84,9 @@ body.dashboards.top_stories {
     .go-full-screen,
     .cancel-button {
       display: inline-block;
+    }
+    .go-full-screen {
+      margin-right: 8px;
     }
   }
 
