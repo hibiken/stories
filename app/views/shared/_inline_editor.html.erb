@@ -3,12 +3,12 @@
     <%= avatar_for(current_user, size: 40) %>
     <strong class="editor-username"><%= current_user.username %></strong>
   </div>
-  <%= form_for @dashboard.new_post, html: { multipart: true, class: "editor-form", autocomplete: "off" } do |f| %>
+  <%= form_for @dashboard.new_post, url: post_create_and_edit_path, html: { multipart: true, class: "editor-form", autocomplete: "off" } do |f| %>
     <div class="form-group">
       <%= f.text_area :body, class: 'medium-editable post-body', id: 'editor-body' %> 
     </div>
+    <%= f.submit "Go full screen", class: 'button go-full-screen' %>
   <% end %>
-  <button class='button go-full-screen'>Go full screen</button>
   <button class='button cancel-button' data-behavior="editor-cancel">Cancel</button>
 </div>
 
