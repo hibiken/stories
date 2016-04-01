@@ -36,6 +36,8 @@ body.dashboards.top_stories {
       outline: none;
       @include well-read;
       line-height: 1.5;
+      padding: 0;
+      left: 0;
     }
   }
 
