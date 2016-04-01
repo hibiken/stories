@@ -1,6 +1,11 @@
 <div class="col-md-6 col-md-offset-1 dashboard-main-content">
 
   <% unless @dashboard.top_stories? %>
+    <% if user_signed_in? && current_page?('/') %>
+      <div data-animation="fadeInUp-fadeOutDown">
+        <%= render 'shared/inline_editor' %>
+      </div>
+    <% end %>
     <div class="posts-wrapper" data-behavior="endless-scroll" data-animation="fadeInUp-fadeOutDown">
       <%= render @dashboard.posts %>
     </div>

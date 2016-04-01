@@ -17,6 +17,84 @@ body.dashboards.top_stories {
     @include box-shadow;
     @include border-radius($radius);
   }
+
+  .editor {
+    background-color: $white;
+    padding: 20px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(0,0,0, 0.09);
+    @include box-shadow;
+    .medium-editor-placeholder:after {
+      color: $light-font-color;
+    }
+    .editor-username {
+      color: $accent-color;
+      margin-left: 12px;
+      font-weight: normal;
+    }
+    .medium-editable {
+      outline: none;
+      @include well-read;
+      line-height: 1.5;
+    }
+  }
+
+  .editor {
+    .editor-metadata,
+    .editor-form {
+      transition: all 300ms;
+      display: inline-block;
+    }
+    .editor-form {
+      margin: 0;
+      height: 30px; // FIXME
+      min-width: 60%;
+      cursor: text;
+      .form-group {
+        height: 100%;
+      }
+    }
+    .go-full-screen,
+    .cancel-button {
+      display: none;
+    }
+    .editor-metadata {
+      margin: 0 12px 0 0;
+    }
+    .editor-username {
+      transition: all 300ms;
+      display: none;
+    }
+  }
+
+  .editor.active {
+    .editor-metadata,
+    .editor-form {
+      display: block;
+    }
+    .editor-metadata {
+      margin: 0 0 12px 0;
+    }
+    .editor-username {
+      display: inline-block;
+    }
+    .editor-form {
+      height: auto;
+    }
+    .go-full-screen,
+    .cancel-button {
+      display: inline-block;
+    }
+    .go-full-screen {
+      margin-right: 8px;
+    }
+  }
+
+
+
+  .editor.active .editor-username {
+    display: inline-block;
+  }
 }
 
 body.dashboards.top_stories {

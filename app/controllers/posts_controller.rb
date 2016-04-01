@@ -49,6 +49,13 @@ class PostsController < ApplicationController
     redirect_to root_url, notice: "Successfully deleted the post"
   end
 
+  # TODO: ideally move this to a separate controller?
+  def create_and_edit
+    @post = current_user.posts.build(post_params)
+    @post.save_as_draft
+    redirect_to edit_post_url(@post)
+  end
+
   private
 
     def set_post
