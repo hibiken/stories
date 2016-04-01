@@ -1,0 +1,40 @@
+<div class="editor">
+  <div class="editor-metadata">
+    <%= avatar_for(current_user, size: 40) %>
+    <strong class="editor-username"><%= current_user.username %></strong>
+  </div>
+  <%= form_for @dashboard.new_post, html: { multipart: true, class: "editor-form", autocomplete: "off" } do |f| %>
+    <div class="form-group">
+      <%= f.text_area :body, class: 'medium-editable post-body', id: 'editor-body' %> 
+    </div>
+  <% end %>
+  <button class='button go-full-screen'>Go full screen</button>
+  <button class='button cancel-button' data-behavior="editor-cancel">Cancel</button>
+</div>
+
+<script>
+var editor = new MediumEditor('.medium-editable', {
+  placeholder: {
+    text: "Tell your Story ..."
+  }
+});
+
+editor.subscribe('focus', function() {
+  $('.editor').addClass('active');
+});
+
+$('[data-behavior="editor-cancel"]').click(function() {
+  $('.editor').removeClass('active');
+  clearEditor(editor);
+});
+
+function clearEditor(editor) {
+  editor.destroy();
+  $('#editor-body').val('');
+  editor.setup();
+  editor.subscribe('focus', function() {
+    $('.editor').addClass('active');
+  });
+}
+
+</script>

@@ -25,7 +25,7 @@ class Dashboard
   end
 
   def new_post
-    Post.new
+    @user.posts.new
   end
 
   def filtered?
