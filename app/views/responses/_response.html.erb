@@ -1,4 +1,4 @@
-<div class="response" id="response_<%=response.id %>">
+<div class="response-panel">
   <div class="post-metadata">
     <%= avatar_for response.user, size: 40 %>
     <div class="post-info">
@@ -7,7 +7,9 @@
     </div>
   </div>
 
-  <p><%= response.body %></p>
+  <div class="main-body">
+    <p class="response-body"><%= (response.body).html_safe %></p>
+  </div>
 
   <div class="response-stats clearfix">
     <div id="response_<%= response.id %>_likes" class="pull-left">

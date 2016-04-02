@@ -3,8 +3,8 @@ class ResponsesController < ApplicationController
 
   def create
     post = Post.find(params[:post_id])
-    if current_user.responses.create(body: params[:response][:body], post_id: post.id)
-
+    @response = current_user.responses.create(body: params[:response][:body], post_id: post.id)
+    if @response.valid?
       # Create the notifications for all commented users and author of post
       (post.responders.uniq - [current_user]).each do |user|
         Notification.create(recipient: user, actor: current_user, action: "also commented on a", notifiable: post, is_new: true)
@@ -14,9 +14,15 @@ class ResponsesController < ApplicationController
         Notification.create(recipient: post.user, actor: current_user, action: "responded to your", notifiable: post, is_new: true)
       end
 
-      redirect_to post
+      @response_count = Response.where(post: post).count
+
+       respond_to do |format|
+         format.html { redirect_to post }
+         format.js
+       end
     else
-      redirect_to post, alert: "You cannot create a blank response!"
+      # TODO: display useful error message
+      redirect_to post
     end
   end
 end

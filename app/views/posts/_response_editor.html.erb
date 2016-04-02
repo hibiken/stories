@@ -1,0 +1,13 @@
+<div class="inline-editor" data-behavior="response-editor" >
+  <div class="editor-metadata">
+    <%= avatar_for(current_user, size: 40) %>
+    <strong class="editor-username"><%= current_user.username %></strong>
+  </div>
+  <%= form_for [post, new_response], remote: true, html: { class: 'editor-form' } do |f| %>
+    <div class="form-group">
+      <%= f.text_area :body, class: "medium-editable response-body", id: 'editor-body' %>
+    </div>
+    <%= f.submit "Publish", class: 'button green-inner-button' %>
+    <button class='button green-border-button cancel-button' data-behavior="editor-cancel">Cancel</button>
+  <% end %>
+</div>

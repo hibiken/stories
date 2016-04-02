@@ -70,6 +70,20 @@ body.posts.show {
     padding: 1em 0;
     margin-bottom: 1em;
   }
+
+  .response-panel {
+    background: $white;
+    padding: 20px;
+    margin-bottom: 10px;
+    border: 1px solid rgba(0,0,0, 0.09);
+    @include box-shadow;
+    @include border-radius($radius);
+    .post-metadata {
+      margin-top: 0;
+      padding-bottom: 0;
+    }
+  }
+
   #new_response {
     input[type="submit"] {
       margin-top: 12px;

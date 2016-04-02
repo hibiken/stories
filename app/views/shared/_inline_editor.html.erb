@@ -1,4 +1,4 @@
-<div class="editor" id="inline-editor">
+<div class="inline-editor" id="inline-editor">
   <div class="editor-metadata">
     <%= avatar_for(current_user, size: 40) %>
     <strong class="editor-username"><%= current_user.username %></strong>
@@ -8,6 +8,6 @@
       <%= f.text_area :body, class: 'medium-editable post-body', id: 'editor-body' %> 
     </div>
     <%= f.submit "Go full screen", class: 'button green-inner-button go-full-screen' %>
-     <button class='button green-border-button cancel-button' data-behavior="editor-cancel">Cancel</button>
+    <button class='button green-border-button cancel-button' data-behavior="editor-cancel">Cancel</button>
   <% end %>
 </div>
