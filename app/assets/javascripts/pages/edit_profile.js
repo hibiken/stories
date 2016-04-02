@@ -1,5 +1,5 @@
 var ProfileEdit = {
-  setup: function() {
+  init: function() {
     /*** Simply return if it's not User profile edit page ***/
     if (!$('[data-page="users-edit"]').length > 0) {
       return;
@@ -22,5 +22,5 @@ var ProfileEdit = {
   }
 }
 
-$(document).ready( ProfileEdit.setup );
-$(document).on( 'page:load', ProfileEdit.setup );
+$(document).ready( ProfileEdit.init );
+$(document).on( 'page:load', ProfileEdit.init );

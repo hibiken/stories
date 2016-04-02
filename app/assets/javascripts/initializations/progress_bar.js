@@ -1,5 +1,5 @@
 var ProgressBar = {
-  setup: function() {
+  init: function() {
     // Hook into Turbolinks event
     $(document).on('page:fetch', function() {
       $('[data-behavior="progress-bar"]').addClass('active');
@@ -11,5 +11,5 @@ var ProgressBar = {
   }
 };
 
-$(document).ready(ProgressBar.setup);
-$(document).on('page:load', ProgressBar.setup);
+$(document).ready(ProgressBar.init);
+$(document).on('page:load', ProgressBar.init);

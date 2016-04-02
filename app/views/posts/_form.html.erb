@@ -1,4 +1,4 @@
-<%= form_for post, html: { multipart: true, class: "editor-form", id: 'main-editor', autocomplete: "off" } do |f| %>
+<%= form_for post, html: { multipart: true, class: "editor-form", data: { page: 'main-editor' }, autocomplete: "off" } do |f| %>
 
   <label class="picture_upload">
     <%= f.file_field :picture %>

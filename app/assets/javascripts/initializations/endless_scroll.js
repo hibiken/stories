@@ -1,7 +1,7 @@
 $loading = $('<div class="loader-container"><div class="loader"><div class="loader-dot"></div><div class="loader-dot"></div><div class="loader-dot"></div><div class="loader-dot"></div><div class="loader-dot"></div><div class="loader-dot"></div><div class="loader-text"></div></div></div>');
 
 var EndlessScroll = {
-  setup: function() {
+  init: function() {
     if ($('[data-behavior="endless-scroll"]').length > 0) {
       $(window).scroll(function() {
         var url = $('.pagination .next_page').attr('href');
@@ -15,6 +15,6 @@ var EndlessScroll = {
   }
 };
 
-$(document).ready( EndlessScroll.setup );
-$(document).on( 'page:load', EndlessScroll.setup );
+$(document).ready( EndlessScroll.init );
+$(document).on( 'page:load', EndlessScroll.init );
 

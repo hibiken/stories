@@ -1,5 +1,5 @@
 var ElementTransitions = {
-  setup: function() {
+  init: function() {
     $(document).on('page:fetch.transition', function() {
       $('[data-animation="fadeInUp-fadeOutDown"]').addClass('animated fadeOutDown');
       $('[data-animation="fadeInUp-fadeOutDown-slow"]').addClass('animated fadeOutDown-small');
@@ -15,5 +15,5 @@ var ElementTransitions = {
 
 };
 
-$(document).ready(ElementTransitions.setup);
-$(document).on('page:load', ElementTransitions.setup);
+$(document).ready(ElementTransitions.init);
+$(document).on('page:load', ElementTransitions.init);

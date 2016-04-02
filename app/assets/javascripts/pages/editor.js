@@ -1,7 +1,7 @@
 var Editor = {
-  setup: function() {
+  init: function() {
     /*** Simply return if it's not editor page ***/
-    if (!$('#main-editor').length > 0) {
+    if (!$('[data-page="main-editor"]').length > 0) {
       return;
     }
 
@@ -99,5 +99,5 @@ var Editor = {
 
 };
 
-$(document).ready( Editor.setup );
-$(document).on( 'page:load', Editor.setup );
+$(document).ready( Editor.init );
+$(document).on( 'page:load', Editor.init );

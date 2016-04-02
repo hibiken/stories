@@ -1,5 +1,5 @@
 var InlineEditor = {
-  setup: function() {
+  init: function() {
     /*** Simply return if it's not dashboards#show page ***/
     if (!$('body.dashboards.show').length > 0) {
       return;
@@ -31,5 +31,5 @@ var InlineEditor = {
   }
 };
 
-$(document).ready( InlineEditor.setup );
-$(document).on( 'page:load', InlineEditor.setup );
+$(document).ready( InlineEditor.init );
+$(document).on( 'page:load', InlineEditor.init );
