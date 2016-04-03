@@ -1,4 +1,4 @@
-<div class="profile-container" data-animation="fadeInUp-fadeOutDown-slow">
+<div class="profile-container" data-page="users-edit" data-animation="fadeInUp-fadeOutDown-slow">
   <div class="hero-wrapper">
     <%= form_for @user, html: { multipart: true } do |f| %>
         <header class="hero">
@@ -28,23 +28,6 @@
 </div>
 
 <script type="text/javascript">
-function readURL(input) {
-
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            $('#change-avatar').attr('style', "background-image: url('" + e.target.result + "')");
-        }
-
-        reader.readAsDataURL(input.files[0]);
-    }
-}
-
-$("#user_avatar").change(function(){
-    readURL(this);
-});
-
 /*** Google Map JavaScript API V3 ***/
 
 var autocomplete;

@@ -11,6 +11,7 @@ module SearchableTag
     settings INDEX_OPTIONS do
       mappings dynamic: 'false' do
         indexes :name, analyzer: 'autocomplete'
+        indexes :slug
       end
     end
 
@@ -30,7 +31,7 @@ module SearchableTag
 
   def as_indexed_json(options ={})
     self.as_json({
-      only: [:name]
+      only: [:name, :slug]
     })
   end
 

@@ -13,6 +13,7 @@ module SearchablePost
         indexes :title, analyzer: 'autocomplete'
         indexes :body, analyzer: 'english'
         indexes :published_at
+        indexes :slug
         indexes :tags do
           indexes :name, analyzer: 'english'
         end
@@ -48,7 +49,7 @@ module SearchablePost
 
   def as_indexed_json(options = {})
     self.as_json({
-      only: [:title, :body, :published_at],
+      only: [:title, :body, :published_at, :slug],
       include: {
         user: {methods: [:avatar_url], only: [:username, :avatar_url] },
         tags: { only: :name }

@@ -1,0 +1,80 @@
+.inline-editor {
+  background-color: $white;
+  padding: 20px;
+  margin-bottom: 10px;
+  border: 1px solid rgba(0,0,0, 0.09);
+  @include box-shadow;
+  .medium-editor-placeholder:after {
+    color: $light-font-color;
+  }
+  .editor-username {
+    color: $accent-color;
+    margin-left: 12px;
+    font-weight: normal;
+  }
+  .medium-editable {
+    outline: none;
+    @include well-read;
+    line-height: 1.5;
+    padding: 0;
+    left: 0;
+  }
+}
+
+.inline-editor {
+  .editor-metadata,
+  .editor-form {
+    transition: all 300ms;
+    display: inline-block;
+  }
+  .editor-form {
+    padding-bottom: 0;
+    margin: 0;
+    height: 30px; // FIXME
+    min-width: 60%;
+    cursor: text;
+    .form-group {
+      height: 100%;
+    }
+  }
+  .button {
+    display: none;
+  }
+  .editor-metadata {
+    margin: 0 12px 0 0;
+  }
+  .editor-username {
+    transition: all 300ms;
+    display: none;
+  }
+}
+
+.inline-editor.active {
+  .editor-metadata,
+  .editor-form {
+    display: block;
+  }
+  .editor-metadata {
+    margin: 0 0 12px 0;
+  }
+  .editor-username {
+    display: inline-block;
+  }
+  .editor-form {
+    height: auto;
+  }
+  .button {
+    display: inline-block;
+  }
+  .go-full-screen {
+    margin-right: 8px;
+  }
+}
+
+.inline-editor.active .editor-username {
+  display: inline-block;
+}
+
+.editor-form .medium-editable.response-body {
+  min-height: 110px;
+}
