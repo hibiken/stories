@@ -35,11 +35,11 @@ class User < ActiveRecord::Base
 
   has_many :posts, dependent: :destroy
   has_many :responses, dependent: :destroy
-  has_many :likes
+  has_many :likes, dependent: :destroy
   has_many :liked_posts, through: :likes, source: :likeable, source_type: "Post"
   has_many :liked_responses, through: :likes, source: :likeable, source_type: "Response"
 
-  has_many :bookmarks
+  has_many :bookmarks, dependent: :destroy
   has_many :bookmarked_posts, through: :bookmarks, source: :bookmarkable, source_type: "Post"
   has_many :bookmarked_responses, through: :bookmarks, source: :bookmarkable, source_type: "Response"
 
@@ -48,10 +48,10 @@ class User < ActiveRecord::Base
   after_destroy :clear_notifications
   after_commit :send_welcome_email, on: [:create]
 
-  include UserFollowing
-  include TagFollowing
   mount_uploader :avatar, AvatarUploader
 
+  include UserFollowing
+  include TagFollowing
   include SearchableUser
   include OmniauthableUser
 
