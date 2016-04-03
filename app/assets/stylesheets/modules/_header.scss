@@ -1,3 +1,32 @@
+/* Extra small devices (phones, less than 768px) */
+
+
+body {
+  padding-top: 0;
+}
+
+.container-fluid {
+  padding: 0;
+}
+.navbar-header {
+  padding: 8px 0;
+  border-bottom: 1px solid $super-light-gray;
+}
+.navbar-fixed-top {
+  position: relative;
+}
+.navbar-nav, .navbar-nav > li {
+  display: inline-block;
+}
+.navbar-nav {
+  margin: 5 10px;
+}
+.navbar-nav > .open > a {
+  background-color: $white !important;
+}
+.navbar-nav > li > a {
+  padding: 5px 9px;
+}
 
 /** Navbar animation **/
 nav.navbar {
@@ -9,6 +38,14 @@ nav.navbar {
     transform: translateY(-100%);
   }
 }
+
+.navbar-admin {
+  ul.nav.navbar-nav > li > a {
+    color: #fff;
+    border: none;
+  }
+}
+
 nav.navbar {
   margin-bottom: 0;
   border-radius: 0;
@@ -17,9 +54,11 @@ nav.navbar {
     background-color: rgba(255, 255, 255, 0.9);
   }
 
-
+  .navbar-brand {
+    height: 40px;
+  }
   .filter-links {
-    margin-left: 1.5em;
+    margin-left: 9px;
     li > a {
       text-decoration: none;
       font-size: 14px;
@@ -31,22 +70,47 @@ nav.navbar {
     }
   }
 
+  .folding-nav {
+    position: absolute;
+    top: 3px;
+    right: 0;
+  }
+  .navbar-right {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    align-content: stretch;
+    align-items: flex-start;
+  }
+
+  .navbar-right > li {
+    order: 0;
+    flex: 0 1 auto;
+    align-self: auto;
+  }
+
+  .new-post-button {
+    display: none;
+  }
   .new-post-button a {
     transition: all .1s;
-    color: $light-gray !important;
+    color: $light-gray;
   }
-
   .new-post-button:hover {
     a {
-      color: $light-font-color !important;
-      border-color: $border-hover-color !important;
+      color: $light-font-color;
+      border-color: $border-hover-color;
     }
   }
-
   .new-post-button,
   .sign-in-button  {
-    margin-top: 7px;
+    margin-top: 5px;
     margin-right: 10px;
+    .button {
+      padding: 0.6em 1em 0.7em 1em;
+    }
   }
 
   .account {
@@ -65,23 +129,19 @@ nav.navbar {
     border: 1.5px solid $border-hover-color;
   }
 
-  .navbar-nav > .open > a {
-    background-color: $white !important;
-  }
-
   .nav-dropdown {
     background: #fff;
     @include border-radius($popover);
     box-shadow: 0 1px 2px rgba(0,0,0,.25),0 0 1px rgba(0,0,0,.35);
-    border: none !important;
-    top: 134% !important;
+    border: none;
+    top: 134%;
 
     right: 20px;
     a {
-      color: $light-font-color !important;
+      color: $light-font-color;
       &:hover {
-        background-color: $white !important;
-        color: rgba(0,0,0,0.8) !important;
+        background-color: $white;
+        color: rgba(0,0,0,0.8);
       }
     }
     .nd-main {
@@ -117,76 +177,6 @@ nav.navbar {
       top: -11px;
     }
   }
-}
-
-.navbar-admin {
-  ul.nav.navbar-nav > li > a {
-    color: #fff;
-    border: none;
-  }
-}
-
-/* Yellow */
-/* Extra small devices (phones, less than 768px) */
-
-.container-fluid {
-  padding: 0;
-}
-
-.navbar-header {
-  padding: 8px 0;
-  border-bottom: 1px solid $super-light-gray;
-}
-
-body {
-  padding-top: 0;
-}
-.navbar-fixed-top {
-  position: relative;
-}
-.navbar-nav, .navbar-nav > li {
-  display: inline-block;
-}
-.navbar-nav {
-  margin: 5 10px;
-}
-nav.navbar .filter-links {
-  margin-left: 9px;
-}
-.navbar-nav > li > a {
-  padding: 5px 9px;
-}
-
-nav.navbar {
-
-  .navbar-brand {
-    height: 40px;
-  }
-  .folding-nav {
-    position: absolute;
-    top: 3px;
-    right: 0;
-  }
-  .navbar-right {
-    margin: 0;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-end;
-    align-content: stretch;
-    align-items: flex-start;
-  }
-
-  .navbar-right > li {
-    order: 0;
-    flex: 0 1 auto;
-    align-self: auto;
-  }
-
-  .new-post-button {
-    display: none;
-  }
-
 
   #logo {
     width: 128px;
@@ -209,50 +199,48 @@ nav.navbar {
 }
 
 
-/* red */
 /* Small devices (tablets, 768px and up) */
 @media (min-width: $screen-sm-min) {
 
-  .navbar-header {
-    background: red;
-  }
-
   body {
-    padding-top: 81px;
+    padding-top: 67px;
+  }
+  .navbar-header {
+    border-bottom: none;
   }
   .navbar-fixed-top {
     position: fixed;
   }
-
   nav.navbar {
-
+    padding: 5px 0;
+    .filter-links {
+      margin-top: 16px;
+      margin-left: 0;
+    }
+    .folding-nav {
+      top: 8px;
+    }
     #logo {
-      width: 152px;
+      width: 138px;
+      margin-left: 0;
     }
     .new-post-button {
       display: inline-flex;
     }
-
   }
-
 }
 
-/* blue */
+
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: $screen-md-min) {
-
-  .navbar-header {
-    background: blue;
+  nav.navbar {
+    #logo {
+      width: 150px;
+    }
   }
-
 }
 
-/* green */
 /* Large devices (large desktops, 1200px and up) */
 @media (min-width: $screen-lg-min) {
-
-  .navbar-header {
-    background: green;
-  }
 
 }
