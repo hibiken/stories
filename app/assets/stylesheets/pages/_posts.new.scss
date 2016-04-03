@@ -2,13 +2,17 @@ body.posts.new,
 body.posts.edit,
 body.posts.update,
 body.posts.create {
+    background: $white;
+  .navbar {
+    border: none;
+  }
   .post-metadata {
     padding: 30px 0 15px;
     margin-top: 20px;
   }
   .publish-button {
-    margin-top: 8px;
-    margin-right: 70px;
+    margin-top: 5px;
+    margin-right: 10px;
   }
   .publish-dropdown {
     width: 300px;
