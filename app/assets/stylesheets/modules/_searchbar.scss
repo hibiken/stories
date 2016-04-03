@@ -27,9 +27,11 @@
       outline: none;
       background-color: transparent;
       display: none;
+      width: 150px;
     }
   }
 
+/* Small devices (tablets, 768px and up) */
 /* Search - full width input */
 @media (min-width: $screen-sm-min) {
 
@@ -50,6 +52,15 @@
     }
   }
 
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: $screen-md-min) {
+  .main-searchbar form {
+    input[type="search"] {
+      width: 200px;
+    }
+  }
 }
 
 
