@@ -68,23 +68,6 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
-    celluloid (0.17.3)
-      celluloid-essentials
-      celluloid-extras
-      celluloid-fsm
-      celluloid-pool
-      celluloid-supervision
-      timers (>= 4.1.1)
-    celluloid-essentials (0.20.5)
-      timers (>= 4.1.1)
-    celluloid-extras (0.20.5)
-      timers (>= 4.1.1)
-    celluloid-fsm (0.20.5)
-      timers (>= 4.1.1)
-    celluloid-pool (0.20.5)
-      timers (>= 4.1.1)
-    celluloid-supervision (0.20.5)
-      timers (>= 4.1.1)
     childprocess (0.5.9)
       ffi (~> 1.0, >= 1.0.11)
     cliver (0.3.2)
@@ -179,9 +162,7 @@ GEM
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
     hashie (3.4.3)
-    hitimes (1.2.3)
     i18n (0.7.0)
-    ice_cube (0.13.3)
     inflecto (0.0.2)
     ipaddress (0.8.3)
     jbuilder (2.4.1)
@@ -366,10 +347,6 @@ GEM
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
       redis (~> 3.2, >= 3.2.1)
-    sidetiq (0.7.0)
-      celluloid (>= 0.17.3)
-      ice_cube (~> 0.13.2)
-      sidekiq (>= 4.0.0)
     sinatra (1.4.7)
       rack (~> 1.5)
       rack-protection (~> 1.4)
@@ -393,8 +370,6 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.2)
-    timers (4.1.1)
-      hitimes
     turbolinks (2.5.3)
       coffee-rails
     tzinfo (1.2.2)
@@ -461,7 +436,6 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   selenium-webdriver (~> 2.48.1)
   sidekiq (~> 4.0)
-  sidetiq (~> 0.7.0)
   sinatra
   slim
   spring
