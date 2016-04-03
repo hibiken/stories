@@ -3,9 +3,10 @@
 
 body {
   padding-top: 0;
+  background: $background-gray;
 }
 
-.container-fluid {
+.container-fluid, .container {
   padding: 0;
 }
 .navbar-header {

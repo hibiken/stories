@@ -1,4 +1,11 @@
 body.posts.show {
+    background: $white;
+  .navbar {
+    border: none;
+  }
+  .filter-links, .new-post-button {
+    display: none;
+  }
   .main-content {
     padding-top: 2em;
     padding-bottom: 2em;
