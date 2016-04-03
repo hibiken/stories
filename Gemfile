@@ -41,7 +41,7 @@ gem 'elasticsearch-rails', '~> 0.1.8'
 gem 'sidekiq', '~> 4.0'
 gem 'sinatra', require: false
 gem 'slim'
-gem 'sidetiq', '~> 0.7.0'
+# gem 'sidetiq', '~> 0.7.0'
 
 gem 'nokogiri', '~> 1.6'
 

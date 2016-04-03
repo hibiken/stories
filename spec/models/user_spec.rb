@@ -41,11 +41,11 @@ RSpec.describe User, type: :model do
     #end
   end
 
-  describe "user relationships" do
+  describe "relationships between users" do
     let(:luke) { create(:user, username: "Luke Skywalker") }
     let(:solo) { create(:user, username: "Han Solo") }
 
-    it "can follow and unfollow a user" do
+    it "can follow and unfollow other users" do
       expect(luke).not_to be_following(solo)
 
       luke.follow(solo)
