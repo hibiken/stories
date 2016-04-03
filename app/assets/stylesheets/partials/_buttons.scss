@@ -1,6 +1,6 @@
 .button {
   border: 1px solid $border-color;
-  padding: 0.5em 1em !important;
+  padding: 0.6em 1em 0.7em 1em;
   @include border-radius($button);
   text-decoration: none;
   color: rgba(0,0,0,0.6);
@@ -14,7 +14,7 @@
   }
 
   &.green-border-button {
-    color: $accent-color !important;
+    color: $accent-color;
     border-color: $accent-color;
     background-color: #fff;
   }
