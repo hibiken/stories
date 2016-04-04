@@ -11,29 +11,22 @@ RSpec.feature "Bookmarking a response" do
 
   scenario "signed-in user bookmarks a response", js: true do
     sign_in user
-    visit post_path(post)
-    within(".response") do
+    visit post_path(post, anchor: "responses")
+    within("#responses") do
       click_on "Bookmark"
-    end
-
-    expect(current_path).to eq(post_path(post))
-    within(".response") do
       expect(page).to have_button "Unbookmark"
-      click_on "Unbookmark"
-    end
 
-    expect(current_path).to eq(post_path(post))
-    within(".response") do
+      click_on "Unbookmark"
       expect(page).to have_button "Bookmark"
     end
   end
 
   scenario "non-logged in user cannot bookmark a response", js: true do
     visit post_path(post)
-    within(".response") do
+    within("#responses") do
       click_on "Bookmark"
     end
 
-    expect(current_path).to eq(new_user_session_path)
+    expect(page).to have_content("Sign in with Facebook")
   end
 end
