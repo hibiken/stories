@@ -11,29 +11,22 @@ RSpec.feature "Liking a response" do
 
   scenario "signed-in user likes a response", js: true do
     sign_in user
-    visit post_path(post)
-    within(".response") do
+    visit post_path(post, anchor: "responses")
+    within("#responses") do
       click_on "Like"
-    end
-
-    expect(current_path).to eq(post_path(post))
-    within(".response") do
       expect(page).to have_button "Unlike"
-      click_on "Unlike"
-    end
 
-    expect(current_path).to eq(post_path(post))
-    within(".response") do
+      click_on "Unlike"
       expect(page).to have_button "Like"
     end
   end
 
   scenario "non-logged in user cannot like a response", js: true do
     visit post_path(post)
-    within(".response") do
+    within("#responses") do
       click_on "Like"
     end
 
-    expect(current_path).to eq(new_user_session_path)
+    expect(page).to have_content("Sign in with Facebook")
   end
 end
