@@ -25,10 +25,10 @@ class Post < ActiveRecord::Base
   has_many :tags, through: :taggings
   has_many :responses, -> { order(created_at: :desc) }, dependent: :destroy
   has_many :responders, through: :responses, source: :user
-  has_many :likes, as: :likeable
+  has_many :likes, as: :likeable, dependent: :destroy
   has_many :likers, through: :likes, source: :user
 
-  has_many :bookmarks, as: :bookmarkable
+  has_many :bookmarks, as: :bookmarkable, dependent: :destroy
   has_many :bookmarkers, through: :bookmarks, source: :user
 
   delegate :username, to: :user
