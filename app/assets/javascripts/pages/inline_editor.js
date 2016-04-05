@@ -1,7 +1,7 @@
 var InlineEditor = {
   init: function() {
     /*** Simply return if it's not dashboards#show page ***/
-    if (!$('body.dashboards.show').length > 0) {
+    if (!$('[data-page="inline-editor"]').length > 0) {
       return;
     }
     var editor = new MediumEditor('.medium-editable', {
