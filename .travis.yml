@@ -1,8 +1,0 @@
-language: ruby
-rvm:
-  - 2.3.0
-services:
-  - postgresql
-  - redis-server
-before_script:
-  - psql -c 'create database stories_test;' -U postgres
