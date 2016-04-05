@@ -34,7 +34,7 @@
           <%= render 'layouts/avatar_dropdown' %>
         <% else %>
           <li class="new-post-button"><%= link_to "Write a story", new_post_path, class: "button", data: { behavior: 'trigger-overlay' } %></li>
-          <li><%= link_to "Sign in / Sign up", new_user_session_path, class: 'button green-border-button sign-in-button', data: { behavior: 'trigger-overlay' } %></li>
+          <li class="sign-in-button"><%= link_to "Sign in / Sign up", new_user_session_path, class: 'button green-border-button', data: { behavior: 'trigger-overlay' } %></li>
         <% end %>
       </ul>
     </div>
