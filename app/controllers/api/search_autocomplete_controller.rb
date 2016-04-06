@@ -1,7 +1,8 @@
 class API::SearchAutocompleteController < ApplicationController
   def index
-    @posts = Post.search(params[:term])
-    @users = User.search(params[:term])
-    @tags  = Tag.search(params[:term])
+    results = Elasticsearch::Model.search(params[:term], [Post, User, Tag])
+    @posts = results.select { |result| result["_type"] == 'post' }
+    @users = results.select { |result| result["_type"] == 'user' }
+    @tags  = results.select { |result| result["_type"] == 'tag' }
   end
 end
