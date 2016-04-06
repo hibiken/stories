@@ -1,5 +1,5 @@
 $('[data-behavior="responses-list"]').prepend('<%=j render partial: 'responses/response', locals: { response: @response } %>');
 $('[data-behavior="editor-cancel"]').trigger('click');
-$('[data-behavior="response-count"]').text('<%= @response_count.to_s %>');
+$('[data-behavior="response-count"]').text('<%= @post.responses.count.to_s %>');
 
 ReactRailsUJS.mountComponents();
