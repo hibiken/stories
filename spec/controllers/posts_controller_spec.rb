@@ -45,6 +45,14 @@ RSpec.describe PostsController do
       end
     end
 
+    describe "DELETE #destroy" do
+      let(:post) { create(:post) }
+      it "requires a logged-in user" do
+        delete :destroy, id: post.id
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+
     context "when a user trying to edit, update, or delete other users post" do
       let(:user) { create(:user) }
       let(:other_user) { create(:user) }

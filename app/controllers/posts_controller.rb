@@ -1,11 +1,11 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:show]
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :authorize_user, only: [:edit, :update, :destroy]
 
   layout "editor", only: [:new, :edit, :create, :update]
 
   def show
+    @post = Post.find(params[:id])
     @response = Response.new
     # If an old id or a numeric id was used to find the record, then
     # the request path will not match the post_path, and we should do
@@ -58,15 +58,12 @@ class PostsController < ApplicationController
 
   private
 
-    def set_post
-      @post = Post.find(params[:id])
-    end
-
     def post_params
       params.require(:post).permit(:title, :body, :all_tags, :picture)
     end
 
     def authorize_user
-      redirect_to root_url unless current_user?(@post.user)
+      @post = current_user.posts.find_by(id: params[:id])
+      redirect_to root_url if @post.nil?
     end
 end
