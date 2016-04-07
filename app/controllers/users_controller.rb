@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update]
-  before_action :check_for_correct_user, only: [:edit, :update]
+  before_action :authorize_user, only: [:edit, :update]
   before_action :set_user, only: [:show, :edit, :update]
-  before_action :check_for_relationship, only: [:show]
 
   def show
     @latest_posts = @user.posts.latest(3).published
@@ -30,16 +29,9 @@ class UsersController < ApplicationController
       params.require(:user).permit(:description, :avatar, :location)
     end
 
-    def check_for_correct_user
+    def authorize_user
       unless current_user.slug == params[:id]
         redirect_to root_url
-      end
-    end
-
-    # Sets @relationship for Unfollow button
-    def check_for_relationship
-      if user_signed_in? && current_user.following?(@user)
-        @relationship = current_user.active_relationships.find_by(followed_id: @user.id)
       end
     end
 end
