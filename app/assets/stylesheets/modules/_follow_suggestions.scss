@@ -1,0 +1,26 @@
+.follow-suggestions-container {
+  padding: 1em 0;
+  .suggestion-item {
+    display: flex;
+    align-items: center; 
+    max-width: 330px;
+    padding: 1em 0;
+    padding-left: 8px;
+    &:not(:last-child) {
+      border-bottom: 1px solid $light-border-color;
+    }
+    .popover-link a {
+      color: $light-font-color;
+      font-weight: bold;
+    }
+    .avatar-wrapper {
+      margin-right: 1.4em;
+    }
+    .button-wrapper {
+      margin-left: auto;
+    }
+    .button {
+      padding: 0.4em 1em;
+    }
+  }
+}

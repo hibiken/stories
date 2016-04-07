@@ -31,6 +31,12 @@
         <h4 class="small-heading">Tags you follow</h4><%= react_component('AddTagButton') %>
       </div>
       <%= react_component('FollowingTagList', { followingTags: current_user.following_tags }) %>
+
+
+      <div class="follow-suggestion-wrapper">
+        <h4 class="small-heading">People to follow</h4>
+        <%= react_component('FollowSuggestionsContainer', {}) %>
+      </div>
     <% end %>
 
     <% unless @dashboard.filtered? %>
