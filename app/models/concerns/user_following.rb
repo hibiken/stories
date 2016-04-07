@@ -27,4 +27,8 @@ module UserFollowing
   def following?(other_user)
     following_ids.include?(other_user.id)
   end
+
+  def people_to_follow
+    User.where.not(id: following_ids + [self.id]).limit(25).order("RANDOM()")
+  end
 end
