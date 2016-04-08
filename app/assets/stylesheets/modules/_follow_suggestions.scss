@@ -1,5 +1,15 @@
 .follow-suggestions-container {
   padding: 1em 0;
+  .suggestions-header {
+    max-width: 330px;
+    .small-heading { 
+      display: inline-block;
+    }
+  }
+  .refresh-link {
+    cursor: pointer;
+    color: $accent-color;
+  }
   .suggestion-item {
     display: flex;
     align-items: center; 
@@ -20,7 +30,7 @@
       margin-left: auto;
     }
     .button {
-      padding: 0.4em 1em;
+      padding: 0.4em 1em 0.5em;
     }
   }
 }
