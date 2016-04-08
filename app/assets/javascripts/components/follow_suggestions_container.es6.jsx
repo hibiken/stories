@@ -10,6 +10,13 @@ class FollowSuggestionsContainer extends React.Component {
 
   componentWillMount() {
     this.fetchUsers();
+    this.token = PubSub.subscribe('UserFollowButton:onClick', (message, data) => {
+      this.removeUser(data.followed_id)
+    });
+  }
+
+  componentWillUnmount() {
+    PubSub.unsubscribe(this.token);
   }
 
   fetchUsers() {
@@ -43,6 +50,9 @@ class FollowSuggestionsContainer extends React.Component {
   }
 
   renderSuggestions() {
+    if (this.state.users.length === 0) {
+      return <h5>You are following all users!</h5>
+    }
     return this.state.activeUsers.map(user => {
       return <SuggestionItem key={user.id} {...user} />
     });
@@ -56,18 +66,18 @@ class FollowSuggestionsContainer extends React.Component {
     });
   }
 
-  // replaceUser(id) {
-  //   const filteredActives = this.state.activeUsers.filter(user => {
-  //     return user.id != id;
-  //   });
-  //   const filteredUsers = this.state.users.filter(user => {
-  //     return user.id != id;
-  //   });
-  //   this.setState({
-  //     users: [ ...filteredUsers.slice(1), filteredUsers[0] ],
-  //     activeUsers: [ ...filteredActives, filteredUsers[0] ]
-  //   });
-  // }
+  removeUser(id) {
+    const filteredUsers = this.state.users.filter(user => {
+      if (user.id === id) {
+        removedUser = user;
+      }
+      return user.id !== id;
+    });
+
+    this.setState({
+      users: filteredUsers
+    });
+  }
 
 }
 
