@@ -63,7 +63,10 @@ class PostsController < ApplicationController
     end
 
     def authorize_user
-      @post = current_user.posts.find_by(id: params[:id])
-      redirect_to root_url if @post.nil?
+      begin
+        @post = current_user.posts.find(params[:id])
+      rescue
+        redirect_to root_url
+      end
     end
 end
