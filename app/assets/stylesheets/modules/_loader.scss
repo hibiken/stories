@@ -11,10 +11,10 @@
     padding: 5px;
     @include border-radius($round);
     background: $button-green;
-    animation: animIn 1s ease-in-out 0s infinite;
+    animation: postloader 1s ease-in-out 0s infinite backwards;
 }
 .loader .bullet:nth-child(1) {
-    animation-delay: 0s;
+    animation-delay: 0.0s;
 }
 .loader .bullet:nth-child(2) {
     animation-delay: 0.15s;
@@ -25,20 +25,8 @@
 .loader .bullet:nth-child(4) {
     animation-delay: 0.45s;
 }
-@-webkit-keyframes animIn {
-    0% {
-        transform: translateX(-100px);
-        opacity: 0;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        transform: translateX(100px);
-        opacity: 0;
-    }
-}
-@keyframes animIn {
+
+@keyframes postloader {
     0% {
         transform: translateX(-100px);
         opacity: 0;
