@@ -131,4 +131,12 @@ RSpec.describe User, type: :model do
       expect(user.bookmarked?(response)).to be_falsy
     end
   end
+
+  # TODO: this is a temporary implemention, change this when the number of user
+  # grows.
+  describe "#people_to_folow" do
+    let(:user) { create(:user) }
+
+    it "gets upto 25 users not including self"
+  end
 end

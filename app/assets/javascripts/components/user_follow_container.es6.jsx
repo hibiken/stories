@@ -78,8 +78,7 @@ class UserFollowContainer extends React.Component {
 }
 
 
-UserFollowContainer.propTypes = {
-  following: React.PropTypes.bool,
+UserFollowContainer.propTypes = { following: React.PropTypes.bool,
   hideButton: React.PropTypes.bool,
   followed_id: React.PropTypes.number,
   followerCount: React.PropTypes.number,
