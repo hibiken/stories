@@ -16,7 +16,9 @@
   <% end %>
 
   <% unless @dashboard.top_stories? %>
-    <%= will_paginate @dashboard.posts %>
+    <div class="center">
+      <%= will_paginate @dashboard.posts %>
+    </div>
   <% end %>
 
 </div>
@@ -58,4 +60,3 @@
     <% end %>
   </aside>
 <% end %>
-

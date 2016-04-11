@@ -1,4 +1,4 @@
-$loading = $('<div class="loader-container"><div class="loader"><div class="loader-dot"></div><div class="loader-dot"></div><div class="loader-dot"></div><div class="loader-dot"></div><div class="loader-dot"></div><div class="loader-dot"></div><div class="loader-text"></div></div></div>');
+$loading = $('<div class="loader"><div class="bullet"></div><div class="bullet"></div><div class="bullet"></div><div class="bullet"></div></div>');
 
 var EndlessScroll = {
   init: function() {
@@ -17,4 +17,3 @@ var EndlessScroll = {
 
 $(document).ready( EndlessScroll.init );
 $(document).on( 'page:load', EndlessScroll.init );
-
