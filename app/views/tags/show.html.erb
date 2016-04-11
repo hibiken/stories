@@ -1,7 +1,7 @@
 <div class="col-md-6 col-md-offset-1 dashboard-main-content">
 
 
-  <div data-animation="bounceInLeft-bounceOutLeft">
+  <div data-animation="fadeInUp-fadeOutDown">
     <div class="heading-container">
       <% if admin_signed_in? %>
         <%= feature_tag_button_for(@dashboard.tag) %>
@@ -28,7 +28,7 @@
 </div>
 
 <% content_for :sidebar do %>
-  <aside class="col-md-4 col-md-offset-1 main-sidebar">
+  <aside class="col-md-4 main-sidebar">
     <h4 class="small-heading border-top">Featured tags</h4>
     <%= react_component('TagList', { tags: @dashboard.featured_tags }, { prerender: true }) %>
 
