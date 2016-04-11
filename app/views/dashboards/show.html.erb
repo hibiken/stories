@@ -1,6 +1,5 @@
 <div class="col-md-6 col-md-offset-1 dashboard-main-content">
 
-  <div class="loader"><div class="bullet"></div><div class="bullet"></div><div class="bullet"></div><div class="bullet"></div></div>
   <% unless @dashboard.top_stories? %>
     <% if user_signed_in? && current_page?('/') %>
       <div data-animation="fadeInUp-fadeOutDown">
@@ -61,4 +60,3 @@
     <% end %>
   </aside>
 <% end %>
-
