@@ -1,45 +1,42 @@
-<div class="row">
-  <div class="col-md-10 col-md-offset-1">
-    <div class="row">
-      <div class="col-md-12 large-searchbar">
-        <%= form_for :search, url: search_users_path, method: :get do |f| %>
-          <%= f.search_field :q, value: params[:q], placeholder: 'Search Stories', autofocus: true, autocomplete: 'off', onfocus: "this.value = this.value;" %>
-        <% end %>
-      </div>
+<div class="col-md-10 col-md-offset-1">
+  <div class="row">
+    <div class="col-md-12 large-searchbar">
+      <%= form_for :search, url: search_users_path, method: :get do |f| %>
+        <%= f.search_field :q, value: params[:q], placeholder: 'Search Stories', autofocus: true, autocomplete: 'off', onfocus: "this.value = this.value;" %>
+      <% end %>
     </div>
+  </div>
 
 
-    <div class="row">
-      <div class="col-md-2">
-        <div class="search-filter-links">
-          <div class="filter-link"><%= link_to 'All', search_path(q: params[:q]) %></div>
-          <div class="active filter-link">
-            <%= link_to search_users_path(q: params[:q]) do %>
-              People <span class="glyphicon glyphicon-chevron-right pull-right"></span>
-            <% end %>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-7" data-animation="fadeInUp-fadeOutDown">
-        <div>
-          <% @users.each do |user| %>
-            <div class="user-panel">
-              <div class="avatar-wrapper">
-                <%= avatar_for user, size: 60 %>
-              </div>
-              <div class="user-metadata">
-                <h4><%= link_to user.username, user %></h4>
-                <p><%= user.description %></p>
-              </div>
-              <div class="follow-button-wrapper">
-                <%= follow_button_for(user) %>
-              </div>
-            </div>
+  <div class="row">
+    <div class="col-md-2">
+      <div class="search-filter-links">
+        <div class="filter-link"><%= link_to 'All', search_path(q: params[:q]) %></div>
+        <div class="active filter-link">
+          <%= link_to search_users_path(q: params[:q]) do %>
+            People <span class="glyphicon glyphicon-chevron-right pull-right"></span>
           <% end %>
         </div>
       </div>
     </div>
+
+    <div class="col-md-7" data-animation="fadeInUp-fadeOutDown">
+      <div>
+        <% @users.each do |user| %>
+          <div class="user-panel">
+            <div class="avatar-wrapper">
+              <%= avatar_for user, size: 60 %>
+            </div>
+            <div class="user-metadata">
+              <h4><%= link_to user.username, user %></h4>
+              <p><%= user.description %></p>
+            </div>
+            <div class="follow-button-wrapper">
+              <%= follow_button_for(user) %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
-
