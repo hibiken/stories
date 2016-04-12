@@ -136,5 +136,8 @@
   .pagination-button-group {
     display: flex;
     justify-content: space-around;
+    .button {
+      cursor: pointer;
+    }
   }
 }

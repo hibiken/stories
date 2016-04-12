@@ -6,7 +6,7 @@
   display: block !important;
   left: 50%;
   transform: translateX(-50%);
-  min-width: 330px;
+  min-width: 310px;
   padding: 18px;
   background-color: $white;
   @include border-radius($popover);
@@ -20,6 +20,9 @@
   }
   .up-main {
     margin-bottom: 20px;
+  }
+  .up-metadata {
+    padding-right: 12px;
   }
   .po-username {
     font-size: 18px;

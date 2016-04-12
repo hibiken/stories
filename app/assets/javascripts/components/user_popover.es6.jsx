@@ -6,7 +6,7 @@ class UserPopover extends React.Component {
         <div className="po-buffer-bottom" />
         <div className="arrow" />
         <div className="flex-container flex-space-btw up-main">
-          <div>
+          <div className="up-metadata">
             <h3 className="po-username">
               <a href={this.props.user.urlPath}>
                 {this.props.user.username}
