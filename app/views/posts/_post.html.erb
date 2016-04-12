@@ -16,17 +16,17 @@
   </div>
 
   <div class="post-stats clearfix">
-    <div id="post_<%= post.id %>_likes" class="pull-left">
+    <div class="pull-left">
       <%= render partial: 'posts/likes', locals: { post: post } %>
     </div>
 
-    <div id="post_<%= post.id %>_bookmarks" class="pull-right">
+    <div class="pull-right">
       <%= render partial: 'posts/bookmarks', locals: { post: post } %>
     </div>
 
     <div class="response-count pull-right">
       <% if post.responses.any? %>
-        <%= link_to_responses_to(post) %>
+        <%= link_to (pluralize(post.responses.count, "response")), post_path(post, anchor: 'responses'), class: 'response-count' %>
       <% end %>
     </div>
   </div>

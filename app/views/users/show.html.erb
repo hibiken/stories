@@ -18,8 +18,8 @@
     <div>
     <% if user_signed_in? %>
       <%= react_component('UserFollowContainer', 
-                          { followerCount: @user.followers.size, 
-                            followingCount: @user.following.size, 
+                          { followerCount: @followers_count, 
+                            followingCount: @following_count, 
                             following: current_user.following?(@user), 
                             followed_id: @user.id, 
                             hideButton: current_user?(@user),
