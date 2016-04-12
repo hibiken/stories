@@ -2,18 +2,19 @@
 #
 # Table name: posts
 #
-#  id           :integer          not null, primary key
-#  title        :string
-#  body         :text
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#  user_id      :integer
-#  picture      :string
-#  likes_count  :integer          default("0")
-#  published_at :datetime
-#  featured     :boolean          default("false")
-#  lead         :text
-#  slug         :string
+#  id              :integer          not null, primary key
+#  title           :string
+#  body            :text
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  user_id         :integer
+#  picture         :string
+#  likes_count     :integer          default("0")
+#  published_at    :datetime
+#  featured        :boolean          default("false")
+#  lead            :text
+#  slug            :string
+#  responses_count :integer          default("0"), not null
 #
 
 require "rails_helper"

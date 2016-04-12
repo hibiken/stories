@@ -7,8 +7,4 @@ module PostsHelper
       "#{min} min read"
     end
   end
-
-  def link_to_responses_to(post)
-    link_to (pluralize(post.responses.count, "response")), post_path(post, anchor: 'responses'), class: 'response-count'
-  end
 end
