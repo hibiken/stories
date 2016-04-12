@@ -8,11 +8,7 @@ class API::LikesController < ApplicationController
 
   def create
     current_user.add_like_to(@likeable)
-    # Notify the user
-    unless current_user?(@likeable.user)
-      Notification.create(recipient: @likeable.user, actor: current_user, action: "liked your", notifiable: @likeable, is_new: true)
-    end
-
+    notify_author
     render json: { liked: true, count: @likeable.reload.likes.size, type: @likeable.class.to_s, id: @likeable.id }, status: 200
   end
 
@@ -26,6 +22,12 @@ class API::LikesController < ApplicationController
 
     def set_likeable
       raise NotImplementedError, "This #{self.class} cannot respond to 'set_likeable'"
+    end
+
+    def notify_author
+      unless current_user?(@likeable.user)
+        Notification.create(recipient: @likeable.user, actor: current_user, action: "liked your", notifiable: @likeable, is_new: true)
+      end
     end
 end
 
