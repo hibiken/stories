@@ -12,7 +12,7 @@ class Feed
   end
 
   def posts
-    Post.recent.where(id: feed_post_ids).published.paginate(page: page)
+    Post.recent.where(id: feed_post_ids).published.includes(:user).paginate(page: page)
   end
 
   def tagged?(post)
@@ -44,26 +44,26 @@ class Feed
   private
 
      def user_ids
-       user.following_ids + [user.id]
+       @_user_ids ||= user.following_ids + [user.id]
      end
 
      def following_users_post_ids
-       Post.where(user_id: user.following_ids).pluck(:id)
+       @_following_users_post_ids ||= Post.where(user_id: user.following_ids).pluck(:id)
      end
 
      def tagged_post_ids
-       Tagging.where(tag_id: user.following_tag_ids).distinct.pluck(:post_id)
+       @_tagged_post_ids ||= Tagging.where(tag_id: user.following_tag_ids).distinct.pluck(:post_id)
      end
 
      def featured_post_ids
-       Post.where(featured: true).pluck(:id)
+       @_featured_post_ids ||= Post.where(featured: true).pluck(:id)
      end
 
      def feed_post_ids
-       (Post.where(user_id: user_ids).pluck(:id) + tagged_post_ids + recommended_post_ids + featured_post_ids).uniq
+       @_feed_post_ids ||= (Post.where(user_id: user_ids).pluck(:id) + tagged_post_ids + recommended_post_ids + featured_post_ids).uniq
      end
 
      def recommended_post_ids
-       Post.joins(:likes).where(likes: { user_id: user.following_ids }).distinct.pluck(:id)
+       @_recommended_post_ids ||= Post.joins(:likes).where(likes: { user_id: user.following_ids }).distinct.pluck(:id)
      end
 end

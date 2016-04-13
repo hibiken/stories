@@ -41,19 +41,19 @@ class DashboardsController < ApplicationController
     end
 
     def bookmarked_posts
-      current_user.bookmarked_posts.published.paginate(page: params[:page])
+      current_user.bookmarked_posts.published.includes(:user).paginate(page: params[:page])
     end
 
     def top_posts
-      Post.published.top_stories(5)
+      Post.published.top_stories(5).includes(:user)
     end
 
     def recent_posts
-      Post.published.recent.paginate(page: params[:page])
+      Post.published.recent.includes(:user).paginate(page: params[:page])
     end
 
     def featured_posts
-      Post.recent.featured.paginate(page: params[:page])
+      Post.recent.featured.includes(:user).paginate(page: params[:page])
     end
 
 end
