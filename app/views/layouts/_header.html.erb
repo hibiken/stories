@@ -24,7 +24,7 @@
     <div class="folding-nav">
       <ul class="nav navbar-nav navbar-right">
         <li class="main-searchbar">
-          <%= react_component('SearchContainer', {}, { prerender: true }) %>
+          <%= react_component('SearchContainer') %>
         </li>
         <% if user_signed_in? %>
           <li class="new-post-button"><%= link_to "Write a story", new_post_path, class: "button" %></li>
