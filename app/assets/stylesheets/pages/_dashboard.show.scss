@@ -17,11 +17,6 @@ body.dashboards.top_stories {
     @include box-shadow;
     @include border-radius($radius);
   }
-
-  .follow-suggestion-wrapper {
-    border-top: 1px solid $border-color;
-    padding-top: 22px;
-  }
 }
 
 body.dashboards.top_stories {

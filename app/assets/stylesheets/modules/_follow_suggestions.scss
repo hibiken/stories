@@ -1,5 +1,5 @@
 .follow-suggestions-container {
-  padding: 1em 0;
+  padding: 1.5em 0;
   .suggestions-header {
     max-width: 330px;
     .small-heading { 
@@ -33,4 +33,13 @@
       padding: 0.4em 1em 0.5em;
     }
   }
+}
+
+.suggestion-appear {
+  opacity: 0.01;
+}
+
+.suggestion-appear.suggestion-appear-active {
+  opacity: 1;
+  transition: opacity .5s ease-in;
 }
