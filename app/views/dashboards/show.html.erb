@@ -26,7 +26,7 @@
 <% content_for :sidebar do %>
   <aside class="col-md-4 main-sidebar">
     <h4 class="small-heading border-top">Featured tags</h4>
-    <%= react_component('TagList', { tags: @dashboard.featured_tags }, { prerender: true }) %>
+    <%= react_component('TagList', { tags: @dashboard.featured_tags }) %>
 
     <% if user_signed_in? %>
       <div class="flex-container border-top">
