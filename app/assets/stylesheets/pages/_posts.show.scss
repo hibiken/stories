@@ -1,4 +1,7 @@
 body.posts.show {
+  .row {
+    width: 100%;
+  }
   .navbar {
     border: none;
   }
@@ -15,7 +18,7 @@ body.posts.show {
     padding: 2em 0;
     img {
       display: block;
-      max-width: 100%;
+      width: 100%;
       margin: auto;
     }
   }
