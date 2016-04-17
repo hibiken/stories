@@ -56,6 +56,9 @@ GEM
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
     builder (3.2.2)
+    bullet (5.0.0)
+      activesupport (>= 3.0.0)
+      uniform_notifier (~> 1.9.0)
     byebug (8.2.2)
     capybara (2.5.0)
       mime-types (>= 1.16)
@@ -376,6 +379,7 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.0.0)
       execjs (>= 0.3.0, < 3)
+    uniform_notifier (1.9.0)
     warden (1.2.6)
       rack (>= 1.0)
     web-console (2.3.0)
@@ -400,6 +404,7 @@ DEPENDENCIES
   awesome_print (~> 1.6)
   bonsai-elasticsearch-rails
   bootstrap-sass (~> 3.3.6)
+  bullet (~> 5.0)
   byebug
   capybara (~> 2.5.0)
   carrierwave (= 0.10.0)

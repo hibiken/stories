@@ -65,9 +65,9 @@ group :development do
   gem 'spring'
   gem 'guard-rspec', require: false
   gem 'spring-commands-rspec', '~> 1.0'
-  # Profiling
   gem 'rack-mini-profiler', '~> 0.9.8', require: false
   gem 'annotate'
+  gem 'bullet', '~> 5.0'
 end
 
 group :test do
