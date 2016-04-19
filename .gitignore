@@ -23,7 +23,7 @@
 #Ignore rails best practice report file
 rails_best_practices_output.html
 
-# Ignore .byebug_history, .rspec
+# Ignore .byebug_history, .rspec, brakeman.html
 .byebug_history
 .rspec
-
+brakeman.html
