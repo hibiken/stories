@@ -14,7 +14,7 @@
 
     <h3 class="title"><%= @post.title %></h3>
     <div class="body">
-      <p><%= @post.body.html_safe %></p>
+      <p><%= remove_script_tag(@post.body).html_safe %></p>
     </div>
 
     <div class="post-tags">
