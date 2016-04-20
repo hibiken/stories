@@ -15,4 +15,44 @@ RSpec.describe PostsHelper do
       expect(actual).to eq("less than a minute read")
     end
   end
+
+  describe "#remove_javascript" do
+    it "removes script tags" do
+      html_with_script_tags = "<p onmouseover='$.ajax()'>Hello world</p><script>alert('XSS');</script>"
+      output = helper.remove_javascript(html_with_script_tags)
+      expect(output).to eq("<p '$.ajax()'>Hello world</p>alert('XSS');")
+    end
+
+    it "removes multiple script tag pairs" do
+      html_with_script_tags = "<p>Hello world</p><script>alert('XSS');</script><h2>Hi</h2><script>alert('security')</script>"
+      output = helper.remove_javascript(html_with_script_tags)
+      expect(output).to eq("<p>Hello world</p>alert('XSS');<h2>Hi</h2>alert('security')")
+    end
+
+    it "removes javascript in href" do
+      html_with_xss = "<a href='javascript:alert('XSS')'>Click me</a><br/><div onmouseover='alert('security hole!')'>some content</div>"
+      output = helper.remove_javascript(html_with_xss)
+      expect(output).to eq("<a href='alert('XSS')'>Click me</a><br/><div 'alert('security hole!')'>some content</div>")
+    end
+  end
+
+  describe "#sanitize_html" do
+    it "removes script tags" do
+      html_with_script_tags = "<p>Hello world</p><script>alert('XSS');</script>"
+      output = helper.sanitize_html(html_with_script_tags)
+      expect(output).to eq("<p>Hello world</p>alert('XSS');")
+    end
+
+    it "removes multiple script tag pairs" do
+      html_with_script_tags = "<p>Hello world</p><script>alert('XSS');</script><h2>Hi</h2><script>alert('security')</script>"
+      output = helper.sanitize_html(html_with_script_tags)
+      expect(output).to eq("<p>Hello world</p>alert('XSS');<h2>Hi</h2>alert('security')")
+    end
+
+    it "removes javascript in href" do
+      html_with_xss = "<a href='javascript:alert('XSS')'>Click me</a><br/><div onmouseover='alert('security hole!')'>some content</div>"
+      output = helper.sanitize_html(html_with_xss)
+      expect(output).to eq("<a>Click me</a><br><div>some content</div>")
+    end
+  end
 end

@@ -8,7 +8,7 @@
   </div>
 
   <div class="main-body">
-    <p class="response-body"><%= remove_script_tag(response.body).html_safe %></p>
+    <p class="response-body"><%= remove_javascript(response.body).html_safe %></p>
   </div>
 
   <div class="response-stats clearfix">
