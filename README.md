@@ -23,4 +23,4 @@ If your keen to gain some new skills, get started by following the install and c
 [![Stories on YouTube](http://img.youtube.com/vi/_u09ifFALNA/0.jpg)](http://www.youtube.com/watch?v=_u09ifFALNA)
 
 ## License
-Stories is released under the [MIT License](https://github.com/kenny-hibino/stories/blob/master/LICENSE.txt)
+Stories is released under the [MIT License](https://opensource.org/licenses/MIT)
