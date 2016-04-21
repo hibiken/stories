@@ -12,7 +12,7 @@ If your keen to gain some new skills, get started by following the install and c
 ## Useful Links
 [News & Tutorials](https://www.youtube.com/playlist?list=PLoUInciCQ806CUFxld2W29V6rbGNfHzbX)
 
-[Demo Application](http://my-medium-clone.herokuapp.com/)
+[Demo Application](https://my-medium-clone.herokuapp.com/)
 
 [Step by Step Install](https://github.com/kenny-hibino/stories/blob/master/INSTALL.md)
 
@@ -21,3 +21,6 @@ If your keen to gain some new skills, get started by following the install and c
 
 ## Watch a Quick Video
 [![Stories on YouTube](http://img.youtube.com/vi/_u09ifFALNA/0.jpg)](http://www.youtube.com/watch?v=_u09ifFALNA)
+
+## License
+Stories is released under the [MIT License](https://github.com/kenny-hibino/stories/blob/master/LICENSE.txt)
