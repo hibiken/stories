@@ -62,6 +62,11 @@ class Post < ActiveRecord::Base
     Tag.find_by!(name: name).posts
   end
 
+  def related_posts(size: 3)
+    Post.joins(:taggings).where.not(id: self.id).where(taggings: { tag_id: self.tag_ids }).distinct.
+      published.limit(size).includes(:user)
+  end
+
   def all_tags=(names)
     self.tags = names.split(",").map do |name|
       Tag.first_or_create_with_name!(name)

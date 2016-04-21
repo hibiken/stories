@@ -80,6 +80,46 @@ body.posts.show {
     margin-bottom: 1em;
   }
 
+  .related-stories {
+    .post-list-item {
+      padding: 20px;
+      border-bottom: 1px solid $border-color;
+      .flex-container {
+        align-items: center;
+      }
+    }
+    .avatar-wrapper {
+      margin-right: 20px;
+    }
+    .pli-picture-wrapper {
+      margin-left: auto;
+      img {
+        max-width: 150px;
+      }
+    }
+    .pli-title {
+      font-size: 18px;
+      a {
+        color: $light-font-color;
+        text-decoration: none;
+        &:hover {
+          color: $accent-color;
+        }
+      }
+    }
+
+    .pli-username {
+      font-size: 11px;
+      a {
+        color: $light-font-color;
+        text-decoration: none;
+        &:hover {
+          color: $font-black;
+        }
+      }
+    }
+  }
+
   .response-panel {
     background: $white;
     padding: 20px;
