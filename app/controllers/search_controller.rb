@@ -4,7 +4,7 @@ class SearchController < ApplicationController
 
   def show
     @post_records = Post.search(query_term).paginate(page: params[:page]).records
-    @posts = @post_records.to_a
+    @posts = @post_records.to_a.select { |post| post.published? }
     @users = User.search(query_term).records.to_a
     @tags = Tag.search(query_term).records
   end
