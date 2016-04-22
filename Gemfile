@@ -74,6 +74,7 @@ group :development do
   gem 'rack-mini-profiler', '~> 0.9.8', require: false
   gem 'annotate'
   gem 'bullet', '~> 5.0'
+  gem 'quiet_assets', '~> 1.1'
 end
 
 group :test do
