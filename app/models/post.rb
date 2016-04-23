@@ -71,6 +71,7 @@ class Post < ActiveRecord::Base
     self.tags = names.split(",").map do |name|
       Tag.first_or_create_with_name!(name)
     end
+    RelatedTagsCreator.create(self.tag_ids)
   end
 
   def all_tags
