@@ -32,7 +32,7 @@ module SearchablePost
               query: {
                 multi_match: {
                   query: term,
-                  fields: ['title^10', 'body', 'user.username^5', 'tags.name^5']
+                  fields: ['title^10', 'body', 'user.username', 'tags.name^10']
                 }
               },
               filter: {
