@@ -28,8 +28,10 @@
 
 <% content_for :sidebar do %>
   <aside class="col-md-4 main-sidebar">
-    <h4 class="small-heading border-top">Featured tags</h4>
-    <%= react_component('TagList', { tags: @dashboard.featured_tags }) %>
+    <% if @related_tags.any? %>
+      <h4 class="small-heading border-top">Related Tags</h4>
+      <%= react_component('TagList', { tags: @related_tags }) %>
+    <% end %>
 
     <% if user_signed_in? %>
       <div class="flex-container border-top">
