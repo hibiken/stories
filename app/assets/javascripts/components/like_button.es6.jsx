@@ -39,7 +39,7 @@ class LikeButton extends React.Component {
     if (this.state.liked) {
       return (
         <button className="unlike-button" onClick={this.onUnlikeClick}>
-          <i className="fa fa-heart" />
+          <i className="fa fa-heart animated bounceIn" />
           <span className="hide-text">Unlike</span>
         </button>
       );
