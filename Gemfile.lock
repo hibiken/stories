@@ -248,6 +248,8 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    pry-rails (0.3.4)
+      pry (>= 0.9.10)
     puma (2.16.0)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
@@ -438,6 +440,7 @@ DEPENDENCIES
   omniauth-twitter (~> 1.2)
   pg
   poltergeist (~> 1.8)
+  pry-rails (~> 0.3.4)
   puma (~> 2.15)
   quiet_assets (~> 1.1)
   rack-mini-profiler (~> 0.9.8)
