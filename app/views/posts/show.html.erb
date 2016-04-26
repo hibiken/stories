@@ -53,9 +53,7 @@
   </div>
 </div> 
 
-
 <div class="post-show-footer row" data-animation="fadeInUp-fadeOutDown">
-
   <% if @related_posts.any? %>
     <div class="col-xs-10 col-md-6 col-xs-offset-1 col-md-offset-3 main-content related-stories">
       <h4 class="small-heading">Related stories</h4>
@@ -79,28 +77,4 @@
   </div>
 </div>
 
-<div class="post-metadata-bar" data-page="post-metadata-bar">
-  <div class="flex-container" data-behavior="animated-metadata">
-    <div class="post-stats flex-container">
-      <%= render partial: 'posts/likes', locals: { post: @post } %>
-
-      <div>
-        <%= link_to post_path(@post, anchor: 'responses'), class: "response-icon-wrapper" do %>
-          <i class="fa fa-comment-o"></i>
-          <span class="response-count" data-behavior="response-count"><%= @post.responses.size %></span>
-        <% end %>
-      </div>
-
-      <div class="bookmark-button">
-        <%= render partial: 'posts/bookmarks', locals: { post: @post } %>
-      </div>
-    </div>
-    <div class="metabar-author-info flex-container flex-space-btw">
-      <div>
-        <%= avatar_for @post.user, size: 35 %>
-        <%= react_component("PopoverLink", { user_id: @post.user.id, url: user_path(@post.user), children: @post.username }) %>
-      </div>
-      <%= follow_button_for @post.user %>
-    </div>
-  </div>
-</div>
+<%= render partial: 'posts/metadata_bar', locals: { post: @post } %>
