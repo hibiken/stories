@@ -51,7 +51,22 @@ body.posts.show {
       margin-right: 0;
     }
   }
-
+  .main-content .post-stats {
+    .fa {
+      width: 24px;
+      font-size: 22px;
+    }
+    .like-count, .response-count {
+      font-size: 16px;
+      font-weight: 600;
+      color: rgba(0,0,0,0.3);
+    }
+    .response-icon-wrapper {
+      margin-left: 20px;
+      color: $light-font-color;
+      text-decoration: none;
+    }
+  }
   .author-info {
     display: flex;
     justify-content: space-around;
@@ -185,7 +200,7 @@ body.posts.show {
     }
     .fa-comment-o {
       font-size: 18px;
-      color: $font-black;
+      color: $light-font-color;
     }
     .response-count {
       font-size: 14px;
