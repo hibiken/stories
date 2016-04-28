@@ -1,0 +1,18 @@
+<div class="social-share-wrapper">
+  <div class="social-share">
+    <a onclick="javascript:window.open('http://www.facebook.com/sharer.php?u=<%= post_url(post) %>', '_blank', 'width=800, height=500, top=200, left=300');void(0)"
+       class="ico fb">
+       <i class="fa fa-facebook"></i>
+    </a>
+    <a onclick="javascript:window.open('http://twitter.com/share?text=<%= post.title %> by <%= post.username %> - &amp;url=<%= post_url(post) %>', '_blank', 'width=800, height=500, top=200, left=300');void(0)"
+       class="ico tw">
+       <i class="fa fa-twitter"></i>
+    </a>
+    <a onclick="javascript:window.open('http://plus.google.com/share?url=<%= post_url(post) %>', '_blank', 'width=800, height=500, top=200, left=300');void(0)"
+       class="ico gp">
+       <i class="fa fa-google-plus"></i>
+    </a>
+    <span class="text"><em>SHARE</em></span>
+    <span class="ico-share"><i class="fa fa-share-alt"></i></span>
+  </div>
+</div>

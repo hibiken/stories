@@ -4,6 +4,9 @@
       <%= feature_post_button_for(@post) %>
     <% end %>
 
+    <div class="pull-right">
+      <%= render partial: 'posts/social_share', locals: { post: @post } %>
+    </div>
     <%= render 'post_metadata', post: @post %>
 
     <% if @post.picture? %>
