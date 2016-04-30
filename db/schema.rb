@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160423143202) do
+ActiveRecord::Schema.define(version: 20160430212643) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,6 +85,17 @@ ActiveRecord::Schema.define(version: 20160423143202) do
 
   add_index "notifications", ["actor_id"], name: "index_notifications_on_actor_id", using: :btree
   add_index "notifications", ["recipient_id"], name: "index_notifications_on_recipient_id", using: :btree
+
+  create_table "photo_albums", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "user_id"
+    t.json     "photos"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "photo_albums", ["user_id"], name: "index_photo_albums_on_user_id", using: :btree
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
@@ -188,6 +199,7 @@ ActiveRecord::Schema.define(version: 20160423143202) do
   add_index "users", ["slug"], name: "index_users_on_slug", unique: true, using: :btree
 
   add_foreign_key "bookmarks", "users"
+  add_foreign_key "photo_albums", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "responses", "posts"
   add_foreign_key "responses", "users"

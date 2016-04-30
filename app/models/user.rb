@@ -34,6 +34,7 @@ class User < ActiveRecord::Base
   validate :avatar_image_size
 
   has_many :posts, dependent: :destroy
+  has_many :photo_albums, dependent: :destroy
   has_many :responses, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :liked_posts, through: :likes, source: :likeable, source_type: "Post"
