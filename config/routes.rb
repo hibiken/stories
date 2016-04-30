@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     resources :responses, only: [:create]
   end
 
+  resources :photo_albums, except: [:index]
+
   resources :tags, only: [:show]
 
   get "me/bookmarks" => "dashboards#bookmarks", as: :dashboard_bookmarks

@@ -1,0 +1,26 @@
+<div data-animation="fadeInUp-fadeOutDown">
+  <div class="col-xs-10 col-sm-10 col-md-6 col-md-offset-3 col-sm-offset-1 col-xs-offset-1">
+    <div class="post-metadata">
+      <%= avatar_for(current_user, size: 40) %>
+      <div class="post-info">
+        <%= link_to current_user.username, current_user %><br/>
+        <small>New Album</small>
+      </div>
+    </div>
+
+    <%= form_for @photo_album do |f| %>
+
+      <div class="form-group">
+        <%= f.text_field :title, placeholder: 'Title', autofocus: true %>
+      </div>
+
+      <div class="form-group">
+        <%= f.text_area :description, placeholder: 'Description (optional)' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit "Publish", class: 'button green-border-button' %>
+      </div>
+    <% end %>
+  </div>
+</div>

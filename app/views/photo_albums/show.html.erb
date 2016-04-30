@@ -1,0 +1,10 @@
+<div class="row" data-animation="fadeInUp-fadeOutDown">
+  <div class="col-xs-10 col-md-8 col-xs-offset-1 col-md-offset-2">
+    <h3 class="title"><%= @photo_album.title %></h3>
+    <% if @photo_album.description.present? %>
+      <div class="description">
+        <%= @photo_album.description %>
+      </div>
+    <%end %>
+  </div>
+</div>
