@@ -11,6 +11,10 @@ class Feed
     posts.send(method, *args, &block)
   end
 
+  def respond_to_missing?(method, include_private = false)
+    posts.respond_to?(method, include_private) || super
+  end
+
   def posts
     Post.recent.where(id: feed_post_ids).published.includes(:user).paginate(page: page)
   end
