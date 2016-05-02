@@ -1,0 +1,35 @@
+body.photo_albums.new {
+  .main-content {
+    padding-top: 2em;
+  }
+  .editor-form {
+    margin-top: 0;
+  }
+  .medium-editable {
+    width: 100%;
+    min-height: 100px;
+  }
+  .file-image-upload {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  label.file-image-upload input[type="file"] {
+    position: fixed;
+    top: -1000px;
+  }
+  .file-image-upload-button {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    border: 1px dotted $border-color;
+    .fa {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 45px;
+      color: $font-black;
+    }
+  }
+}
