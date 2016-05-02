@@ -1,10 +1,26 @@
 <div class="row" data-animation="fadeInUp-fadeOutDown">
-  <div class="col-xs-10 col-md-8 col-xs-offset-1 col-md-offset-2">
+  <div class="col-xs-10 col-md-8 col-xs-offset-1 col-md-offset-2 main-content">
+
+  <div class="post-metadata">
+    <%= avatar_for @photo_album.user, size: 40 %>
+    <div class="post-info">
+      <%= react_component("PopoverLink", { user_id: @photo_album.user.id, url: user_path(@photo_album.user), children: @photo_album.user.username }) %>
+      <small><%= time_ago_in_words(@photo_album.created_at) %> ago
+    </div>
+  </div>
     <h3 class="title"><%= @photo_album.title %></h3>
     <% if @photo_album.description.present? %>
       <div class="description">
         <%= @photo_album.description %>
       </div>
     <%end %>
+
+    <div class="photo-gallery">
+      <% @photo_album.photos.each do |photo| %>
+        <div class="photo-wrapper">
+          <%= image_tag photo.url %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

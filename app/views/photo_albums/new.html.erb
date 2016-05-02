@@ -8,7 +8,7 @@
       </div>
     </div>
 
-    <%= form_for @photo_album do |f| %>
+    <%= form_for @photo_album, html: { multiple: true } do |f| %>
 
       <div class="form-group">
         <%= f.text_field :title, placeholder: 'Title', autofocus: true %>
@@ -16,6 +16,10 @@
 
       <div class="form-group">
         <%= f.text_area :description, placeholder: 'Description (optional)' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.file_field :photos, multiple: true %>
       </div>
 
       <div class="form-group">

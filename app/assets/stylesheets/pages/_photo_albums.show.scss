@@ -1,0 +1,35 @@
+body.photo_albums.show {
+  .main-content {
+    padding-top: 2em;
+  }
+  .title {
+    color: #000000;
+    font-weight: 600;
+    font-size: 36px;
+    margin-top: 0;
+    margin-bottom: 5px;
+  }
+  .description {
+    @include well-read;
+  }
+  .photo-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .photo-wrapper {
+    width: 33%;
+    max-width: 100%;
+    overflow: hidden;
+    padding: 20px;
+    padding-left: 0;
+    margin-bottom: 5px;
+    img {
+      border-radius: 8px;
+      display: inline-block;
+      width: 100%;
+    }
+  }
+}
