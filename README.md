@@ -2,7 +2,7 @@
 
 [![Stories on Github https://github.com/kenny-hibino/stories](https://raw.githubusercontent.com/kenny-hibino/stories/master/app/assets/images/stories-logo.png)](https://github.com/kenny-hibino/stories)
 
-Welcome to Stories. Stories is a Medium clone which began as [Ken Hibino](https://github.com/kenny-hibino “Ken Hibino”)'s personal side project to learn **Ruby on Rails** and **ReactJS**.
+Welcome to Stories. Stories is a Medium clone which began as [Ken Hibino](https://github.com/kenny-hibino)'s personal side project to learn **Ruby on Rails** and **ReactJS**.
 
 As the app was built [screen casts tutorials](https://www.youtube.com/playlist?list=PLoUInciCQ806CUFxld2W29V6rbGNfHzbX) were created to help other people learn... slowly it began to blossom into an elegant and powerful application and more people began to get involved, fixing bugs, improving the design and building the community.
 
