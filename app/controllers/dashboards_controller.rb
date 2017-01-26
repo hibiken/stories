@@ -4,7 +4,7 @@ class DashboardsController < ApplicationController
 
   def show
     if user_signed_in?
-      @dashboard = Dashboard.new(user: current_user, posts: feed)
+      @dashboard = Dashboard.new(user: current_user, posts: feed_posts)
     else
       @dashboard = Dashboard.new(posts: featured_posts)
     end
@@ -36,8 +36,8 @@ class DashboardsController < ApplicationController
       redirect_to admin_dashboard_url if admin_signed_in?
     end
 
-    def feed
-      Feed.new(current_user, page: params[:page])
+    def feed_posts
+      Feed.new(current_user).posts(page: params[:page])
     end
 
     def bookmarked_posts

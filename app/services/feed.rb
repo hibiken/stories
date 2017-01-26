@@ -1,21 +1,11 @@
 class Feed
-  include ActiveModel::Model
-  attr_reader :user, :page
+  attr_reader :user
 
-  def initialize(user, page: nil)
+  def initialize(user)
     @user = user
-    @page = page
   end
 
-  def method_missing(method, *args, &block)
-    posts.send(method, *args, &block)
-  end
-
-  def respond_to_missing?(method, include_private = false)
-    posts.respond_to?(method, include_private) || super
-  end
-
-  def posts
+  def posts(page: nil)
     Post.recent.where(id: feed_post_ids).published.includes(:user).paginate(page: page)
   end
 

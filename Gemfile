@@ -62,6 +62,7 @@ group :development, :test do
   gem 'poltergeist', '~> 1.8'
   gem 'awesome_print', '~> 1.6'
   gem 'bundler-audit', '~> 0.5.0'
+  gem 'pry-rails', '~> 0.3.4'
 end
 
 group :development do
@@ -75,7 +76,6 @@ group :development do
   gem 'annotate'
   gem 'bullet', '~> 5.0'
   gem 'quiet_assets', '~> 1.1'
-  gem 'pry-rails', '~> 0.3.4'
 end
 
 group :test do

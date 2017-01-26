@@ -1,0 +1,16 @@
+<% if post.tagged? %>
+  <div class="feed-metadata">
+    <%= icon('tag') %> <%= link_to post.tag.name, post.tag %>
+  </div>
+<% elsif post.recommended? %>
+<div class="feed-metadata">
+  Recommended by <%= link_to post.recommender.username, post.recommender %>
+  <% if (post.likes_count > 2) %>
+    and <%= pluralize(post.likes.count - 1, 'other') %>
+  <% end %>
+</div>
+<% elsif post.featured? %>
+  <div class="feed-metadata">
+    Featured by Stories Staff and recommended by <%= pluralize(post.likes_count, 'other') %>
+  </div>
+<% end %>
