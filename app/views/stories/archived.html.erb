@@ -12,35 +12,33 @@
         <ul>
           <li><%= nav_link_to "Drafts", stories_drafts_path %></li>
           <li><%= nav_link_to "Public", stories_published_path %></li>
-          <li><%= nav_link_to "Archive", stories_archived_path %></li> 
+          <li><%= nav_link_to "Archive", stories_archived_path %></li>
         </ul>
       </nav>
 
       <div data-animation="fadeInUp-fadeOutDown">
-        <% if @drafts.any? %>
-          <% @drafts.each do |draft| %>
-            <div class="story-card" id="story_<%= draft.id %>">
-              <strong class="sc-title"><%= link_to (draft.title || "Untitled"), edit_post_path(draft) %></strong>
-              <small class="sc-metadata">
-                Last edited <%= time_ago_in_words(draft.updated_at) %> ago &#149; 
-                <% if draft.body.present? %>
-                  <%= post_length_in_minutes(draft.body) %> 
-                  (<%= pluralize(draft.word_count, 'word') %>) so far &#149;
-                <% end %>
+        <% if @archived_posts.any? %>
+          <% @archived_posts.each do |archived_post| %>
+            <div class="story-card" id="story_<%= archived_post.id %>">
+              <strong class="sc-title"><%= link_to archived_post.title, edit_post_path(archived_post) %></strong>
+              <small class="sc-metadata">Last edited <%= time_ago_in_words(archived_post.updated_at) %> ago &#149; 
+                <% if archived_post.body.present? %>
+                  <%= post_length_in_minutes(archived_post.body) %> 
+                  (<%= pluralize(archived_post.word_count, 'word') %>) so far &#149;
+                <% end %>                
                 <div class="btn-group">
                   <button type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="glyphicon glyphicon-chevron-down"></span>
                   </button>
                   <ul class="dropdown-menu">
-                    <li><%= link_to "Edit", edit_post_path(draft) %></li>
-                    <li><%= link_to "Delete", api_post_path(draft), method: :delete, remote: true %></li>
+                    <li><%= link_to "Edit", edit_post_path(archived_post) %></li>
                   </ul>
                 </div>
               </small>
             </div>
           <% end %>
         <% else %>
-          <p class="no-sc-message">No drafts yet</p>
+          <p class="no-sc-message">No archived posts yet</p>
         <% end %>
       </div>
     </div>
