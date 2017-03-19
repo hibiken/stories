@@ -37,6 +37,7 @@ class PostsController < ApplicationController
   def update
     @post.assign_attributes(post_params)
     if @post.publish
+      @post.active! if params[:post][:status]
       redirect_to @post, notice: "Successfully published the post!"
     else
       @post.unpublish
@@ -46,8 +47,8 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post.destroy
-    redirect_to root_url, notice: "Successfully deleted the post"
+    @post.archived!
+    redirect_to root_url, notice: "Successfully archived the post"
   end
 
   # TODO: ideally move this to a separate controller?

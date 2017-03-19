@@ -21,6 +21,13 @@
     <%= f.text_area :body, class: 'medium-editable', data: { behavior: "autosave" } %> 
   </div>
 
+  <div class="form-group">
+    <% if post.archived? %>
+      <%= f.label "Want to make this post active?" %> <br />
+      <%= f.check_box :status, {}, true, false %> <br />
+    <% end %>
+  </div>
+
   <div class="hidden">
     <%= f.text_field :all_tags %>
   </div>

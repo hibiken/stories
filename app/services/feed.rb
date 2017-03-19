@@ -6,7 +6,7 @@ class Feed
   end
 
   def posts(page: nil)
-    Post.recent.where(id: feed_post_ids).published.includes(:user).paginate(page: page)
+    Post.recent.where(id: feed_post_ids).published.active.includes(:user).paginate(page: page)
   end
 
   def tagged?(post)

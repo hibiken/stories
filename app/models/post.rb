@@ -52,6 +52,8 @@ class Post < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: [ :slugged, :history, :finders ]
 
+  enum status: [ :active, :archived ]
+
   def self.new_draft_for(user)
     post = self.new(user_id: user.id)
     post.save_as_draft
