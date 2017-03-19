@@ -10,6 +10,6 @@ class StoriesController < ApplicationController
   end
 
   def archived
-  	@archived_posts = current_user.posts.recent.published.archived
+    @archived_posts = current_user.posts.recent.published.archived
   end
 end
