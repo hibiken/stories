@@ -15,5 +15,4 @@ var Overlay = {
   }
 };
 
-$(document).ready( Overlay.init );
-$(document).on( 'page:load', Overlay.init );
+$(document).on( 'turbolinks:load', Overlay.init );

@@ -22,5 +22,4 @@ var ProfileEdit = {
   }
 }
 
-$(document).ready( ProfileEdit.init );
-$(document).on( 'page:load', ProfileEdit.init );
+$(document).on( 'turbolinks:load', ProfileEdit.init );
