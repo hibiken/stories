@@ -31,5 +31,4 @@ var ResponseEditor = {
   }
 };
 
-$(document).ready( ResponseEditor.init );
-$(document).on( 'page:load', ResponseEditor.init );
+$(document).on( 'turbolinks:load', ResponseEditor.init );

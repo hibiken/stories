@@ -18,8 +18,8 @@ Turbolinks.ProgressBar.defaultCSS = "";
 
 // custom 50ms threshold to show progress bar
 // default is 500ms 
-Turbolinks.BrowserAdapter.prototype.showProgressBarAfterDelay = function() {
-  return this.progressBarTimeout = setTimeout(this.showProgressBar, 50);
-};
+// Turbolinks.BrowserAdapter.prototype.showProgressBarAfterDelay = function() {
+//   return this.progressBarTimeout = setTimeout(this.showProgressBar, 50);
+// };
 
 $(document).on('turbolinks:load', ProgressBar.init);
