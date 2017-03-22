@@ -31,5 +31,4 @@ var InlineEditor = {
   }
 };
 
-$(document).ready( InlineEditor.init );
-$(document).on( 'page:load', InlineEditor.init );
+$(document).on( 'turbolinks:load', InlineEditor.init );
