@@ -1,5 +1,5 @@
 body.sessions.new,
-body.registrations.new {
+body.registrations.new, body.registrations.create {
   input[type="text"],
   input[type="password"],
   input[type="email"] {
@@ -12,6 +12,16 @@ body.registrations.new {
   }
   .form-input-wrapper {
     padding: 1.5em 0;
+  }
+  .field_with_errors {
+    padding: 0.5em 0.5;
+  }
+  #error_explanation ul{
+    padding-left: 20px;
+    background-color: #f2dede;
+    border-color: #eed3d7;
+    color: #b94a48;
+    text-align: left;
   }
   .remember-me {
     display: inline-block;
