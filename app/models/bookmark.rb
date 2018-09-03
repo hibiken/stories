@@ -10,7 +10,7 @@
 #  updated_at        :datetime         not null
 #
 
-class Bookmark < ActiveRecord::Base
+class Bookmark < ApplicationRecord
   belongs_to :bookmarkable, polymorphic: true
   belongs_to :user
 end

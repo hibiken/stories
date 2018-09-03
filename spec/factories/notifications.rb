@@ -14,7 +14,7 @@
 #  is_new          :boolean          default("false")
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :notification do
     recipient_id 1
     actor_id 2

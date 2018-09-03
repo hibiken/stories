@@ -11,7 +11,7 @@
 #  likes_count :integer          default("0")
 #
 
-class Response < ActiveRecord::Base
+class Response < ApplicationRecord
   validates :body, presence: true
   validates :post_id, :user_id, presence: true
 

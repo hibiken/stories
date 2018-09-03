@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe API::NotificationsController do
+RSpec.describe Api::NotificationsController do
 
   let(:luke) { create(:user, username: "Luke") }
   let(:solo) { create(:user, username: "Solo") }

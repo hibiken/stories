@@ -1,4 +1,4 @@
-class API::LikersController < ApplicationController
+class Api::LikersController < ApplicationController
   before_action :authenticate_user!
   def index
     post = Post.find(params[:post_id])

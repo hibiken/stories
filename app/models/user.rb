@@ -24,14 +24,16 @@
 #  location               :string
 #
 
-class User < ActiveRecord::Base
+class User < ApplicationRecord
+  include Rails.application.routes.url_helpers
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook, :twitter, :google_oauth2]
   validates :username, presence: true
-  validate :avatar_image_size
+  #validate :avatar_image_size
 
   has_many :posts, dependent: :destroy
   has_many :responses, dependent: :destroy
@@ -48,15 +50,21 @@ class User < ActiveRecord::Base
   after_destroy :clear_notifications
   after_commit :send_welcome_email, on: [:create]
 
-  mount_uploader :avatar, AvatarUploader
+  #mount_uploader :avatar, AvatarUploader
+  has_one_attached :avatar
 
   include UserFollowing
   include TagFollowing
-  include SearchableUser
+  #include SearchableUser
   include OmniauthableUser
+  searchkick
 
   extend FriendlyId
   friendly_id :username, use: [ :slugged, :finders ]
+
+  def avatar_path
+    avatar_url = self.avatar.attached? ? url_for(self.avatar) : nil
+  end
 
   def add_like_to(likeable_obj)
     likes.where(likeable: likeable_obj).first_or_create
@@ -83,6 +91,12 @@ class User < ActiveRecord::Base
   end
 
   private
+
+    def search_data(options ={})
+    self.as_json({
+      methods: [:avatar_path], only: [:username, :email, :avatar_path, :slug]
+    })
+    end
 
     # Validates the size on an uploaded image.
     def avatar_image_size

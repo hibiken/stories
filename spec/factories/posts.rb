@@ -17,7 +17,7 @@
 #  responses_count :integer          default("0"), not null
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :post do
     sequence(:title) { |n| "Awesome post No.#{n}" }
     body "Here are some awesome content" 

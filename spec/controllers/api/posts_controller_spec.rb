@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe API::PostsController do
+RSpec.describe Api::PostsController do
 
   describe "Access Control" do
     describe "PATCH #update" do

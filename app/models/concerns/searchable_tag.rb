@@ -2,39 +2,42 @@ module SearchableTag
   extend ActiveSupport::Concern
 
     included do
-    include Elasticsearch::Model
+      searchkick
+      #include Elasticsearch::Model
+=begin
+      # Sync up Elasticsearch with PostgreSQL.
+      after_commit :index_document, on: [:create, :update]
+      after_commit :delete_document, on: [:destroy]
 
-    # Sync up Elasticsearch with PostgreSQL.
-    after_commit :index_document, on: [:create, :update]
-    after_commit :delete_document, on: [:destroy]
-
-    settings INDEX_OPTIONS do
-      mappings dynamic: 'false' do
-        indexes :name, analyzer: 'autocomplete'
-        indexes :slug
+      settings INDEX_OPTIONS do
+        mappings dynamic: 'false' do
+          indexes :name, analyzer: 'autocomplete'
+          indexes :slug
+        end
       end
-    end
 
-    def self.search(term)
-      __elasticsearch__.search(
-        {
-          query: {
-            multi_match: {
-              query: term,
-              fields: ['name']
+      def self.search(term)
+        __elasticsearch__.search(
+          {
+            query: {
+              multi_match: {
+                query: term,
+                fields: ['name']
+              }
             }
           }
-        }
-      )
-    end
+        )
+      end
+=end
   end
 
-  def as_indexed_json(options ={})
+  def search_data(options ={})
     self.as_json({
       only: [:name, :slug]
     })
   end
 
+=begin
   def index_document
     ElasticsearchIndexJob.perform_later('index', 'Tag', self.id)
   end
@@ -64,5 +67,6 @@ module SearchableTag
     }
   }
   }
+=end
 
 end

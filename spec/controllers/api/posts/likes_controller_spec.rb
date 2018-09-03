@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe API::Posts::LikesController do
+RSpec.describe Api::Posts::LikesController do
 
   describe "Access Control" do
     before :each do

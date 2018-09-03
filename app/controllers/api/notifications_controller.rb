@@ -1,4 +1,4 @@
-class API::NotificationsController < ApplicationController
+class Api::NotificationsController < ApplicationController
   before_action :authenticate_user!
 
   def index

@@ -17,7 +17,9 @@
 #  responses_count :integer          default("0"), not null
 #
 
-class Post < ActiveRecord::Base
+class Post < ApplicationRecord
+
+  include Rails.application.routes.url_helpers
 
   validates :title, :body, :user_id, presence: true
 
@@ -41,13 +43,31 @@ class Post < ActiveRecord::Base
   scope :drafts, -> { where(published_at: nil) }
   scope :featured, -> { where(featured: true) }
 
-  mount_uploader :picture, PictureUploader
+  #mount_uploader :picture, PictureUploader
+  has_one_attached :picture
 
   before_save :generate_lead!
   # will_pagination configuration
   self.per_page = 5
 
-  include SearchablePost
+  #include SearchablePost
+  searchkick
+
+  def picture_path
+    picture_url = self.picture.attached? ? url_for(self.picture) : nil
+  end
+
+  def search_data(options = {})
+    self.as_json({
+      only: [:title, :body, :published_at, :slug],
+      include: {
+        user: { only: [:username] },
+        #user: {methods: [:avatar_url], only: [:username, :avatar_url] },
+        tags: { only: :name }
+      }
+    })
+  end
+
 
   extend FriendlyId
   friendly_id :title, use: [ :slugged, :history, :finders ]

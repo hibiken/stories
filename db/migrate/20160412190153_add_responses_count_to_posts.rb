@@ -1,4 +1,4 @@
-class AddResponsesCountToPosts < ActiveRecord::Migration
+class AddResponsesCountToPosts < ActiveRecord::Migration[4.2]
   def up
     add_column :posts, :responses_count, :integer, null: false, default: 0
     # reset cached counts for posts with responses
