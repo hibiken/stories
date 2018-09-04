@@ -7,9 +7,9 @@
   <div class="file-upload-previewer hidden">
     <img src="" id="image_preview"/>
   </div>
-  <% if post.picture? %>
+  <% if post.picture.attached? %>
     <div class="existing-img-previewer" id="existing-img-previewer">
-      <%= image_tag post.picture.url(:thumb) %>
+      <%= image_tag @post.picture.variant(resize: "800x600") %>
     </div>
   <% end %>
 

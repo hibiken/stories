@@ -7,10 +7,11 @@
       <strong class="pli-title"><%= link_to post.title, post %></strong><br/>
       <small class="pli-username"><%=link_to post.username, post.user %></small>
     </div>
-    <% if post.picture? %>
+    <% if post.picture.attached? %>
       <div class="pli-picture-wrapper">
-        <%= image_tag post.picture.url(:thumb) %>
+        <%= image_tag @post.picture.variant(resize: "200x200") %>
       </div>
     <% end %>
+
   </div>
 </div>

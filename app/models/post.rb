@@ -119,6 +119,7 @@ class Post < ApplicationRecord
   end
 
   def words
+    return "" if plain.blank?
     plain.split(' ')
   end
 
