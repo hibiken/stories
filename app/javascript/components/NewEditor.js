@@ -17,22 +17,23 @@ export default class NewEditor extends React.Component {
 
   saveMethod = (context, editorContent)=>{
 
-  $('[data-behavior="editor-message"]').text('Saving...');
-   $.ajax({
-      url: '/api' + $('.editor-form').attr('action'),
-      dataType: "script",
-      method: $('input[name="_method"]').val() || "POST",
-      data: {
-        post: {
-          title: $('#post_title').val(),
-          body: JSON.stringify(editorContent),
-          all_tags: $('#post_all_tags').val()
+    $('[data-behavior="editor-message"]').text('Saving...');
+     $.ajax({
+        url: '/api' + $('.editor-form').attr('action'),
+        dataType: "script",
+        method: $('input[name="_method"]').val() || "POST",
+        data: {
+          post: {
+            title: $('#post_title').val(),
+            body: JSON.stringify(editorContent),
+            plain: context.getTextFromEditor(editorContent),
+            all_tags: $('#post_all_tags').val()
+          }
+        },
+        success: function() { 
+          console.log('autosave successful'); 
         }
-      },
-      success: function() { 
-        console.log('autosave successful'); 
-      }
-    });
+      });
   }
 
   tooltipsConfig = ()=>{
@@ -50,6 +51,193 @@ export default class NewEditor extends React.Component {
              PlaceholderBlockConfig()
            ]
   }
+
+  // use this in case you want to convert
+  /*
+  save_handler = (context, content, cb)=>{
+  
+    const exportedStyles = context.editor.styleExporter(context.editor.getEditorState())
+
+    let convertOptions = {
+
+      styleToHTML: (style) => {
+        if (style === 'BOLD') {
+          return <b/>;
+        }
+        if (style === 'ITALIC') {
+          return <i/>;
+        }
+        if (style.includes("CUSTOM")){
+          const s = exportedStyles[style].style
+          return <span style={s} />
+        }
+      },
+      blockToHTML: (block, oo) => {
+       
+        if (block.type === "unstyled"){
+          return <p class="graf graf--p"/>
+        }
+        if (block.type === "header-one"){
+          return <h1 class="graf graf--h2"/>
+        }
+        if (block.type === "header-two"){
+          return <h2 class="graf graf--h3"/>
+        }
+        if (block.type === "header-three"){
+          return <h3 class="graf graf--h4"/>
+        }
+        if (block.type === "blockquote"){
+          return <blockquote class="graf graf--blockquote"/>
+        }
+        if (block.type === "button" || block.type === "unsubscribe_button"){
+          const {href, buttonStyle, containerStyle, label} = block.data
+          return {start: `<div style="width: 100%; margin: 18px 0px 47px 0px">
+                          <div 
+                            style="${styleString(containerStyle)}">
+                            <a href="${href}"
+                              className="btn"
+                              ref="btn"
+                              style="${styleString(buttonStyle)}">`,
+                  end: `</a>
+                    </div>
+                  </div>`}
+        }
+        if (block.type === "card"){
+          return {
+            start: `<div class="graf graf--figure">
+                    <div style="width: 100%; height: 100px; margin: 18px 0px 47px">
+                      <div class="signature">
+                        <div>
+                          <a href="#" contenteditable="false">
+                            <img src="${block.data.image}">
+                            <div></div>
+                          </a>
+                        </div>
+                        <div class="text" 
+                          style="color: rgb(153, 153, 153);
+                                font-size: 12px; 
+                                font-weight: bold">`,
+                  end: `</div>
+                      </div>
+                    <div class="dante-clearfix"/>
+                  </div>
+                </div>`
+          }
+        }
+        if (block.type === "jumbo"){
+          return {
+            start: `<div class="graf graf--jumbo">
+                    <div class="jumbotron">
+                      <h1>` ,
+            end: `</h1>
+                    </div>
+                  </div>`
+          }
+        }
+        if (block.type === "image"){
+          const {width, height, ratio} = block.data.aspect_ratio
+          const {url } = block.data
+          return {
+            start: `<figure class="graf graf--figure">
+                    <div>
+                      <div class="aspectRatioPlaceholder is-locked" style="max-width: 1000px; max-height: 723.558px;">
+                        <div class="aspect-ratio-fill" 
+                            style="padding-bottom: ${ratio}%;">
+                        </div>
+
+                        <img src="${url}" 
+                          height=${height} 
+                          width=${width} 
+                          class="graf-image" 
+                          contenteditable="false"
+                        >
+                      <div>
+                    </div>
+
+                    </div>
+                    <figcaption class="imageCaption">
+                      <span>
+                        <span data-text="true">`,
+            end: `</span>
+                      </span>
+                    </figcaption>
+                    </div>
+                  </figure>`
+          }
+        }
+        if (block.type === "column"){
+          return <div class={`graf graf--column ${block.data.className}`}/>
+        }
+        if (block.type === "footer"){
+          
+          return {
+                  start:`<div class="graf graf--figure"><div ><hr/><p>`,
+                  end: `</p></div></div>`
+                }
+        }
+
+        if(block.type === "embed"){
+          if(!block.data.embed_data)
+            return
+
+          let data = null
+
+          // due to a bug in empbed component
+          if(typeof(block.data.embed_data.toJS) === "function"){
+            data = block.data.embed_data.toJS()  
+          } else {
+            data = block.data.embed_data
+          }
+          
+          if( data ){
+            return <div class="graf graf--mixtapeEmbed">
+                    <span>
+                      <a target="_blank" class="js-mixtapeImage mixtapeImage" 
+                        href={block.data.provisory_text} 
+                        style={{backgroundImage: `url(${data.images[0].url})` }}>
+                      </a>
+                      <a class="markup--anchor markup--mixtapeEmbed-anchor" 
+                        target="_blank" 
+                        href={block.data.provisory_text}>
+                        <strong class="markup--strong markup--mixtapeEmbed-strong">
+                          {data.title}
+                        </strong>
+                        <em class="markup--em markup--mixtapeEmbed-em">
+                          {data.description}
+                        </em>
+                      </a>
+                      {data.provider_url}
+                    </span>
+                  </div>
+          } else{
+            <p/>
+          }
+        }
+        if ("atomic"){
+          return <p/>
+        }
+
+        if (block.type === 'PARAGRAPH') {
+          return <p />;
+        }
+      },
+      entityToHTML: (entity, originalText) => {
+        if (entity.type === 'LINK') {
+          return <a href={entity.data.url}>{originalText}</a>;
+        }
+        return originalText;
+      }
+    }
+
+    let html3 = convertToHTML(convertOptions)(context.editorState().getCurrentContent())
+   
+    const serialized = JSON.stringify(content)
+    const plain = context.getTextFromEditor(content)
+
+    console.log(html3)
+    if(cb)
+      cb(html3, plain, serialized)
+  }*/
 
 
   componentDidMount(){
@@ -97,9 +285,11 @@ export default class NewEditor extends React.Component {
 
   }
 
+  initialContent = ()=>{
+    return this.props.content ? JSON.parse(this.props.content) : null
+  }
+
   render(){
-
-
     return <Dante data_storage= {
                     {
                       url: $('.editor-form').attr('action'),
@@ -107,6 +297,7 @@ export default class NewEditor extends React.Component {
                     }
 
                   }
+                  content={this.initialContent()}
                   tooltips={this.tooltipsConfig()}
                   widgets={this.widgetsConfig()}
             />

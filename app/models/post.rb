@@ -119,13 +119,18 @@ class Post < ApplicationRecord
   end
 
   def words
-    body.split(' ')
+    plain.split(' ')
   end
 
   def word_count
     words.size
   end
 
+  def generate_lead!
+    puts "TO BE DEPRECATED IN FAVOR OF PLAIN VERSION"
+  end
+
+=begin
   # Generate a lead which appears in post panel.
   # FIXME: this method needs refactoring or completely different approach
   def generate_lead!
@@ -140,5 +145,6 @@ class Post < ApplicationRecord
       end
     end
   end
+=end
 
 end
