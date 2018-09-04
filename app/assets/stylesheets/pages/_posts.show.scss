@@ -176,6 +176,7 @@ body.posts.show {
     border-radius: 3px 3px 0 0;
     transition: 0.3s transform;
     transform: translate(-50%, 0);
+    z-index: 9;
     &.is-inView {
       transform: translate(-50%, 0);
     }
@@ -198,7 +199,7 @@ body.posts.show {
       display: inline-block;
       padding-top: 0.5px;
     }
-    .fa-comment-o {
+    .fa-comment {
       font-size: 18px;
       color: $light-font-color;
     }

@@ -15,5 +15,5 @@ var EndlessScroll = {
   }
 };
 
-$(document).ready( EndlessScroll.init );
+//$(document).ready( EndlessScroll.init );
 $(document).on( 'turbolinks:load', EndlessScroll.init );
