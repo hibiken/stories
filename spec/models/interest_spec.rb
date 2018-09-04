@@ -13,7 +13,11 @@ require 'rails_helper'
 
 RSpec.describe Interest, type: :model do
   describe "validations" do
-    let(:interest) { Interest.new(follower_id: 1, tag_id: 2) }
+    let(:interest) { 
+      Interest.new(
+        follower: create(:user), 
+        tag: create(:tag)) 
+    }
 
     it "is valid with both follower and tag ids" do
       expect(interest).to be_valid

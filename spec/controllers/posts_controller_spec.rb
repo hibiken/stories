@@ -7,7 +7,7 @@ RSpec.describe PostsController do
       let(:post) { create(:post) }
 
       it "non-logged-in user can also access the page" do
-        get :show, id: post.slug
+        get :show, params: {id: post.slug}
         expect(response).to render_template(:show)
       end
     end
@@ -21,18 +21,20 @@ RSpec.describe PostsController do
 
     describe "POST #create" do
       it "requires a logged-in user" do
-        post :create, post: { title: "Awesome title", body: "Awesome content" }
+        post :create, params: {post: { title: "Awesome title", body: "Awesome content" }}
         expect(response).to redirect_to(new_user_session_path)
       end
 
       it "does not save a new record in database" do
-        expect {post :create, post: attributes_for(:post)}.not_to change(Post, :count)
+        expect {
+          post :create, params: { post: attributes_for(:post) }
+        }.not_to change(Post, :count)
       end
     end
 
     describe "POST #create_and_edit" do
       it "requires a logged-in user" do
-        post :create_and_edit, post: { title: "", body: "Cool content" }
+        post :create_and_edit, params: {post: { title: "", body: "Cool content" }}
         expect(response).to redirect_to(new_user_session_path)
       end
     end
@@ -40,7 +42,10 @@ RSpec.describe PostsController do
     describe "PATCH #update" do
       let(:post) { create(:post) }
       it "requires a logged-in user" do
-        patch :update, id: post.id, post: { title: "Updated title", body: "Updated body" }
+        patch :update, params: {
+          id: post.id, 
+          post: { title: "Updated title", body: "Updated body" }
+        }
         expect(response).to redirect_to(new_user_session_path)
       end
     end
@@ -48,7 +53,7 @@ RSpec.describe PostsController do
     describe "DELETE #destroy" do
       let(:post) { create(:post) }
       it "requires a logged-in user" do
-        delete :destroy, id: post.id
+        delete :destroy, params: {id: post.id}
         expect(response).to redirect_to(new_user_session_path)
       end
     end
@@ -64,17 +69,21 @@ RSpec.describe PostsController do
       end
 
       it "does not allow user to edit post" do
-        get :edit, id: other_user_post.id
+        get :edit, params: {id: other_user_post.id}
         expect(response).to redirect_to(root_path)
       end
 
       it "does not allow user to update post" do
-        patch :update, id: other_user_post.id, post: attributes_for(:post)
+        patch :update, params: {
+          id: other_user_post.id, post: attributes_for(:post)
+        }
         expect(response).to redirect_to(root_path)
       end
 
       it "does not allow user to delete post" do
-        expect { delete :destroy, id: other_user_post.id }.not_to change{ Post.count }
+        expect { 
+          delete :destroy, params: {id: other_user_post.id }
+        }.not_to change{ Post.count }
       end
     end
   end
@@ -92,19 +101,33 @@ RSpec.describe PostsController do
 
       describe "POST #create" do
         it "allows user to create a post" do
-          expect{post :create, post: attributes_for(:post)}.to change(Post, :count).by(1)
+          expect{
+            post :create, params: { post: attributes_for(:post) }
+          }.to change(Post, :count).by(1)
         end
       end
 
       describe "POST #create_and_edit" do
         it "creates a post and redirect_to edit page" do
           @draft = build(:draft, title: "   ", body: "this is a story of my life")
-          expect{post :create_and_edit, post: { title: @draft.title, body: @draft.body } }.to change(Post, :count).by(1)
+          expect{ 
+            post :create_and_edit, params: {
+              post: { 
+                title: @draft.title, 
+                body: @draft.body 
+              }
+            }
+          }.to change(Post, :count).by(1)
         end
 
         it "redirects to edit page" do
           @draft = build(:draft, title: "", body: "hello world")
-          post :create_and_edit, post: { title: @draft.title, body: @draft.body }
+          post :create_and_edit, params: {
+            post: { 
+              title: @draft.title, 
+              body: @draft.body 
+            }
+          }
           expect(response).to redirect_to(edit_post_path(assigns(:post)))
         end
       end
@@ -119,7 +142,7 @@ RSpec.describe PostsController do
 
     describe "POST #create" do
       it "fails gracefully when it fails validations" do
-        post :create, post: attributes_for(:draft, title: "  ")
+        post :create, params: { post: attributes_for(:draft, title: "  ")}
         expect(response).to render_template(:new)
       end
     end
@@ -130,7 +153,9 @@ RSpec.describe PostsController do
       end
 
       it "fails gracefully when it fails validations" do
-        patch :update, id: @draft.id, post: attributes_for(:draft, body: "   ")
+        patch :update, params: { 
+          id: @draft.id, post: attributes_for(:draft, body: "   ")
+        }
         expect(response).to render_template(:edit)
       end
     end

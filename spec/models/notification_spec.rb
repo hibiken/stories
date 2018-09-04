@@ -19,10 +19,14 @@ require 'rails_helper'
 RSpec.describe Notification, type: :model do
   describe "scopes" do
     before :each do
-      @new_notification1 = create(:notification, created_at: 2.days.ago)
-      @new_notification2 = create(:notification, created_at: 3.hours.ago)
-      @touched_notification = create(:touched_notification, created_at: 5.days.ago)
-      @read_notification = create(:read_notification, created_at: 10.days.ago)
+      user1 = create(:user)
+      user2 = create(:user)
+      post = create(:post)
+      
+      @new_notification1 = create(:notification, created_at: 2.days.ago, recipient: user2, actor: user1, notifiable: post)
+      @new_notification2 = create(:notification, created_at: 3.hours.ago, recipient: user2, actor: user1, notifiable: post)
+      @touched_notification = create(:touched_notification, created_at: 5.days.ago, recipient: user2, actor: user1, notifiable: post)
+      @read_notification = create(:read_notification, created_at: 10.days.ago, recipient: user2, actor: user1, notifiable: post)
     end
 
     describe "#pristine" do

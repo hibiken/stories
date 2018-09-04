@@ -9,18 +9,18 @@ class Api::NotificationsController < ApplicationController
   def mark_as_touched
     notifications = Notification.where(recipient: current_user).pristine
     notifications.update_all(is_new: false)
-    render nothing: true, status: 204
+    head :ok, status: 204
   end
 
   def mark_all_as_read
     notifications = Notification.where(recipient: current_user).unread
     notifications.update_all(read_at: Time.zone.now)
-    render nothing: true, status: 204
+    head :ok, status: 204
   end
 
   def mark_as_read
     notification = Notification.find_by(id: params[:id], recipient: current_user)
     notification.update(read_at: Time.zone.now)
-    render nothing: true, status: 204
+    head :ok, status: 204
   end
 end

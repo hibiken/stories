@@ -32,23 +32,30 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
-
+# FRONT
 gem 'react-rails'
+gem "jquery-rails", "~> 4.3"
+gem 'bootstrap-sass'
+gem 'font-awesome-sass'
+
+# AUTH
 gem 'devise'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'omniauth-google-oauth2'
-gem 'mysql2'
+
+# DB
 gem 'pg'
-gem 'friendly_id'
-gem 'bootstrap-sass'
-gem 'friendly_id'
-gem 'sidekiq'
 gem 'searchkick'
-gem 'kaminari'
+
+# AR
+gem 'friendly_id'
 gem 'will_paginate'
-gem 'font-awesome-sass'
 gem 'mini_magick'
+
+# ActiveJob backend
+gem 'sidekiq'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -69,13 +76,11 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-
   gem 'byebug'
   gem 'rspec-rails'
-  gem 'poltergeist'
   gem 'awesome_print'
   gem 'bundler-audit'
-  gem 'pry-rails'
+  gem 'pry-byebug'
 end
 
 group :test do
@@ -88,10 +93,8 @@ group :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'launchy'
+  gem 'rails-controller-testing'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-# Added at 2018-09-03 00:06:52 -0300 by michelson:
-gem "jquery-rails", "~> 4.3"

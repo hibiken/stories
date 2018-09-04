@@ -8,7 +8,7 @@ RSpec.describe ResponsesController do
 
     describe "POST #create" do
       it "requires a logged-in user" do
-        post :create, post_id: @post.id, response: { body: "Great post!" }
+        post :create, params: {post_id: @post.id, response: { body: "Great post!" }}
         expect(response).to redirect_to(new_user_session_path)
       end
     end
@@ -23,7 +23,7 @@ RSpec.describe ResponsesController do
     end
 
     it "allows a logged-in user to create a response" do
-      expect{post :create, post_id: @post.id, response: { body: "Great post!" }}.
+      expect{post :create, params: { post_id: @post.id, response: { body: "Great post!" }}}.
         to change(Response, :count).by(1)
     end
   end
@@ -39,13 +39,13 @@ RSpec.describe ResponsesController do
     end
 
     it "notifies author and all responders" do
-      expect{post :create, post_id: @post.id, response: { body: "thanks for this post"}}.
+      expect{post :create, params: {post_id: @post.id, response: { body: "thanks for this post"}}}.
         to change(Notification, :count).by(2)
     end
 
     it "notifies the author once even if the author is included in responders" do
       @post.responses.create!(body: "Thanks!", user_id: @author.id)
-      expect{post :create, post_id: @post.id, response: { body: "Cool post" }}.
+      expect{post :create, params: {post_id: @post.id, response: { body: "Cool post" }}}.
         to change(Notification, :count).by(2)
     end
   end
