@@ -19,5 +19,5 @@ var NavbarAnimation = {
 };
 
 $(document).ready( NavbarAnimation.init );
-$(document).on( 'page:load', NavbarAnimation.init );
+$(document).on( 'turbolinks:load', NavbarAnimation.init );
 

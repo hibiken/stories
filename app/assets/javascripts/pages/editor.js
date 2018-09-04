@@ -103,4 +103,4 @@ var Editor = {
 };
 
 $(document).ready( Editor.init );
-$(document).on( 'page:load', Editor.init );
+$(document).on( 'turbolinks:load', Editor.init );

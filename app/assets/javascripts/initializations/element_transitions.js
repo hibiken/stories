@@ -16,4 +16,4 @@ var ElementTransitions = {
 };
 
 $(document).ready(ElementTransitions.init);
-$(document).on('page:load', ElementTransitions.init);
+$(document).on('turbolinks:load', ElementTransitions.init);
