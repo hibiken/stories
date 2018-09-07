@@ -3,7 +3,12 @@ class ResponsesController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    @response = current_user.responses.create(body: params[:response][:body], post_id: @post.id)
+    @response = current_user.posts.create(
+      body: params[:post][:body], 
+      plain: params[:post][:plain],
+      parent_id: @post.id,
+      published_at: Time.now
+    )
     if @response.valid?
       notify_author_and_responders
       respond_to do |format|
@@ -13,6 +18,36 @@ class ResponsesController < ApplicationController
     else
       # TODO: display useful error message
       render nothing: true
+    end
+  end
+
+  def build
+    @parent_post = Post.find(params[:post_id])
+    @post = current_user.posts.create(
+      parent_id: @parent_post.id,
+      body: params[:post][:body], 
+      plain: params[:post][:plain]
+    )
+
+    respond_to do |format|
+      format.html { 
+        redirect_to edit_post_path(@post)
+        #render "posts/new", layout: 'editor' 
+      }
+      format.js
+    end
+  end
+
+
+  def new
+    @parent_post = Post.find(params[:post_id])
+    @post = current_user.posts.new(
+      parent_id: @parent_post.id
+    )
+
+    respond_to do |format|
+      format.html { render "posts/new", layout: 'editor' }
+      format.js
     end
   end
 

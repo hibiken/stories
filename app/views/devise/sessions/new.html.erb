@@ -21,6 +21,9 @@
         <% end -%>
         <%= link_to "Sign up", new_user_registration_path, class: 'button green-border-button pull-right' %>
 
+        <hr/>
+        <%= render partial: "devise/shared/links" %>
+
       <% end %>
     </div>
   </div>

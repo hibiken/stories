@@ -17,6 +17,8 @@
     <%= f.text_field :title, class: 'editor-title', placeholder: 'Title', autofocus: true, data: { behavior: "autosave" }, onfocus: "this.value = this.value;" %>
   </div>
 
+  <% f.hidden_field :parent_id if @parent_post %>
+
   <div class="form-group">
     <%= react_component('NewEditor', content: @post.body ) %>
     <% f.text_area :body, class: 'medium-editable', data: { behavior: "autosave" } %> 

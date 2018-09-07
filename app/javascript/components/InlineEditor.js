@@ -50,7 +50,6 @@ export default class InlineEditor extends React.Component {
 
   render(){
     return <div className="medium-editable post-body" 
-                id="editor-body"
                 onClick={this.handleClick}
                 >
               <Dante content={this.initialContent()}

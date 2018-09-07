@@ -47,7 +47,7 @@ export default class NotificationItem extends React.Component {
   notificationIcon() {
     switch(this.props.action) {
       case 'liked your':
-        return <i className="fa fa-heart-o"></i>;
+        return <i className="fa fa-heart"></i>;
       case 'started following you':
         return <i className="fa fa-user"></i>;
       case 'responded to your':

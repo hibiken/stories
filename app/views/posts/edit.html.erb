@@ -7,6 +7,11 @@
         <small>Edit Post</small>
       </div>
     </div>
+
+    <% if @post.parent.present? %>
+      <%= render 'posts/parent_post', parent: @post.parent %>
+    <% end %>
+
     <%= render 'form', post: @post %>
   </div>
 </div>

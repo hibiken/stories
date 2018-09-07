@@ -21,12 +21,20 @@ class Post < ApplicationRecord
 
   include Rails.application.routes.url_helpers
 
-  validates :title, :body, :user_id, presence: true
+  #validates :title, :body, :user_id, presence: true
+
+  validates :body, :user_id, presence: true
 
   belongs_to :user
+  belongs_to :parent, optional: true, class_name: "Post", counter_cache: :responses_count
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
-  has_many :responses, -> { order(created_at: :desc) }, dependent: :destroy
+  has_many :responses, -> { order(created_at: :desc) }, 
+            class_name: "Post",
+            foreign_key: "parent_id",
+            dependent: :destroy
+
+
   has_many :responders, through: :responses, source: :user
   has_many :likes, as: :likeable, dependent: :destroy
   has_many :likers, through: :likes, source: :user
@@ -37,11 +45,13 @@ class Post < ApplicationRecord
   delegate :username, to: :user
 
   scope :recent, -> { order(created_at: :desc) }
+  scope :replies, -> { where.not(parent_id: nil) }
+  scope :non_replies, -> { where(parent_id: nil) }
   scope :latest, ->(number) { recent.limit(number) }
-  scope :top_stories, ->(number) { order(likes_count: :desc).limit(number) }
+  scope :top_stories, ->(number) { non_replies.order(likes_count: :desc).limit(number) }
   scope :published, -> { where.not(published_at: nil) }
-  scope :drafts, -> { where(published_at: nil) }
-  scope :featured, -> { where(featured: true) }
+  scope :drafts, -> { non_replies.where(published_at: nil) }
+  scope :featured, -> { non_replies.where(featured: true) }
 
   #mount_uploader :picture, PictureUploader
   has_one_attached :picture

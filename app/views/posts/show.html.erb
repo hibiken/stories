@@ -1,5 +1,6 @@
 <div class="row" data-animation="fadeInUp-fadeOutDown">
   <div id="main-post" class="col-xs-10 col-md-8 col-md-offset-2 col-xs-offset-1 main-content">
+
     <% if admin_signed_in? %>
       <%= feature_post_button_for(@post) %>
     <% end %>
@@ -7,7 +8,14 @@
     <div class="pull-right">
       <%= render partial: 'posts/social_share', locals: { post: @post } %>
     </div>
+
     <%= render 'post_metadata', post: @post %>
+
+    <% if parent = @post.parent and parent.present? %>
+      <%= render 'parent_post', parent: parent %>
+    <% end %>
+
+
 
     <% if @post.picture.attached? %>
       <div class="post-picture-wrapper">
@@ -15,7 +23,9 @@
       </div>
     <% end %>
 
-    <h3 class="title"><%= @post.title %></h3>
+    <h1 class="graf graf--h2">
+      <%= @post.title %>
+    </h1>
     <div class="body">
       <%= react_component("ReadOnlyEditor", content: @post.body ) %>
       <p><% remove_javascript(@post.body).html_safe %></p>
@@ -81,7 +91,7 @@
 
     <div data-behavior="responses-list">
       <% if @responses.any? %>
-          <%= render @responses %>
+          <%= render partial: 'responses/response', collection: @responses , as: :response %>
       <% end %>
     </div>
   </div>

@@ -9,8 +9,14 @@ Rails.application.routes.draw do
     resources :recommended_posts, only: [:index]
   end
 
+  match "/posts/:post_id/responses/new" => "responses#build", :via => :post, :as => :post_response_build
+
   resources :posts, except: [:index] do
-    resources :responses, only: [:create]
+    resources :responses, only: [:create, :new] do
+      #collection do
+      #  post :build
+      #end
+    end
   end
 
   resources :tags, only: [:show]

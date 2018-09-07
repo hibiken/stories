@@ -243,13 +243,17 @@ export default class NewEditor extends React.Component {
   componentDidMount(){
     // preload tags if its edit.
     var tag_string = $('[data-behavior="tags"]').data("tags");
-    var tags = tag_string.length > 0 ? tag_string.split(', ') : ['Story', 'Music'];
+    
+    if(tag_string){
+      var tags = tag_string.length > 0 ? tag_string.split(', ') : ['Story', 'Music'];
 
-    var my_taggle = new Taggle('js-taggle', {
-      duplicateTagClass: 'bounce',
-      tags: tags,
-      preserveCase: true
-    });
+      var my_taggle = new Taggle('js-taggle', {
+        duplicateTagClass: 'bounce',
+        tags: tags,
+        preserveCase: true
+      });      
+    }
+
 
     // FIXME: is there a better way to do this?
     $('[data-behavior="publish-button"').hover(function() {

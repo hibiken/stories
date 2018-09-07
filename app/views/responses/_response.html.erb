@@ -8,7 +8,10 @@
   </div>
 
   <div class="main-body">
-    <p class="response-body"><%= remove_javascript(response.body).html_safe %></p>
+    <p class="response-body">
+      <%= remove_javascript(response.plain).html_safe %>
+      <%= link_to "Read More", response %>
+    </p>
   </div>
 
   <div class="response-stats clearfix">

@@ -36,14 +36,14 @@ class User < ApplicationRecord
   #validate :avatar_image_size
 
   has_many :posts, dependent: :destroy
-  has_many :responses, dependent: :destroy
+  #has_many :responses, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :liked_posts, through: :likes, source: :likeable, source_type: "Post"
-  has_many :liked_responses, through: :likes, source: :likeable, source_type: "Response"
+  #has_many :liked_responses, through: :likes, source: :likeable, source_type: "Response"
 
   has_many :bookmarks, dependent: :destroy
   has_many :bookmarked_posts, through: :bookmarks, source: :bookmarkable, source_type: "Post"
-  has_many :bookmarked_responses, through: :bookmarks, source: :bookmarkable, source_type: "Response"
+  #has_many :bookmarked_responses, through: :bookmarks, source: :bookmarkable, source_type: "Response"
 
   has_many :notifications, dependent: :destroy, foreign_key: :recipient_id
 

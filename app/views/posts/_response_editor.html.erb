@@ -1,13 +1,34 @@
-<div class="inline-editor" data-behavior="response-editor" >
+<div id="inline-editor" class="inline-editor" data-behavior="response-editor" >
   <div class="editor-metadata">
     <%= avatar_for(current_user, size: 40) %>
-    <strong class="editor-username"><%= current_user.username %></strong>
+    <strong class="editor-username">
+      <%= current_user.username %>  
+    </strong>
   </div>
-  <%= form_for [post, Response.new], remote: true, html: { class: 'editor-form' } do |f| %>
+
+  <script type="text/javascript">
+    function changePath(path, remote=false){
+      $('#new_post').attr("data-remote", remote)
+      $('#new_post').attr('action', path)
+    }
+  </script>
+
+  <%= form_for post.responses.new, url: post_responses_path(post), html: { class: 'editor-form' } do |f| %>
     <div class="form-group">
-      <%= f.text_area :body, class: "medium-editable response-body", id: 'editor-body' %>
+      <% f.text_area :body, class: "medium-editable response-body", id: 'editor-body' %>
+
+      <%= f.hidden_field :body, id: 'editor-body' %>
+      <%= f.hidden_field :plain, id: 'editor-plain' %> 
+      <%= react_component("InlineEditor") %>
+
     </div>
-    <%= f.submit "Publish", class: 'button green-inner-button' %>
+    <%= f.submit "Publish", class: 'button green-inner-button', onclick: "return changePath('#{post_responses_path(post)}', true)"  %>
+
+    <%= f.submit "Go FullScreen", 
+    class: 'button green-inner-button' , onclick: "return changePath('#{post_response_build_path(post)}', false)"
+      %>
+
+
     <button class='button green-border-button cancel-button' data-behavior="editor-cancel">Cancel</button>
   <% end %>
 </div>
