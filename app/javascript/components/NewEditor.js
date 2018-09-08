@@ -58,12 +58,12 @@ export default class NewEditor extends React.Component {
             }), 
              EmbedBlockConfig({ options: {
                                       placeholder: "put an external link",
-                                      endpoint: "//open.iframe.ly/api/oembed?origin=https://github.com&url="
+                                      endpoint: "http://open.iframe.ly/api/oembed?origin=https://github.com&url="
                                     } 
                               }),
              VideoBlockConfig({ options: {
                                       placeholder: "put an external video link",
-                                      endpoint: "http//open.iframe.ly/api/oembed?origin=https://github.com&url=",
+                                      endpoint: "http://open.iframe.ly/api/oembed?origin=https://github.com&url=",
                                       caption: 'optional caption'
                                     } 
                                   }),
