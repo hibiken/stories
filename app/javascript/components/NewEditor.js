@@ -24,7 +24,7 @@ export default class NewEditor extends React.Component {
         method: $('input[name="_method"]').val() || "POST",
         data: {
           post: {
-            title: $('#post_title').val(),
+            //title: $('#post_title').val(),
             body: JSON.stringify(editorContent),
             plain: context.getTextFromEditor(editorContent),
             all_tags: $('#post_all_tags').val()
@@ -45,7 +45,12 @@ export default class NewEditor extends React.Component {
   }
 
   widgetsConfig = ()=>{
-    return [ ImageBlockConfig(), 
+    return [ ImageBlockConfig({
+                options: {
+                  upload_url: $('.editor-form').attr('action') + '/uploads',
+                  image_caption_placeholder: "type a caption (optional)"
+                }
+            }), 
              EmbedBlockConfig(),
              VideoBlockConfig(),
              PlaceholderBlockConfig()
@@ -244,7 +249,7 @@ export default class NewEditor extends React.Component {
     // preload tags if its edit.
     var tag_string = $('[data-behavior="tags"]').data("tags");
     
-    if(tag_string){
+    //if(tag_string){
       var tags = tag_string.length > 0 ? tag_string.split(', ') : ['Story', 'Music'];
 
       var my_taggle = new Taggle('js-taggle', {
@@ -252,7 +257,7 @@ export default class NewEditor extends React.Component {
         tags: tags,
         preserveCase: true
       });      
-    }
+    //}
 
 
     // FIXME: is there a better way to do this?
@@ -282,6 +287,10 @@ export default class NewEditor extends React.Component {
     $('[data-behavior="publish-button"]').on('click', function() {
       $('.editor-form').submit();
     });
+
+    $('.inlineTooltip-button').on('click', (e)=>{
+      e.preventDefault()
+    })
 
     $('.publish-dropdown').on('click', function(e) {
       e.stopPropagation();

@@ -56,12 +56,27 @@ class Post < ApplicationRecord
   #mount_uploader :picture, PictureUploader
   has_one_attached :picture
 
+  has_many_attached :images
+
   before_save :generate_lead!
+  before_save :infer_title
+
   # will_pagination configuration
   self.per_page = 5
 
   #include SearchablePost
   searchkick
+
+  def infer_title
+    return if self.plain.blank? or !self.changes.keys.include?("plain")
+    get_title
+  end
+
+  # will infer title of post
+  def get_title
+    heading = self.plain.split("\n").first
+    self.title = heading[0..120] if heading.present?
+  end
 
   def picture_path
     picture_url = self.picture.attached? ? url_for(self.picture) : nil
@@ -69,7 +84,7 @@ class Post < ApplicationRecord
 
   def search_data(options = {})
     self.as_json({
-      only: [:title, :body, :published_at, :slug],
+      only: [:title, :plain, :published_at, :slug],
       include: {
         user: { only: [:username] },
         #user: {methods: [:avatar_url], only: [:username, :avatar_url] },

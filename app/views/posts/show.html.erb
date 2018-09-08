@@ -23,9 +23,11 @@
       </div>
     <% end %>
 
+    <!--
     <h1 class="graf graf--h2">
-      <%= @post.title %>
+      <% @post.title %>
     </h1>
+    -->
     <div class="body">
       <%= react_component("ReadOnlyEditor", content: @post.body ) %>
       <p><% remove_javascript(@post.body).html_safe %></p>

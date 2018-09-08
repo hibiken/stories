@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import Dante from 'Dante2'
 
 import {DanteAnchorPopoverConfig} from 'Dante2/package/es/components/popovers/link.js'
+import {ImageBlockConfig} from 'Dante2/package/es/components/blocks/image.js'
 
 export default class NewEditor extends React.Component {
 
@@ -11,7 +12,7 @@ export default class NewEditor extends React.Component {
   }
 
   widgetsConfig = ()=>{
-    return []
+    return [ImageBlockConfig()]
   }
 
   render(){

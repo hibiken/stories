@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   match "/posts/:post_id/responses/new" => "responses#build", :via => :post, :as => :post_response_build
 
   resources :posts, except: [:index] do
+    member do
+      post :uploads
+    end
     resources :responses, only: [:create, :new] do
       #collection do
       #  post :build

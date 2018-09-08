@@ -13,9 +13,9 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= f.text_field :title, class: 'editor-title', placeholder: 'Title', autofocus: true, data: { behavior: "autosave" }, onfocus: "this.value = this.value;" %>
-  </div>
+  <!--<div class="form-group">
+    <% f.text_field :title, class: 'editor-title', placeholder: 'Title', autofocus: true, data: { behavior: "autosave" }, onfocus: "this.value = this.value;" %>
+  </div>-->
 
   <% f.hidden_field :parent_id if @parent_post %>
 
