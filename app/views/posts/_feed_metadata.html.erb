@@ -1,6 +1,6 @@
 <% if post.tagged? %>
   <div class="feed-metadata">
-    <%= icon('tag') %> <%= link_to post.tag.name, post.tag %>
+    <%= icon('fa', 'tag') %> <%= link_to post.tag.name, post.tag %>
   </div>
 <% elsif post.recommended? %>
 <div class="feed-metadata">
