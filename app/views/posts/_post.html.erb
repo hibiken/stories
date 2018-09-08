@@ -32,8 +32,8 @@
     </div>
 
     <div class="response-count pull-right">
-      <% if post.responses.count > 0 %>
-        <%= link_to (pluralize(post.responses.count, "response")), post_path(post, anchor: 'responses'), class: 'response-count' %>
+      <% if post.responses_count > 0 %>
+        <%= link_to (pluralize(post.responses_count, "response")), post_path(post, anchor: 'responses'), class: 'response-count' %>
       <% end %>
     </div>
   </div>
