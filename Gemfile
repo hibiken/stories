@@ -52,6 +52,8 @@ gem 'searchkick'
 gem 'friendly_id'
 gem 'will_paginate'
 gem 'mini_magick'
+gem "aws-sdk-s3", require: false
+
 
 # ActiveJob backend
 gem 'sidekiq'
