@@ -169,26 +169,27 @@ body.posts.show {
     position: fixed;
     bottom: 0;
     background-color: $white;
-    width: 720px;
+    width: 100%;
     padding: 0.8em 0.8em 0.5em;
     left: 50%;
     box-shadow: 0 0 1px rgba(0,0,0,.44);
     border-radius: 3px 3px 0 0;
     transition: 0.3s transform;
     transform: translate(-50%, 0);
+    z-index: 9;
     &.is-inView {
-      transform: translate(-50%, 0);
+      //transform: translate(-50%, 0);
     }
     &.is-hidden {
       transform: translate(-50%, 100%);
     }
     .post-stats {
-      width: 55%;
+      //width: 55%;
       padding-right: 10px;
       border-right: 1px solid $border-color;
     }
     .metabar-author-info {
-      width: 45%;
+      //width: 45%;
       padding-left: 10px;
       align-items: center;
     }
@@ -198,7 +199,7 @@ body.posts.show {
       display: inline-block;
       padding-top: 0.5px;
     }
-    .fa-comment-o {
+    .fa-comment {
       font-size: 18px;
       color: $light-font-color;
     }

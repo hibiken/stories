@@ -11,9 +11,9 @@
 #  likes_count :integer          default("0")
 #
 
-FactoryBot.define do
-  factory :response do
-    body {"Awesome post thanks!!"}
-    user
-  end
-end
+#FactoryBot.define do
+#  factory :response do
+#    body {"Awesome post thanks!!"}
+#    user
+#  end
+#end

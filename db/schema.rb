@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_03_043233) do
+ActiveRecord::Schema.define(version: 2018_09_04_142409) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -113,6 +113,10 @@ ActiveRecord::Schema.define(version: 2018_09_03_043233) do
     t.text "lead"
     t.string "slug"
     t.integer "responses_count", default: 0, null: false
+    t.text "plain"
+    t.text "html"
+    t.bigint "parent_id"
+    t.index ["parent_id"], name: "index_posts_on_parent_id"
     t.index ["slug"], name: "index_posts_on_slug", unique: true
     t.index ["user_id"], name: "index_posts_on_user_id"
   end

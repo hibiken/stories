@@ -140,13 +140,6 @@ RSpec.describe PostsController do
       sign_in @user
     end
 
-    describe "POST #create" do
-      it "fails gracefully when it fails validations" do
-        post :create, params: { post: attributes_for(:draft, title: "  ")}
-        expect(response).to render_template(:new)
-      end
-    end
-
     describe "PATCH #update" do
       before :each do
         @draft = Post.new_draft_for(@user)

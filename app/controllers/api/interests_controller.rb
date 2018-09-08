@@ -5,13 +5,13 @@ class Api::InterestsController < ApplicationController
   # Follow a tag.
   def create
     current_user.follow_tag(@tag)
-    head status: 200
+    head :ok
   end
 
   # Unfollow a tag.
   def destroy
     current_user.unfollow_tag(@tag)
-    head status: 200
+    head :ok
   end
 
   private

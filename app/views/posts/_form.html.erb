@@ -7,18 +7,21 @@
   <div class="file-upload-previewer hidden">
     <img src="" id="image_preview"/>
   </div>
-  <% if post.picture? %>
+  <% if post.picture.attached? %>
     <div class="existing-img-previewer" id="existing-img-previewer">
-      <%= image_tag post.picture.url(:thumb) %>
+      <%= image_tag @post.picture.variant(resize: "800x600") %>
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= f.text_field :title, class: 'editor-title', placeholder: 'Title', autofocus: true, data: { behavior: "autosave" }, onfocus: "this.value = this.value;" %>
-  </div>
+  <!--<div class="form-group">
+    <% f.text_field :title, class: 'editor-title', placeholder: 'Title', autofocus: true, data: { behavior: "autosave" }, onfocus: "this.value = this.value;" %>
+  </div>-->
+
+  <% f.hidden_field :parent_id if @parent_post %>
 
   <div class="form-group">
-    <%= f.text_area :body, class: 'medium-editable', data: { behavior: "autosave" } %> 
+    <%= react_component('NewEditor', content: @post.body ) %>
+    <% f.text_area :body, class: 'medium-editable', data: { behavior: "autosave" } %> 
   </div>
 
   <div class="hidden">

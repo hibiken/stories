@@ -90,7 +90,7 @@ RSpec.describe User, type: :model do
   describe "adding likes" do
     let(:user) { create(:user) }
     let(:post) { create(:post) }
-    let(:response) { build(:response) }
+    let(:response) { build(:post) }
     before :each do
       post.responses << response
     end
@@ -119,7 +119,7 @@ RSpec.describe User, type: :model do
   describe "adding bookmarks" do
     let(:user) { create(:user) }
     let(:post) { create(:post) }
-    let(:response) { build(:response) }
+    let(:response) { build(:post) }
     before :each do
       post.responses << response
     end
@@ -138,7 +138,7 @@ RSpec.describe User, type: :model do
       user.add_bookmark_to(response)
       user.reload
       expect(user.bookmarked?(response)).to be_truthy
-
+#
       user.remove_bookmark_from(response)
       user.reload
       expect(user.bookmarked?(response)).to be_falsy

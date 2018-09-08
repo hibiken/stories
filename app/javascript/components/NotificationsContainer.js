@@ -74,7 +74,7 @@ export default class NotificationsContainer extends React.Component {
       );
     } else {
       return (
-        <i className="fa fa-bell-o notification-bell" id="bell"></i>
+        <i className="fa fa-bell notification-bell" id="bell"></i>
       );
     }
   }
