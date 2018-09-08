@@ -12,14 +12,6 @@ module PostsHelper
     end
   end
 
-  # blacklisting
-  def remove_javascript(html)
-    html.gsub(/<script.*?>/i, "")
-        .gsub(/<\/script>/i, "")
-        .gsub(/javascript:/i, "")
-        .gsub(/on[\w]+=/i, "")
-  end
-
   # whitelisting
   # TODO: this won't work for embedded video
   def sanitize_html(html)

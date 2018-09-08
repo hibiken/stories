@@ -9,7 +9,7 @@
 
   <div class="main-body">
     <p class="response-body">
-      <%= remove_javascript(response.plain).html_safe %>
+      <%= response.plain.to_s.html_safe %>
       <%= link_to "Read More", response %>
     </p>
   </div>

@@ -15,7 +15,7 @@
     <h3 class="post-title"><%= link_to post.title, post %></h3>
     <% if post.lead %>
       <div class="post-body">
-        <%= truncate(remove_javascript(post.plain || ""), length: 150, separator: ' ', escape: false) %>
+        <%= truncate(post.plain || "", length: 150, separator: ' ', escape: false) %>
         
       </div>
       <%= link_to "Read more", post, class: 'read-more' %>

@@ -30,7 +30,7 @@
     -->
     <div class="body">
       <%= react_component("ReadOnlyEditor", content: @post.body ) %>
-      <p><% remove_javascript(@post.body).html_safe %></p>
+      <p><% @post.body.html_safe %></p>
     </div>
 
     <div class="post-tags">

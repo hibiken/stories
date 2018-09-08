@@ -10,7 +10,7 @@
 #  updated_at  :datetime         not null
 #  likes_count :integer          default("0")
 #
-
+=begin
 require 'rails_helper'
 
 RSpec.describe Response, type: :model do
@@ -43,3 +43,4 @@ RSpec.describe Response, type: :model do
     end
   end
 end
+=end

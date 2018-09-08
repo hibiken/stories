@@ -10,7 +10,7 @@
       </small>
       <% if parent.plain %>
         <div class="post-body">
-          <%= truncate(remove_javascript(parent.plain || ""), length: 150, separator: ' ', escape: false) %>
+          <%= truncate(parent.plain || "" , length: 150, separator: ' ', escape: false) %>
         </div>
         
         <%= link_to parent.username, parent.user , class: 'username' %>

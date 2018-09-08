@@ -21,8 +21,6 @@ class Post < ApplicationRecord
 
   include Rails.application.routes.url_helpers
 
-  #validates :title, :body, :user_id, presence: true
-
   validates :body, :user_id, presence: true
 
   belongs_to :user
@@ -58,7 +56,6 @@ class Post < ApplicationRecord
 
   has_many_attached :images
 
-  before_save :generate_lead!
   before_save :infer_title
 
   # will_pagination configuration
@@ -151,26 +148,5 @@ class Post < ApplicationRecord
   def word_count
     words.size
   end
-
-  def generate_lead!
-    puts "TO BE DEPRECATED IN FAVOR OF PLAIN VERSION"
-  end
-
-=begin
-  # Generate a lead which appears in post panel.
-  # FIXME: this method needs refactoring or completely different approach
-  def generate_lead!
-    if self.published?
-      post_body = Nokogiri::HTML::Document.parse(self.body)
-      if post_body.css('h2').size > 0
-        self.lead = post_body.css('h2')[0].to_s
-      elsif post_body.css('h3').size > 0
-        self.lead = post_body.css('h3')[0].to_s
-      elsif post_body.css('p').size > 0
-        self.lead = post_body.css('p')[0].to_s
-      end
-    end
-  end
-=end
-
+  
 end

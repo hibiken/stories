@@ -17,6 +17,11 @@ export default class NewEditor extends React.Component {
 
   saveMethod = (context, editorContent)=>{
 
+    const text = context.getTextFromEditor(editorContent)    
+    if(text === ""){
+      return
+    }
+
     $('[data-behavior="editor-message"]').text('Saving...');
      $.ajax({
         url: '/api' + $('.editor-form').attr('action'),
