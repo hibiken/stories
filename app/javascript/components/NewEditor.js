@@ -56,8 +56,17 @@ export default class NewEditor extends React.Component {
                   image_caption_placeholder: "type a caption (optional)"
                 }
             }), 
-             EmbedBlockConfig(),
-             VideoBlockConfig(),
+             EmbedBlockConfig({ options: {
+                                      placeholder: "put an external link",
+                                      endpoint: "//open.iframe.ly/api/oembed?origin=https://github.com&url="
+                                    } 
+                              }),
+             VideoBlockConfig({ options: {
+                                      placeholder: "put an external video link",
+                                      endpoint: "http//open.iframe.ly/api/oembed?origin=https://github.com&url=",
+                                      caption: 'optional caption'
+                                    } 
+                                  }),
              PlaceholderBlockConfig()
            ]
   }
