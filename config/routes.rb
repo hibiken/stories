@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     resources :recommended_posts, only: [:index]
   end
 
+  match "/oembed" => "oembed#show", :via => :get, :as => :oembed_get
+
   match "/posts/:post_id/responses/new" => "responses#build", :via => :post, :as => :post_response_build
 
   resources :posts, except: [:index] do
