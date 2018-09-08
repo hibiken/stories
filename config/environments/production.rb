@@ -102,6 +102,10 @@ Rails.application.configure do
     :enable_starttls_auto => ENV['MAILER_ENABLE_TLS'] || true
   }
 
+  config.action_mailer.default_url_options = { host: 'dante-stories.herokuapp.com' }
+  config.action_mailer.asset_host = 
+  Rails.application.routes.default_url_options[:host] = "https://dante-stories.herokuapp.com"
+
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
