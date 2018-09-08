@@ -52,6 +52,8 @@ nav.navbar {
   border-color: $super-light-gray;
   &.navbar-default {
     background-color: rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid #1312121f !important;
+    box-shadow: 0px -6px 12px 0px rgba(0, 0, 0, 0.44);
   }
 
   .navbar-brand {
