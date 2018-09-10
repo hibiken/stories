@@ -11,7 +11,7 @@ import {ImageBlockConfig} from 'Dante2/package/es/components/blocks/image.js'
 import {EmbedBlockConfig} from 'Dante2/package/es/components/blocks/embed.js'
 import {VideoBlockConfig} from 'Dante2/package/es/components/blocks/video.js'
 import {PlaceholderBlockConfig} from 'Dante2/package/es/components/blocks/placeholder.js'
-
+import {VideoRecorderBlockConfig} from 'Dante2/package/es/components/blocks/videoRecorder'
 export default class NewEditor extends React.Component {
 
 
@@ -67,7 +67,13 @@ export default class NewEditor extends React.Component {
                                       caption: 'optional caption'
                                     } 
                                   }),
-             PlaceholderBlockConfig()
+             PlaceholderBlockConfig(),
+             VideoRecorderBlockConfig({
+                options: {
+                  seconds_to_record: 20000,
+                  upload_url: $('.editor-form').attr('action') + '/uploads',
+                }
+             })
            ]
   }
 
@@ -317,6 +323,7 @@ export default class NewEditor extends React.Component {
   }
 
   render(){
+
     return <Dante data_storage= {
                     {
                       url: $('.editor-form').attr('action'),

@@ -6,6 +6,7 @@ import {DanteAnchorPopoverConfig} from 'Dante2/package/es/components/popovers/li
 import {ImageBlockConfig} from 'Dante2/package/es/components/blocks/image.js'
 import {EmbedBlockConfig} from 'Dante2/package/es/components/blocks/embed.js'
 import {VideoBlockConfig} from 'Dante2/package/es/components/blocks/video.js'
+import {VideoRecorderBlockConfig} from 'Dante2/package/es/components/blocks/videoRecorder'
 
 export default class NewEditor extends React.Component {
 
@@ -17,7 +18,8 @@ export default class NewEditor extends React.Component {
     return [
               ImageBlockConfig(),
               EmbedBlockConfig(),
-              VideoBlockConfig()
+              VideoBlockConfig(),
+              VideoRecorderBlockConfig()
            ]
   }
 
