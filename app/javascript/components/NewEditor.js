@@ -12,6 +12,18 @@ import {EmbedBlockConfig} from 'Dante2/package/es/components/blocks/embed.js'
 import {VideoBlockConfig} from 'Dante2/package/es/components/blocks/video.js'
 import {PlaceholderBlockConfig} from 'Dante2/package/es/components/blocks/placeholder.js'
 import {VideoRecorderBlockConfig} from 'Dante2/package/es/components/blocks/videoRecorder'
+import {CodeBlockConfig} from 'Dante2/package/es/components/blocks/code'
+import Prism from 'prismjs';
+import {PrismDraftDecorator} from 'Dante2/package/es/components/decorators/prism'
+
+import Link from 'Dante2/package/es/components/decorators/link'
+import findEntities from 'Dante2/package/es/utils/find_entities'
+
+import { CompositeDecorator } from 'draft-js'
+import MultiDecorator from 'draft-js-multidecorators'
+
+
+
 export default class NewEditor extends React.Component {
 
 
@@ -49,8 +61,26 @@ export default class NewEditor extends React.Component {
             ]
   }
 
+  decorators = (context)=>{
+    return (context)=> {
+      return new MultiDecorator([
+        PrismDraftDecorator({
+          prism: Prism,
+          defaultSyntax: 'javascript'
+        }),
+        new CompositeDecorator(
+          [{
+            strategy: findEntities.bind(null, 'LINK', context),
+            component: Link
+          } ]
+        )
+      ])
+      }
+  }
+
   widgetsConfig = ()=>{
-    return [ ImageBlockConfig({
+    return [ CodeBlockConfig(),
+            ImageBlockConfig({
                 options: {
                   upload_url: $('.editor-form').attr('action') + '/uploads',
                   image_caption_placeholder: "type a caption (optional)"
@@ -61,12 +91,13 @@ export default class NewEditor extends React.Component {
                                       endpoint: "/oembed?url="
                                     } 
                               }),
-             VideoBlockConfig({ options: {
-                                      placeholder: "put an external video link",
-                                      endpoint: "/oembed?url=",
-                                      caption: 'optional caption'
-                                    } 
-                                  }),
+             VideoBlockConfig({ breakOnContinuous: true,
+                                options: {
+                                    placeholder: "put an external video link",
+                                    endpoint: "/oembed?url=",
+                                    caption: 'optional caption'
+                                  } 
+                                }),
              PlaceholderBlockConfig(),
              VideoRecorderBlockConfig({
                 options: {
@@ -334,6 +365,18 @@ export default class NewEditor extends React.Component {
                   content={this.initialContent()}
                   tooltips={this.tooltipsConfig()}
                   widgets={this.widgetsConfig()}
+                  decorators={ (context)=> {
+                    return new MultiDecorator([
+                      PrismDraftDecorator({prism: Prism }),
+                      new CompositeDecorator(
+                        [{
+                          strategy: findEntities.bind(null, 'LINK', context),
+                          component: Link
+                        } ]
+                      )
+                    ])
+                    }
+                  }
             />
   }
 }

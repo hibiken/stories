@@ -3,7 +3,7 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "3.5",
-    "Dante2": "^0.5.0-rc4",
+    "Dante2": "^0.5.0-rc5",
     "babel-preset-react": "^6.24.1",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
@@ -11,6 +11,8 @@
     "react_ujs": "^2.4.4"
   },
   "devDependencies": {
+    "babel-plugin-prismjs": "^1.0.2",
+    "prismjs": "^1.15.0",
     "webpack-dev-server": "2.11.2"
   }
 }
