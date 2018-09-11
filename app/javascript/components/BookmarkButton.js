@@ -39,7 +39,7 @@ export default class BookmarkButton extends React.Component {
     } else {
       return (
         <button className="bookmark-button" onClick={this.onBookmarkClick}>
-          <i className="fa fa-bookmark" />
+          <i className="far fa-bookmark" />
           <span className="hide-text">Bookmark</span>
         </button>
       );

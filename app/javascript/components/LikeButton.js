@@ -50,7 +50,7 @@ export default class LikeButton extends React.Component {
     } else {
       return (
         <button className="like-button" onClick={this.onLikeClick}>
-          <i className="fa fa-heart" />
+          <i className="far fa-heart" />
           <span className="hide-text">Like</span>
         </button>
       );

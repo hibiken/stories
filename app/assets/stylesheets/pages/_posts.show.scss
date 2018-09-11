@@ -52,7 +52,7 @@ body.posts.show {
     }
   }
   .main-content .post-stats {
-    .fa {
+    .fa, .far {
       width: 24px;
       font-size: 22px;
     }
@@ -226,9 +226,11 @@ body.posts.show {
       display: inline-block;
       .button {
         font-size: 12px;
+        margin-left: 30px;
       }
       .unfollow-button {
         width: 80px;
+        
       }
     }
   }

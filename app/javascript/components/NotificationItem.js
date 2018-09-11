@@ -52,7 +52,7 @@ export default class NotificationItem extends React.Component {
         return <i className="fa fa-user"></i>;
       case 'responded to your':
       case 'also commented on a':
-        return <i className="fa fa-commenting-o"></i>;
+        return <i className="far fa-comment-dots"></i>;
     }
   }
 
