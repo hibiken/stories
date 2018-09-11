@@ -8,11 +8,12 @@
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
-    "react_ujs": "^2.4.4"
-  },
-  "devDependencies": {
+    "react_ujs": "^2.4.4",
     "babel-plugin-prismjs": "^1.0.2",
     "prismjs": "^1.15.0",
     "webpack-dev-server": "2.11.2"
+  },
+  "devDependencies": {
+
   }
 }
