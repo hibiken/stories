@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from "react-dom";
 import PopoverLink from "./PopoverLink"
+import UserFollowButton from './UserFollowButton'
 
 export default class SuggestionItem extends React.Component {
   render () {
