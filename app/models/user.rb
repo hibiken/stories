@@ -90,6 +90,10 @@ class User < ApplicationRecord
     send("bookmarked_#{downcased_class_name(bookmarkable_obj)}_ids").include?(bookmarkable_obj.id)
   end
 
+  def is_admin?
+    self.role == "admin"
+  end
+
   private
 
     def search_data(options ={})

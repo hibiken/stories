@@ -21,11 +21,11 @@
 
   <div data-behavior="progress-bar" class="progress-bar"></div>
 
-  <% if admin_signed_in? %>
-    <%= render 'layouts/admin_header' %>
-  <% else %>
+  <% # if admin_signed_in? %>
+    <% #= render 'layouts/admin_header' %>
+  <% #else %>
     <%= render 'layouts/header' %>
-  <% end %>
+  <% #end %>
   <%= render 'layouts/alert_messages' %>
 
   <div class="container-fluid main-container">
