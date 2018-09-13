@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from "react-dom";
 
+import SuggestionItem from "./SuggestionItem";
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
+
 export default class FollowSuggestionsContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -57,7 +60,7 @@ export default class FollowSuggestionsContainer extends React.Component {
     }
     return this.state.activeUsers.map(user => {
       return (
-        <React.addons.CSSTransitionGroup
+        <ReactCSSTransitionGroup
           key={user.id}
           transitionName="suggestion"
           transitionAppear={true}
@@ -66,7 +69,7 @@ export default class FollowSuggestionsContainer extends React.Component {
           transitionLeaveTimeout={300}
         >
           <SuggestionItem key={user.id} {...user} />
-        </React.addons.CSSTransitionGroup>
+        </ReactCSSTransitionGroup>
       )
     });
   }
