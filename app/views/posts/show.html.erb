@@ -44,8 +44,10 @@
       </div>
       <div class="pull-left">
         <%= link_to post_path(@post, anchor: 'responses'), class: "response-icon-wrapper" do %>
-          <i class="fa fa-comment"></i>
-          <span class="response-count" data-behavior="response-count"><%= @post.responses_count %></span>
+          <i class="far fa-comment"></i>
+          <span class="response-count" data-behavior="response-count">
+            <%= @post.responses_count %>
+          </span>
         <% end %>
       </div>
 

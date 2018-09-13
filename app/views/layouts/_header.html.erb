@@ -19,6 +19,14 @@
       <% else %>
         <li><a href='' data-behavior="trigger-overlay">Bookmarks</a></li>
       <% end %>
+
+
+      <li>
+        <% if admin_signed_in? %>
+          <%= nav_link_to "<strong>Admin</strong>".html_safe,  admin_dashboard_path %>
+        <% end %>
+      </li>
+
     </ul>
 
     <div class="folding-nav">

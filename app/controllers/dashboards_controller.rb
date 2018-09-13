@@ -1,5 +1,5 @@
 class DashboardsController < ApplicationController
-  before_action :check_for_admin, only: [:show]
+  # before_action :check_for_admin, only: [:show]
   before_action :authenticate_user!, only: [:bookmarks]
 
   def show
