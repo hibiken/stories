@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from "react-dom";
+import NotificationItem from './NotificationItem'
 
 export default class NotificationsContainer extends React.Component {
   constructor(props) {
