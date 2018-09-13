@@ -6,15 +6,20 @@ RSpec.describe UsersController do
 
     describe "GET #edit" do
       it "redirects to sign in page" do
-        get :edit, id: user.id
+        get :edit, params: {id: user.id}
         expect(response).to redirect_to(new_user_session_path)
       end
     end
 
     describe "PATHCH #update" do
       it "does not update the record and redirects to sign in page" do
-        patch :update, id: user.id, user: { username: 'exampleuser', 
-                                            description: 'some desc' }
+        patch :update, params: {
+          id: user.id, 
+          user: { 
+            username: 'exampleuser', 
+            description: 'some desc' 
+          }
+        }
         user.reload
         expect(user.description).not_to eq('some desc')
         expect(response).to redirect_to(new_user_session_path)
@@ -31,15 +36,20 @@ RSpec.describe UsersController do
 
     describe "GET #edit" do
       it "restrict access to other users' profile edit page" do
-        get :edit, id: other_user.id
+        get :edit, params: {id: other_user.id}
         expect(response).to redirect_to(root_path)
       end
     end
 
     describe "PATCH #update" do
       it "does not update the record and redirects to sign in page" do
-        patch :update, id: other_user.id, user: { username: "updatedname",
-                                                  description: "some desc" }
+        patch :update, params: { 
+          id: other_user.id, 
+          user: { 
+            username: "updatedname",
+            description: "some desc" 
+          }
+        }
         user.reload
         expect(user.description).not_to eq("some desc")
         expect(response).to redirect_to(root_path)

@@ -1,13 +1,13 @@
 require "rails_helper"
 
-RSpec.describe API::PostsController do
+RSpec.describe Api::PostsController do
 
   describe "Access Control" do
     describe "PATCH #update" do
       let(:post) { create(:post) }
 
       it "requires a logged-in user" do
-        xhr :patch, :update, id: post.id, post: { title: "Updated title", body: "Updated body" }
+        patch :update, xhr: true, params: {id: post.id, post: { title: "Updated title", body: "Updated body" }}
         expect(response.status).to eq(401)
       end
 
@@ -18,7 +18,7 @@ RSpec.describe API::PostsController do
         @request.env["devise.mapping"] = Devise.mappings[:user]
         sign_in user
 
-        expect{xhr :patch, :update, id: others_post.id, post: { title: "hello", body: "world" }}.
+        expect{patch :update, xhr: true, params: { id: others_post.id, post: { title: "hello", body: "world" }}}.
           to raise_error(ActiveRecord::RecordNotFound)
       end
     end
@@ -34,7 +34,7 @@ RSpec.describe API::PostsController do
     describe "updating drafts" do
       before :each do
         draft = create(:draft, user: @user)
-        xhr :patch, :update, id: draft.id, post: { title: "updated title", body: "updated body" }
+        patch :update, xhr: true, params: { id: draft.id, post: { title: "updated title", body: "updated body" }}
         @updated_draft = assigns(:post)
       end
 
@@ -51,7 +51,7 @@ RSpec.describe API::PostsController do
     describe "updating published posts" do
       before :each do
         published_post = create(:post, user: @user)
-        xhr :patch, :update, id: published_post.id, post: { title: "updated title", body: "updated body" }
+        patch :update, xhr: true, params: { id: published_post.id, post: { title: "updated title", body: "updated body" }}
         @updated_post = assigns(:post)
       end
 

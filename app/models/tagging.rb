@@ -9,7 +9,7 @@
 #  updated_at :datetime         not null
 #
 
-class Tagging < ActiveRecord::Base
-  belongs_to :post
+class Tagging < ApplicationRecord
+  belongs_to :post, dependent: :destroy
   belongs_to :tag
 end

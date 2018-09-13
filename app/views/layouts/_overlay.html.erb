@@ -4,20 +4,20 @@
     <h2 class="grayed-heading center">Sign in or create an account</h2>
     <ul class="omniauth-button-group">
       <li class="omniauth-button">
-        <%= link_to user_omniauth_authorize_path(:facebook), class: 'button facebook' do %>
-          <%= icon('facebook-official') %>Sign in with Facebook
+        <%= link_to user_facebook_omniauth_authorize_path, class: 'button facebook' do %>
+          <%= icon('fab', 'facebook') %>Sign in with Facebook
         <% end %>
       </li>
 
       <li class="omniauth-button google">
-        <%= link_to user_omniauth_authorize_path(:google_oauth2), class: 'button google' do %>
-          <%= icon('google') %>Sign in with Google
+        <%= link_to user_google_oauth2_omniauth_authorize_path, class: 'button google' do %>
+          <%= icon('fab', 'google') %>Sign in with Google
         <% end %>
       </li>
 
       <li class="omniauth-button twitter">
-        <%= link_to user_omniauth_authorize_path(:twitter), class: 'button twitter' do %>
-          <%= icon('twitter') %>Sign in with Twitter
+        <%= link_to user_twitter_omniauth_authorize_path, class: 'button twitter' do %>
+          <%= icon('fab', 'twitter') %>Sign in with Twitter
         <% end %>
       </li>
 

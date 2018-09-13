@@ -1,5 +1,6 @@
 <div data-animation="fadeInUp-fadeOutDown">
   <div class="col-xs-10 col-sm-10 col-md-6 col-md-offset-3 col-sm-offset-1 col-xs-offset-1">
+
     <div class="post-metadata">
       <%= avatar_for(current_user, size: 40) %>
       <div class="post-info">
@@ -7,6 +8,11 @@
         <small>New Post</small>
       </div>
     </div>
-    <%= render 'form', post: @post %>
+
+    <% if @parent_post.present? %>
+      <%= render 'posts/parent_post', parent: @parent_post %>
+    <% end %>
+
+    <%= render 'posts/form', post: @post %>
   </div>
 </div>

@@ -5,16 +5,19 @@
 
   <%= render partial: 'posts/post_metadata', locals: { post: post } %>
 
-  <% if post.picture? %>
+  <% if post.picture.attached? %>
     <div class="post-picture-wrapper">
-      <%= image_tag post.picture.url(:thumb) %>
+      <%= image_tag post.picture.variant(resize: "800x600") %>
     </div>
   <% end %>
 
   <div class="main-body">
     <h3 class="post-title"><%= link_to post.title, post %></h3>
-    <% if post.lead %>
-      <div class="post-body"><%= truncate(remove_javascript(post.lead), length: 150, separator: ' ', escape: false) %></div>
+    <% if post.plain %>
+      <div class="post-body">
+        <%= truncate(post.plain || "", length: 150, separator: ' ', escape: false) %>
+        
+      </div>
       <%= link_to "Read more", post, class: 'read-more' %>
     <% end %>
   </div>

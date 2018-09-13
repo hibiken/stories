@@ -1,4 +1,4 @@
-class CreateResponses < ActiveRecord::Migration
+class CreateResponses < ActiveRecord::Migration[4.2]
   def change
     create_table :responses do |t|
       t.text :body

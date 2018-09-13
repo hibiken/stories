@@ -17,14 +17,22 @@
 #  responses_count :integer          default("0"), not null
 #
 
-class Post < ActiveRecord::Base
+class Post < ApplicationRecord
 
-  validates :title, :body, :user_id, presence: true
+  include Rails.application.routes.url_helpers
+
+  validates :body, :user_id, presence: true
 
   belongs_to :user
+  belongs_to :parent, optional: true, class_name: "Post", counter_cache: :responses_count
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
-  has_many :responses, -> { order(created_at: :desc) }, dependent: :destroy
+  has_many :responses, -> { order(created_at: :desc) }, 
+            class_name: "Post",
+            foreign_key: "parent_id",
+            dependent: :destroy
+
+
   has_many :responders, through: :responses, source: :user
   has_many :likes, as: :likeable, dependent: :destroy
   has_many :likers, through: :likes, source: :user
@@ -35,19 +43,53 @@ class Post < ActiveRecord::Base
   delegate :username, to: :user
 
   scope :recent, -> { order(created_at: :desc) }
+  scope :replies, -> { where.not(parent_id: nil) }
+  scope :non_replies, -> { where(parent_id: nil) }
   scope :latest, ->(number) { recent.limit(number) }
-  scope :top_stories, ->(number) { order(likes_count: :desc).limit(number) }
+  scope :top_stories, ->(number) { non_replies.order(likes_count: :desc).limit(number) }
   scope :published, -> { where.not(published_at: nil) }
-  scope :drafts, -> { where(published_at: nil) }
-  scope :featured, -> { where(featured: true) }
+  scope :drafts, -> { non_replies.where(published_at: nil) }
+  scope :featured, -> { non_replies.where(featured: true) }
 
-  mount_uploader :picture, PictureUploader
+  #mount_uploader :picture, PictureUploader
+  has_one_attached :picture
 
-  before_save :generate_lead!
+  has_many_attached :images
+
+  before_save :infer_title
+
   # will_pagination configuration
   self.per_page = 5
 
-  include SearchablePost
+  #include SearchablePost
+  searchkick
+
+  def infer_title
+    return if self.plain.blank? or !self.changes.keys.include?("plain")
+    get_title
+  end
+
+  # will infer title of post
+  def get_title
+    heading = self.plain.split("\n").first
+    self.title = heading[0..120] if heading.present?
+  end
+
+  def picture_path
+    picture_url = self.picture.attached? ? url_for(self.picture) : nil
+  end
+
+  def search_data(options = {})
+    self.as_json({
+      only: [:title, :plain, :published_at, :slug],
+      include: {
+        user: { only: [:username] },
+        #user: {methods: [:avatar_url], only: [:username, :avatar_url] },
+        tags: { only: :name }
+      }
+    })
+  end
+
 
   extend FriendlyId
   friendly_id :title, use: [ :slugged, :history, :finders ]
@@ -99,26 +141,12 @@ class Post < ActiveRecord::Base
   end
 
   def words
-    body.split(' ')
+    return "" if plain.blank?
+    plain.split(' ')
   end
 
   def word_count
     words.size
   end
-
-  # Generate a lead which appears in post panel.
-  # FIXME: this method needs refactoring or completely different approach
-  def generate_lead!
-    if self.published?
-      post_body = Nokogiri::HTML::Document.parse(self.body)
-      if post_body.css('h2').size > 0
-        self.lead = post_body.css('h2')[0].to_s
-      elsif post_body.css('h3').size > 0
-        self.lead = post_body.css('h3')[0].to_s
-      elsif post_body.css('p').size > 0
-        self.lead = post_body.css('p')[0].to_s
-      end
-    end
-  end
-
+  
 end

@@ -1,4 +1,4 @@
-class API::Responses::BookmarksController < API::BookmarksController
+class Api::Responses::BookmarksController < Api::BookmarksController
 
   private
 

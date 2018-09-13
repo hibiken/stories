@@ -1,4 +1,4 @@
-class API::PostsController < ApplicationController
+class Api::PostsController < ApplicationController
   before_action :authenticate_user!
 
   def update
@@ -19,6 +19,6 @@ class API::PostsController < ApplicationController
   private
 
     def post_params
-      params.require(:post).permit(:title, :body, :all_tags, :picture)
+      params.require(:post).permit(:title, :plain, :body, :html, :all_tags, :picture)
     end
 end

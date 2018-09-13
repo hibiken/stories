@@ -43,7 +43,7 @@
           <%= link_to post.username, user_url(post.user), style: "color: #00ab6b;
               text-decoration: none; font-family: 'Open Sans', sans-serif;" %><br/>
               <small style="color: rgba(0,0,0,0.8); font-family: 'Open Sans', sans-serif;">
-                <%= time_ago_in_words(post.created_at) %> ago &#149; <%= post_length_in_minutes(post.body) %>
+                <%= time_ago_in_words(post.created_at) %> ago &#149; <%= post_length_in_minutes(post.plain) %>
               </small>
         </div>
       </div>

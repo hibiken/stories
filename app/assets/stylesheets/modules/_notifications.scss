@@ -12,7 +12,7 @@
     border: 1.5px solid $border-color;
     transition: all .1s;
     @include border-radius($round);
-    i.fa-bell-o,
+    i.fa-bell,
     span#new-notifications-count {
       position: absolute;
       top: 50%;
@@ -123,7 +123,7 @@
     color: lightblue;
   }
 
-  .fa-commenting-o {
+  .fa-comment {
     color: $light-font-color;
   }
 }

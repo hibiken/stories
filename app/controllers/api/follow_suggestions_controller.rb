@@ -1,4 +1,4 @@
-class API::FollowSuggestionsController < ApplicationController
+class Api::FollowSuggestionsController < ApplicationController
   before_action :authenticate_user!
 
   def index

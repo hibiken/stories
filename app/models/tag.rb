@@ -11,7 +11,7 @@
 #  lowercase_name :string
 #
 
-class Tag < ActiveRecord::Base
+class Tag < ApplicationRecord
   has_many :taggings, dependent: :destroy
   has_many :posts, through: :taggings
 
@@ -23,8 +23,8 @@ class Tag < ActiveRecord::Base
 
   validates :name, presence: true
 
-  include SearchableTag
-
+  #include SearchableTag
+  searchkick
   extend FriendlyId
   friendly_id :name, use: [ :slugged, :finders ]
 

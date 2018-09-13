@@ -4,6 +4,8 @@ class PostsController < ApplicationController
 
   layout "editor", only: [:new, :edit, :create, :update]
 
+  skip_before_action :verify_authenticity_token, only: [:uploads]
+
   def show
     @post = Post.find(params[:id])
     @responses = @post.responses.includes(:user)
@@ -55,6 +57,12 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     @post.save_as_draft
     redirect_to edit_post_url(@post)
+  end
+
+  def uploads
+    @post = current_user.posts.find(params[:id])
+    a = @post.images.attach(params[:file])
+    render json: {url: url_for(a.last)}
   end
 
   private

@@ -23,5 +23,5 @@ var PostMetadataBar = {
   }
 };
 
-$(document).ready( PostMetadataBar.init );
-$(document).on( 'page:load', PostMetadataBar.init );
+//$(document).ready( PostMetadataBar.init );
+$(document).on( 'turbolinks:load', PostMetadataBar.init );

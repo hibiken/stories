@@ -1,4 +1,4 @@
-class API::Posts::BookmarksController < API::BookmarksController
+class Api::Posts::BookmarksController < Api::BookmarksController
 
   private
 

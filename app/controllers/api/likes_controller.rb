@@ -2,7 +2,7 @@
 # Posts::LikesController for example.
 # Child controller that inherit from this LikesController should implement 
 # before_action :set_likeable, which sets @likeable.
-class API::LikesController < ApplicationController
+class Api::LikesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_likeable
 
