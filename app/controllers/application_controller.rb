@@ -21,5 +21,13 @@ class ApplicationController < ActionController::Base
       current_user.id == user.id
     end
 
+    def admin_signed_in?
+      user_signed_in? and current_user.is_admin?
+    end
+
+    def authenticate_admin!
+      redirect_to root_url, alert: "access denied" unless admin_signed_in?
+    end
+
     helper_method :current_user?
 end
