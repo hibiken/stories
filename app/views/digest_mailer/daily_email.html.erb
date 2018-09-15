@@ -30,7 +30,7 @@
 
       <% if post.picture.attached? %>
         <div class="pli-picture-wrapper">
-          <%= image_tag post.picture.variant(resize: "200x200") style: "display: block;
+          <%= image_tag post.picture.variant(resize: "200x200"), style: "display: block;
             max-width: 400px; margin: 0 auto;" %>
         </div>
       <% end %>
