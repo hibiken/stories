@@ -24,6 +24,10 @@ before_script:
   - sh -e /etc/init.d/xvfb start
   - psql -c 'create database travis_ci_test;' -U postgres
   - cp config/database.yml.travis config/database.yml
+  - node --version
+  - npm --version
+  - yarn install
+  - rake db:setup
 
 script: 
   - bundle exec rspec
