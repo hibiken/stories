@@ -56,12 +56,11 @@ class Post < ApplicationRecord
 
   has_many_attached :images
 
-  before_save :infer_title
+  before_validation :infer_title
 
   # will_pagination configuration
   self.per_page = 5
 
-  #include SearchablePost
   searchkick
 
   def infer_title
@@ -90,9 +89,12 @@ class Post < ApplicationRecord
     })
   end
 
-
   extend FriendlyId
   friendly_id :title, use: [ :slugged, :history, :finders ]
+
+  def should_generate_new_friendly_id?
+    title_changed? || super
+  end
 
   def self.new_draft_for(user)
     post = self.new(user_id: user.id)
