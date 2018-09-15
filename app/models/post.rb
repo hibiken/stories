@@ -70,8 +70,11 @@ class Post < ApplicationRecord
 
   # will infer title of post
   def get_title
-    heading = self.plain.split("\n").first
+    text = self.plain.split("\n")
+    heading = text.first
     self.title = heading[0..120] if heading.present?
+    text.shift # removes first
+    self.plain = text.join("\n")
   end
 
   def picture_path
