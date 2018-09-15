@@ -4,9 +4,11 @@ sudo: required
 env: DISPLAY=':99.0'
 dist: trusty
 language: ruby
+
 rvm:
   - 2.4.0
 addons:
+  postgresql: "9.4"
   apt:
     sources:
       - google-chrome
@@ -15,3 +17,8 @@ addons:
  
 before_script:
   - sh -e /etc/init.d/xvfb start
+  - psql -c 'create database travis_ci_test;' -U postgres
+  - cp config/database.yml.travis config/database.yml
+
+script: 
+  - bundle exec rspec

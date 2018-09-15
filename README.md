@@ -1,5 +1,9 @@
 # Welcome to Dante Stories - a Self hosted Medium like solution
 
+[![Build Status](https://travis-ci.org/michelson/dante-stories.svg?branch=master)](https://travis-ci.org/michelson/dante-stories)
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/c73c3860d7ccb4c8ada1/maintainability)](https://codeclimate.com/github/michelson/dante-stories/maintainability)
+
 This project is a fork of a Medium clone which began as [Ken Hibino](https://github.com/kenny-hibino “Ken Hibino”)'s personal side project to learn **Ruby on Rails** and **ReactJS**. I've upgraded and refactored some part of the rails app and I've integrated Dante2 wysiwyg editor.
 
 ## The specific improvements from the original repository:
