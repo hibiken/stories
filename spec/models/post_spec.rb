@@ -138,7 +138,7 @@ RSpec.describe Post do
 
   describe "words and word_count" do
     let(:post) { build(:post, 
-      plain: "{}", 
+      body: "{}", 
       plain: "This is five words long.") 
     }
 
