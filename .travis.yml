@@ -7,6 +7,10 @@ language: ruby
 
 rvm:
   - 2.4.0
+
+services:
+  - elasticsearch
+
 addons:
   postgresql: "9.4"
   apt:
@@ -16,6 +20,7 @@ addons:
       - google-chrome-stable
  
 before_script:
+  - sleep 10
   - sh -e /etc/init.d/xvfb start
   - psql -c 'create database travis_ci_test;' -U postgres
   - cp config/database.yml.travis config/database.yml
