@@ -4,7 +4,7 @@ RSpec.describe PostDecorator do
   let(:current_user) { create(:user) }
   let(:recommender) { create(:user, username: "Recommender") }
   let(:travel_tag) { Tag.first_or_create_with_name!("travel") }
-  let(:post) { create(:post, title: "My Title")}
+  let(:post) { create(:post, plain: "My Title")}
   let(:instance) { PostDecorator.new(post, current_user) }
 
   it "responds to title, body" do

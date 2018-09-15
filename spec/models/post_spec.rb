@@ -110,11 +110,11 @@ RSpec.describe Post do
     end
 
     it "sets appropriate slug when there are multiple posts with the same title" do
-      post1 = build(:draft, title: "My favorite music")
+      post1 = build(:draft, plain: "My favorite music")
       post1.publish
       expect(post1.slug).to eq('my-favorite-music')
 
-      post2 = build(:draft, title: "My favorite music")
+      post2 = build(:draft, plain: "My favorite music")
       post2.publish
       expect(post2).to be_persisted
       expect(post2.slug).not_to eq("my-favorite-music")
