@@ -20,7 +20,8 @@
 FactoryBot.define do
   factory :post do
     sequence(:title) { |n| "Awesome post No.#{n}" }
-    body {"Here are some awesome content" }
+    body { '{"blocks":[{"key":"a3rc6","text":"hello world","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}' }
+    plain { 'hello world'}
     published_at {Time.zone.now}
     user
 
