@@ -73,7 +73,7 @@ class Post < ApplicationRecord
     text = self.plain.split("\n")
     heading = text.first
     self.title = heading[0..120] if heading.present?
-    text.shift # removes first
+    text.shift if text.size > 1 # removes first
     self.plain = text.join("\n")
   end
 
