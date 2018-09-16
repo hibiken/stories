@@ -134,6 +134,7 @@ class Post < ApplicationRecord
   def save_as_draft
     self.published_at = nil
     self.slug ||= SecureRandom.urlsafe_base64
+    infer_title
     save(validate: false)
   end
 
