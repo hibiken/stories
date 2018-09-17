@@ -28,6 +28,17 @@ body {
   padding: 5px 9px;
 }
 
+@media (max-width: 991.98px){
+  .bd-navbar .navbar-nav-scroll {
+      max-width: 100%;
+      height: 2.5rem;
+      margin-top: .25rem;
+      overflow: hidden;
+      font-size: .875rem;
+  }  
+}
+
+
 /** Navbar animation **/
 nav.navbar {
   transition: 0.3s transform;
@@ -54,6 +65,21 @@ nav.navbar {
     background-color: rgba(255, 255, 255, 0.9);
     border-bottom: 1px solid #1312121f !important;
     box-shadow: 0px -6px 12px 0px rgba(0, 0, 0, 0.44);
+  }
+
+
+  .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://ww…p='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+  }
+
+  .navbar-toggler-icon {
+      display: inline-block;
+      width: 1.5em;
+      height: 1.5em;
+      vertical-align: middle;
+      content: "";
+      background: no-repeat center center;
+      background-size: 100% 100%;
   }
 
   .navbar-brand {
@@ -129,6 +155,10 @@ nav.navbar {
   }
   a.avatar-wrapper:hover img.avatar-image, .open a.avatar-wrapper img.avatar-image {
     //border: 1.5px solid $border-hover-color;
+  }
+
+  .dropdown-toggle::after {
+    display: none;
   }
 
   .nav-dropdown {
@@ -216,7 +246,6 @@ nav.navbar {
   nav.navbar {
     padding: 5px 0;
     .filter-links {
-      margin-top: 16px;
       margin-left: 0;
     }
     #logo {
@@ -224,6 +253,9 @@ nav.navbar {
       margin-left: 0;
     }
     .new-post-button {
+      display: inline-flex;
+    }
+    .sign-in-button {
       display: inline-flex;
     }
   }

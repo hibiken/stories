@@ -2,14 +2,14 @@
   <a class="avatar-wrapper dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
     <%= avatar_for(current_user, size: 40) %>
   </a>
-  <ul class="dropdown-menu nav-dropdown">
+  <div class="dropdown-menu nav-dropdown">
     <span class="dropdown-arrow-top"></span>
     <span class="dropdown-arrow-bottom"></span>
-    <li class="nd-main"><%= link_to "New story", new_post_path %></li>
-    <li class="nd-main"><%= link_to "Drafts and stories", stories_drafts_path %></li>
-    <li role="separator" class="divider"></li>
-    <li class="nd-sub"><%= link_to "Profile", current_user %></li>
-    <li class="nd-sub"><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
-  </ul>
+    <%= link_to "New story", new_post_path, class: "dropdown-item" %>
+    <%= link_to "Drafts and stories", stories_drafts_path, class: "dropdown-item" %>
+    <div class="dropdown-divider"></div>
+    <%= link_to "Profile", current_user , class: "dropdown-item"%>
+    <%= link_to "Sign out", destroy_user_session_path, method: :delete , class: "dropdown-item" %>
+  </div>
 </li>
 

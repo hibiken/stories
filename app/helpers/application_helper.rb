@@ -14,7 +14,7 @@ module ApplicationHelper
     if user_signed_in?
       react_component('TagFollowButton', { following: current_user.following_tag?(tag), tag_id: tag.id })
     else
-      link_to "Follow", "", class: 'pull-right button green-border-button follow-button', data: { behavior: 'trigger-overlay' }
+      link_to "Follow", "", class: 'float-right button green-border-button follow-button', data: { behavior: 'trigger-overlay' }
     end
   end
 

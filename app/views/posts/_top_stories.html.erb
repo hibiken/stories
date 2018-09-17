@@ -22,15 +22,15 @@
     </div>
 
     <div class="post-stats clearfix">
-      <div id="post_<%= post.id %>_likes" class="pull-left">
+      <div id="post_<%= post.id %>_likes" class="float-left">
         <%= render partial: 'posts/likes', locals: { post: post } %>
       </div>
 
-      <div id="post_<%= post.id %>_bookmarks" class="pull-right">
+      <div id="post_<%= post.id %>_bookmarks" class="float-right">
         <%= render partial: 'posts/bookmarks', locals: { post: post } %>
       </div>
 
-      <div class="response-count pull-right">
+      <div class="response-count float-right">
         <% if post.responses_count > 0 %>
           <%= link_to (pluralize(post.responses_count, "response")), post_path(post, anchor: 'responses'), class: 'response-count' %>
         <% end %>

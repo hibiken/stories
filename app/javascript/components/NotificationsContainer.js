@@ -34,7 +34,7 @@ export default class NotificationsContainer extends React.Component {
           <span className="dropdown-arrow-bottom"></span>
           <div className="notification-header">
             <span>Notifications</span>
-            <a className="pull-right mark-all-as-read"
+            <a className="float-right mark-all-as-read"
               onClick={(e) => this.handleMarkAllAsRead(e)}>
               Mark All as Read
             </a>

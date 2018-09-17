@@ -15,6 +15,7 @@ body.dashboards.top_stories {
     margin-bottom: 10px;
     border: 1px solid rgba(0,0,0, 0.09);
     @include box-shadow;
+    box-shadow: 0 1px 4px rgba(0,0,0, 0.07);
     @include border-radius($radius);
   }
 }

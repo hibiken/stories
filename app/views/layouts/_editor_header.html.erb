@@ -1,19 +1,20 @@
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid col-md-10 col-md-offset-1">
+<nav class="navbar navbar-default navbar-expand-md fixed-top">
+  
+  <div class="container-fluid col-md-10 offset-1">
     <div class="navbar-header">
       <%= link_to root_path, class: "navbar-brand", id: "logo" do %>
         <%= image_tag('stories-logo.svg', height: 40, alt: "Stories") %>
       <% end %>
     </div>
 
-    <ul class="nav navbar-nav filter-links">
+    <ul class="nav navbar-nav mr-auto mt-2 mt-lg-0 filter-links">
       <li>
         <a href="#" data-behavior="editor-message">
         </a>
       </li>
     </ul>
 
-    <div class="collapse navbar-collapse">
+    <div class="form-inline mt-2 mt-md-0">
       <ul class="nav navbar-nav navbar-right">
         <li class="publish-button">
           <button class="button green-border-button dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -31,7 +32,7 @@
             </div>
             <hr />
             <div>
-              <button class="button green-border-button pull-right" data-behavior="publish-button">Publish</button>
+              <button class="button green-border-button float-right" data-behavior="publish-button">Publish</button>
             </div>
           </ul>
         </li>
