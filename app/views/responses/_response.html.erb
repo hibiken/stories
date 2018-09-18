@@ -8,15 +8,18 @@
   </div>
 
   <div class="main-body">
-    <p class="response-body"><%= remove_javascript(response.body).html_safe %></p>
+    <p class="response-body">
+      <%= response.plain.to_s.html_safe %>
+      <%= link_to "Read More", response %>
+    </p>
   </div>
 
   <div class="response-stats clearfix">
-    <div id="response_<%= response.id %>_likes" class="pull-left">
+    <div id="response_<%= response.id %>_likes" class="float-left">
       <%= render partial: 'responses/likes', locals: { response: response } %>
     </div>
 
-    <div id="response_<%= response.id %>_bookmarks" class="pull-right">
+    <div id="response_<%= response.id %>_bookmarks" class="float-right">
       <%= render partial: 'responses/bookmarks', locals: { response: response } %>
     </div>
   </div>

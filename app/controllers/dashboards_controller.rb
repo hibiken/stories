@@ -1,5 +1,5 @@
 class DashboardsController < ApplicationController
-  before_action :check_for_admin, only: [:show]
+  # before_action :check_for_admin, only: [:show]
   before_action :authenticate_user!, only: [:bookmarks]
 
   def show
@@ -45,15 +45,15 @@ class DashboardsController < ApplicationController
     end
 
     def top_posts
-      Post.published.top_stories(5).includes(:user)
+      Post.non_replies.published.top_stories(5).includes(:user)
     end
 
     def recent_posts
-      Post.published.recent.includes(:user).paginate(page: params[:page])
+      Post.non_replies.published.recent.includes(:user).paginate(page: params[:page])
     end
 
     def featured_posts
-      Post.recent.featured.includes(:user).paginate(page: params[:page])
+      Post.non_replies.recent.featured.includes(:user).paginate(page: params[:page])
     end
 
 end

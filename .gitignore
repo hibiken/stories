@@ -7,23 +7,30 @@
 # Ignore bundler config.
 /.bundle
 
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-journal
+
 # Ignore all logfiles and tempfiles.
 /log/*
+/tmp/*
 !/log/.keep
-/tmp
-/spec/tmp
+!/tmp/.keep
 
-# Ignore .DS_Store files
-/**/.DS_Store
-/.DS_Store
+# Ignore uploaded files in development
+/storage/*
+!/storage/.keep
 
-# Ignore uploaded images
-/public/uploads/**/*
+/node_modules
+/yarn-error.log
 
-#Ignore rails best practice report file
-rails_best_practices_output.html
-
-# Ignore .byebug_history, .rspec, brakeman.html
+/public/assets
 .byebug_history
-.rspec
-brakeman.html
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
+/public/packs
+/public/packs-test
+/node_modules
+yarn-debug.log*
+.yarn-integrity

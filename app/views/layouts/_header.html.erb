@@ -1,43 +1,68 @@
-<nav data-behavior="animated-navbar" class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid col-md-10 col-md-offset-1">
-    <div class="navbar-header">
-      <%= link_to root_path, class: "navbar-brand", id: "logo" do %>
-        <%= image_tag('stories-logo.svg', height: 40, alt: "Stories") %>
-      <% end %>
-    </div>
-    <ul class="nav navbar-nav filter-links">
-      <li>
+<nav data-behavior="animated-navbar" class="navbar navbar-default navbar-expand fixed-top flex-column flex-md-row bd-navbar is-inView">
+
+  <%= link_to root_path, class: "navbar-brand mr-0 mr-md-2", id: "logo" do %>
+    <%= image_tag('stories-logo.svg', height: 40, alt: "Stories") %>
+  <% end %>
+  
+
+  <div class="navbar-nav-scroll">
+    <ul class="navbar-nav bd-navbar-nav flex-row">
+      <li class="nav-item">
         <% if user_signed_in? %>
           <%= nav_link_to "Home", root_path %>
         <% else %>
           <%= nav_link_to "Staff pick", root_path %>
         <% end %>
       </li>
-      <li><%= nav_link_to "Top stories", top_stories_path %></li>
+      <li class="nav-item"><%= nav_link_to "Top stories", top_stories_path %></li>
       <% if user_signed_in? %>
-        <li><%= nav_link_to "Bookmarks", dashboard_bookmarks_path %></li>
+        <li class="nav-item"><%= nav_link_to "Bookmarks", dashboard_bookmarks_path %></li>
       <% else %>
-        <li><a href='' data-behavior="trigger-overlay">Bookmarks</a></li>
+        <li class="nav-item"><a href='' data-behavior="trigger-overlay">Bookmarks</a></li>
       <% end %>
-    </ul>
 
-    <div class="folding-nav">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="main-searchbar">
-          <%= react_component('SearchContainer') %>
-        </li>
-        <% if user_signed_in? %>
-          <li class="new-post-button"><%= link_to "Write a story", new_post_path, class: "button" %></li>
-          <li id="notifications">
-            <%= react_component('NotificationsContainer', {}) %>
-          </li>
-          <%= render 'layouts/avatar_dropdown' %>
-        <% else %>
-          <li class="new-post-button"><%= link_to "Write a story", new_post_path, class: "button", data: { behavior: 'trigger-overlay' } %></li>
-          <li class="sign-in-button"><%= link_to "Sign in / Sign up", new_user_session_path, class: 'button green-border-button', data: { behavior: 'trigger-overlay' } %></li>
+
+      <li class="nav-item">
+        <% if admin_signed_in? %>
+          <%= nav_link_to "<strong>Admin</strong>".html_safe,  admin_dashboard_path %>
         <% end %>
-      </ul>
-    </div>
+      </li>
 
+    </ul>      
   </div>
+
+
+  <div class="folding-nav">
+    <ul class="navbar-nav flex-row ml-md-auto d-none- d-md-flex">
+      <li class="main-searchbar">
+        <%= react_component('SearchContainer') %>
+      </li>
+      <% if user_signed_in? %>
+        
+        <!--<li class="new-post-button">
+          <%= link_to "Write a story", new_post_path, class: "button" %>
+        </li>-->
+
+        <li id="notifications">
+          <%= react_component('NotificationsContainer', {}) %>
+        </li>
+
+        <%= render 'layouts/avatar_dropdown' %>
+
+      <% else %>
+
+        <li class="new-post-button">
+          <%= link_to "Write a story", new_post_path, class: "button", data: { behavior: 'trigger-overlay' } %>
+          
+        </li>
+
+        <li class="sign-in-button">
+          <%= link_to "Sign in / Sign up", new_user_session_path, class: 'button green-border-button', data: { behavior: 'trigger-overlay' } %>
+        </li>
+
+      <% end %>
+    </ul>       
+  </div>
+ 
+
 </nav>

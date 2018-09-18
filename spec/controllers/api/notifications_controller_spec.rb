@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe API::NotificationsController do
+RSpec.describe Api::NotificationsController do
 
   let(:luke) { create(:user, username: "Luke") }
   let(:solo) { create(:user, username: "Solo") }
@@ -41,7 +41,7 @@ RSpec.describe API::NotificationsController do
     end
 
     it "sets read_at timestamp" do
-      post :mark_as_read, id: @notification1.id
+      post :mark_as_read, params: {id: @notification1.id}
       @notification1.reload
       @notification2.reload
       expect(@notification1.read_at).not_to be_nil

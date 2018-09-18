@@ -9,7 +9,7 @@
 #  updated_at  :datetime         not null
 #
 
-class Interest < ActiveRecord::Base
+class Interest < ApplicationRecord
   belongs_to :follower, class_name: "User"
   belongs_to :tag
 

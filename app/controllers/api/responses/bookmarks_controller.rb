@@ -1,8 +1,8 @@
-class API::Responses::BookmarksController < API::BookmarksController
+class Api::Responses::BookmarksController < Api::BookmarksController
 
   private
 
     def set_bookmarkable
-      @bookmarkable = Response.find(params[:response_id])
+      @bookmarkable = Post.find(params[:response_id])
     end
 end

@@ -1,61 +1,63 @@
-<div class="col-md-6 col-md-offset-1 dashboard-main-content">
+<div class="row">
+  <div class="col-md-6 offset-md-1 dashboard-main-content">
 
-  <% unless @dashboard.top_stories? %>
-    <% if user_signed_in? && current_page?('/') %>
-      <div data-animation="fadeInUp-fadeOutDown">
-        <%= render 'shared/inline_editor' %>
+    <% unless @dashboard.top_stories? %>
+      <% if user_signed_in? && current_page?('/') %>
+        <div data-animation="fadeInUp-fadeOutDown">
+          <%= render 'shared/inline_editor' %>
+        </div>
+      <% end %>
+      <div class="posts-wrapper" data-behavior="endless-scroll" data-animation="fadeInUp-fadeOutDown">
+        <%= render @dashboard.posts %>
+      </div>
+    <% else %>
+      <div class="posts-wrapper" data-animation="fadeInUp-fadeOutDown">
+        <%= render 'posts/top_stories', posts: @dashboard.posts %>
       </div>
     <% end %>
-    <div class="posts-wrapper" data-behavior="endless-scroll" data-animation="fadeInUp-fadeOutDown">
-      <%= render @dashboard.posts %>
-    </div>
-  <% else %>
-    <div class="posts-wrapper" data-animation="fadeInUp-fadeOutDown">
-      <%= render 'posts/top_stories', posts: @dashboard.posts %>
-    </div>
-  <% end %>
 
-  <% unless @dashboard.top_stories? %>
-    <div class="center">
-      <%= will_paginate @dashboard.posts %>
-    </div>
-  <% end %>
+    <% unless @dashboard.top_stories? %>
+      <div class="center">
+        <%= will_paginate @dashboard.posts %>
+      </div>
+    <% end %>
+
+  </div>
+
+  <aside class="col-md-4 main-sidebar">
+      <h4 class="small-heading border-top">Featured tags</h4>
+      <%= react_component('TagList', { tags: @dashboard.featured_tags }) %>
+
+      <% if user_signed_in? %>
+        <div class="flex-container border-top">
+          <h4 class="small-heading">Tags you follow</h4><%= react_component('AddTagButton') %>
+        </div>
+        <%= react_component('FollowingTagList', { followingTags: current_user.following_tags }) %>
+
+        <%= react_component('FollowSuggestionsContainer') %>
+      <% end %>
+
+      <% unless @dashboard.filtered? %>
+        <h4 class="small-heading border-top">Top stories</h4>
+        <div class="sidebar-top-stories">
+          <ul>
+            <% @dashboard.top_stories.each_with_index do |post, index| %>
+              <li class="top-stories-list-item">
+                <div class="count-button-wrapper">
+                  <span class="count-button"><%= index + 1 %></span>
+                </div>
+                <div class="top-stories-links">
+                  <%= link_to post.title, post, class: 'post-title' %><br/>
+                  <small>
+                    <%= react_component("PopoverLink", { user_id: post.user.id, url: user_path(post.user), children: post.username }) %>
+                  </small>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+  </aside>
+
 
 </div>
-
-<% content_for :sidebar do %>
-  <aside class="col-md-4 main-sidebar">
-    <h4 class="small-heading border-top">Featured tags</h4>
-    <%= react_component('TagList', { tags: @dashboard.featured_tags }) %>
-
-    <% if user_signed_in? %>
-      <div class="flex-container border-top">
-        <h4 class="small-heading">Tags you follow</h4><%= react_component('AddTagButton') %>
-      </div>
-      <%= react_component('FollowingTagList', { followingTags: current_user.following_tags }) %>
-
-      <%= react_component('FollowSuggestionsContainer') %>
-    <% end %>
-
-    <% unless @dashboard.filtered? %>
-      <h4 class="small-heading border-top">Top stories</h4>
-      <div class="sidebar-top-stories">
-        <ul>
-          <% @dashboard.top_stories.each_with_index do |post, index| %>
-            <li class="top-stories-list-item">
-              <div class="count-button-wrapper">
-                <span class="count-button"><%= index + 1 %></span>
-              </div>
-              <div class="top-stories-links">
-                <%= link_to post.title, post, class: 'post-title' %><br/>
-                <small>
-                  <%= react_component("PopoverLink", { user_id: post.user.id, url: user_path(post.user), children: post.username }) %>
-                </small>
-              </div>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
-  </aside>
-<% end %>

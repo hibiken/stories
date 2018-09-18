@@ -1,4 +1,4 @@
-class API::TagsController < ApplicationController
+class Api::TagsController < ApplicationController
   before_action :authenticate_user!
 
   def create

@@ -23,11 +23,6 @@ RSpec.describe Post do
   describe "validations" do
     let(:post) { build(:post) }
 
-    it "requires a title" do
-      post.title = "   "
-      expect(post).to be_invalid
-    end
-
     it "requires a body" do
       post.body = "     "
       expect(post).to be_invalid
@@ -115,11 +110,11 @@ RSpec.describe Post do
     end
 
     it "sets appropriate slug when there are multiple posts with the same title" do
-      post1 = build(:draft, title: "My favorite music")
+      post1 = build(:draft, plain: "My favorite music")
       post1.publish
       expect(post1.slug).to eq('my-favorite-music')
 
-      post2 = build(:draft, title: "My favorite music")
+      post2 = build(:draft, plain: "My favorite music")
       post2.publish
       expect(post2).to be_persisted
       expect(post2.slug).not_to eq("my-favorite-music")
@@ -142,7 +137,10 @@ RSpec.describe Post do
   end
 
   describe "words and word_count" do
-    let(:post) { build(:post, body: "This is five words long.") }
+    let(:post) { build(:post, 
+      body: "{}", 
+      plain: "This is five words long.") 
+    }
 
     it "returns an array of words" do
       expect(post.words).to include("five")
@@ -151,22 +149,6 @@ RSpec.describe Post do
 
     it "returns the word count" do
       expect(post.word_count).to eq(5)
-    end
-  end
-
-  describe "#generate_lead" do
-    let(:post1) { build(:post, body: "<p>this is a simple content.</p>") }
-    let(:post2) { build(:post, body: "<p><span>this is more complicated content</span></p>") }
-    let(:post3) { build(:post, body: "<h2>Subtitle</h2><span>hello world</span><p>cool</p>") }
-
-    it "generate lead for published posts" do
-      post1.generate_lead!
-      post2.generate_lead!
-      post3.generate_lead!
-
-      expect(post1.lead).to eq("<p>this is a simple content.</p>")
-      expect(post2.lead).to eq("<p><span>this is more complicated content</span></p>")
-      expect(post3.lead).to eq("<h2>Subtitle</h2>\n")
     end
   end
 end

@@ -1,26 +1,62 @@
-# Welcome to Stories
+# Welcome to Dante Stories - a Self hosted Medium like solution
 
-[![Stories on Github https://github.com/kenny-hibino/stories](https://raw.githubusercontent.com/kenny-hibino/stories/master/app/assets/images/stories-logo.png)](https://github.com/kenny-hibino/stories)
+[![Build Status](https://travis-ci.org/michelson/dante-stories.svg?branch=master)](https://travis-ci.org/michelson/dante-stories)
 
-Welcome to Stories. Stories is a Medium clone which began as [Ken Hibino](https://github.com/kenny-hibino “Ken Hibino”)'s personal side project to learn **Ruby on Rails** and **ReactJS**.
+[![Maintainability](https://api.codeclimate.com/v1/badges/c73c3860d7ccb4c8ada1/maintainability)](https://codeclimate.com/github/michelson/dante-stories/maintainability)
 
-As the app was built [screen casts tutorials](https://www.youtube.com/playlist?list=PLoUInciCQ806CUFxld2W29V6rbGNfHzbX) were created to help other people learn... slowly it began to blossom into an elegant and powerful application and more people began to get involved, fixing bugs, improving the design and building the community.
+This project is a fork of a Medium clone which began as [Ken Hibino](https://github.com/kenny-hibino “Ken Hibino”)'s personal side project to learn **Ruby on Rails** and **ReactJS**. I've upgraded and refactored some part of the rails app and I've integrated Dante2 wysiwyg editor.
 
-If your keen to gain some new skills, get started by following the install and configuration below, join our [gitter community](https://gitter.im/kenny-hibino/stories), look for an "**easy fix**" in the [issues list](https://github.com/kenny-hibino/stories/issues), make a [topic branch](https://github.com/dchelimsky/rspec/wiki/Topic-Branches) and submit a pull request… lets learn together. :octocat:
+## The specific improvements from the original repository:
+
+### Platform 
+
++ Rails 5.2.1 update!
++ Removed elastisearch-rails , replaced by searchkick
++ Removed carrierwave, replaced by activestorge
++ Webpacker added
++ Updated dependencies
++ Replaced phantomJs by chrome-webdriver
++ Ruby version 2.4.0
++ Works with Elasticsearch 6.3.X
+
+### Application Model
+
++ multiple image support
++ Oembed support
++ A better wysiwyg With Dante2 Draftjs
+  + Code blocks with language formatting via Prism-js
+  + A video record component to build posts with recorded video
+  + Database saves a serialized representation of text
+  + And much much more
++ Automatic title detection
++ Lead Text is automatic too. more performant approach , I think
++ Responses are unified as a Post model, so Response model is removed
 
 
-## Useful Links
-[News & Tutorials](https://www.youtube.com/playlist?list=PLoUInciCQ806CUFxld2W29V6rbGNfHzbX)
+## Installation
 
-[Demo Application](https://my-medium-clone.herokuapp.com/)
+### Heroku
 
-[Step by Step Install](https://github.com/kenny-hibino/stories/blob/master/INSTALL.md)
+Just push your application. You must add Redis and elasticsearch.
 
-[![Join the chat at https://gitter.im/kenny-hibino/stories](https://badges.gitter.im/kenny-hibino/stories.svg)](https://gitter.im/kenny-hibino/stories?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+### Config ENV vars
 
+```
+AWS_BUCKET:  
+AWS_KEY:    
+AWS_SECRET:   
+BONSAI_URL: provided by bonsai heroku
+DATABASE_URL: provided by postgres default database
+ELASTICSEARCH_URL: should be the same as bonsai
+MAILER_ADDRESS:  
+MAILER_DOMAIN:   
+MAILER_PASS:     
+MAILER_SENDER:   
+MAILER_USER:
+REDISTOGO_URL:
+REDIS_URL:  REDISTOGO_URL or any other provider
+```   
 
-## Watch a Quick Video
-[![Stories on YouTube](http://img.youtube.com/vi/_u09ifFALNA/0.jpg)](http://www.youtube.com/watch?v=_u09ifFALNA)
 
 ## License
 Stories is released under the [MIT License](https://opensource.org/licenses/MIT)

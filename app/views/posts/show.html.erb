@@ -1,23 +1,35 @@
 <div class="row" data-animation="fadeInUp-fadeOutDown">
-  <div id="main-post" class="col-xs-10 col-md-8 col-md-offset-2 col-xs-offset-1 main-content">
+  <div id="main-post" class="col-10 col-md-8 offset-md-2 offset-1 main-content">
+
     <% if admin_signed_in? %>
       <%= feature_post_button_for(@post) %>
     <% end %>
 
-    <div class="pull-right">
+    <div class="float-right">
       <%= render partial: 'posts/social_share', locals: { post: @post } %>
     </div>
+
     <%= render 'post_metadata', post: @post %>
 
-    <% if @post.picture? %>
+    <% if parent = @post.parent and parent.present? %>
+      <%= render 'parent_post', parent: parent %>
+    <% end %>
+
+
+
+    <% if @post.picture.attached? %>
       <div class="post-picture-wrapper">
-        <%= image_tag @post.picture.url(:thumb) %>
+        <%= image_tag @post.picture.variant(resize: "800x600") %>
       </div>
     <% end %>
 
-    <h3 class="title"><%= @post.title %></h3>
+    <!--
+    <h1 class="graf graf--h2">
+      <% @post.title %>
+    </h1>
+    -->
     <div class="body">
-      <p><%= remove_javascript(@post.body).html_safe %></p>
+      <%= react_component("ReadOnlyEditor", content: @post.body ) %>
     </div>
 
     <div class="post-tags">
@@ -27,17 +39,19 @@
     </div>
 
     <div class="post-stats clearfix">
-      <div class="pull-left">
+      <div class="float-left">
         <%= render partial: 'posts/likes', locals: { post: @post } %>
       </div>
-      <div class="pull-left">
+      <div class="float-left">
         <%= link_to post_path(@post, anchor: 'responses'), class: "response-icon-wrapper" do %>
-          <i class="fa fa-comment-o"></i>
-          <span class="response-count" data-behavior="response-count"><%= @post.responses_count %></span>
+          <i class="far fa-comment"></i>
+          <span class="response-count" data-behavior="response-count">
+            <%= @post.responses_count %>
+          </span>
         <% end %>
       </div>
 
-      <div class="pull-right">
+      <div class="float-right">
         <%= render partial: 'posts/bookmarks', locals: { post: @post } %>
       </div>
     </div>
@@ -64,7 +78,7 @@
 
 <div class="post-show-footer row" data-animation="fadeInUp-fadeOutDown">
   <% if @related_posts.any? %>
-    <div class="col-xs-10 col-md-6 col-xs-offset-1 col-md-offset-3 main-content related-stories">
+    <div class="col-10 col-md-6 offset-1 offset-md-3 main-content related-stories">
       <h4 class="small-heading">Related stories</h4>
       <% @related_posts.each do |post| %>
         <%= render partial: 'posts/post_list_item', locals: { post: post } %>
@@ -72,7 +86,7 @@
     </div>
   <% end %>
 
-  <div id="responses" class="col-xs-10 col-md-6 col-xs-offset-1 col-md-offset-3 main-content">
+  <div id="responses" class="col-10 col-md-6 offset-1 offset-md-3 main-content">
     <h4 class="small-heading">Responses</h4>
     <% if user_signed_in? %>
       <%= render partial: 'posts/response_editor', locals: { post: @post } %>
@@ -80,7 +94,7 @@
 
     <div data-behavior="responses-list">
       <% if @responses.any? %>
-          <%= render @responses %>
+          <%= render partial: 'responses/response', collection: @responses , as: :response %>
       <% end %>
     </div>
   </div>

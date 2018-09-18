@@ -1,0 +1,21 @@
+<div class="parent-post">
+    <div class="main-body">
+      <!--
+        <h3 class="post-title">
+          <% link_to parent.title, parent %>
+        </h3>
+      -->
+      <small class="read-more">
+        in reply of
+      </small>
+      <% if parent.plain %>
+        <div class="post-body">
+          <%= truncate(parent.plain || "" , length: 150, separator: ' ', escape: false) %>
+        </div>
+        
+        <%= link_to parent.username, parent.user , class: 'username' %>
+
+        <%= link_to "Read more", parent, class: 'read-more' %>
+      <% end %>
+    </div>
+</div>

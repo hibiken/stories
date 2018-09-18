@@ -1,7 +1,9 @@
 body.posts.new,
 body.posts.edit,
 body.posts.update,
-body.posts.create {
+body.posts.create,
+body.responses.new,
+body.responses.build {
   .navbar {
     border: none;
   }

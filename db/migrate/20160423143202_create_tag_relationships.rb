@@ -1,4 +1,4 @@
-class CreateTagRelationships < ActiveRecord::Migration
+class CreateTagRelationships < ActiveRecord::Migration[4.2]
   def change
     create_table :tag_relationships do |t|
       t.integer :tag_id, null: false

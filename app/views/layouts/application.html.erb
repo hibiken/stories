@@ -4,6 +4,10 @@
   <title>Stories</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_pack_tag 'application' %>
+
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism-dark.css">
+  
   <%= csrf_meta_tags %>
 
   <%= favicon_link_tag 'favicon.png', type: 'image/png' %>
@@ -17,16 +21,18 @@
 
   <div data-behavior="progress-bar" class="progress-bar"></div>
 
-  <% if admin_signed_in? %>
-    <%= render 'layouts/admin_header' %>
-  <% else %>
+  <% # if admin_signed_in? %>
+    <% #= render 'layouts/admin_header' %>
+  <% #else %>
     <%= render 'layouts/header' %>
-  <% end %>
+  <% #end %>
   <%= render 'layouts/alert_messages' %>
 
   <div class="container-fluid main-container">
+   
     <%= yield %>
-    <%= yield :sidebar %>
+    <% # yield :sidebar %>
+  
   </div>
 
 </body>

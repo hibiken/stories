@@ -7,7 +7,7 @@
             margin: 0;
             padding-top: 15px;
             padding-bottom: 5px;
-            ">Stories Daily Digest</strong>
+            ">Daily Digest</strong>
 
     <hr style="max-width: 40px; border: 1px solid rgba(0,0,0, 0.2);"/>
 </div>
@@ -27,15 +27,19 @@
   <% @recommended.each do |post| %>
     <div style="max-width: 400px; margin: 0 auto; padding: 30px 0;
                 border-bottom: 1px solid rgba(0,0,0,0.05);">
-      <% if post.picture? %>
-        <%= image_tag post.picture.url(:thumb), style: "display: block;
+
+      <% if post.picture.attached? %>
+        <div class="pli-picture-wrapper">
+          <%= image_tag post.picture.variant(resize: "200x200"), style: "display: block;
             max-width: 400px; margin: 0 auto;" %>
+        </div>
       <% end %>
+
       <h4 style="margin: 0; padding: 5px 0;">
         <%= link_to post.title, post_url(post), style: "color: rgba(0,0,0,0.8);
               text-decoration: none; font-size: 24px; font-family: 'Open Sans', sans-serif;" %></h4>
       <p style="margin: 0; padding: 0; font-family: 'Open Sans', sans-serif;">
-        <%= truncate(post.body, length: 120, escape: false) %>
+        <%= truncate(post.plain, length: 120, escape: false) %>
       </p>
       <div style="margin: 0; padding-top: 15px; display: flex;">
         <%= avatar_for post.user, size: 40, style: "border-radius: 50%; margin-right: 12px;" %>
@@ -43,7 +47,7 @@
           <%= link_to post.username, user_url(post.user), style: "color: #00ab6b;
               text-decoration: none; font-family: 'Open Sans', sans-serif;" %><br/>
               <small style="color: rgba(0,0,0,0.8); font-family: 'Open Sans', sans-serif;">
-                <%= time_ago_in_words(post.created_at) %> ago &#149; <%= post_length_in_minutes(post.body) %>
+                <%= time_ago_in_words(post.created_at) %> ago &#149; <%= post_length_in_minutes(post.plain) %>
               </small>
         </div>
       </div>

@@ -10,12 +10,18 @@
 #  updated_at  :datetime         not null
 #  likes_count :integer          default("0")
 #
-
+=begin
 require 'rails_helper'
 
 RSpec.describe Response, type: :model do
   describe "validations" do
-    let(:response) { Response.new(user_id: 1, post_id: 2, body: "Great post!") }
+    let(:response) { 
+      Response.new(
+        user: create(:user), 
+        post: create(:post), 
+        body: "Great post!"
+      ) 
+    }
 
     it "is valid with both user_id and post_id and body" do
       expect(response).to be_valid
@@ -37,3 +43,4 @@ RSpec.describe Response, type: :model do
     end
   end
 end
+=end

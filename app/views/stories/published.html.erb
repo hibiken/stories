@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-10 col-md-offset-1">
+  <div class="col-md-10 offset-md-1">
     <div class="side-padding-5">
       <header class="hero flex-container flex-space-btw">
         <h1 class="hero-title">Your Stories</h1>
@@ -20,7 +20,7 @@
           <% @posts.each do |post| %>
             <div class="story-card" id="story_<%= post.id %>">
               <strong class="sc-title"><%= link_to post.title, edit_post_path(post) %></strong>
-              <small class="sc-metadata">Published <%= time_ago_in_words(post.published_at) %> ago &#149; <%= post_length_in_minutes(post.body) %>
+              <small class="sc-metadata">Published <%= time_ago_in_words(post.published_at) %> ago &#149; <%= post_length_in_minutes(post.plain) %>
                 <div class="btn-group">
                   <button type="button" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="glyphicon glyphicon-chevron-down"></span>

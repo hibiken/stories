@@ -49,10 +49,12 @@ RSpec.describe User, type: :model do
       expect(luke).not_to be_following(solo)
 
       luke.follow(solo)
+      luke.reload
       expect(luke).to be_following(solo)
       expect(solo.followers).to include(luke)
 
       luke.unfollow(solo)
+      luke.reload
       expect(luke).not_to be_following(solo)
       expect(solo.followers).not_to include(luke)
     end
@@ -75,9 +77,12 @@ RSpec.describe User, type: :model do
       expect(user).not_to be_following_tag(music_tag)
 
       user.follow_tag(music_tag)
+      user.reload
+
       expect(user).to be_following_tag(music_tag)
 
       user.unfollow_tag(music_tag)
+      user.reload
       expect(user).not_to be_following_tag(music_tag)
     end
   end
@@ -85,24 +90,28 @@ RSpec.describe User, type: :model do
   describe "adding likes" do
     let(:user) { create(:user) }
     let(:post) { create(:post) }
-    let(:response) { build(:response) }
+    let(:response) { build(:post) }
     before :each do
       post.responses << response
     end
 
     it "can like and unlike a post" do
       user.add_like_to(post)
+      user.reload
       expect(user.liked?(post)).to be_truthy
 
       user.remove_like_from(post)
+      user.reload
       expect(user.liked?(post)).to be_falsy
     end
 
     it "can like and unlike a response" do
       user.add_like_to(response)
+      user.reload
       expect(user.liked?(response)).to be_truthy
 
       user.remove_like_from(response)
+      user.reload
       expect(user.liked?(response)).to be_falsy
     end
   end
@@ -110,24 +119,28 @@ RSpec.describe User, type: :model do
   describe "adding bookmarks" do
     let(:user) { create(:user) }
     let(:post) { create(:post) }
-    let(:response) { build(:response) }
+    let(:response) { build(:post) }
     before :each do
       post.responses << response
     end
 
     it "can bookmark and unbookmark a post" do
       user.add_bookmark_to(post)
+      user.reload
       expect(user.bookmarked?(post)).to be_truthy
 
       user.remove_bookmark_from(post)
+      user.reload
       expect(user.bookmarked?(post)).to be_falsy
     end
 
     it "can bookmark and unbookmark a response" do
       user.add_bookmark_to(response)
+      user.reload
       expect(user.bookmarked?(response)).to be_truthy
-
+#
       user.remove_bookmark_from(response)
+      user.reload
       expect(user.bookmarked?(response)).to be_falsy
     end
   end

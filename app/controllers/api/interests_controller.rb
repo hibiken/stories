@@ -1,17 +1,17 @@
-class API::InterestsController < ApplicationController
+class Api::InterestsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_tag
 
   # Follow a tag.
   def create
     current_user.follow_tag(@tag)
-    head status: 200
+    head :ok
   end
 
   # Unfollow a tag.
   def destroy
     current_user.unfollow_tag(@tag)
-    head status: 200
+    head :ok
   end
 
   private

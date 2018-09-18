@@ -2,7 +2,7 @@
 # Posts::BookmarksController for example.
 # Child controller that inherit from this BookmarksController should implement
 # before_action :set_bookmarkable, which sets @bookmarkable.
-class API::BookmarksController < ApplicationController
+class Api::BookmarksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_bookmarkable
 

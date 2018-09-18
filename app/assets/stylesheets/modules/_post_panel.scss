@@ -68,3 +68,33 @@
   }
 }
 
+.parent-post {
+  background: #ffffff;
+  padding: 15px;
+  margin-bottom: 10px;
+  border: 1px solid rgba(0,0,0,0.09);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  border-radius: 3px;
+
+  .post-title a {
+    color: $font-black;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: -.022em;
+    line-height: 1.12;
+  }
+
+  .post-body {
+    font-size: 16px;
+    line-height: 1.18;
+    letter-spacing: -.022em;
+  }
+
+  .username {
+    color: $light-gray;
+  }
+
+
+}
+

@@ -11,6 +11,10 @@ body {
   padding: 0 5%;
 }
 
+h1 {
+  font-weight: 700;
+}
+
 .flex-container {
   display: flex;
 
@@ -21,4 +25,15 @@ body {
 
 .flex-space-btw {
   justify-content: space-between;
+}
+
+svg {
+    overflow: hidden;
+    vertical-align: unset;
+}
+
+
+pre{
+  border:none !important;
+  //background: none repeat scroll 0 0 rgba(0, 0, 0, 0.05) !important;
 }

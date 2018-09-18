@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.feature "Bookmarking a response" do
   let(:user) { create(:user) }
   let(:post) { create(:post) }
-  let(:response) { build(:response) }
+  let(:response) { build(:post) }
 
   background do
     post.responses << response

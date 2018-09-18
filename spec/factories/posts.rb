@@ -17,15 +17,16 @@
 #  responses_count :integer          default("0"), not null
 #
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :post do
     sequence(:title) { |n| "Awesome post No.#{n}" }
-    body "Here are some awesome content" 
-    published_at Time.zone.now
+    body { '{"blocks":[{"key":"a3rc6","text":"hello world","type":"unstyled","depth":0,"inlineStyleRanges":[],"entityRanges":[],"data":{}}],"entityMap":{}}' }
+    plain { 'hello world'}
+    published_at {Time.zone.now}
     user
 
     factory :draft do
-      published_at nil
+      published_at {nil}
     end
   end
 end

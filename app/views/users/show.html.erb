@@ -6,7 +6,7 @@
         <p class="hero-description"><%= @user.description %></p>
         <% if @user.location.present? %>
           <div class="hero-location">
-            <%= icon('map-marker') %><%= @user.location %>
+            <%= icon('fa', 'map-marker') %><%= @user.location %>
           </div>
         <% end %>
       </div>
@@ -40,7 +40,7 @@
     <% end %>
 
     <% if user_signed_in? && current_user?(@user) %>
-      <%= link_to "Edit", edit_user_path(@user), class: 'button green-border-button pull-right edit-button' %>
+      <%= link_to "Edit", edit_user_path(@user), class: 'button green-border-button float-right edit-button' %>
     <% end %>
 
     </div>

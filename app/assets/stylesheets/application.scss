@@ -12,17 +12,19 @@
  *
  */
 
-// Use @import to import all Sass files, instead of using sprocket require.
-// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
-@import "bootstrap-sprockets";
-@import "bootstrap";
-@import "font-awesome-sprockets";
-@import "font-awesome";
+
 
 @import "partials/assets";
 @import "partials/variables";
 @import "partials/mixins";
 @import 'partials/miscellaneous';
+
+// Use @import to import all Sass files, instead of using sprocket require.
+// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
+// @import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 @import "partials/base";
 @import "partials/buttons";
@@ -66,8 +68,5 @@
 @import 'modules/social_share';
 
 // Vendor
-@import 'vendor/medium-editor';
-@import 'vendor/medium-editor-insert-plugin';
-@import 'vendor/medium-editor-insert-plugin-frontend';
 @import 'vendor/flat';
 @import 'vendor/taggle';

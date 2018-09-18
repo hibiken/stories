@@ -1,4 +1,4 @@
-class API::FollowingTagsController < ApplicationController
+class Api::FollowingTagsController < ApplicationController
   before_action :authenticate_user!
 
   def index
