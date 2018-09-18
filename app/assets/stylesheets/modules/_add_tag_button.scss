@@ -26,6 +26,12 @@
   display: block;
   transform: translate(-43%, -100%);
   min-width: 220px;
+  top: -11px;
+
+  .arrow {
+    left: 43%;
+  }
+
   .popover-header {
     color: $light-font-color;
     text-align: center;

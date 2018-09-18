@@ -15,3 +15,8 @@
   0% { width: 0%; }
   100% { width: 100% }
 }
+
+.turbolinks-progress-bar {
+  height: 2px;
+  background-color: $progress-bar;
+}

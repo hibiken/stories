@@ -9,7 +9,7 @@ export default class AddTagPopover extends React.Component {
 
   render () {
     return (
-      <div className="add-tag-popover popover top">
+      <div className="add-tag-popover popover bs-popover-top" x-placement="bottom">
         <div className="arrow" />
         <h3 className="popover-header">
           Add your interest
