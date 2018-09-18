@@ -11,10 +11,10 @@ export default class AddTagPopover extends React.Component {
     return (
       <div className="add-tag-popover popover top">
         <div className="arrow" />
-        <h3 className="popover-title">
+        <h3 className="popover-header">
           Add your interest
         </h3>
-        <div className="popover-content">
+        <div className="popover-body">
           <form onSubmit={this.handleAddTag.bind(this)}>
             <div className="input-group">
               <input
@@ -23,12 +23,17 @@ export default class AddTagPopover extends React.Component {
                 onChange={this.handleInputChange.bind(this)}
                 className="form-control"
               />
-              <span
-                className="input-group-addon add-button"
-                onClick={this.handleAddTag.bind(this)}
-              >
-                Add
-              </span>
+
+              <div className="input-group-append">
+                <button 
+                  className="btn btn-outline-secondary" 
+                  type="button"
+                  onClick={this.handleAddTag.bind(this)}>
+                  Add
+                </button>
+              </div>
+
+              
             </div>
           </form>
         </div>

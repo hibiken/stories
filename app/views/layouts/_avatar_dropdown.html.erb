@@ -1,8 +1,8 @@
-<li class="account">
+<li class="account dropdown">
   <a class="avatar-wrapper dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
     <%= avatar_for(current_user, size: 40) %>
   </a>
-  <div class="dropdown-menu nav-dropdown">
+  <div class="dropdown-menu nav-dropdown dropdown-menu-right">
     <span class="dropdown-arrow-top"></span>
     <span class="dropdown-arrow-bottom"></span>
     <%= link_to "New story", new_post_path, class: "dropdown-item" %>

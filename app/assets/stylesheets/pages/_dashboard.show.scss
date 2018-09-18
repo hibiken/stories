@@ -1,6 +1,16 @@
+
 .dashboard-main-content {
-  padding-top: 2em;
+  padding-top: 7em;
   padding-bottom: 2em;
+  padding-left: 22px;
+}
+
+@media (min-width: $screen-sm-min) {
+  .dashboard-main-content {
+    padding-top: 2em;
+    padding-bottom: 2em;
+  }
+
 }
 
 body.dashboards.show,
