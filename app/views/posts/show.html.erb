@@ -76,14 +76,26 @@
   </div>
 </div> 
 
-<div class="post-show-footer row" data-animation="fadeInUp-fadeOutDown">
+<div class="post-show-footer pt-2 p-4" data-animation="fadeInUp-fadeOutDown">
   <% if @related_posts.any? %>
-    <div class="col-10 col-md-6 offset-1 offset-md-3 main-content related-stories">
-      <h4 class="small-heading">Related stories</h4>
-      <% @related_posts.each do |post| %>
-        <%= render partial: 'posts/post_list_item', locals: { post: post } %>
-      <% end %>
+    <div class="container">
+
+      <h4 class="small-heading mt-4 mb-2">
+        Related stories
+      </h4>
+
+      <div class="card-deck">
+
+        
+        <% @related_posts.each do |post| %>
+          <%= render partial: 'posts/post_list_item', locals: { post: post } %>
+        <% end %>
+
+        
+      </div>
+     
     </div>
+
   <% end %>
 
   <div id="responses" class="col-10 col-md-6 offset-1 offset-md-3 main-content">
