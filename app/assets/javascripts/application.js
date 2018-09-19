@@ -25,6 +25,7 @@
 //= require taggle
 //= require jquery.autoSave
 //= require pubsub
-//= require bootstrap-sprockets
+//= require popper
+//= require bootstrap
 //= require init
 //= require page_specific

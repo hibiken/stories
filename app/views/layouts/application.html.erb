@@ -29,8 +29,10 @@
   <%= render 'layouts/alert_messages' %>
 
   <div class="container-fluid main-container">
+   
     <%= yield %>
-    <%= yield :sidebar %>
+    <% # yield :sidebar %>
+  
   </div>
 
 </body>

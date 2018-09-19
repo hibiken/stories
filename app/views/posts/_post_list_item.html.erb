@@ -1,17 +1,52 @@
-<div class="post-list-item">
-  <div class="flex-container">
-    <div class="avatar-wrapper">
-      <%= avatar_for(post.user, size: 40) %>
-    </div>
-    <div class="post-info">
-      <strong class="pli-title"><%= link_to post.title, post %></strong><br/>
-      <small class="pli-username"><%=link_to post.username, post.user %></small>
-    </div>
-    <% if post.picture.attached? %>
-      <div class="pli-picture-wrapper">
-        <%= image_tag post.picture.variant(resize: "200x200") %>
+
+<div class="card">
+
+  <% if post.picture.attached? %>
+    <%= image_tag post.picture.variant(resize: "400x100>"), class: "card-img-top", style: "width: 100%;height: 105px;" %>
+  <% end %>
+
+  <div class="card-body">
+    <h5 class="card-title">
+      <%= link_to post.title, post %>  
+    </h5>
+
+    <p class="card-text">
+      <%= truncate(post.plain || "", length: 100, separator: ' ', escape: false) %>
+    </p>
+  </div>
+
+  <div class="card-footer">
+
+    <div class="d-flex flex-row">
+      
+      <div class="p-2">
+        <div class="avatar-wrapper">
+          <%= avatar_for(post.user, size: 40) %>
+        </div>
       </div>
-    <% end %>
+
+      <div class="p-2">
+        <span class="font-weight-bold">
+          <%=link_to post.username, post.user %> 
+        </span> 
+        <br>
+        <small class="font-weight-light text-muted">
+          <%= post_length_in_minutes(post.plain) %>
+        </small>  
+      </div>
+
+      <div class="ml-auto p-2 bd-highlight">
+        
+        <div class="float-left">
+          <%= render partial: 'posts/likes', locals: { post: post } %>
+        </div>
+
+        <div class="float-right">
+          <%= render partial: 'posts/bookmarks', locals: { post: post } %>
+        </div>
+
+      </div>
+    </div>
 
   </div>
 </div>

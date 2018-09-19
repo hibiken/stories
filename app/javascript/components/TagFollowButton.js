@@ -21,7 +21,7 @@ export default class TagFollowButton extends React.Component {
       return (
         <button
           onClick={this.handleUnfollowClick.bind(this)}
-          className="pull-right button green-inner-button unfollow-button" 
+          className="float-right button green-inner-button unfollow-button" 
           rel="nofollow" 
         >
           <span className="top content">Following</span><br />
@@ -32,7 +32,7 @@ export default class TagFollowButton extends React.Component {
       return (
         <button 
           onClick={this.handleFollowClick.bind(this)}
-          className="pull-right button green-border-button follow-button" 
+          className="float-right button green-border-button follow-button" 
           rel="nofollow" 
         >
           Follow

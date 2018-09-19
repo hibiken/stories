@@ -7,8 +7,19 @@ body {
   background-color: $white;
 }
 
+a {
+  color: $font-black;
+  &:hover{
+    color: $light-gray;
+  }
+}
+
 .side-padding-5 {
   padding: 0 5%;
+}
+
+h1 {
+  font-weight: 700;
 }
 
 .flex-container {
@@ -23,9 +34,25 @@ body {
   justify-content: space-between;
 }
 
+svg {
+    overflow: hidden;
+    vertical-align: unset;
+}
 
 
 pre{
   border:none !important;
   //background: none repeat scroll 0 0 rgba(0, 0, 0, 0.05) !important;
+}
+
+.card {
+  box-shadow: 0 1px 7px rgba(0,0,0,.05);
+  border: none;
+  .card-title {
+    font-weight: 700;
+  }
+  .card-footer{
+    background-color: transparent;
+    border-top: none;
+  }
 }

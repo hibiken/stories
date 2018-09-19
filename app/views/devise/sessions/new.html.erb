@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-6 offset-md-3">
 
     <div class="signin-wrapper">
       <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { autocomplete: 'off' }) do |f| %>
@@ -19,7 +19,7 @@
             <%= f.label :remember_me %>
           </div>
         <% end -%>
-        <%= link_to "Sign up", new_user_registration_path, class: 'button green-border-button pull-right' %>
+        <%= link_to "Sign up", new_user_registration_path, class: 'button green-border-button float-right' %>
 
         <hr/>
         <%= render partial: "devise/shared/links" %>

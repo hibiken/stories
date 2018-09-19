@@ -20,21 +20,21 @@ export default class NotificationsContainer extends React.Component {
 
   render () {
     return (
-      <div className="notification-container">
+      <div className="notification-container dropdown">
         <a className={`dropdown-toggle ${this.state.newNotificationCount > 0 ? 'active' : ''}`}
           onClick={() => this.handleMarkAsTouched()}
           data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
           {this.renderNotificationIcon()}
         </a>
         <div
-          className="dropdown-menu"
+          className="dropdown-menu dropdown-menu-right"
           ref={(ref) => {this.dropdownRef = ref}}
         >
           <span className="dropdown-arrow-top"></span>
           <span className="dropdown-arrow-bottom"></span>
           <div className="notification-header">
             <span>Notifications</span>
-            <a className="pull-right mark-all-as-read"
+            <a className="float-right mark-all-as-read"
               onClick={(e) => this.handleMarkAllAsRead(e)}>
               Mark All as Read
             </a>

@@ -17,8 +17,10 @@
   <%= render 'layouts/alert_messages' %>
 
   <div class="container-fluid">
-    <%= yield %>
-    <%= yield :sidebar %>
+    <div class="row">
+      <%= yield %>
+      <%= yield :sidebar %>
+    </div>
   </div> 
 
 </body>
