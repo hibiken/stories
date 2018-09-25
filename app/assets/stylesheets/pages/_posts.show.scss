@@ -9,11 +9,21 @@ body.posts.show {
     display: none;
   }
   .main-content {
-    padding-top: 2em;
+    padding-top: 7em;
     padding-bottom: 2em;
     padding-left: 3%;
     padding-right: 3%;
   }
+
+  @media (min-width: $screen-sm-min) {
+    .main-content {
+      padding-top: 2em;
+      padding-bottom: 2em;
+      padding-left: 3%;
+      padding-right: 3%;
+    }
+  }
+
   .post-picture-wrapper {
     padding: 2em 0;
     img {
