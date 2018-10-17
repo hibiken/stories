@@ -4,7 +4,7 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/c73c3860d7ccb4c8ada1/maintainability)](https://codeclimate.com/github/michelson/dante-stories/maintainability)
 
-This project is a fork of a Medium clone which began as [Ken Hibino](https://github.com/hibiken/stories)'s personal side project to learn **Ruby on Rails** and **ReactJS**. I've upgraded and refactored some part of the rails app and I've integrated Dante2 wysiwyg editor.
+This project is a fork of a Medium clone which began as [Ken Hibino](https://github.com/hibiken/stories)'s personal side project to learn **Ruby on Rails** and **ReactJS**. I've upgraded and refactored some part of the rails app and I've integrated [Dante2 wysiwyg editor](https://michelson.github.io/dante2).
 
 ## The specific improvements from the original repository:
 
