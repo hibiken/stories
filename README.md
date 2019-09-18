@@ -10,13 +10,13 @@ This project is a fork of a Medium clone which began as [Ken Hibino](https://git
 
 ### Platform 
 
-+ Rails 5.2.1 update!
++ Rails 6.0.0 update!
 + Removed elastisearch-rails , replaced by searchkick
 + Removed carrierwave, replaced by activestorge
 + Webpacker added
 + Updated dependencies
-+ Replaced phantomJs by chrome-webdriver
-+ Ruby version 2.4.0
++ Replaced phantomJs by webdrivers
++ Ruby version 2.5.0
 + Works with Elasticsearch 6.3.X
 
 ### Application Model
