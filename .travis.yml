@@ -13,12 +13,11 @@ services:
 
 addons:
   postgresql: "9.4"
+  chrome: stable
   apt:
     sources:
       - google-chrome
-    packages:
-      - google-chrome-stable
- 
+
 before_script:
   - sleep 10
   - sh -e /etc/init.d/xvfb start
