@@ -24,6 +24,6 @@ Capybara.register_driver :headless_chrome do |app|
     desired_capabilities: capabilities
 end
 
-Capybara.javascript_driver = ENV['CODESHIP'].present? ? :headless_chrome : :chrome
+Capybara.javascript_driver = ENV['CI'].present? ? :headless_chrome : :chrome
 
 # Capybara.default_max_wait_time = 300
