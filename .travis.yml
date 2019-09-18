@@ -6,7 +6,7 @@ dist: trusty
 language: ruby
 
 rvm:
-  - 2.5.0
+  - 2.4.0
 
 services:
   - elasticsearch
