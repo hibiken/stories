@@ -79,7 +79,13 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'rspec-rails'
+
+  gem 'rspec-rails', git: 'https://github.com/rspec/rspec-rails', branch: '4-0-dev'
+
+  #%w[rspec-core rspec-expectations rspec-mocks rspec-support].each do |lib|
+  #  gem lib , :git => "https://github.com/rspec/#{lib}.git", :branch => 'master'
+  #end
+
   gem 'awesome_print'
   gem 'bundler-audit'
   gem 'pry-byebug'
