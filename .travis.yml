@@ -13,10 +13,11 @@ services:
 
 addons:
   postgresql: "9.4"
-  chrome: stable
   apt:
-    sources:
-      - google-chrome
+    packages:
+      - chromium-browser
+      - libgconf-2-4
+  chrome: stable
 
 before_script:
   - sleep 10
