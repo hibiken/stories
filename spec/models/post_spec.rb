@@ -20,8 +20,10 @@
 require "rails_helper"
 
 RSpec.describe Post do
+  let(:user) { create(:user) }
+
   describe "validations" do
-    let(:post) { build(:post) }
+    let(:post) { build(:post, user: user) }
 
     it "requires a body" do
       post.body = "     "
@@ -35,8 +37,8 @@ RSpec.describe Post do
   end
 
   describe "scopes" do
-    let!(:post)  { create(:post) }
-    let!(:draft) { create(:draft) }
+    let!(:post) { create(:post, user: user) }
+    let!(:draft) { create(:draft, user: user) }
 
     describe "published" do
       it "returns published posts" do
@@ -103,18 +105,18 @@ RSpec.describe Post do
 
   describe "#publish" do
     it "sets published_at and saves the record" do
-      post = build(:draft)
+      post = build(:draft, user: user)
       post.publish
       expect(post.published_at).to be_present
       expect(post).to be_persisted
     end
 
     it "sets appropriate slug when there are multiple posts with the same title" do
-      post1 = build(:draft, plain: "My favorite music")
+      post1 = build(:draft, plain: "My favorite music", user: user)
       post1.publish
       expect(post1.slug).to eq('my-favorite-music')
 
-      post2 = build(:draft, plain: "My favorite music")
+      post2 = build(:draft, plain: "My favorite music", user: user)
       post2.publish
       expect(post2).to be_persisted
       expect(post2.slug).not_to eq("my-favorite-music")
@@ -122,14 +124,14 @@ RSpec.describe Post do
     end
 
     it "returns falsly value when it fails validations" do
-      post = build(:draft, body: ' ')
+      post = build(:draft, body: ' ', user: user)
       expect(post.publish).to be_falsy
     end
   end
 
   describe "#save_as_draft" do
     it "sets published_at to nil and saves the record" do
-      post = build(:draft)
+      post = build(:draft, user: user)
       post.save_as_draft
       expect(post.published_at).to be_nil
       expect(post).to be_persisted
@@ -139,7 +141,8 @@ RSpec.describe Post do
   describe "words and word_count" do
     let(:post) { build(:post, 
       body: "{}", 
-      plain: "This is five words long.") 
+      plain: "This is five words long." ,
+      user: user)
     }
 
     it "returns an array of words" do

@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.feature "Bookmarking a post" do
   let(:user) { create(:user) }
-  let(:post) { create(:post) }
+  let(:post) { create(:post, user: user) }
 
   scenario "signed-in user bookmarks a post successfully", js: true do
     sign_in user

@@ -2,9 +2,11 @@ require "rails_helper"
 
 RSpec.describe PostsController do
 
+  let(:user){create(:user)}
+
   describe "Access Control" do
     describe "GET #show" do
-      let(:post) { create(:post) }
+      let(:post) { create(:post, user: user) }
 
       it "non-logged-in user can also access the page" do
         get :show, params: {id: post.slug}
@@ -40,7 +42,7 @@ RSpec.describe PostsController do
     end
 
     describe "PATCH #update" do
-      let(:post) { create(:post) }
+      let(:post) { create(:post, user: user) }
       it "requires a logged-in user" do
         patch :update, params: {
           id: post.id, 
@@ -51,7 +53,7 @@ RSpec.describe PostsController do
     end
 
     describe "DELETE #destroy" do
-      let(:post) { create(:post) }
+      let(:post) { create(:post, user: user) }
       it "requires a logged-in user" do
         delete :destroy, params: {id: post.id}
         expect(response).to redirect_to(new_user_session_path)
@@ -109,7 +111,10 @@ RSpec.describe PostsController do
 
       describe "POST #create_and_edit" do
         it "creates a post and redirect_to edit page" do
-          @draft = build(:draft, title: "   ", body: "this is a story of my life")
+          @draft = build(:draft, title: "   ", 
+            body: "this is a story of my life",
+            user: user
+          )
           expect{ 
             post :create_and_edit, params: {
               post: { 
@@ -121,7 +126,7 @@ RSpec.describe PostsController do
         end
 
         it "redirects to edit page" do
-          @draft = build(:draft, title: "", body: "hello world")
+          @draft = build(:draft, title: "", body: "hello world", user: user)
           post :create_and_edit, params: {
             post: { 
               title: @draft.title, 

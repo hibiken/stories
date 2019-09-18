@@ -89,8 +89,8 @@ RSpec.describe User, type: :model do
 
   describe "adding likes" do
     let(:user) { create(:user) }
-    let(:post) { create(:post) }
-    let(:response) { build(:post) }
+    let(:post) { create(:post, user: user) }
+    let(:response) { build(:post, user: user) }
     before :each do
       post.responses << response
     end
@@ -119,7 +119,7 @@ RSpec.describe User, type: :model do
   describe "adding bookmarks" do
     let(:user) { create(:user) }
     let(:post) { create(:post) }
-    let(:response) { build(:post) }
+    let(:response) { build(:post, user: user) }
     before :each do
       post.responses << response
     end
