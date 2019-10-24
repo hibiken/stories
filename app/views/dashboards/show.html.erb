@@ -25,7 +25,7 @@
   </div>
 
   <aside class="col-md-4 main-sidebar">
-      <h4 class="small-heading border-top">Featured tags</h4>
+      <h4 class="small-heading border-top"><%= I18n.t("site.featured_tags") %></h4>
       <%= react_component('TagList', { tags: @dashboard.featured_tags }) %>
 
       <% if user_signed_in? %>
@@ -38,7 +38,7 @@
       <% end %>
 
       <% unless @dashboard.filtered? %>
-        <h4 class="small-heading border-top">Top stories</h4>
+        <h4 class="small-heading border-top"><%= I18n.t("site.top") %></h4>
         <div class="sidebar-top-stories">
           <ul>
             <% @dashboard.top_stories.each_with_index do |post, index| %>

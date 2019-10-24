@@ -11,14 +11,14 @@
         <% if user_signed_in? %>
           <%= nav_link_to "Home", root_path %>
         <% else %>
-          <%= nav_link_to "Staff pick", root_path %>
+          <%= nav_link_to I18n.t("site.picks"), root_path %>
         <% end %>
       </li>
-      <li class="nav-item"><%= nav_link_to "Top stories", top_stories_path %></li>
+      <li class="nav-item"><%= nav_link_to I18n.t("site.top"), top_stories_path %></li>
       <% if user_signed_in? %>
-        <li class="nav-item"><%= nav_link_to "Bookmarks", dashboard_bookmarks_path %></li>
+        <li class="nav-item"><%= nav_link_to I18n.t("site.bookmarks"), dashboard_bookmarks_path %></li>
       <% else %>
-        <li class="nav-item"><a href='' data-behavior="trigger-overlay">Bookmarks</a></li>
+        <li class="nav-item"><a href='' data-behavior="trigger-overlay"><%= I18n.t("site.bookmarks") %> </a></li>
       <% end %>
 
 
@@ -35,7 +35,7 @@
   <div class="folding-nav">
     <ul class="navbar-nav flex-row ml-md-auto d-none- d-md-flex">
       <li class="main-searchbar">
-        <%= react_component('SearchContainer') %>
+        <%= react_component('SearchContainer', placeholder: I18n.t("site.search")) %>
       </li>
       <% if user_signed_in? %>
         
@@ -52,12 +52,12 @@
       <% else %>
 
         <li class="new-post-button">
-          <%= link_to "Write a story", new_post_path, class: "button", data: { behavior: 'trigger-overlay' } %>
+          <%= link_to I18n.t("site.cta"), new_post_path, class: "button", data: { behavior: 'trigger-overlay' } %>
           
         </li>
 
         <li class="sign-in-button">
-          <%= link_to "Sign in / Sign up", new_user_session_path, class: 'button green-border-button', data: { behavior: 'trigger-overlay' } %>
+          <%= link_to I18n.t("site.sign"), new_user_session_path, class: 'button green-border-button', data: { behavior: 'trigger-overlay' } %>
         </li>
 
       <% end %>

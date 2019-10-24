@@ -51,6 +51,7 @@ export default class SearchContainer extends React.Component {
         <SearchBar 
           showDropdown={this.showDropdown}
           hideDropdown={this.hideDropdown}
+          placeholder={this.props.placeholder}
           term={this.state.term} 
           onSearchTermChange={(term) => {this.search(term)}}
         />

@@ -6,11 +6,11 @@
       <%= devise_error_messages! %>
 
       <div class="form-input-wrapper">
-        <%= f.text_field :username, autofocus: true, placeholder: "Username", onfocus: "this.value = this.value;" %>
+        <%= f.text_field :username, autofocus: true, placeholder: true, onfocus: "this.value = this.value;" %>
       </div>
 
       <div class="form-input-wrapper">
-        <%= f.email_field :email, placeholder: "Email" %>
+        <%= f.email_field :email, placeholder: true %>
       </div>
 
       <% if f.object.password_required? %>

@@ -7,14 +7,14 @@
 
 
   <aside class="col-md-4 offset-md-1 main-sidebar">
-    <h4 class="small-heading border-top">Featured tags</h4>
+    <h4 class="small-heading border-top"><%= I18n.t("site.featured_tags") =></h4>
     <div class="tags-wrapper featured-tags">
       <% @dashboard.featured_tags.each do |tag| %>
         <%= render partial: 'tags/tag', locals: { tag: tag } %>
       <% end %>
     </div>
 
-    <h4 class="small-heading border-top">Other tags</h4>
+    <h4 class="small-heading border-top"><%= I18n.t("site.tags") =></h4>
     <div class="tags-wrapper">
       <% @dashboard.all_tags.each do |tag| %>
         <%= render partial: 'tags/tag', locals: { tag: tag } %>
