@@ -47,7 +47,7 @@ gem 'sinatra', require: false
 gem 'slim'
 # gem 'sidetiq', '~> 0.7.0'
 
-gem 'nokogiri', '~> 1.6'
+gem 'nokogiri', '~> 1.10'
 
 # Caching
 gem 'dalli', '~> 2.7'
