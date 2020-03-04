@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby "2.3.3"
 
 gem 'rails', '4.2.6'
-gem 'puma', '~> 2.15'
+gem 'puma', '~> 3.12'
 gem 'pg'
 
 # Auth
